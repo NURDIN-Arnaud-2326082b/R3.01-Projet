@@ -19,10 +19,10 @@
                 <img src="img/logo_tenrac.png">
             </a>
             <ul class="header-menu">
-                <li><a href="#structure">Structure</a></li>
-                <li><a href="#meal">Repas</a></li>
-                <li><a href="#Dish">Plat</a></li>
-                <li><a href="#authentication">Authentification</a></li>
+                <li><a href="structure.php">Structure</a></li>
+                <li><a href="repas.php">Repas</a></li>
+                <li><a href="plat.php">Plat</a></li>
+                <li><a href="authentification.php">Authentification</a></li>
             </ul>
         </div>
     </div>

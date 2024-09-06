@@ -48,7 +48,7 @@ body {
 
 h1 {
     font-size: 5rem;
-    color: #fff;
+    color: #f3aa00;
 }
 
 h2 {
@@ -84,7 +84,7 @@ p {
 
 .dark {
     background-color: black;
-    color: #fff;
+    color: #f3aa00;
     flex: 1;
 }
 
@@ -117,7 +117,7 @@ p {
 }
 
 .skill {
-    background: #333;
+    background: #f3aa00;
     border-radius: 15px;
     padding: 25px;
     box-sizing: border-box;
@@ -275,7 +275,7 @@ header {
 }
 
 .header-menu li a:hover {
-    background-color: #555;
+    background-color: #f3aa00;
     color: #fff;
 }
 
