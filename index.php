@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="img/logo_tenrac.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tenrac</title>
 </head>
@@ -16,7 +16,7 @@
                 <span class="material-icons">menu</span>
             </button>
             <a class="header-logo" href="#">
-                <img src="img/logo_Tenrac.png">
+                <img src="img/logo_tenrac.png">
             </a>
             <ul class="header-menu">
                 <li><a href="#structure">Structure</a></li>
