@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../../assets/styles/style.css">
+    <link rel="stylesheet" href="../../../assets/styles/StylePlat.css">
     <link rel="icon" href="../../../img/logo_tenrac.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tenrac</title>
@@ -56,19 +56,19 @@
     <div class="boxed text-center">
         <h2>Nos plats</h2>
         <div class="flex toColumn gap20">
-            <div class="w25 wm100 skill">
+            <div class="w25 wm100 Plats">
                 <img src="../../../img/Tenders.png">
                 <h3>Tenders</h3>
             </div>
-            <div class="w25 wm100 skill">
+            <div class="w25 wm100 Plats">
                 <img src="../../../img/Chips.png">
                 <h3>Chips</h3>
             </div>
-            <div class="w25 wm100 skill">
+            <div class="w25 wm100 Plats">
                 <img src="../../../img/Hamburger.png">
                 <h3>Hamburgers</h3>
             </div>
-            <div class="w25 wm100 skill">
+            <div class="w25 wm100 Plats">
                 <img src="../../../img/Tacos.png">
                 <h3>Tacos</h3>
             </div>
@@ -76,36 +76,15 @@
     </div>
 </div>
 
-<div  id="contact" class="section_dark">
+<div  id="Boissons" class="boissons">
     <div class="boxed text-center">
-        <h2>blablabla</h2>
+        <h2>Nos boissons</h2>
         <div class="flex space-between">
-            <div class="w32  wm100 realisation">
+            <div class="w25  wm100 boissons">
                 <img src="../../../img/chess.jpg">
                 <h3>blablabla</h3>
             </div>
         </div>
-    </div>
-</div>
-
-<div  id="contact" class="section dark">
-    <div class="boxed">
-        <h2>Me contacter</h2>
-        <form id="contact-form">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="nom" required placeholder="Entrer votre nom">
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required placeholder="Entrer votre email">
-            </div>
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required placeholder="Entrer votre message"></textarea>
-            </div>
-            <button type="submit">Envoyer</button>
-        </form>
     </div>
 </div>
 </body>
