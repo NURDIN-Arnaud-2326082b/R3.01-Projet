@@ -14,12 +14,32 @@ form,p{
     box-shadow: 1em 1em 10em 1em black;
 }
 input{
-    margin: 50px 0px 10px 10px;
+    margin: 50px 0px 10px 0px;
 }
+.inpo{
+    margin: 20px 0px 20px 0px;
+}
+.but {position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: #f3aa00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s ease;
+}
+.but:hover{
+    background-color: #ff763b;
+}
+
 h1{
     text-align: center;
     color: #f3aa00;
-    margin: 5px 5px 30px 5px;
+    margin: 5px 5px 50px 5px;
 }
 
 
@@ -59,13 +79,12 @@ p {
 button {
     display: block;
     width: 100%;
-    padding: 10px;
     background-color: #333;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 button:hover {
     background-color: #555;
