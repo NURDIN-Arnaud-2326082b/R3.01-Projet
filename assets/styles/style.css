@@ -10,6 +10,7 @@ html {
     scroll-behavior: smooth;
 }
 
+
 html, body {
     width: 100%;
     height: 100%;
@@ -22,6 +23,14 @@ body {
 
 .slider {
     width: 100%;
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden; /* Ajouté pour s'assurer que le contenu ne déborde pas */
+}
+
+.main{
+    width: 100%;
+    color: greenyellow;
     min-height: 80vh;
     position: relative;
     overflow: hidden; /* Ajouté pour s'assurer que le contenu ne déborde pas */
@@ -245,6 +254,10 @@ header {
     padding: 5px 0;
     position: relative;
     overflow: hidden;
+}
+
+p{
+    color: greenyellow;
 }
 
 .header-logo {
