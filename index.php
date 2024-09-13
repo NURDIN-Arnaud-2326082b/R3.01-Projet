@@ -19,17 +19,14 @@
                 <img src="img/logo_tenrac.png">
             </a>
             <ul class="header-menu">
-                <li><a href="structure.php">Structure</a></li>
-                <li><a href="repas.php">Repas</a></li>
-                <li><a href="plat.php">Plat</a></li>
-                <li><a href="authentification.php">Authentification</a></li>
+                <li><a href="modules/blog/views/structure.php">Structure</a></li>
+                <li><a href="modules/blog/views/repas.php">Repas</a></li>
+                <li><a href="modules/blog/views/plat.php">Plat</a></li>
+                <li><a href="modules/blog/views/authentification.php">Authentification</a></li>
             </ul>
         </div>
     </div>
 </header>
-<div id="overlay"></div>
-
-
 
 <div class="slider">
     <img  class="slider-background" src="img/slider.jpg" >
