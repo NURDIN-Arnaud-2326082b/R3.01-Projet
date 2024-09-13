@@ -3,16 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/Connexion.css">
+    <link rel="icon" href="img/logo_tenrac.jpg">
+
     <title>Connexion</title>
 </head>
+<header>
+    <div class="boxed">
+        <div class="flex  aligncenter space-between">
+            <button  onclick="openMenu()" class="header-menu-mobile">
+                <span class="material-icons">menu</span>
+            </button>
+            <a class="header-logo" href="index.php">
+                <img src="img/logo_tenrac.png">
+            </a>
+            <ul class="header-menu">
+                <li><a href="structure.php">Structure</a></li>
+                <li><a href="repas.php">Repas</a></li>
+                <li><a href="plat.php">Plat</a></li>
+                <li><a href="connexion.php">Connexion</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
 <body>
-<h1>Connexion</h1>
+
 <form method="post" action="connexion.php">
+    <h1>Connexion</h1>
     Nom :<input type="text" name="nom" required><br><br>
     Numéro de téléphone : <input type="text"  name="tel" required><br><br>
     Adresse postale : <input type="text"  name="poste" required><br><br>
     Email: <input type="email" name="email" required><br><br>
-    Mot de passe : <input type="password" name="motdepasse" required><br><br>
+    mot de passe : <input type="password" name="motdepasse" required><br><br>
     <input type="submit" value="Envoyer">
 </form>
 </body>
@@ -69,6 +91,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>Veuillez remplir tous les champs du formulaire.</p>";
     }
 }
-phpinfo();
+
 ?>
 
