@@ -7,8 +7,8 @@ function start_page($title):void
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles/Connexion.css">
-    <link rel="icon" href="img/logo_tenrac.jpg">
+    <link rel="stylesheet" href="../../../assets/styles/Connexion.css">
+    <link rel="icon" href="../../../img/logo_tenrac.jpg">
 
 
 </head>
@@ -18,11 +18,11 @@ function start_page($title):void
             <button  onclick="openMenu()" class="header-menu-mobile">
                 <span class="material-icons">menu</span>
             </button>
-            <a class="header-logo" href="index.php">
-                <img src="img/logo_tenrac.png">
+            <a class="header-logo" href="../../../index.php">
+                <img src="../../../img/logo_tenrac.png">
             </a>
             <ul class="header-menu">
-                <li><a href="structure.php">Structure</a></li>
+                <li><a href="../../../structure.php">Structure</a></li>
                 <li><a href="repas.php">Repas</a></li>
                 <li><a href="plat.php">Plat</a></li>
                 <li><a href="connexion.php">Connexion</a></li>

@@ -21,7 +21,7 @@
             <ul class="header-menu">
                 <li><a href="../../../structure.php">Structure</a></li>
                 <li><a href="repas.php">Repas</a></li>
-                <li><a href="../../../connexion.php">Connexion</a></li>
+                <li><a href="connexion.php">Connexion</a></li>
             </ul>
         </div>
     </div>

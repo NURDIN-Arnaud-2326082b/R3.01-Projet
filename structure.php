@@ -22,7 +22,7 @@
                 <li><a href="structure.php">Structure</a></li>
                 <li><a href="repas.php">Repas</a></li>
                 <li><a href="plat.php">Plat</a></li>
-                <li><a href="connexion.php">Connexion</a></li>
+                <li><a href="modules/blog/views/connexion.php">Connexion</a></li>
             </ul>
         </div>
     </div>
