@@ -1,0 +1,205 @@
+body{
+    background-image: url("../../img/fond_rouge_connexion.jpg");
+    background-size: cover;
+}
+form,p{
+    width: 350px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ff3b3b;
+    border-radius: 10px;
+    box-shadow: 1em 1em 10em 1em black;
+}
+input{
+    margin: 50px 0px 10px 0px;
+}
+.inpo{
+    margin: 20px 0px 20px 0px;
+}
+.but {position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: #f3aa00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s ease;
+}
+.but:hover{
+    background-color: #ff763b;
+}
+
+h1{
+    text-align: center;
+    color: #f3aa00;
+    margin: 5px 5px 50px 5px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+.slider-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1; /* Assurez-vous que le contenu est au-dessus de l'image de fond */
+}
+p {
+    font-size: 1.5rem;
+    line-height: 1.5em;
+}
+.boxed {
+    max-width: 1280px;
+    margin-inline: auto;
+}
+
+.flex {
+    display: flex;
+}
+.space-between {
+    justify-content: space-between;
+}
+button {
+    display: block;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+button:hover {
+    background-color: #555;
+}
+header {
+    background-color: #ff3b3b;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    position: relative;
+    overflow: hidden;
+}
+.header-logo {
+    display: block;
+}
+
+.header-logo img {
+    width: 100px;
+    height: 100px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.header-menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+.header-menu li a:hover {
+    background-color: #f3aa00;
+    color: #fff;
+}
+
+.header-menu-mobile {
+    display: none;
+}
+
+/* Styles for overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    z-index: 900; /* Just below the menu */
+    display: none; /* Hidden by default */
+}
+
+/* Show the overlay when menu is active */
+.header-menu.active ~ #overlay {
+    display: block;
+}
+
+/* Additional styles to ensure the overlay is hidden when the menu is closed */
+.active + #overlay {
+    display: block;
+}
+
+/* Existing styles for header-menu */
+.header-menu {
+    z-index: 1000; /* Ensure the menu is above the overlay */
+}
+
+
+@media(max-width: 810px){
+    header{
+        height: 70px;
+    }
+
+    .header-menu-mobile {
+        display: block;
+        border: 0px;
+        background-color: #333;
+        position: absolute;
+        left: 5%; /* Positionne le menu tout à gauche */
+        top: 10%; /* Ajustez cette valeur selon vos besoins pour le positionner verticalement */
+        width: auto; /* Ajuste la largeur selon le contenu */
+        z-index: 991;
+    }
+
+    .header-logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .header-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        display: none;
+    }
+
+    .header-menu li:last-child a{
+        margin-top: 10px;
+    }
+    .boxed {
+        max-width: 90%;
+    }
+}
