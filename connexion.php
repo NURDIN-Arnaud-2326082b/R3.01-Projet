@@ -6,14 +6,12 @@ require 'db_connect.php';
 // Vérifier si la requête est en POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
-    $nom = htmlspecialchars($_POST["nom"]);
-    $tel = htmlspecialchars($_POST["tel"]);
-    $poste = htmlspecialchars($_POST["adresse"]);
+
     $email = htmlspecialchars($_POST["email"]);
     $motdepasse = $_POST["motdepasse"];
 
     // Vérifier que tous les champs sont remplis
-    if (!empty($nom) && !empty($tel) && !empty($poste) && !empty($email) && !empty($motdepasse)) {
+    if (!empty($email) && !empty($motdepasse)) {
 
         // Hachage du mot de passe
         $hashed_password = password_hash($motdepasse, PASSWORD_DEFAULT);
@@ -29,12 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p>Cette adresse e-mail est déjà utilisée.</p>";
         } else {
             // Si l'email n'existe pas, insérer l'utilisateur
-            $stmt = $conn->prepare("INSERT INTO users (nom, tel, poste, email, password) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssss", $nom, $tel, $poste, $email, $hashed_password);
+            $stmt = $conn->prepare("INSERT INTO users (email, password) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $email, $hashed_password);
 
             // Exécuter la requête et vérifier si elle a réussi
             if ($stmt->execute()) {
-                echo "<p>Votre inscription a été réalisée avec succès, $nom.</p>";
+                echo "<p>Votre inscription a été réalisée avec succès.</p>";
             } else {
                 echo "<p>Erreur lors de l'inscription : " . $stmt->error . "</p>";
             }
