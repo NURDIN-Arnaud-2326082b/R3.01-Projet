@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="31b9a10a-3d09-44a2-9f03-86b33785c5fb" name="tenrac" url="http://ftp-garrigues.alwaysdata.net">
+        <fileTransfer rootFolder="/home/garrigues" accessType="SFTP" host="ssh-garrigues.alwaysdata.net" port="22" sshConfigId="efb78253-9344-4d26-8f92-bf36060f977c" sshConfig="garrigues@ssh-garrigues.alwaysdata.net:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
