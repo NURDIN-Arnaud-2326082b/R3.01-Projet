@@ -3,8 +3,8 @@ body{
     background-size: cover;
 }
 form,p{
-    width: 382px;
-    height: 500px;
+    width: 350px;
+    height: 400px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -14,7 +14,7 @@ form,p{
     box-shadow: 1em 1em 10em 1em black;
 }
 input{
-    margin: 10px 0px 5px 0px;
+    margin: 50px 0px 10px 10px;
 }
 h1{
     text-align: center;

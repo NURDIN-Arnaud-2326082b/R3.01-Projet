@@ -30,9 +30,6 @@
 
 <form method="post" action="connexion.php">
     <h1>Connexion</h1>
-    Nom :<input type="text" name="nom" required><br><br>
-    Numéro de téléphone : <input type="text"  name="tel" required><br><br>
-    Adresse postale : <input type="text"  name="poste" required><br><br>
     Email: <input type="email" name="email" required><br><br>
     mot de passe : <input type="password" name="motdepasse" required><br><br>
     <input type="submit" value="Envoyer">
