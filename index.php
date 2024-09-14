@@ -1,5 +1,5 @@
 <?php
-require 'homepage.php';
+require 'header.php';
 
 menu('index');
 ?>
