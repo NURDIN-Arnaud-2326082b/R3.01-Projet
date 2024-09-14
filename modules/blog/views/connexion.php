@@ -16,9 +16,6 @@ header_page($page_title, $css_files);
 <body>
 <h1>Connexion</h1>
 <form method="post" action="connexion.php">
-    Nom :<input type="text" name="nom" required><br><br>
-    Numéro de téléphone : <input type="text"  name="tel" required><br><br>
-    Adresse postale : <input type="text"  name="poste" required><br><br>
     Email: <input type="email" name="email" required><br><br>
     Mot de passe : <input type="password" name="motdepasse" required><br><br>
     <input type="submit" value="Envoyer">
@@ -30,19 +27,16 @@ header_page($page_title, $css_files);
 <?php
 
 // Inclure le fichier de connexion à la base de données
-require 'www/modules/blog/models/db_connect.php';
+require '../models/db_connect.php';
 
 // Vérifier si la requête est en POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
-    $nom = htmlspecialchars($_POST["nom"]);
-    $tel = htmlspecialchars($_POST["tel"]);
-    $poste = htmlspecialchars($_POST["adresse"]);
     $email = htmlspecialchars($_POST["email"]);
     $motdepasse = $_POST["motdepasse"];
 
     // Vérifier que tous les champs sont remplis
-    if (!empty($nom) && !empty($tel) && !empty($poste) && !empty($email) && !empty($motdepasse)) {
+    if (!empty($email) && !empty($motdepasse)) {
 
         // Hachage du mot de passe
         $hashed_password = password_hash($motdepasse, PASSWORD_DEFAULT);
