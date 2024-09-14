@@ -18,7 +18,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = "style.css")
                 <button onclick="openMenu()" class="header-menu-mobile">
                     <span class="material-icons">menu</span>
                 </button>
-                <a class="header-logo" href="/www/modules/blog/views/homepage.php">
+                <a class="header-logo" href="../../blog/views/homepage.php">
                     <img src="../../../img/logo_tenrac.png">
                 </a>
                 <ul class="header-menu">
