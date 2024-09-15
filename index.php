@@ -1,4 +1,5 @@
 <?php
-require '_assets/includes/autoloader.php';
+require 'header.php';
 
+menu('index');
 ?>

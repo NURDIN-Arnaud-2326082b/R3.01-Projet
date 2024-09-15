@@ -1,17 +1,42 @@
 <?php
+$page_title = "Connexion";
+$css_files = "Connexion.css";
+include '../controllers/header.php';
+header_page($page_title, $css_files);
+?>
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+</head>
+<body>
+<h1>Connexion</h1>
+<form method="post" action="connexion.php">
+    Email: <input type="email" name="email" required><br><br>
+    Mot de passe : <input type="password" name="motdepasse" required><br><br>
+    <input type="submit" value="Envoyer">
+</form>
+</body>
+</html>
+
+
+<?php
 
 // Inclure le fichier de connexion à la base de données
-require 'db_connect.php';
+require '../models/db_connect.php';
 
 // Vérifier si la requête est en POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
-
     $email = htmlspecialchars($_POST["email"]);
     $motdepasse = $_POST["motdepasse"];
 
     // Vérifier que tous les champs sont remplis
-    if (!empty($nom) && !empty($tel) && !empty($poste) && !empty($email) && !empty($motdepasse)) {
+    if (!empty($email) && !empty($motdepasse)) {
 
         // Hachage du mot de passe
         $hashed_password = password_hash($motdepasse, PASSWORD_DEFAULT);
@@ -46,10 +71,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>Veuillez remplir tous les champs du formulaire.</p>";
     }
 }
-require 'HT.php';
-
-start_page('connexion');
-
-end_page('connexion');
 ?>
 
