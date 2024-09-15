@@ -6,9 +6,7 @@ require 'db_connect.php';
 // Vérifier si la requête est en POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
-    $nom = htmlspecialchars($_POST["nom"]);
-    $tel = htmlspecialchars($_POST["tel"]);
-    $poste = htmlspecialchars($_POST["adresse"]);
+
     $email = htmlspecialchars($_POST["email"]);
     $motdepasse = $_POST["motdepasse"];
 

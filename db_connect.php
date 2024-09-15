@@ -1,11 +1,12 @@
 <?php
-$servername = "mysql-loeb.alwaysdata.net";
-$username = "loeb";
-$password = "aC.2c2pxkzr4*qu";
-$dbname = "loeb_tenrac";
+$servername = "mysql-tenracc.alwaysdata.net";
+$user = "tenracc";
+$password = "tenraclette";
+$dbname = "tenracc_bd";
 
 // Créer une connexion
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername,$user,$password, $dbname);
+
 
 // Vérifier la connexion
 if ($conn->connect_error) {
