@@ -1,12 +1,9 @@
 <?php
-$page_title = "Accueil";
 $css_files = "style.css";
-include '../controllers/header.php';
-header_page($page_title, $css_files);
+include __DIR__ . '/../controllers/header.php';
+header_page("Accueil", $css_files);
 ?>
 
-
-<div id="overlay"></div>
 
 
     <div class="slider">
