@@ -14,6 +14,6 @@ if ($conn->connect_error)
 }
 else
 {
-    echo "Connexion réussie à la base de données.";
+   // echo "Connexion réussie à la base de données.";
 }
 ?>
