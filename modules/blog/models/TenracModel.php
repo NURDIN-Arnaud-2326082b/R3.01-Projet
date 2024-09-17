@@ -39,5 +39,20 @@ class TenracModel
         $stmt->close();
         return false; // Connexion échouée
     }
+
+    public function ajouterTenrac($email, $code, $nom, $telephone, $adresse, $grade, $rang, $titre, $dignite, $idClub){
+        $sql = "INSERT INTO Tenrac (Courriel, Code_personnel, Nom, Num_tel, Adresse, Grade, Rang, Titre, Dignite, Id_club) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$email,$code, $nom, $telephone, $adresse, $grade, $rang, $titre, $dignite, $idClub]);
+    }
+
+    public function supprimerTenrac($Courriel) {
+        $sql = "DELETE FROM tenracs WHERE  $Courriel = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$Courriel]);
+    }
+
+
+
 }
 ?>

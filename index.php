@@ -21,6 +21,15 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case '/connexion':
             require __DIR__ . '/modules/blog/views/connexion.php';
             break;
+        case '/repasTenrac':
+            require __DIR__ . '/modules/blog/views/repasTenrac.php';
+            break;
+        case '/structureTenrac':
+            require __DIR__ . '/modules/blog/views/structureTenrac.php';
+            break;
+        case '/platTenrac':
+            require __DIR__ . '/modules/blog/views/platTenrac.php';
+            break;
         default:
             // Si aucune route ne correspond, affiche une page d'erreur 404
             echo 'Erreur 404 - Page non trouvée';
