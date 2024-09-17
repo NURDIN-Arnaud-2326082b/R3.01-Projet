@@ -1,5 +1,4 @@
 <?php
-
 require_once '../models/db_connect.php';
 require_once '../models/TenracModel.php';
 
@@ -20,12 +19,12 @@ class TenracController
 
             if (!empty($courriel) && !empty($password)) {
                 if ($this->userModel->verifyTenrac($courriel, $password)) {
-                    echo "<p>Connexion réussie !</p>";
+                    echo "Connexion réussie !";
+                    header("Location: /index.php");
+                    exit();
                 } else {
-                    echo "<p>Erreur de connexion : Email ou mot de passe incorrect.</p>";
+                    echo "Erreur de connexion : Email ou mot de passe incorrect.";
                 }
-            } else {
-                echo "<p>Veuillez remplir tous les champs du formulaire.</p>";
             }
         }
     }
