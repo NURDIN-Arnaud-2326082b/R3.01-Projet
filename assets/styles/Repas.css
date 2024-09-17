@@ -6,20 +6,54 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+/*{
+    margin: 20px;
+    display: inline;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 1px solid black;
 
+}*/
+body{
+    background-color: #cc4215;
+}
+section {
+    display: flex;
+    justify-content: space-between;
+}
+.divi{
+    background-color: #f3aa00;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 5px;
+    width: 50%;
+}
+.div3{
+    background-color: #f3aa00;
+    padding: 0.5em 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 5px;
+    width: 100%;
+}
+.imgrdv{
+    float: left;
+}
+.imgD{
+    float: right;
+}
+title2{
+    text-decoration: underline;
+}
 
 html, body {
     width: 100%;
     height: 100%;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f0f0f0;
-}
 
 .slider {
     width: 100%;
@@ -58,11 +92,12 @@ body {
 h1 {
     font-size: 5rem;
     color: #f3aa00;
+    text-align: center;
 }
 
 h2 {
     text-align: center;
-    font-size: 3rem; /* Ajustez la taille de la police selon vos besoins */
+    font-size: 2rem; /* Ajustez la taille de la police selon vos besoins */
     margin-bottom: 50px;
 }
 
@@ -218,7 +253,7 @@ p {
 .form-group input, .form-group textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ffffff;
+    border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
@@ -254,6 +289,11 @@ header {
     padding: 5px 0;
     position: relative;
     overflow: hidden;
+}
+
+p{
+    text-align: center;
+    color: black;
 }
 
 .header-logo {
@@ -406,45 +446,4 @@ header {
     .boxed {
         max-width: 90%;
     }
-}
-
-footer{
-    padding: 1%;
-    background-color: #ff3b3b;
-}
-
-#footer-menu{
-    padding: 0% 30% ;
-    color: black;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#footer-menu ul{
-    padding-inline-start: 0;
-    text-align: center;
-    padding: 5%;
-}
-
-#footer-menu li{
-    flex: 1 1 !important;
-    text-align: center;
-    padding-bottom: 2%;
-}
-
-#footer-menu a{
-    text-decoration: none;
-    color: black;
-}
-
-#footer-menu a:hover{
-    text-decoration: none;
-    color: #ffffff;
-}
-
-#credits p{
-    padding: 0% 30%;
-    text-align: center;
-    font-size: 75%;
 }

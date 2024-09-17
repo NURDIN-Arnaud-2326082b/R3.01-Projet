@@ -28,5 +28,20 @@ class TenracController
             }
         }
     }
+
+    public function afficherFormulaireAjout() {
+        include 'views/ajoutTenrac.php';
+    }
+
+    // Action pour ajouter un tenrac
+    public function ajouterTenrac() {
+        if (isset($_POST['nom'])) {
+            $this->TenracModel->ajouterTenrac($_POST['Courriel'], $_POST['Code_personnel'], $_POST['Num_tel'], $_POST['Adresse'], $_POST['Grade'],  $_POST['Rang'], $_POST['Titre'], $_POST['Dignite'], $_POST['Id_club']);
+            header('Location: index.php?controller=tenrac&action=lister');
+        }
+    }
+
 }
+
+
 ?>
