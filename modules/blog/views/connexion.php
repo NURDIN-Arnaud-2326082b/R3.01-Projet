@@ -2,6 +2,7 @@
 $page_title = "Connexion";
 $css_files = "connexion.css";
 include __DIR__ . '/../controllers/header.php';
+include __DIR__ . '/../controllers/footer.php';
 header_page($page_title, $css_files);
 require_once '../models/db_connect.php'; // Connexion à la base de données
 require_once '../models/TenracModel.php'; // Modèle d'utilisateur
@@ -32,5 +33,8 @@ $userController->login();
     <br>
     <input type="submit" value="Se connecter">
 </form>
-</body>
-</html>
+
+
+<?php
+footer_page();
+?>

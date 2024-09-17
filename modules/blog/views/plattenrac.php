@@ -2,6 +2,7 @@
 $page_title = "Plat";
 $css_files = "Plat.css";
 require '../controllers/header.php';
+include __DIR__ . '/../controllers/footer.php';
 header_page($page_title, $css_files);
 require_once '../models/db_connect.php'; // Connexion à la base de données
 

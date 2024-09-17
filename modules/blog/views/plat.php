@@ -2,6 +2,7 @@
 $page_title = "Plat";
 $css_files = "Plat.css";
 require '../controllers/header.php';
+include __DIR__ . '/../controllers/footer.php';
 header_page($page_title, $css_files);
 ?>
 
@@ -84,8 +85,10 @@ header_page($page_title, $css_files);
     </div>
     </div>
 </div>
-</body>
-</html>
+
+<?php
+footer_page();
+?>
 
 
 
