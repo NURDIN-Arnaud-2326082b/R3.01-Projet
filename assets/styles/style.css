@@ -407,3 +407,44 @@ header {
         max-width: 90%;
     }
 }
+
+#footer{
+    padding: 1%;
+    background-color: #ff3b3b;
+}
+
+#footer-menu{
+    padding: 0% 30% ;
+    color: black;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#footer-menu ul{
+    padding-inline-start: 0;
+    text-align: center;
+    padding: 5%;
+}
+
+#footer-menu li{
+    flex: 1 1 !important;
+    text-align: center;
+    padding-bottom: 2%;
+}
+
+#footer-menu a{
+    text-decoration: none;
+    color: black;
+}
+
+#footer-menu a:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#credits p{
+    padding: 0% 30%;
+    text-align: center;
+    font-size: 75%;
+}
