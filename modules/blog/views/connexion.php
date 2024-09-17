@@ -1,75 +1,36 @@
 <?php
 $page_title = "Connexion";
-$css_files = "Connexion.css";
-include '../controllers/header.php';
+$css_files = "connexion.css";
+include __DIR__ . '/../controllers/header.php';
 header_page($page_title, $css_files);
-?>
+require_once '../models/db_connect.php'; // Connexion à la base de données
+require_once '../models/TenracModel.php'; // Modèle d'utilisateur
+require_once '../controllers/TenracController.php'; // Contrôleur d'utilisateur
 
+// Créez une instance du modèle et du contrôleur
+$userModel = new TenracModel($conn);
+$userController = new TenracController($userModel);
+
+// Appel de la méthode de connexion
+$userController->login();
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
 </head>
 <body>
 <h1>Connexion</h1>
-<form method="post" action="connexion.php">
-    Email: <input type="email" name="email" required><br><br>
-    Mot de passe : <input type="password" name="motdepasse" required><br><br>
-    <input type="submit" value="Envoyer">
+<form method="post" action="">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <label for="password">Mot de passe:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <input type="submit" value="Se connecter">
 </form>
 </body>
 </html>
-
-
-<?php
-
-// Inclure le fichier de connexion à la base de données
-require '../models/db_connect.php';
-
-// Vérifier si la requête est en POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
-    $email = htmlspecialchars($_POST["email"]);
-    $motdepasse = $_POST["motdepasse"];
-
-    // Vérifier que tous les champs sont remplis
-    if (!empty($email) && !empty($motdepasse)) {
-
-        // Hachage du mot de passe
-        $hashed_password = password_hash($motdepasse, PASSWORD_DEFAULT);
-
-        // Vérifier si l'email existe déjà
-
-        $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
-
-        if ($stmt->num_rows > 0) {
-            echo "<p>Cette adresse e-mail est déjà utilisée.</p>";
-        } else {
-            // Si l'email n'existe pas, insérer l'utilisateur
-            $stmt = $conn->prepare("INSERT INTO users (nom, tel, poste, email, password) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssss", $nom, $tel, $poste, $email, $hashed_password);
-
-            // Exécuter la requête et vérifier si elle a réussi
-            if ($stmt->execute()) {
-                echo "<p>Votre inscription a été réalisée avec succès, $nom.</p>";
-            } else {
-                echo "<p>Erreur lors de l'inscription : " . $stmt->error . "</p>";
-            }
-        }
-
-        // Fermer la connexion
-        $stmt->close();
-        $conn->close();
-
-    } else {
-        echo "<p>Veuillez remplir tous les champs du formulaire.</p>";
-    }
-}
-?>
-
