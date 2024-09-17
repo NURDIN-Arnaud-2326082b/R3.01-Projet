@@ -1,8 +1,10 @@
 <?php
-/*page_title = "Repas";
+$page_title = "Repas";
 $css_files = "Repas.css";
 require '../controllers/header.php';
-header_page($page_title, $css_files);*/
+include __DIR__ . '/../controllers/footer.php';
+
+header_page($page_title, $css_files);
 
 $cavalier_present = false;  // Vous pouvez ajuster cette condition selon vos besoins
 $dame_presente = false;     // Vous pouvez ajuster cette condition selon vos besoins
@@ -11,7 +13,8 @@ $dame_presente = false;     // Vous pouvez ajuster cette condition selon vos bes
 $date_rencontre = date("d-m-Y H:i:s");
 $lieu_renconte="Salle de conférence, Hôtel XYZ";
 ?>
-<!DOCTYPE html>
+<?php
+/*<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -38,7 +41,8 @@ $lieu_renconte="Salle de conférence, Hôtel XYZ";
             </ul>
         </div>
     </div>
-</header>
+</header>*/
+?>
 <h1> Repas</h1>
 <div class="div3" >
     <h2 class="titre2">
@@ -90,7 +94,9 @@ $lieu_renconte="Salle de conférence, Hôtel XYZ";
     </div>
 
 </section>
-
+<?php
+footer_page();
+?>
 </body>
 </html>
 

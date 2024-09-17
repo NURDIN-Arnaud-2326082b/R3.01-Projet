@@ -2,7 +2,6 @@
 function footer_page(): void
 {
     ?>
-
     <footer>
         <div id="links">
             <ul id="footer-menu">

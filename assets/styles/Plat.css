@@ -30,7 +30,7 @@ body {
 
 .main{
     width: 100%;
-    color: greenyellow;
+    color: red;
     min-height: 80vh;
     position: relative;
     overflow: hidden; /* Ajouté pour s'assurer que le contenu ne déborde pas */
@@ -278,7 +278,7 @@ header {
 }
 
 p{
-    color: greenyellow;
+    color: black;
 }
 
 .header-logo {

@@ -30,8 +30,6 @@ function header_page($page_title = "Titre par Défaut", $css_file = "style.css")
             </div>
         </div>
     </header>
-</body>
-</html>
     <?php
 }
 ?>

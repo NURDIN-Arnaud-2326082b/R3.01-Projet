@@ -23,7 +23,7 @@ $userController->login();
     <title>Connexion</title>
 </head>
 <body>
-<h1>Connexion</h1>
+<h1>Se connecter</h1>
 <form method="post" action="">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
@@ -33,7 +33,6 @@ $userController->login();
     <br>
     <input type="submit" value="Se connecter">
 </form>
-
 
 <?php
 footer_page();

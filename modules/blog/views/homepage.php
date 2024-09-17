@@ -1,6 +1,7 @@
 <?php
 $css_files = "style.css";
 include __DIR__ . '/../controllers/header.php';
+include __DIR__ . '/../controllers/footer.php';
 header_page("Accueil", $css_files);
 ?>
 
@@ -51,5 +52,6 @@ header_page("Accueil", $css_files);
             </div>
         </div>
     </div>
-    </body>
-    </html>
+<?php
+footer_page();
+?>
