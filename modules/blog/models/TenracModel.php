@@ -27,8 +27,8 @@ class TenracModel
             $stmt->bind_result($db_password);
             $stmt->fetch();
 
-            echo "Mot de passe récupéré depuis la base de données : " . $db_password . "<br>";
-            echo "Mot de passe saisi : " . $password . "<br>";
+          //  echo "Mot de passe récupéré depuis la base de données : " . $db_password . "<br>";
+          // echo "Mot de passe saisi : " . $password . "<br>";
 
             // Vérifier si le mot de passe fourni correspond au mot de passe haché
             if ($password === $db_password) {
