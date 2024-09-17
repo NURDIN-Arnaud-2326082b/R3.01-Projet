@@ -93,14 +93,29 @@ p {
 
 .dark {
     background-color: black;
-    color: #f3aa00;
+    color: #ffffff;
     flex: 1;
 }
 
 .red {
     background-color: red;
-    color: #f3aa00;
+    color: #ffffff;
     flex: 1;
+}
+
+.coca {
+    width: 30%;
+    height: 100%;
+ }
+
+.fanta {
+    width: 67%;
+    height: 75%;
+}
+
+.sprite {
+    width: 50%;
+    height: 75%;
 }
 
 .w40 {
@@ -139,8 +154,8 @@ p {
 }
 
 .PLats img {
-    width: 100px;
-    height: 100px;
+    width: 25%;
+    height: 50%;
     aspect-ratio: 1/1;
     object-fit: contain;
 }
