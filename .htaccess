@@ -1,0 +1,9 @@
+# Activer le moteur de réécriture d'URL
+RewriteEngine On
+
+# Réécrire les URLs propres vers les fichiers PHP correspondants
+RewriteRule ^connexion$ modules/blog/views/connexion.php [L]
+RewriteRule ^structure$ modules/blog/views/structure.php [L]
+RewriteRule ^repas$ modules/blog/views/repas.php [L]
+RewriteRule ^plat$ modules/blog/views/plat.php [L]
+RewriteRule ^$ modules/blog/views/homepage.php [L]
