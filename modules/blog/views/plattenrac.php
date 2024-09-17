@@ -3,6 +3,18 @@ $page_title = "Plat";
 $css_files = "Plat.css";
 require '../controllers/header.php';
 header_page($page_title, $css_files);
+require_once '../models/db_connect.php'; // Connexion à la base de données
+
+$sql = "SELECT id, nom FROM plats"; //à modifier avec le nom des vraies colonnes
+$result = $conn->query($sql);
+
+$plats = [];
+if ($result->num_rows > 0) {
+    // Stocker les résultats dans un tableau
+    while($row = $result->fetch_assoc()) {
+        $plats[] = $row;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +74,19 @@ header_page($page_title, $css_files);
                 <h3>Tacos</h3>
             </div>
         </div>
+        <h2> Modifier un plat</h2>
+        <form action="modifier_plat.php" method="post">
+            <label for="plat-select">Sélectionner un plat:</label>
+            <select id="plat-select" name="plat_id">
+                <option value="">--Sélectionnez--</option>
+                <?php foreach ($plats as $plat): ?>
+                    <option value="<?php echo htmlspecialchars($plat['id']); ?>">
+                        <?php echo htmlspecialchars($plat['nom']); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit">Modifier</button>
+        </form>
     </div>
 </div>
 
@@ -76,13 +101,13 @@ header_page($page_title, $css_files);
             <div class="w25 wm100 Plats">
                 <img src="../../../img/fanta.jpg">
                 <h3>Fanta</h3>
-        </div>
-        <div class="w25 wm100 Plats">
-            <img src="../../../img/oasis.jpg">
-            <h3>Oasis</h3>
+            </div>
+            <div class="w25 wm100 Plats">
+                <img src="../../../img/oasis.jpg">
+                <h3>Oasis</h3>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>
 
