@@ -56,26 +56,16 @@ if ($result->num_rows > 0) {
 <div id="Plats" class="section dark">
     <div class="boxed text-center">
         <h2>Nos plats</h2>
-        <div class="flex toColumn gap20">
-            <div class="w25 wm100 Plats">
-                <img src="../../../img/Tenders.png">
-                <h3>Tenders</h3>
-            </div>
-            <div class="w25 wm100 Plats">
-                <img src="../../../img/Chips.png">
-                <h3>Chips</h3>
-            </div>
-            <div class="w25 wm100 Plats">
-                <img src="../../../img/Hamburger.png">
-                <h3>Hamburgers</h3>
-            </div>
-            <div class="w25 wm100 Plats">
-                <img src="../../../img/Tacos.png">
-                <h3>Tacos</h3>
-            </div>
-        </div>
+        <ul class="plat-list">
+            <?php foreach ($plats as $plat): ?>
+                <li class="plat-list-item">
+                    <img src="<?php echo '../../../img/' . htmlspecialchars($plat['image']); ?>" alt="<?php echo htmlspecialchars($plat['nom']); ?>">
+                    <h3><?php echo htmlspecialchars($plat['nom']); ?></h3>
+                </li>
+            <?php endforeach; ?>
+        </ul>
         <h2> Modifier un plat</h2>
-        <form action="modifier_plat.php" method="post">
+        <form action="../../../modules/blog/models/modifier_plat.php" method="post">
             <label for="plat-select">Sélectionner un plat:</label>
             <select id="plat-select" name="plat_id">
                 <option value="">--Sélectionnez--</option>
