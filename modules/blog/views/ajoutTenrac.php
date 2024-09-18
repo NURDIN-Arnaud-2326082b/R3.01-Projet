@@ -1,5 +1,11 @@
-
 <?php
+session_start();
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: connexion.php");
+    exit();
+}
+
 $page_title = "ajoutTenrac";
 $css_files = "connexion.css";
 include __DIR__ . '/../controllers/header.php';

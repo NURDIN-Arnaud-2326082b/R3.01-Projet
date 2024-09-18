@@ -1,4 +1,5 @@
 <?php
+session_start();
 $css_files = "style.css";
 include __DIR__ . '/../controllers/header.php';
 include __DIR__ . '/../controllers/footer.php';

@@ -1,5 +1,5 @@
 <?php
-
+require 'db_connect.php';
 class TenracModel
 {
     protected $conn;
@@ -12,7 +12,7 @@ class TenracModel
     public function verifyTenrac($courriel, $password)
     {
         // Préparer la requête SQL pour récupérer le mot de passe haché avec l'email fourni
-        $stmt = $this->conn->prepare("SELECT Code_personnel FROM Tenrac WHERE courriel = ?");
+        $stmt = $this->conn->prepare("SELECT Nom, Code_personnel FROM Tenrac WHERE courriel = ?");
         if (!$stmt) {
             echo "Erreur de requête: " . $this->conn->error . "\n";
             return false;
@@ -30,14 +30,14 @@ class TenracModel
           //  echo "Mot de passe récupéré depuis la base de données : " . $db_password . "<br>";
           // echo "Mot de passe saisi : " . $password . "<br>";
 
-            // Vérifier si le mot de passe fourni correspond au mot de passe haché
+            // Vérifier si le mot de passe fourni correspond au mot de passe
             if ($password === $db_password) {
-                return true; // Connexion réussie
+                return true;
             }
         }
 
         $stmt->close();
-        return false; // Connexion échouée
+        return false;
     }
 
     public function ajouterTenrac($email, $code, $nom, $telephone, $adresse, $grade, $rang, $titre, $dignite, $idClub){

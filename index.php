@@ -1,5 +1,4 @@
 <?php
-
 // Obtenez l'URL demandée et nettoyez-la
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 

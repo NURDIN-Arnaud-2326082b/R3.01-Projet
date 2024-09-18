@@ -1,4 +1,5 @@
 <?php
+session_start();
 $page_title = "Plat";
 $css_files = "Plat.css";
 require '../controllers/header.php';
