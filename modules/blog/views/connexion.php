@@ -2,7 +2,6 @@
 $page_title = "Connexion";
 $css_files = "connexion.css";
 include __DIR__ . '/../controllers/header.php';
-include __DIR__ . '/../controllers/footer.php';
 header_page($page_title, $css_files);
 require_once '../models/db_connect.php'; // Connexion à la base de données
 require_once '../models/TenracModel.php'; // Modèle d'utilisateur
@@ -23,17 +22,18 @@ $userController->login();
     <title>Connexion</title>
 </head>
 <body>
-<h1>Se connecter</h1>
 <form method="post" action="">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <label for="password">Mot de passe:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
+    <h1>Connexion</h1>
+    <label for="email">Adresse e-mail</label>
+    <input type="email" id="email" name="email" placeholder="Votre email" required>
+
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
+
     <input type="submit" value="Se connecter">
 </form>
 
 <?php
+include __DIR__ . '/../controllers/footer.php';
 footer_page();
 ?>
