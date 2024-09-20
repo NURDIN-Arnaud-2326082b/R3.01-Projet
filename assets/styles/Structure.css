@@ -96,7 +96,6 @@ h1 {
 h2 {
     text-align: center;
     font-size: 2rem; /* Ajustez la taille de la police selon vos besoins */
-    margin-bottom: 50px;
 }
 
 p {
@@ -447,6 +446,34 @@ p{
 }
 
 #ordre_tenrac{
+    padding: 1% 0%;
+    background-color: #ffffff;
+}
+
+#autres_clubs{
+    padding: 1% 20%;
+    background-color: #000000;
+    color: #f3aa00;
+    text-align: center;
+}
+
+#autres_clubs h3, p{
+    padding: 1% 0;
+}
+
+#autres_clubs h3{
+    font-size: 150%;
+    color: black;
+}
+
+#sous_titre{
+    text-align: center;
+    font-size: 100%;
+}
+
+.descri_club{
+    margin: 2%;
+    border-radius: 15px;
     background-color: #f3aa00;
 }
 

@@ -6,7 +6,7 @@ include __DIR__ . '/../controllers/footer.php';
 header_page($page_title, $css_files);
 require_once '../models/db_connect.php'; // Connexion à la base de données
 
-$sql = "SELECT Id_Plat, Nom_plat FROM plats";
+$sql = "SELECT Id_Plat, Nom_plat FROM Plat";
 $result = $conn->query($sql);
 
 $plats = [];
