@@ -56,9 +56,14 @@ class TenracModel
 
 
     public function supprimerTenrac($Courriel) {
-        $sql = "DELETE FROM tenracs WHERE  $Courriel = ?";
+        $sql = "DELETE FROM Tenrac WHERE  Courriel = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$Courriel]);
+        $stmt -> bind_param("s", $Courriel);
+        if ($stmt->execute()) {
+            echo "Ajout réussi";
+        } else {
+            echo "Erreur lors de l'ajout: " . $stmt->error;
+        }
     }
 
 

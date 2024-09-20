@@ -26,6 +26,7 @@ $userController = new TenracController($userModel, $tenracModel); // Vérifie qu
 ?>
 
 <form action="" method="POST">
+    <input type="hidden" name="action" value="ajout">
     <label for="Courriel">Email : </label>
     <input type="email" name="Courriel" required><br>
     <label for="Code_personnel"> code : </label>
@@ -50,7 +51,7 @@ $userController = new TenracController($userModel, $tenracModel); // Vérifie qu
 </form>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'ajout') {
     // Récupérer les données du formulaire
     $newTenrac = [
         'Courriel' => $_POST['Courriel'],
@@ -69,13 +70,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <form action="" method="POST">
+    <input type="hidden" name="action" value="suppression">
     <label for="Courriel">Email : </label>
     <input type="email" name="Courriel" required><br>
     <button type="submit">Supprimer Tenrac</button>
 </form>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST"&& $_POST['action'] == 'suppression') {
     // Récupérer les données du formulaire
     $tenracSuppr =  $_POST['Courriel'];
     // Appel à la méthode ajouterTenrac
