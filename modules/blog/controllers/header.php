@@ -1,4 +1,5 @@
 <?php
+session_start();
 function header_page($page_title = "Titre par Défaut", $css_file = ""): void
 {
     ?>

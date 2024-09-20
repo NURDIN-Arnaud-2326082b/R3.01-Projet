@@ -24,7 +24,8 @@ class TenracModel
         if ($stmt->num_rows > 0) {
             // Récupérer le mot de passe de la base de données
             $db_password = '';
-            $stmt->bind_result($db_password);
+            $db_nom = '';
+            $stmt->bind_result($db_nom,$db_password);
             $stmt->fetch();
 
           //  echo "Mot de passe récupéré depuis la base de données : " . $db_password . "<br>";
@@ -32,6 +33,8 @@ class TenracModel
 
             // Vérifier si le mot de passe fourni correspond au mot de passe
             if ($password === $db_password) {
+                $_SESSION['loggedin'] = true;
+               // $_SESSION['email'] = $db_email;
                 return true;
             }
         }
@@ -40,10 +43,11 @@ class TenracModel
         return false;
     }
 
-    public function ajouterTenrac($email, $code, $nom, $telephone, $adresse, $grade, $rang, $titre, $dignite, $idClub){
+    public function ajouterTenrac($Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club){
         $sql = "INSERT INTO Tenrac (Courriel, Code_personnel, Nom, Num_tel, Adresse, Grade, Rang, Titre, Dignite, Id_club) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$email,$code, $nom, $telephone, $adresse, $grade, $rang, $titre, $dignite, $idClub]);
+        $stmt->execute([$Courriel,$Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club]);
+        echo "ajout succes";
     }
 
     public function supprimerTenrac($Courriel) {
