@@ -1,6 +1,7 @@
 <?php
 require_once '../models/db_connect.php';
 require_once '../models/TenracModel.php';
+require_once '../views/ajoutTenrac.php';
 
 class TenracController
 {
@@ -29,15 +30,10 @@ class TenracController
         }
     }
 
-    public function afficherFormulaireAjout() {
-        include 'views/ajoutTenrac.php';
-    }
-
     // Action pour ajouter un tenrac
-    public function ajouterTenrac() {
+    public function ajouterTenrac($newTenrac): void {
         if (isset($_POST['nom'])) {
-            $this->TenracModel->ajouterTenrac($_POST['Courriel'], $_POST['Code_personnel'], $_POST['Num_tel'], $_POST['Adresse'], $_POST['Grade'],  $_POST['Rang'], $_POST['Titre'], $_POST['Dignite'], $_POST['Id_club']);
-            header('Location: index.php?controller=tenrac&action=lister');
+            $this->TenracModel->ajouterTenrac($_POST[$newTenrac[0]], $_POST[$newTenrac[1]],$_POST[$newTenrac[2]], $_POST[$newTenrac[3]], $_POST[$newTenrac[4]], $_POST[$newTenrac[5]],  $_POST[$newTenrac[6]], $_POST[$newTenrac[7]], $_POST[$newTenrac[8]], $_POST[$newTenrac[9]]);
         }
     }
 

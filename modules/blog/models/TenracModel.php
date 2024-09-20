@@ -40,10 +40,11 @@ class TenracModel
         return false;
     }
 
-    public function ajouterTenrac($email, $code, $nom, $telephone, $adresse, $grade, $rang, $titre, $dignite, $idClub){
+    public function ajouterTenrac($Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club){
         $sql = "INSERT INTO Tenrac (Courriel, Code_personnel, Nom, Num_tel, Adresse, Grade, Rang, Titre, Dignite, Id_club) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$email,$code, $nom, $telephone, $adresse, $grade, $rang, $titre, $dignite, $idClub]);
+        $stmt->execute([$Courriel,$Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club]);
+        echo "ajout succes";
     }
 
     public function supprimerTenrac($Courriel) {
