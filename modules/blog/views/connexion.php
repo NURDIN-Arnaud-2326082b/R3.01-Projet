@@ -4,7 +4,7 @@ $_SESSION['loggedin'] = true; // Définir cette variable lors de la connexion r�
 //$_SESSION['nom'] = $db_nom; // Éventuellement d'autres informations utilisateur
 global $conn;
 $page_title = "Connexion";
-$css_files = "style.css";
+$css_files = "connexion.css";
 
 include __DIR__ . '/../controllers/footer.php';
 include __DIR__ . '/../controllers/header.php';
@@ -21,13 +21,6 @@ $userController = new TenracController($userModel);
 $userController->login();
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <link rel="stylesheet" href="../../../assets/styles/connexion.css">
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-</head>
 <body>
 <form method="post" action="">
     <h1>Se connecter</h1>

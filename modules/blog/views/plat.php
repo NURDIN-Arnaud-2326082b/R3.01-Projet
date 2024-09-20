@@ -17,10 +17,8 @@ header_page($page_title, $css_files);
     <title>Tenrac</title>
 </head>
 <body>
+
 <div id="overlay"></div>
-
-
-
 <div class="slider">
     <img  class="slider-background" src="../../../img/raclette.jpg" >
     <div class="slider-content">

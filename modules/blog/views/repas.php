@@ -14,6 +14,7 @@ $dame_presente = false;     // Vous pouvez ajuster cette condition selon vos bes
 $date_rencontre = date("d-m-Y H:i:s");
 $lieu_renconte="Salle de conférence, Hôtel XYZ";
 ?>
+
 <h1> Repas</h1>
 <div class="div3" >
     <h2 class="titre2">
@@ -68,6 +69,4 @@ $lieu_renconte="Salle de conférence, Hôtel XYZ";
 <?php
 footer_page();
 ?>
-</body>
-</html>
 
