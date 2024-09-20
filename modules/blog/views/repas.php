@@ -3,13 +3,17 @@
 $css_files = "Repas.css";
 require '../controllers/header.php';
 header_page($page_title, $css_files);*/
+require_once '../models/RepasModel.php';
+require_once '../models/db_connect.php';
+require_once '../controllers/TenracController.php';
 
-$cavalier_present = false;  // Vous pouvez ajuster cette condition selon vos besoins
-$dame_presente = false;     // Vous pouvez ajuster cette condition selon vos besoins
+$cavalier = false;
+$dame = false;
 
-// Obtenir la date actuelle
+
 $date_rencontre = date("d-m-Y H:i:s");
 $lieu_renconte="Salle de conférence, Hôtel XYZ";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,13 +50,13 @@ $lieu_renconte="Salle de conférence, Hôtel XYZ";
     </h2>
     <p>
         <img class="imgrdv" src="../../../img/Cavalier.png" height="300px" width="300px" alt="Cavalier">
-        <?php if ($cavalier_present ): ?>
+        <?php if ($cavalier ): ?>
             <span>Cavalier présent</span>
         <?php else: ?>
             <span>Aucun cavalier présent</span>
         <?php endif; ?>
         <img class="imgD" src="../../../img/Dame.png" height="250px" width="350px" alt="Dame">
-        <?php if ($dame_presente): ?>
+        <?php if ($dame): ?>
 
             <span>Dame présente</span>
         <?php else: ?>
@@ -67,8 +71,11 @@ $lieu_renconte="Salle de conférence, Hôtel XYZ";
         </h2>
         <p>
             <img class="imgrdv" src="../../../img/rdv.png" height="200px" width="200px"  alt="Logo HubSpot">
-            <?php if ($cavalier_present || $dame_presente): ?>
+            <?php if ($cavalier || $dame): ?>
                 <span>lieu de présence : <?php echo $lieu_renconte; ?></span>
+            <?php endif; ?>
+            <?php if (!$cavalier && !$dame): ?>
+                <span>lieu de présence : Aucun</span>
             <?php endif; ?>
         </p>
     </div>
@@ -79,9 +86,15 @@ $lieu_renconte="Salle de conférence, Hôtel XYZ";
         <div>
             <p>
                 <img class="imgrdv" src="../../../img/date.png" height="200px" width="200px"  alt="Logo HubSpot">
-                <?php if ($cavalier_present || $dame_presente): ?>
+                <?php if ($cavalier || $dame): ?>
 
                     <span>Date de présence : <?php echo $date_rencontre; ?></span>
+                <?php
+                    $date_aujourdhui = date("d/m/Y");
+                    echo $date_aujourdhui;?>
+                <?php endif; ?>
+                <?php if (!$cavalier && !$dame): ?>
+                    <span>Date de présence : Aucun</span>
                 <?php endif; ?>
 
 
