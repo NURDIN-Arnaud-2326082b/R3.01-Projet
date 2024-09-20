@@ -1,12 +1,12 @@
 <?php
 $_SESSION['loggedin'] = true; // Définir cette variable lors de la connexion réussie
-//$_SESSION['nom'] = $db_nom; // Éventuellement d'autres informations utilisateur
+//$_SESSION['nom'] = $db_nom;
 global $conn;
 $page_title = "Connexion";
 $css_files = "connexion.css";
 
-include __DIR__ . '/../controllers/footer.php';
-include __DIR__ . '/../controllers/header.php';
+require_once __DIR__ . '/../controllers/footer.php';
+require_once __DIR__ . '/../controllers/header.php';
 header_page($page_title, $css_files);
 require_once '../models/db_connect.php';
 require_once '../models/TenracModel.php';
@@ -14,7 +14,7 @@ require_once '../controllers/TenracController.php';
 
 // Créez une instance du modèle et du contrôleur
 $userModel = new TenracModel($conn);
-$userController = new TenracController($userModel);
+$userController = new TenracController($userModel, $conn);
 
 // Appel de la méthode de connexion
 $userController->login();
