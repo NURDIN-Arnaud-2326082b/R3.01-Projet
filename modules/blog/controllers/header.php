@@ -33,7 +33,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                         // Lien par défaut
                         $headerLink = 'plat.php';
                     }?>
-                    <li><a href="/modules/blog/views/plat.php">Plat</a></li>
+                    <li><a href="/modules/blog/views/<?= $headerLink; ?>">Plat</a></li>
 
 
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
