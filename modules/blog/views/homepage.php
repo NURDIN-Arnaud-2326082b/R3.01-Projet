@@ -1,16 +1,18 @@
 <?php
+session_start();
 $css_files = "style.css";
 include __DIR__ . '/../controllers/header.php';
+include __DIR__ . '/../controllers/footer.php';
 header_page("Accueil", $css_files);
 ?>
 
 
 
     <div class="slider">
-        <img  class="slider-background" src="../../../img/raclette.jpg" >
+        <img  class="slider-background" src="../../../img/raclette.webp" >
         <div class="slider-content">
             <h1>Tenrac</h1>
-            <p>blablabla</p>
+            <p>Le meilleur site du monde</p>
         </div>
     </div>
 
@@ -30,7 +32,7 @@ header_page("Accueil", $css_files);
 
     <div id="skills" class="section dark">
         <div class="boxed text-center">
-            <h2>blablabla</h2>
+            <h2>Menus de la semaine</h2>
             <div class="flex toColumn gap20">
                 <div class="w25 wm100 skill">
                     <img src="img/html.png">
@@ -51,5 +53,6 @@ header_page("Accueil", $css_files);
             </div>
         </div>
     </div>
-    </body>
-    </html>
+<?php
+footer_page();
+?>

@@ -1,5 +1,4 @@
 <?php
-
 // Obtenez l'URL demandée et nettoyez-la
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
@@ -20,6 +19,18 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             break;
         case '/connexion':
             require __DIR__ . '/modules/blog/views/connexion.php';
+            break;
+        case '/repasTenrac':
+            require __DIR__ . '/modules/blog/views/repasTenrac.php';
+            break;
+        case '/structureTenrac':
+            require __DIR__ . '/modules/blog/views/structureTenrac.php';
+            break;
+        case '/platTenrac':
+            require __DIR__ . '/modules/blog/views/platTenrac.php';
+            break;
+        case '/ajoutTenrac':
+            require __DIR__ . '/modules/blog/views/ajoutTenrac.php';
             break;
         default:
             // Si aucune route ne correspond, affiche une page d'erreur 404

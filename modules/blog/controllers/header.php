@@ -1,5 +1,5 @@
 <?php
-function header_page($page_title = "Titre par Défaut", $css_file = "style.css"): void
+function header_page($page_title = "Titre par Défaut", $css_file = ""): void
 {
     ?>
 <!DOCTYPE html>
@@ -25,13 +25,15 @@ function header_page($page_title = "Titre par Défaut", $css_file = "style.css")
                     <li><a href="/modules/blog/views/structure.php">Structure</a></li>
                     <li><a href="/modules/blog/views/repas.php">Repas</a></li>
                     <li><a href="/modules/blog/views/plat.php">Plat</a></li>
+
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <li><a href="/modules/blog/views/ajoutTenrac.php">Tenrac</a></li>
+                    <?php endif; ?>
                     <li><a href="/modules/blog/views/connexion.php">Connexion</a></li>
                 </ul>
             </div>
         </div>
     </header>
-</body>
-</html>
     <?php
 }
 ?>

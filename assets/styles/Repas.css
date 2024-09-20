@@ -6,20 +6,54 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+/*{
+    margin: 20px;
+    display: inline;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 1px solid black;
 
+}*/
+body{
+    background-color: #cc4215;
+}
+section {
+    display: flex;
+    justify-content: space-between;
+}
+.divi{
+    background-color: #f3aa00;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 5px;
+    width: 50%;
+}
+.div3{
+    background-color: #f3aa00;
+    padding: 0.5em 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 5px;
+    width: 100%;
+}
+.imgrdv{
+    float: left;
+}
+.imgD{
+    float: right;
+}
+title2{
+    text-decoration: underline;
+}
 
 html, body {
     width: 100%;
     height: 100%;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f0f0f0;
-}
 
 .slider {
     width: 100%;
@@ -30,7 +64,7 @@ body {
 
 .main{
     width: 100%;
-    color: red;
+    color: greenyellow;
     min-height: 80vh;
     position: relative;
     overflow: hidden; /* Ajouté pour s'assurer que le contenu ne déborde pas */
@@ -58,11 +92,12 @@ body {
 h1 {
     font-size: 5rem;
     color: #f3aa00;
+    text-align: center;
 }
 
 h2 {
     text-align: center;
-    font-size: 3rem; /* Ajustez la taille de la police selon vos besoins */
+    font-size: 2rem; /* Ajustez la taille de la police selon vos besoins */
     margin-bottom: 50px;
 }
 
@@ -93,29 +128,8 @@ p {
 
 .dark {
     background-color: black;
-    color: #ffffff;
+    color: #f3aa00;
     flex: 1;
-}
-
-.red {
-    background-color: red;
-    color: #ffffff;
-    flex: 1;
-}
-
-.coca {
-    width: 30%;
-    height: 100%;
- }
-
-.fanta {
-    width: 67%;
-    height: 75%;
-}
-
-.sprite {
-    width: 50%;
-    height: 75%;
 }
 
 .w40 {
@@ -146,21 +160,21 @@ p {
     gap: 20px;
 }
 
-.Plats {
+.skill {
     background: #f3aa00;
     border-radius: 15px;
     padding: 25px;
     box-sizing: border-box;
 }
 
-.PLats img {
-    width: 25%;
-    height: 50%;
+.skill img {
+    width: 100px;
+    height: 100px;
     aspect-ratio: 1/1;
     object-fit: contain;
 }
 
-.Plats h3 {
+.skill h3 {
     margin-top: 10px;
 }
 
@@ -278,6 +292,7 @@ header {
 }
 
 p{
+    text-align: center;
     color: black;
 }
 
@@ -431,7 +446,4 @@ p{
     .boxed {
         max-width: 90%;
     }
-
-
-
 }
