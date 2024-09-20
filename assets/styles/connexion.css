@@ -5,9 +5,18 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 /* Style du corps */
 body {
-
     background: linear-gradient(135deg, #ff914d 0%, #ff3b3b 100%);
     display: flex;
     justify-content: center;
@@ -18,13 +27,105 @@ body {
 }
 
 header {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000; /* Assure que le header est au-dessus du reste */
     background-color: #ff3b3b; /* couleur du header */
-    padding: 10px 0;
+    padding: 5px 0;
+    position: fixed;
+    overflow: hidden;
+    text-align: center;
+}
+
+.header-logo {
+    display: block;
+}
+
+.header-logo img {
+    width: 100px;
+    height: 100px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.header-menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+.header-menu li a:hover {
+    background-color: #f3aa00;
+    color: #fff;
+}
+
+.header-menu-mobile {
+    display: none;
+}
+
+/* Styles for overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    z-index: 900; /* Just below the menu */
+    display: none; /* Hidden by default */
+}
+
+/* Show the overlay when menu is active */
+.header-menu.active ~ #overlay {
+    display: block;
+}
+
+/* Additional styles to ensure the overlay is hidden when the menu is closed */
+.active + #overlay {
+    display: block;
+}
+
+/* Existing styles for header-menu */
+.header-menu {
+    z-index: 1000; /* Ensure the menu is above the overlay */
+}
+
+.boxed {
+    max-width: 1280px;
+    margin-inline: auto;
+}
+
+.aligncenter {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+.flex {
+    display: flex;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 /* Conteneur du formulaire */
@@ -110,7 +211,7 @@ p {
 }
 
 footer {
-    /*position: fixed;*/
+    position: fixed;
     width: 100%;
     background-color: #ff3b3b; /* couleur similaire à ton header */
     color: white;
