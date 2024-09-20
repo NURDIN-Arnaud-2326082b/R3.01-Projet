@@ -31,7 +31,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                         $headerLink = $_SESSION['header_link'];
                     } else {
                         // Lien par défaut
-                        $headerLink = '/plat.php';
+                        $headerLink = 'plat.php';
                     }?>
                     <li><a href="/modules/blog/views/<?= $headerLink; ?>">Plat</a></li>
 

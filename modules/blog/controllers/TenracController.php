@@ -22,6 +22,7 @@ require_once '../models/TenracModel.php';
 
             if (!empty($courriel) && !empty($password)) {
                 if ($this->userModel->verifyTenrac($courriel, $password)) {
+                    $_SESSION['header_link'] = 'plattenrac.php';
                     header("Location: /index.php");
                     exit();
                 } else {
