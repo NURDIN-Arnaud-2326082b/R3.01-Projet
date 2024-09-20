@@ -18,7 +18,7 @@ require_once '../models/TenracModel.php';
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $courriel = htmlspecialchars($_POST["email"]);
-            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            $password = htmlspecialchars($_POST["password"]);
 
             if (!empty($courriel) && !empty($password)) {
                 if ($this->userModel->verifyTenrac($courriel, $password)) {
