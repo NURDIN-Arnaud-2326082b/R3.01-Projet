@@ -66,7 +66,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Appel à la méthode ajouterTenrac
     $userController->ajouterTenrac($newTenrac);
 }
+?>
+<form action="" method="POST">
+    <label for="Courriel">Email : </label>
+    <input type="email" name="Courriel" required><br>
+    <button type="submit">Supprimer Tenrac</button>
+</form>
 
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les données du formulaire
+    $tenracSuppr =  $_POST['Courriel'];
+    // Appel à la méthode ajouterTenrac
+    $userController->supprimerTenrac($tenracSuppr);
+}
+?>
+
+<?php
 footer_page();
 ?>
 

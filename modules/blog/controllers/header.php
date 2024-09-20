@@ -37,7 +37,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
 
 
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href="/modules/blog/views/ajoutTenrac.php">Tenrac</a></li>
+                        <li><a href="/modules/blog/views/gestionTenrac.php">Tenrac</a></li>
                     <?php endif; ?>
                     <li><a href="/modules/blog/views/connexion.php">Connexion</a></li>
                 </ul>

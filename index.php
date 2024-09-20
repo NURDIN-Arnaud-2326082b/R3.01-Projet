@@ -30,7 +30,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             require __DIR__ . '/modules/blog/views/platTenrac.php';
             break;
         case '/ajoutTenrac':
-            require __DIR__ . '/modules/blog/views/ajoutTenrac.php';
+            require __DIR__ . '/modules/blog/views/gestionTenrac.php';
             break;
         default:
             // Si aucune route ne correspond, affiche une page d'erreur 404

@@ -34,7 +34,7 @@ require_once '../models/TenracModel.php';
 
     public function afficherFormulaireAjout(): void
     {
-        include '../views/ajoutTenrac.php';
+        include '../views/gestionTenrac.php';
     }
 
     public function ajouterTenrac($newTenrac): void
@@ -60,6 +60,16 @@ require_once '../models/TenracModel.php';
         }
     }
 
+    public function supprimerTenrac($tenracSuppr): void
+    {
+        if ($this->tenracModel){
+            $this->tenracModel->supprimerTenrac($tenracSuppr);
+            header('Location: /index.php');
+            exit();
+        } else {
+            echo "Le modèle n'est pas initialisé.";
+        }
+    }
 
 }
 
