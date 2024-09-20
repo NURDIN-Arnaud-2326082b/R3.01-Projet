@@ -17,6 +17,16 @@ body {
     color: #333;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Assure que le header est au-dessus du reste */
+    background-color: #ff3b3b; /* couleur du header */
+    padding: 10px 0;
+}
+
 /* Conteneur du formulaire */
 form {
     background-color: #fff;

@@ -66,6 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Appel à la méthode ajouterTenrac
     $userController->ajouterTenrac($newTenrac);
 }
+
+footer_page();
 ?>
 
 

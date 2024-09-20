@@ -248,7 +248,6 @@ button:hover {
 }
 
 header {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -420,7 +419,6 @@ header {
 
 
 footer {
-    position: fixed;
     width: 100%;
     background-color: #ff3b3b; /* couleur similaire à ton header */
     color: white;
