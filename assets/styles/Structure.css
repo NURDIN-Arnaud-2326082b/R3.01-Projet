@@ -16,12 +16,9 @@
 }*/
 body{
     font-family: 'Inter', sans-serif;
-    background-color: #cc4215;
+    background-color: #ffffff;
 }
-section {
-    display: flex;
-    justify-content: space-between;
-}
+
 .divi{
     background-color: #f3aa00;
     padding: 0.5em;
@@ -447,6 +444,10 @@ p{
     .boxed {
         max-width: 90%;
     }
+}
+
+#ordre_tenrac{
+    background-color: #f3aa00;
 }
 
 footer {
