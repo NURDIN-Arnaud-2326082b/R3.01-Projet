@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($plat_id > 0) {
         // Préparer et exécuter la requête pour récupérer les détails du plat sélectionné
-        $stmt = $conn->prepare("SELECT * FROM plats WHERE Id_Plat = ?");
+        $stmt = $conn->prepare("SELECT * FROM Plat WHERE Id_Plat = ?");
         $stmt->bind_param("i", $plat_id);
         $stmt->execute();
         $result = $stmt->get_result();
