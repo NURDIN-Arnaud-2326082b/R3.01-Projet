@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['loggedin'] = true; // Définir cette variable lors de la connexion réussie
 //$_SESSION['nom'] = $db_nom; // Éventuellement d'autres informations utilisateur
 global $conn;

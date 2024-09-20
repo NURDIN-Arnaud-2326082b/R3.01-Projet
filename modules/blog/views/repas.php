@@ -1,5 +1,4 @@
 <?php
-session_start();
 $page_title = "Repas";
 $css_files = "Repas.css";
 require '../controllers/header.php';
