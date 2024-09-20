@@ -248,13 +248,23 @@ button:hover {
 }
 
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Assure que le header est au-dessus du reste */
+    background-color: #ff3b3b; /* couleur du header */
+    padding: 10px 0;
+}
+
+/*header {
+    position: fixed;
     background-color: #ff3b3b;
     color: white;
     text-align: center;
     padding: 5px 0;
-    position: relative;
     overflow: hidden;
-}
+}*/
 
 .header-logo {
     display: block;
@@ -408,10 +418,18 @@ header {
     }
 }
 
-#footer{
-    padding: 1%;
-    background-color: #ff3b3b;
+
+footer {
+    position: fixed;
+    width: 100%;
+    background-color: #ff3b3b; /* couleur similaire à ton header */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0; /* Garde le footer en bas */
+    box-sizing: border-box;
 }
+
 
 #footer-menu{
     padding: 0% 30% ;

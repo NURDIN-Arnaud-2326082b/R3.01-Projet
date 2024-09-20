@@ -1,5 +1,6 @@
 <?php
-function header_page($page_title = "Titre par Défaut", $css_file = "style.css"): void
+session_start();
+function header_page($page_title = "Titre par Défaut", $css_file = ""): void
 {
     ?>
 <!DOCTYPE html>
@@ -24,14 +25,25 @@ function header_page($page_title = "Titre par Défaut", $css_file = "style.css")
                 <ul class="header-menu">
                     <li><a href="/modules/blog/views/structure.php">Structure</a></li>
                     <li><a href="/modules/blog/views/repas.php">Repas</a></li>
-                    <li><a href="/modules/blog/views/plat.php">Plat</a></li>
+                    <?php if (isset($_SESSION['header_link']))
+                    // Si l'utilisateur est connecté et qu'une URL de redirection est définie
+            {
+                        $headerLink = $_SESSION['header_link'];
+                    } else {
+                        // Lien par défaut
+                        $headerLink = 'plat.php';
+                    }?>
+                    <li><a href="/modules/blog/views/<?= $headerLink; ?>">Plat</a></li>
+
+
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <li><a href="/modules/blog/views/ajoutTenrac.php">Tenrac</a></li>
+                    <?php endif; ?>
                     <li><a href="/modules/blog/views/connexion.php">Connexion</a></li>
                 </ul>
             </div>
         </div>
     </header>
-</body>
-</html>
     <?php
 }
 ?>

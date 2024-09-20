@@ -1,39 +1,36 @@
 <?php
+$_SESSION['loggedin'] = true; // Définir cette variable lors de la connexion réussie
+//$_SESSION['nom'] = $db_nom;
+global $conn;
 $page_title = "Connexion";
 $css_files = "connexion.css";
-include __DIR__ . '/../controllers/header.php';
-include __DIR__ . '/../controllers/footer.php';
+
+require_once __DIR__ . '/../controllers/footer.php';
+require_once __DIR__ . '/../controllers/header.php';
 header_page($page_title, $css_files);
-require_once '../models/db_connect.php'; // Connexion à la base de données
-require_once '../models/TenracModel.php'; // Modèle d'utilisateur
-require_once '../controllers/TenracController.php'; // Contrôleur d'utilisateur
+require_once '../models/db_connect.php';
+require_once '../models/TenracModel.php';
+require_once '../controllers/TenracController.php';
 
 // Créez une instance du modèle et du contrôleur
 $userModel = new TenracModel($conn);
-$userController = new TenracController($userModel);
+$userController = new TenracController($userModel, $conn);
 
 // Appel de la méthode de connexion
 $userController->login();
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-</head>
 <body>
-<h1>Connexion</h1>
 <form method="post" action="">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <label for="password">Mot de passe:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
+    <h1>Se connecter</h1>
+    <label for="email">Adresse e-mail</label>
+    <input type="email" id="email" name="email" placeholder="Votre email" required>
+
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
+
     <input type="submit" value="Se connecter">
 </form>
-
 
 <?php
 footer_page();
