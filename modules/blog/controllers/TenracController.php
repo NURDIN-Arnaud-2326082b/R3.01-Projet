@@ -2,21 +2,23 @@
 require_once '../models/db_connect.php';
 require_once '../models/TenracModel.php';
 
-class TenracController
+#[AllowDynamicProperties] class TenracController
 {
     protected $userModel;
+    private $tenracModel;
 
-    public function __construct($userModel)
+
+    public function __construct($userModel, $tenracModel)
     {
         $this->userModel = $userModel;
+        $this->tenracModel = $tenracModel;
     }
 
     public function login(): void
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $courriel = htmlspecialchars($_POST["email"]);
-            $password = $_POST["password"];
+            $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
             if (!empty($courriel) && !empty($password)) {
                 if ($this->userModel->verifyTenrac($courriel, $password)) {
@@ -30,17 +32,34 @@ class TenracController
         }
     }
 
-    public function afficherFormulaireAjout() {
-        include 'views/ajoutTenrac.php';
+    public function afficherFormulaireAjout(): void
+    {
+        include '../views/ajoutTenrac.php';
     }
 
-    // Action pour ajouter un tenrac
-    public function ajouterTenrac() {
-        if (isset($_POST['nom'])) {
-            $this->TenracModel->ajouterTenrac($_POST['Courriel'], $_POST['Code_personnel'], $_POST['Num_tel'], $_POST['Adresse'], $_POST['Grade'],  $_POST['Rang'], $_POST['Titre'], $_POST['Dignite'], $_POST['Id_club']);
-            header('Location: index.php?controller=tenrac&action=lister');
+    public function ajouterTenrac($newTenrac): void
+    {
+        // Vérifie si le modèle est bien initialisé
+        if ($this->tenracModel) {
+            $this->tenracModel->ajouterTenrac(
+                $newTenrac['Courriel'],
+                $newTenrac['Code_personnel'],
+                $newTenrac['Nom'],
+                $newTenrac['Num_tel'],
+                $newTenrac['Adresse'],
+                $newTenrac['Grade'],
+                $newTenrac['Rang'],
+                $newTenrac['Titre'],
+                $newTenrac['Dignite'],
+                $newTenrac['Id_club']
+            );
+            header('Location: /index.php');
+            exit();
+        } else {
+            echo "Le modèle n'est pas initialisé.";
         }
     }
+
 
 }
 
