@@ -15,7 +15,7 @@ $date_base = $model->getDate(1);
 $Lieu_rencontre = $model->getLieu(1);
 $presenceCouD = $model->PresenceCouD();
 
-// Vérifiez si la date correspond
+
 $controller = new RepasController();
 $dateCorrespond = $controller->Verifdate($date_base);
 ?>
