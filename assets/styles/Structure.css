@@ -445,6 +445,25 @@ p{
     }
 }
 
+#gestionStructure{
+    text-align: center;
+    display: flex;
+}
+
+#gestionStructure form{
+    margin: 2%;
+    flex: 1 1 !important;
+    background-color: #cf0f0f;
+    border-radius: 15px;
+}
+
+#gestionStructure h3{
+    color: #f0f0f0;
+    background-color: #000000;
+    border-radius: 15px;
+    margin: 2% 30%
+}
+
 #ordre_tenrac{
     padding: 1% 0%;
     background-color: #ffffff;
