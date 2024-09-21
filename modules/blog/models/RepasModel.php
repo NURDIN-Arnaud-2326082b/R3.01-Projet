@@ -9,16 +9,13 @@ class RepasModel {
     }
 
     public function PresenceCouD(): bool {
-        $rep = $this->conn->prepare("SELECT * FROM Repas WHERE Gerant IS NOT NULL;");
+        $rep = $this->conn->prepare("SELECT * FROM Repas WHERE Gerant");
         $rep->execute();
         $result = $rep->get_result(); // Obtenir le résultat
-
         if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) { // Utiliser fetch_assoc pour obtenir les résultats sous forme de tableau associatif
-                if ($row["Gerant"] != NULL) {
+                if ($rep["Gerant"] != NULL) {
                     return true;
                 }
-            }
         }
         return false;
     }
