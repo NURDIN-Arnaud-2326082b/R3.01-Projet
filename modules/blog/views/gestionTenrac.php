@@ -29,7 +29,7 @@ $userController = new TenracController($userModel, $tenracModel); // Vérifie qu
     <input type="hidden" name="action" value="ajout">
     <label for="Courriel">Email : </label>
     <input type="email" name="Courriel" required><br>
-    <label for="Code_personnel"> code : </label>
+    <label for="Code_personnel"> Mot de passe : </label>
     <input type="text" property="hash" name="Code_personnel" required><br>
     <label for="Nom">Nom : </label>
     <input type="text" name="Nom" required><br>

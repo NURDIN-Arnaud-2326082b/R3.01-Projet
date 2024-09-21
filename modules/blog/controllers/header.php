@@ -20,7 +20,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                     <span class="material-icons">menu</span>
                 </button>
                 <a class="header-logo" href="/modules/blog/views/homepage.php">
-                    <img src="../../../img/logo_tenrac.png">
+                    <img src="../../../img/logo_tenrac.png" alt="logo_tenrac">
                 </a>
                 <ul class="header-menu">
                     <li><a href="/modules/blog/views/structure.php">Structure</a></li>

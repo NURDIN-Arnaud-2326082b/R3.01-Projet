@@ -22,16 +22,41 @@ $userController = new TenracController($userModel, $conn);
     <input type="submit" value="Avoir un nouveau mot de passe">
 </form>
 
-<?php if(isset($_POST['email'])){
-    $newPassword = uniqid();
-    $hashedpassword = password_hash($newPassword, PASSWORD_DEFAULT);
-    $message = "Voici votre nouveau mot de passe : " . $newPassword;
-    if (mail($_POST['email'], 'Oublie de mot de passe', $message)) {
-        $sql = "UPDATE Tenrac SET Code_personnel = ? WHERE Courriel = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ss', $hashedpassword , $_POST['email']);
+<?php if (isset($_POST['email'])) {
+    // Récupérer l'email du formulaire
+    $email = $_POST['email'];
+
+    // Vérifier si l'email existe dans la base de données
+    $sql = "SELECT * FROM Tenrac WHERE Courriel = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Si l'email existe, procéder à la réinitialisation
+    if ($result->num_rows > 0) {
+        $newPassword = uniqid();
+        $hashedpassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $message = "Voici votre nouveau mot de passe : " . $newPassword;
+
+        // Envoyer l'e-mail
+        if (mail($email, 'Oubli de mot de passe', $message)) {
+            // Mettre à jour le mot de passe dans la base de données
+            $sql = "UPDATE Tenrac SET Code_personnel = ? WHERE Courriel = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ss', $hashedpassword, $email);
+            $stmt->execute();
+
+            // Optionnel : Message de succès ou redirection
+            echo "Un nouvel e-mail a été envoyé avec votre mot de passe.";
+        } else {
+            echo "Échec de l'envoi de l'e-mail.";
+        }
+    } else {
+        echo "Aucun utilisateur trouvé avec cet e-mail.";
     }
-} ?>
+}
+?>
 
 <?php
 footer_page();
