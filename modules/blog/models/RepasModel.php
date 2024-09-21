@@ -1,45 +1,37 @@
 <?php
+require 'db_connect.php';
 
 
-$pdo = new PDO('mysql:host=localhost;dbname=ma_base', 'utilisateur', 'mot_de_passe');
-$stmt = $pdo->prepare('SELECT Dates FROM Repas WHERE id = ?');
-$stmt->execute([1]);
-$resultat = $stmt->fetch();
-$date_base = $resultat['Dates'];
-
-$date_aujourdhui = date("d/m/Y");
 class RepasModel{
-protected $conn;
+    protected $conn;
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
 
-public function __construct($conn)
-{
-    $this->conn = $conn;
-
-
-$rep=  "INSERT INTO Repas (Id_Repas,Dates,Gerant,Courriel,Id_lieu) VALUES (?,?,?,?,?)";
-
-if ($conn->query($rep) === TRUE) {
-echo "Nouveau Repas";
-} else {
-echo "Erreur : " . $rep . "<br>" . $rep->error;
-}
-
-$rep->close();
-$sql = $this->conn->prepare("SELECT * FROM Repas WHERE Gerant IN (?);");
-    $result = $rep->query($sql);
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            if ($row["Gerant"] != NULL) {
-               return True;
+    public function PresenceCouD(): bool
+    {
+        $rep = $this->conn->prepare("SELECT * FROM Repas WHERE Gerant IS NOT NULL;");
+        $rep->execute();
+        if ($rep->rowCount() > 0) {
+            while ($row = $rep->fetch(PDO::FETCH_ASSOC)) {
+                if ($row["Gerant"] != NULL) {
+                    return true;
+                }
             }
         }
+        return false;
     }
-    else{
-        return False;
+    public function getDate() {
+        $stmt = $this->conn->prepare('SELECT Dates FROM Repas WHERE id = ?');
+        $stmt->execute();
+        $resultat = $stmt->fetch();
+        return $resultat['Dates'];
     }
-
-    $rep->close();
-}
-
+    public function getLieu() {
+        $stmt = $this->conn->prepare('SELECT Id_Lieu FROM Repas WHERE id = ?');
+        $stmt->execute();
+        $resultat = $stmt->fetch();
+        return $resultat['Id_Lieu'];
+    }
 }?>
