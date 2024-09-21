@@ -12,9 +12,6 @@ require_once '../controllers/TenracController.php';
 // Créez une instance du modèle et du contrôleur
 $userModel = new TenracModel($conn);
 $userController = new TenracController($userModel, $conn);
-
-// Appel de la méthode de connexion
-$userController->login();
 ?>
 
 <body>
@@ -26,13 +23,13 @@ $userController->login();
 </form>
 
 <?php if(isset($_POST['email'])){
-    $password = uniqid();
-    $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
-    $message = "Voici votre nouveau mot de passe : " . $password . "<br>" ;
+    $newPassword = uniqid();
+    $hashedpassword = password_hash($newPassword, PASSWORD_DEFAULT);
+    $message = "Voici votre nouveau mot de passe : " . $newPassword;
     if (mail($_POST['email'], 'Oublie de mot de passe', $message)) {
-        $sql = "UPDATE Tenrac SET password = ? WHERE email = ?";
+        $sql = "UPDATE Tenrac SET Code_personnel = ? WHERE Courriel = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$hashedpassword, $_POST['email']]);
+        $stmt->bind_param('ss', $hashedpassword , $_POST['email']);
     }
 } ?>
 
