@@ -11,7 +11,7 @@ class RepasModel {
     public function PresenceCouD(): bool {
         $rep = $this->conn->prepare("SELECT * FROM Repas WHERE Gerant");
         $rep->execute();
-        $result = $rep->get_result(); // Obtenir le résultat
+        $result = $rep->get_result();
         if ($result->num_rows > 0) {
                 if ($rep["Gerant"] != NULL) {
                     return true;
@@ -22,20 +22,20 @@ class RepasModel {
 
     public function getDate($id_repas) {
         $stmt = $this->conn->prepare('SELECT Dates FROM Repas WHERE Id_repas = ?');
-        $stmt->bind_param('i', $id_repas); // Assurez-vous de lier le paramètre
+        $stmt->bind_param('i', $id_repas);
         $stmt->execute();
-        $resultat = $stmt->get_result()->fetch_assoc(); // Récupérez le résultat comme un tableau associatif
+        $resultat = $stmt->get_result()->fetch_assoc();
 
-        return $resultat ? $resultat['Dates'] : null; // Vérifiez si $resultat est non null avant d'accéder à l'indice
+        return $resultat ? $resultat['Dates'] : null;
     }
 
     public function getLieu($id_repas) {
         $stmt = $this->conn->prepare('SELECT Id_Lieu FROM Repas WHERE Id_repas = ?');
-        $stmt->bind_param('i', $id_repas); // Assurez-vous de lier le paramètre
+        $stmt->bind_param('i', $id_repas);
         $stmt->execute();
-        $resultat = $stmt->get_result()->fetch_assoc(); // Récupérez le résultat comme un tableau associatif
+        $resultat = $stmt->get_result()->fetch_assoc();
 
-        return $resultat ? $resultat['Id_Lieu'] : null; // Vérifiez si $resultat est non null avant d'accéder à l'indice
+        return $resultat ? $resultat['Id_Lieu'] : null;
     }
 
 
