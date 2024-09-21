@@ -1,20 +1,20 @@
 <?php
 require 'db_connect.php';
 
-
-class RepasModel{
+class RepasModel {
     protected $conn;
-    public function __construct($conn)
-    {
+
+    public function __construct($conn) {
         $this->conn = $conn;
     }
 
-    public function PresenceCouD(): bool
-    {
+    public function PresenceCouD(): bool {
         $rep = $this->conn->prepare("SELECT * FROM Repas WHERE Gerant IS NOT NULL;");
         $rep->execute();
-        if ($rep->rowCount() > 0) {
-            while ($row = $rep->fetch(PDO::FETCH_ASSOC)) {
+        $result = $rep->get_result(); // Obtenir le résultat
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) { // Utiliser fetch_assoc pour obtenir les résultats sous forme de tableau associatif
                 if ($row["Gerant"] != NULL) {
                     return true;
                 }
@@ -22,16 +22,25 @@ class RepasModel{
         }
         return false;
     }
-    public function getDate() {
-        $stmt = $this->conn->prepare('SELECT Dates FROM Repas WHERE id = ?');
+
+    public function getDate($id_repas) {
+        $stmt = $this->conn->prepare('SELECT Dates FROM Repas WHERE Id_repas = ?');
+        $stmt->bind_param('i', $id_repas); // Assurez-vous de lier le paramètre
         $stmt->execute();
-        $resultat = $stmt->fetch();
-        return $resultat['Dates'];
+        $resultat = $stmt->get_result()->fetch_assoc(); // Récupérez le résultat comme un tableau associatif
+
+        return $resultat ? $resultat['Dates'] : null; // Vérifiez si $resultat est non null avant d'accéder à l'indice
     }
-    public function getLieu() {
-        $stmt = $this->conn->prepare('SELECT Id_Lieu FROM Repas WHERE id = ?');
+
+    public function getLieu($id_repas) {
+        $stmt = $this->conn->prepare('SELECT Id_Lieu FROM Repas WHERE Id_repas = ?');
+        $stmt->bind_param('i', $id_repas); // Assurez-vous de lier le paramètre
         $stmt->execute();
-        $resultat = $stmt->fetch();
-        return $resultat['Id_Lieu'];
+        $resultat = $stmt->get_result()->fetch_assoc(); // Récupérez le résultat comme un tableau associatif
+
+        return $resultat ? $resultat['Id_Lieu'] : null; // Vérifiez si $resultat est non null avant d'accéder à l'indice
     }
-}?>
+
+
+}
+?>

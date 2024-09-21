@@ -26,7 +26,6 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                     <li><a href="/modules/blog/views/structure.php">Structure</a></li>
                     <li><a href="/modules/blog/views/repas.php">Repas</a></li>
                     <?php if (isset($_SESSION['header_link']))
-                    // Si l'utilisateur est connecté et qu'une URL de redirection est définie
             {
                         $headerLink = $_SESSION['header_link'];
                     } else {
