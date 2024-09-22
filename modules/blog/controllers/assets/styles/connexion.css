@@ -1,0 +1,259 @@
+/* Réinitialisation générale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+/* Style du corps */
+body {
+    background: linear-gradient(135deg, #ff914d 0%, #ff3b3b 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Assure que le header est au-dessus du reste */
+    background-color: #ff3b3b; /* couleur du header */
+    padding: 5px 0;
+    position: fixed;
+    overflow: hidden;
+    text-align: center;
+}
+
+.header-logo {
+    display: block;
+}
+
+.header-logo img {
+    width: 100px;
+    height: 100px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.header-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.header-menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+.header-menu li a:hover {
+    background-color: #f3aa00;
+    color: #fff;
+}
+
+.header-menu-mobile {
+    display: none;
+}
+
+/* Styles for overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    z-index: 900; /* Just below the menu */
+    display: none; /* Hidden by default */
+}
+
+/* Show the overlay when menu is active */
+.header-menu.active ~ #overlay {
+    display: block;
+}
+
+/* Additional styles to ensure the overlay is hidden when the menu is closed */
+.active + #overlay {
+    display: block;
+}
+
+/* Existing styles for header-menu */
+.header-menu {
+    z-index: 1000; /* Ensure the menu is above the overlay */
+}
+
+.boxed {
+    max-width: 1280px;
+    margin-inline: auto;
+}
+
+.aligncenter {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+.flex {
+    display: flex;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Conteneur du formulaire */
+form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Style du titre */
+h1 {
+    text-align: center;
+    color: #ff3b3b;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+
+.error-message {
+    color: red;
+    background-color: #ffe6e6;
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+/* Champs de texte */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+/* Style du bouton */
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #ff3b3b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff763b;
+}
+
+/* Texte supplémentaire */
+p {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Version responsive */
+@media (max-width: 768px) {
+    form {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    input[type="submit"] {
+        font-size: 1.1rem;
+    }
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    background-color: #ff3b3b; /* couleur similaire à ton header */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0; /* Garde le footer en bas */
+    box-sizing: border-box;
+}
+
+
+#footer-menu{
+    padding: 0% 30% ;
+    color: black;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#footer-menu ul{
+    padding-inline-start: 0;
+    text-align: center;
+    padding: 5%;
+}
+
+#footer-menu li{
+    flex: 1 1 !important;
+    text-align: center;
+    padding-bottom: 2%;
+}
+
+#footer-menu a{
+    text-decoration: none;
+    color: black;
+}
+
+#footer-menu a:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#credits p{
+    padding: 0% 30%;
+    text-align: center;
+    font-size: 75%;
+}
