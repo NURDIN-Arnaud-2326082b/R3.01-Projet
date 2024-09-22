@@ -25,20 +25,23 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                 <ul class="header-menu">
                     <li><a href="/modules/blog/views/structure.php">Structure</a></li>
                     <li><a href="/modules/blog/views/repas.php">Repas</a></li>
-                    <?php if (isset($_SESSION['header_link']))
-            {
-                        $headerLink = $_SESSION['header_link'];
-                    } else {
-                        // Lien par défaut
-                        $headerLink = 'plat.php';
-                    }?>
-                    <li><a href="/modules/blog/views/<?= $headerLink; ?>">Plat</a></li>
+
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <li><a href="/modules/blog/views/plattenrac.php">Plat</a></li>
+                    <?php else: ?>
+                        <li><a href="/modules/blog/views/plat.php">Plat</a></li>
+                    <?php endif; ?>
 
 
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                         <li><a href="/modules/blog/views/gestionTenrac.php">Tenrac</a></li>
                     <?php endif; ?>
-                    <li><a href="/modules/blog/views/connexion.php">Connexion</a></li>
+
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <li><a href="/modules/blog/views/deconnexion.php">Se déconnecter</a></li>
+                    <?php else: ?>
+                        <li><a href="/modules/blog/views/connexion.php">Se connecter</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

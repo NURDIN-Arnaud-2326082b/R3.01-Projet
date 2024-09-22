@@ -11,10 +11,10 @@ $page_title = "ajoutTenrac";
 $css_files = "connexion.css";
 require_once __DIR__ . '/../controllers/header.php';
 require_once __DIR__ . '/../controllers/footer.php';
-header_page($page_title, $css_files);
 require_once '../models/db_connect.php'; // Connexion à la base de données
 require_once '../models/TenracModel.php'; // Modèle d'utilisateur
 require_once '../controllers/TenracController.php'; // Contrôleur d'utilisateur
+header_page($page_title, $css_files);
 
 // Crée une instance de TenracModel
 $tenracModel = new TenracModel($conn);

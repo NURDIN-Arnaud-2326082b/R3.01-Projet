@@ -4,10 +4,10 @@ $css_files = "connexion.css";
 global $conn;
 require_once __DIR__ . '/../controllers/footer.php';
 require_once __DIR__ . '/../controllers/header.php';
-header_page($page_title, $css_files);
 require_once '../models/db_connect.php';
 require_once '../models/TenracModel.php';
 require_once '../controllers/TenracController.php';
+header_page($page_title, $css_files);
 
 // Créez une instance du modèle et du contrôleur
 $userModel = new TenracModel($conn);
@@ -48,7 +48,7 @@ $userController = new TenracController($userModel, $conn);
             $stmt->execute();
 
             // Optionnel : Message de succès ou redirection
-            echo "Un nouvel e-mail a été envoyé avec votre mot de passe.";
+            echo "Un e-mail a été envoyé avec votre mot de passe.";
         } else {
             echo "Échec de l'envoi de l'e-mail.";
         }

@@ -59,9 +59,28 @@ $structureController = new StructureController($structureModel); // Vérifie que
         <form>
             <h3>Modifier un Club</h3>
         </form>
+
+
         <form>
             <h3>Supprimer un Club</h3>
+            <p>Nom du Club : </p> <input type="text" name="nom"><br>
+            <p>Adresse : </p> <input type="text" name="adr"><br>
+            <input type="submit" name="action2" value="Et ça dégage !">
         </form>
+
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action2'] == "Et ça dégage !") {
+            // Récupérer les données du formulaire
+            $Nom = $_POST['nom'];
+            $Adresse = $_POST['adr'];
+
+            //Recherche de l'id du club.
+            $Id_club = 'SELECT Id FROM Ordre_et_Club WHERE nom_club = \'' . $Nom . '\' AND Adresse = \'' . $Adresse . '\'';
+
+            // Supprimer le club
+            $structureController->deleteStructure($Id_club);
+        }
+        ?>
     </div>
 
     <div id="ordre_tenrac">

@@ -4,13 +4,13 @@ $_SESSION['loggedin'] = true; // Définir cette variable lors de la connexion r�
 global $conn;
 $page_title = "Connexion";
 $css_files = "connexion.css";
-header_page($page_title, $css_files);
 
 require_once __DIR__ . '/../controllers/footer.php';
 require_once __DIR__ . '/../controllers/header.php';
 require_once '../models/db_connect.php';
 require_once '../models/TenracModel.php';
 require_once '../controllers/TenracController.php';
+header_page($page_title, $css_files);
 
 // Créez une instance du modèle et du contrôleur
 $userModel = new TenracModel($conn);

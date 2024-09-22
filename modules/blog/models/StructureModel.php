@@ -16,7 +16,7 @@ class StructureModel{
      */
     public function addStructure($Id_Pere, $Nom_Club, $Adresse)
     {
-        $sql = "INSERT INTO Ordre_et_club(Id_Pere, Nom_club, Adresse) VALUES (?, ?, ?)";
+        $sql = 'INSERT INTO Ordre_et_club(Id_Pere, Nom_club, Adresse) VALUES (?, ?, ?)';
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("iss", $Id_Pere, $Nom_Club, $Adresse);
         if($stmt->execute()){
@@ -26,9 +26,16 @@ class StructureModel{
         }
     }
 
-    public function deleteStructure()
+    public function deleteStructure($Id_club)
     {
-        //TODO
+        $sql = 'DELETE FROM Ordre_et_club WHERE Id_club = ?';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $Id_club);
+        if($stmt->execute()){
+            echo "Suppresion réussie";
+        }else{
+            echo "Erreur de suppresion" . $stmt->error;
+        }
     }
 
     public function updateStructure()

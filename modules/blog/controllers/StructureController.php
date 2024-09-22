@@ -27,4 +27,13 @@ class StructureController
         }
     }
 
+    public function deleteStructure($structureDeleted): void{
+        if ($this->structureModel) {
+            $this->structureModel->deleteStructure($structureDeleted);
+            header('Location: /index.php');
+            exit();
+        } else {
+            echo "Le modèle n'est pas initialisé.";
+        }
+    }
 }

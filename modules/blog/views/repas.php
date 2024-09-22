@@ -1,15 +1,16 @@
 <?php
 $page_title = "Repas";
 $css_files = "Repas.css";
-header_page($page_title, $css_files);
+
 global $userController, $conn;
 require_once __DIR__ . '/../controllers/header.php';
 require_once __DIR__ . '/../controllers/footer.php';
-
 require_once '../models/db_connect.php';
 require_once '../controllers/TenracController.php';
 require_once '../models/RepasModel.php';
 require_once '../controllers/RepasController.php';
+header_page($page_title, $css_files);
+
 $model = new RepasModel($conn);
 $date_base = $model->getDate(1);
 $Lieu_rencontre = $model->getLieu(1);

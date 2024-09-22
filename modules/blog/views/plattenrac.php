@@ -4,7 +4,7 @@ $css_files = "Plat.css";
 require '../controllers/header.php';
 include __DIR__ . '/../controllers/footer.php';
 header_page($page_title, $css_files);
-require_once '../models/db_connect.php'; // Connexion à la base de données
+require_once '../models/db_connect.php';
 
 $sql = "SELECT Id_Plat, Nom_plat FROM Plat";
 $result = $conn->query($sql);
@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
 
 
 <div class="slider">
-    <img  class="slider-background" src="../../../img/raclette.jpg" >
+    <img  class="slider-background" src="../../../img/raclette.webp" >
     <div class="slider-content">
         <h1>Tenrac</h1>
         <p>Voici nos plats à base de raclette</p>

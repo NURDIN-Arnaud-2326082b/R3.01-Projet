@@ -32,9 +32,8 @@ class TenracModel
           // echo "Mot de passe saisi : " . $password . "<br>";
 
             // Vérifier si le mot de passe fourni correspond au mot de passe
-            if ($password === $db_password) {
+            if (password_verify($password, $db_password)) {
                 $_SESSION['loggedin'] = true;
-               // $_SESSION['email'] = $db_email;
                 return true;
             }
         }
@@ -44,15 +43,24 @@ class TenracModel
     }
 
     public function ajouterTenrac($Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club) {
+        // Hachage du mot de passe
+        $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
+
+        // Préparation de la requête SQL
         $sql = "INSERT INTO Tenrac (Courriel, Code_personnel, Nom, Num_tel, Adresse, Grade, Rang, Titre, Dignite, Id_club) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ssssssssss", $Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club); // Ajout de bind_param
+        $stmt->bind_param("ssssssssss", $Courriel, $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club);
+
+        // Exécution de la requête et vérification du succès
         if ($stmt->execute()) {
             echo "Ajout réussi";
         } else {
             echo "Erreur lors de l'ajout: " . $stmt->error;
         }
+
+        $stmt->close();
     }
+
 
 
     public function supprimerTenrac($Courriel) {
