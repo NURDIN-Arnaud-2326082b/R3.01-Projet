@@ -41,7 +41,7 @@ require_once '../models/TenracModel.php';
     {
         if ($this->tenracModel) {
             $this->tenracModel->ajouterTenrac(
-                $newTenrac['Id'],
+                $newTenrac['id'],
                 $newTenrac['Courriel'],
                 $newTenrac['Code_personnel'],
                 $newTenrac['Nom'],
@@ -75,6 +75,7 @@ require_once '../models/TenracModel.php';
     {
         if ($this->tenracModel){
             $this->tenracModel->modifierTenrac(
+                $newTenrac['id'],
                 $newTenrac['Courriel'],
                 $newTenrac['Code_personnel'],
                 $newTenrac['Nom'],

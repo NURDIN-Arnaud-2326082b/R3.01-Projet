@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
 }*/
 
-global $conn, $userModel;
+global $conn, $userModel, $tenrac;
 $page_title = "ajoutTenrac";
 $css_files = "connexion.css";
 require_once __DIR__ . '/../controllers/header.php';
@@ -18,7 +18,7 @@ header_page($page_title, $css_files);
 
 $tenracModel = new TenracModel($conn);
 
-$userController = new TenracController($userModel, $tenracModel); // Vérifie que $userModel est défini ou n'est pas utilisé si pas nécessaire
+$userController = new TenracController($userModel, $tenracModel);
 
 
 ?>
@@ -84,16 +84,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& $_POST['action'] == 'suppression') {
 
 <form action="" method="POST">
     <input type="hidden" name="action" value="modification">
-    <label for="Courriel">Email : </label>
-    <input type="email" name="Courriel" value="<?php echo $tenrac['Courriel']; ?>" readonly><br>
+    <input type="hidden" name="id" value="<?php echo $tenrac['id']; ?>">
 
-    <label for="Code_personnel">Mot de passe : </label>
-    <input type="text" name="Code_personnel" value="" placeholder="Laisser vide si pas de changement"><br>
+    <label for="Courriel">Email : </label>
+    <input type="email" name="Courriel" value="<?php echo $tenrac['Courriel']; ?>"><br>
+
+    <label for="Code_personnel">Mot de passe (Laisser vide si inchangé) : </label>
+    <input type="password" name="Code_personnel" placeholder="Nouveau mot de passe"><br>
 
     <label for="Nom">Nom : </label>
     <input type="text" name="Nom" value="<?php echo $tenrac['Nom']; ?>" required><br>
 
-    <label for="Num_tel">Numéro tel : </label>
+    <label for="Num_tel">Numéro de téléphone : </label>
     <input type="text" name="Num_tel" value="<?php echo $tenrac['Num_tel']; ?>" required><br>
 
     <label for="Adresse">Adresse : </label>
@@ -116,12 +118,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& $_POST['action'] == 'suppression') {
 
     <button type="submit">Modifier Tenrac</button>
 </form>
-
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'modification') {
+    $id = $_POST['id'];
+
     $newTenrac = [
         'Courriel' => $_POST['Courriel'],
-        'Code_personnel' => $_POST['Code_personnel'],
         'Nom' => $_POST['Nom'],
         'Num_tel' => $_POST['Num_tel'],
         'Adresse' => $_POST['Adresse'],
@@ -131,7 +133,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'modification') 
         'Dignite' => $_POST['Dignite'],
         'Id_club' => $_POST['Id_club']
     ];
-    $userController->modifierTenrac($newTenrac);
+
+    if (!empty($_POST['Code_personnel'])) {
+        $newTenrac['Code_personnel'] = password_hash($_POST['Code_personnel'], PASSWORD_DEFAULT);
+    }
+
+    // Appel à la fonction de modification
+    $userController->modifierTenrac($id, $newTenrac);
 }
 
 if (isset($_GET['courriel'])) {
@@ -153,5 +161,3 @@ if (isset($_GET['courriel'])) {
 
 footer_page();
 ?>
-
-

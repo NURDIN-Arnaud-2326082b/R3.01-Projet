@@ -66,21 +66,29 @@ class TenracModel
         }
     }
 
-    public function modifierTenrac($Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club) {
-        $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
+    public function modifierTenrac($id, $Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club): void
+    {
+        $hashed_password = !empty($Code_personnel) ? password_hash($Code_personnel, PASSWORD_DEFAULT) : null;
 
-        $sql = "UPDATE Tenrac SET Code_personnel = ?, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE Courriel = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ssssssssss", $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $Courriel);
+        if ($hashed_password) {
+            $sql = "UPDATE Tenrac SET $Courriel,Code_personnel = ?, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE id = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("sssssssssi", $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $id);
+        } else {
+            $sql = "UPDATE Tenrac SET $Courriel, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE id = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("ssssssssi", $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $id);
+        }
 
         if ($stmt->execute()) {
-            echo "Ajout réussi";
+            echo "Modification réussie";
         } else {
-            echo "Erreur lors de l'ajout: " . $stmt->error;
+            echo "Erreur lors de la modification: " . $stmt->error;
         }
 
         $stmt->close();
     }
+
 
 }
 ?>
