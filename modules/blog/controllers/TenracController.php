@@ -42,6 +42,7 @@ require_once '../models/TenracModel.php';
         // Vérifie si le modèle est bien initialisé
         if ($this->tenracModel) {
             $this->tenracModel->ajouterTenrac(
+                $newTenrac['Id'],
                 $newTenrac['Courriel'],
                 $newTenrac['Code_personnel'],
                 $newTenrac['Nom'],

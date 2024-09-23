@@ -27,6 +27,8 @@ $userController = new TenracController($userModel, $tenracModel); // Vérifie qu
 
 <form action="" method="POST">
     <input type="hidden" name="action" value="ajout">
+    <label for="Id">Id : </label>
+    <input type="number" name="Id" required><br>
     <label for="Courriel">Email : </label>
     <input type="email" name="Courriel" required><br>
     <label for="Code_personnel"> Mot de passe : </label>
@@ -54,6 +56,7 @@ $userController = new TenracController($userModel, $tenracModel); // Vérifie qu
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'ajout') {
     // Récupérer les données du formulaire
     $newTenrac = [
+        'Id' => $_POST['Id'],
         'Courriel' => $_POST['Courriel'],
         'Code_personnel' => $_POST['Code_personnel'],
         'Nom' => $_POST['Nom'],
