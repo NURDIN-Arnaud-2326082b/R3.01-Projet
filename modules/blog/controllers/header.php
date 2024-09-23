@@ -23,16 +23,24 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                     <img src="../../../img/logo_tenrac.png" alt="logo_tenrac">
                 </a>
                 <ul class="header-menu">
-                    <li><a href="/modules/blog/views/structure.php">Structure</a></li>
-                    <li><a href="/modules/blog/views/repas.php">Repas</a></li>
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <li><a href="/modules/blog/views/structureTenrac.php">Structure</a></li>
+                    <?php else: ?>
+                        <li><a href="/modules/blog/views/structure.php">Structure</a></li>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <li><a href="/modules/blog/views/repasTenrac.php">Repas</a></li>
+                    <?php else: ?>
+                        <li><a href="/modules/blog/views/repas.php">Repas</a></li>
+                    <?php endif; ?>
 
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                         <li><a href="/modules/blog/views/plattenrac.php">Plat</a></li>
                     <?php else: ?>
                         <li><a href="/modules/blog/views/plat.php">Plat</a></li>
                     <?php endif; ?>
-
-
+                    
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                         <li><a href="/modules/blog/views/gestionTenrac.php">Tenrac</a></li>
                     <?php endif; ?>
