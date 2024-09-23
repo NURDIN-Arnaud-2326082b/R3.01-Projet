@@ -24,24 +24,33 @@ class StructureModel{
         }else{
             echo "Erreur d'ajout" . $stmt->error;
         }
+        $stmt->close();
     }
 
     public function deleteStructure($Id_club)
     {
         $sql = 'DELETE FROM Ordre_et_club WHERE Id_club = ?';
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("s", $Id_club);
+        $stmt->bind_param("i", $Id_club);
         if($stmt->execute()){
             echo "Suppresion réussie";
         }else{
             echo "Erreur de suppresion" . $stmt->error;
         }
+        $stmt->close();
     }
 
-    public function updateStructure()
+    public function updateStructure($Id_Club, $Id_Pere, $Nom_Club, $Adresse)
     {
-        //TODO
+        $sql = 'UPDATE Ordre_et_club SET Id_pere = ?, Nom_club = ?, Adresse = ? WHERE Id_club = ?';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("issi", $Id_Pere, $Nom_Club, $Adresse, $Id_Club);
+        if($stmt->execute()){
+            echo "Modification réussie";
+        }else{
+            echo "Erreur de modification" . $stmt->error;
+        }
+        $stmt->close();
     }
 }
-
 ?>
