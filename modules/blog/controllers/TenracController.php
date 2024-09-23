@@ -39,7 +39,6 @@ require_once '../models/TenracModel.php';
 
     public function ajouterTenrac($newTenrac): void
     {
-        // Vérifie si le modèle est bien initialisé
         if ($this->tenracModel) {
             $this->tenracModel->ajouterTenrac(
                 $newTenrac['Id'],
@@ -96,7 +95,6 @@ require_once '../models/TenracModel.php';
 
 
     public function deconnexion() {
-        // Démarrer la session si elle n'est pas déjà démarrée
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -104,7 +102,6 @@ require_once '../models/TenracModel.php';
         // Détruire toutes les variables de session
         $_SESSION = array();
 
-        //  détruit complètement la session
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
             setcookie(session_name(), '', time() - 42000,
@@ -113,10 +110,8 @@ require_once '../models/TenracModel.php';
             );
         }
 
-        // détruire la session
         session_destroy();
 
-        // Rediriger vers la page de connexion
         header("Location: connexion.php");
         exit();
     }

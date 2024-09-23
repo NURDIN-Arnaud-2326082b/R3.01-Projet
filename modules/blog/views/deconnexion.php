@@ -12,10 +12,9 @@ require_once '../controllers/TenracController.php';
 header_page($page_title, $css_files);
 
 session_start();
-session_unset();  // Supprime toutes les variables de session
+session_unset();
 session_destroy();
 
-// Redirige vers la page d'accueil
 header("Location: homepage.php");
 exit();
 ?>

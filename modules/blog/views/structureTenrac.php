@@ -6,14 +6,12 @@ include __DIR__ . '/../controllers/header.php';
 include __DIR__ . '/../controllers/footer.php';
 header_page("Structure", $css_files);
 
-require_once '../models/db_connect.php'; // Connexion à la base de données
-require_once '../models/StructureModel.php'; // Modèle d'utilisateur pour la gestion des structures.
-require_once '../controllers/StructureController.php'; // Contrôleur d'utilisateur
+require_once '../models/db_connect.php';
+require_once '../models/StructureModel.php';
+require_once '../controllers/StructureController.php';
 
-// Crée une instance de StructureModel
 $structureModel = new StructureModel($conn);
 
-// Crée une instance de TenracController avec les deux modèles
 $structureController = new StructureController($structureModel); // Vérifie que $userModel est défini ou n'est pas utilisé si pas nécessaire
 ?>
 
@@ -36,22 +34,18 @@ $structureController = new StructureController($structureModel); // Vérifie que
 
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == "J'ajoute !") {
-            // Récupérer les données du formulaire
             $Nom = $_POST['nom'];
             $Adresse = $_POST['adr'];
             $Nom_club_Pere = $_POST['pere'];
 
-            // Chercher l'id du club père
             $Id_pere = 'SELECT Id_club FROM Ordre_et_Club WHERE nom_club = \'' . $Nom_club_Pere . '\'';
 
-            // Création d'une variable contenant le nouveau club.
             $newStructure = [
                 'Id_pere' => $Id_pere,
                 'Nom_club' => $Nom,
                 'Adresse' => $Adresse
             ];
 
-            // Appel à la méthode addStructure
             $structureController->addStructure($newStructure);
         }
         ?>
@@ -70,14 +64,11 @@ $structureController = new StructureController($structureModel); // Vérifie que
 
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action2'] == "Et ça dégage !") {
-            // Récupérer les données du formulaire
             $Nom = $_POST['nom'];
             $Adresse = $_POST['adr'];
 
-            //Recherche de l'id du club.
             $Id_club = 'SELECT Id FROM Ordre_et_Club WHERE nom_club = \'' . $Nom . '\' AND Adresse = \'' . $Adresse . '\'';
 
-            // Supprimer le club
             $structureController->deleteStructure($Id_club);
         }
         ?>

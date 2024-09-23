@@ -1,5 +1,5 @@
 <?php
-$_SESSION['loggedin'] = true; // Définir cette variable lors de la connexion réussie
+$_SESSION['loggedin'] = true;
 
 global $conn;
 $page_title = "Connexion";
@@ -12,11 +12,9 @@ require_once '../models/TenracModel.php';
 require_once '../controllers/TenracController.php';
 header_page($page_title, $css_files);
 
-// Créez une instance du modèle et du contrôleur
 $userModel = new TenracModel($conn);
 $userController = new TenracController($userModel, $conn);
 
-// Appel de la méthode de connexion
 $userController->login();
 ?>
 

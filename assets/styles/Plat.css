@@ -25,7 +25,7 @@ body {
     width: 100%;
     min-height: 80vh;
     position: relative;
-    overflow: hidden; /* Ajouté pour s'assurer que le contenu ne déborde pas */
+    overflow: hidden;
 }
 
 .main{
@@ -33,12 +33,12 @@ body {
     color: red;
     min-height: 80vh;
     position: relative;
-    overflow: hidden; /* Ajouté pour s'assurer que le contenu ne déborde pas */
+    overflow: hidden;
 }
 
 .slider-background {
     width: 100%;
-    height: 100%; /* S'assurer que l'image prend toute la hauteur */
+    height: 100%;
     object-fit: cover;
     filter: brightness(40%);
     position: absolute;
@@ -52,7 +52,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 1; /* Assurez-vous que le contenu est au-dessus de l'image de fond */
+    z-index: 1;
 }
 
 h1 {
@@ -62,7 +62,7 @@ h1 {
 
 h2 {
     text-align: center;
-    font-size: 3rem; /* Ajustez la taille de la police selon vos besoins */
+    font-size: 3rem;
     margin-bottom: 50px;
 }
 
@@ -316,31 +316,30 @@ p{
     display: none;
 }
 
-/* Styles for overlay */
+
 #overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-    z-index: 900; /* Just below the menu */
-    display: none; /* Hidden by default */
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 900;
+    display: none;
 }
 
-/* Show the overlay when menu is active */
+
 .header-menu.active ~ #overlay {
     display: block;
 }
 
-/* Additional styles to ensure the overlay is hidden when the menu is closed */
+
 .active + #overlay {
     display: block;
 }
 
-/* Existing styles for header-menu */
 .header-menu {
-    z-index: 1000; /* Ensure the menu is above the overlay */
+    z-index: 1000;
 }
 
 
@@ -354,9 +353,9 @@ p{
         border: 0px;
         background-color: #333;
         position: absolute;
-        left: 5%; /* Positionne le menu tout à gauche */
-        top: 10%; /* Ajustez cette valeur selon vos besoins pour le positionner verticalement */
-        width: auto; /* Ajuste la largeur selon le contenu */
+        left: 5%;
+        top: 10%;
+        width: auto;
         z-index: 991;
     }
 
@@ -389,7 +388,7 @@ p{
     }
 
     .slider {
-        min-height: 60vh; /* Ajustez la hauteur pour les mobiles */
+        min-height: 60vh;
     }
 
     .slider-content p {
@@ -434,13 +433,12 @@ p{
 }
 
 footer {
-    /*position: fixed;*/
     width: 100%;
-    background-color: #ff3b3b; /* couleur similaire à ton header */
+    background-color: #ff3b3b;
     color: white;
     text-align: center;
     padding: 10px 0;
-    bottom: 0; /* Garde le footer en bas */
+    bottom: 0;
     box-sizing: border-box;
 }
 

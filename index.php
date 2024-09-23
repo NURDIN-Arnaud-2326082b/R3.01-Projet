@@ -1,8 +1,6 @@
 <?php
-// Obtenez l'URL demandée et nettoyez-la
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
-// Route vers la page d'accueil si l'URL demandée est la racine ou "/index.php"
 if ($request_uri == '' || $request_uri == 'index.php') {
     require __DIR__ . '/modules/blog/views/homepage.php';
 } else {
@@ -33,7 +31,6 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             require __DIR__ . '/modules/blog/views/gestionTenrac.php';
             break;
         default:
-            // Si aucune route ne correspond, affiche une page d'erreur 404
             echo 'Erreur 404 - Page non trouvée';
             break;
     }

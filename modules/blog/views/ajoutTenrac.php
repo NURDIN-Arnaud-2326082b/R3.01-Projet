@@ -12,15 +12,13 @@ $css_files = "connexion.css";
 require_once __DIR__ . '/../controllers/header.php';
 require_once __DIR__ . '/../controllers/footer.php';
 header_page($page_title, $css_files);
-require_once '../models/db_connect.php'; // Connexion à la base de données
-require_once '../models/TenracModel.php'; // Modèle d'utilisateur
-require_once '../controllers/TenracController.php'; // Contrôleur d'utilisateur
+require_once '../models/db_connect.php';
+require_once '../models/TenracModel.php';
+require_once '../controllers/TenracController.php';
 
-// Crée une instance de TenracModel
 $tenracModel = new TenracModel($conn);
 
-// Crée une instance de TenracController avec les deux modèles
-$userController = new TenracController($userModel, $tenracModel); // Vérifie que $userModel est défini ou n'est pas utilisé si pas nécessaire
+$userController = new TenracController($userModel, $tenracModel);
 
 
 ?>
@@ -51,7 +49,6 @@ $userController = new TenracController($userModel, $tenracModel); // Vérifie qu
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
     $newTenrac = [
         'Courriel' => $_POST['Courriel'],
         'Code_personnel' => $_POST['Code_personnel'],
@@ -64,7 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'Dignite' => $_POST['Dignite'],
         'Id_club' => $_POST['Id_club']
     ];
-    // Appel à la méthode ajouterTenrac
     $userController->ajouterTenrac($newTenrac);
 }
 

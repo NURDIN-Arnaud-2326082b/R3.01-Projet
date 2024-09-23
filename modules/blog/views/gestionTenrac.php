@@ -11,15 +11,13 @@ $page_title = "ajoutTenrac";
 $css_files = "connexion.css";
 require_once __DIR__ . '/../controllers/header.php';
 require_once __DIR__ . '/../controllers/footer.php';
-require_once '../models/db_connect.php'; // Connexion à la base de données
-require_once '../models/TenracModel.php'; // Modèle d'utilisateur
-require_once '../controllers/TenracController.php'; // Contrôleur d'utilisateur
+require_once '../models/db_connect.php';
+require_once '../models/TenracModel.php';
+require_once '../controllers/TenracController.php';
 header_page($page_title, $css_files);
 
-// Crée une instance de TenracModel
 $tenracModel = new TenracModel($conn);
 
-// Crée une instance de TenracController avec les deux modèles
 $userController = new TenracController($userModel, $tenracModel); // Vérifie que $userModel est défini ou n'est pas utilisé si pas nécessaire
 
 
@@ -54,7 +52,6 @@ $userController = new TenracController($userModel, $tenracModel); // Vérifie qu
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'ajout') {
-    // Récupérer les données du formulaire
     $newTenrac = [
         'Id' => $_POST['Id'],
         'Courriel' => $_POST['Courriel'],
@@ -68,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'ajout') {
         'Dignite' => $_POST['Dignite'],
         'Id_club' => $_POST['Id_club']
     ];
-    // Appel à la méthode ajouterTenrac
     $userController->ajouterTenrac($newTenrac);
 }
 ?>
@@ -81,9 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'ajout') {
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST"&& $_POST['action'] == 'suppression') {
-    // Récupérer les données du formulaire
     $tenracSuppr =  $_POST['Courriel'];
-    // Appel à la méthode ajouterTenrac
     $userController->supprimerTenrac($tenracSuppr);
 }
 ?>
@@ -125,7 +119,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"&& $_POST['action'] == 'suppression') {
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'modification') {
-    // Récupérer les données du formulaire
     $newTenrac = [
         'Courriel' => $_POST['Courriel'],
         'Code_personnel' => $_POST['Code_personnel'],
@@ -138,20 +131,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'modification') 
         'Dignite' => $_POST['Dignite'],
         'Id_club' => $_POST['Id_club']
     ];
-    // Appel à la méthode ajouterTenrac
     $userController->modifierTenrac($newTenrac);
 }
 
 if (isset($_GET['courriel'])) {
     $courriel = $_GET['courriel'];
 
-    // Requête SQL pour récupérer les informations actuelles du Tenrac
     $stmt = $conn->prepare("SELECT * FROM Tenrac WHERE Courriel = ?");
     $stmt->bind_param("s", $courriel);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Récupérer les données existantes
     if ($result->num_rows > 0) {
         $tenrac = $result->fetch_assoc();
     } else {
@@ -160,8 +150,6 @@ if (isset($_GET['courriel'])) {
 
     $stmt->close();
 }
-
-
 
 footer_page();
 ?>

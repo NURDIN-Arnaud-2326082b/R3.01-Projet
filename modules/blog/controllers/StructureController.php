@@ -13,7 +13,6 @@ class StructureController
     }
 
     public function addStructure($newStructure): void{
-        // Vérifie si le modèle est bien initialisé
         if ($this->structureModel) {
             $this->structureModel->addStructure(
                 $newStructure['Id_pere'],

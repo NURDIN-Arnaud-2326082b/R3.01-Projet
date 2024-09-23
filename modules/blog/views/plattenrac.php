@@ -11,7 +11,6 @@ $result = $conn->query($sql);
 
 $plats = [];
 if ($result->num_rows > 0) {
-    // Stocker les résultats dans un tableau
     while($row = $result->fetch_assoc()) {
         $plats[] = $row;
     }
