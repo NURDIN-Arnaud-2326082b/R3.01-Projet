@@ -30,7 +30,7 @@ class StructureModel{
     {
         $sql = 'DELETE FROM Ordre_et_club WHERE Id_club = ?';
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("s", $Id_club);
+        $stmt->bind_param("i", $Id_club);
         if($stmt->execute()){
             echo "Suppresion réussie";
         }else{
