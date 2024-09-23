@@ -53,7 +53,26 @@ $structureController = new StructureController($structureModel); // Vérifie que
 
         <form action="" method="post">
             <h3>Modifier un Club</h3>
+            <input type="hidden" name="action" value="update">
+            <p>Identifiant du Club :</p><input type="text" name="idClub">
+            <p>Nouveau nom :</p><input type="text" name="nom2">
+            <p>Nouvelle adresse :</p><input type="text" name="adr2">
+            <p>Nouveau club père :</p><input type="text" name="idPere">
+            <button type="submit">P'tit coup de neuf !</button>
         </form>
+
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == "update") {
+            $updateStructure = [
+                'Id_club' => $_POST['idClub'],
+                'Id_pere' => $_POST['idPere'],
+                'Nom_club' => $_POST['nom2'],
+                'Adresse' => $_POST['adr2'],
+            ];
+
+            $structureController->updateStructure($updateStructure);
+        }
+        ?>
 
 
         <form action="" method="POST">

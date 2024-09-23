@@ -35,4 +35,18 @@ class StructureController
             echo "Club non trouvé.";
         }
     }
+
+    public function updateStructure($structureUpdated): void{
+        if ($this->structureModel) {
+            $this->structureModel->updateStructure(
+                $structureUpdated['Id_club'],
+                $structureUpdated['Id_pere'],
+                $structureUpdated['Nom_club'],
+                $structureUpdated['Adresse']);
+            header('Location: ../views/structureTenrac.php');
+            exit();
+        } else {
+            echo "Modification impossible.";
+        }
+    }
 }

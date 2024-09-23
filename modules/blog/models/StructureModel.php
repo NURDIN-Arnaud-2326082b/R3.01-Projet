@@ -24,6 +24,7 @@ class StructureModel{
         }else{
             echo "Erreur d'ajout" . $stmt->error;
         }
+        $stmt->close();
     }
 
     public function deleteStructure($Id_club)
@@ -36,12 +37,20 @@ class StructureModel{
         }else{
             echo "Erreur de suppresion" . $stmt->error;
         }
+        $stmt->close();
     }
 
-    public function updateStructure()
+    public function updateStructure($Id_Club, $Id_Pere, $Nom_Club, $Adresse)
     {
-        //TODO
+        $sql = 'UPDATE Ordre_et_club SET Id_pere = ?, Nom_club = ?, Adresse = ? WHERE Id_club = ?';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("issi", $Id_Pere, $Nom_Club, $Adresse, $Id_Club);
+        if($stmt->execute()){
+            echo "Modification réussie";
+        }else{
+            echo "Erreur de modification" . $stmt->error;
+        }
+        $stmt->close();
     }
 }
-
 ?>
