@@ -1,6 +1,6 @@
 <?php
 $_SESSION['loggedin'] = true; // Définir cette variable lors de la connexion réussie
-//$_SESSION['nom'] = $db_nom;
+
 global $conn;
 $page_title = "Connexion";
 $css_files = "connexion.css";

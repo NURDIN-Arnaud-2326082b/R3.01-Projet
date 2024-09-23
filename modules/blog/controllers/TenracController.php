@@ -71,6 +71,28 @@ require_once '../models/TenracModel.php';
         }
     }
 
+    public function modifierTenrac($newTenrac): void
+    {
+        if ($this->tenracModel){
+            $this->tenracModel->modifierTenrac(
+                $newTenrac['Courriel'],
+                $newTenrac['Code_personnel'],
+                $newTenrac['Nom'],
+                $newTenrac['Num_tel'],
+                $newTenrac['Adresse'],
+                $newTenrac['Grade'],
+                $newTenrac['Rang'],
+                $newTenrac['Titre'],
+                $newTenrac['Dignite'],
+                $newTenrac['Id_club']
+            );
+            header('Location: /index.php');
+            exit();
+        } else {
+            echo "Tenrac non trouvé.";
+        }
+    }
+
 
     public function deconnexion() {
         // Démarrer la session si elle n'est pas déjà démarrée
@@ -93,7 +115,7 @@ require_once '../models/TenracModel.php';
         // détruire la session
         session_destroy();
 
-        // Rediriger vers la page de connexion ou d'accueil après la déconnexion
+        // Rediriger vers la page de connexion
         header("Location: connexion.php");
         exit();
     }

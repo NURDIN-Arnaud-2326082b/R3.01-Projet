@@ -74,7 +74,24 @@ class TenracModel
         }
     }
 
+    public function modifierTenrac($Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club) {
+        // Hachage du mot de passe
+        $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
 
+        // Préparation de la requête SQL
+        $sql = "UPDATE Tenrac SET Code_personnel = ?, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE Courriel = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ssssssssss", $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $Courriel);
+
+        // Exécution de la requête et vérification du succès
+        if ($stmt->execute()) {
+            echo "Ajout réussi";
+        } else {
+            echo "Erreur lors de l'ajout: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
 
 }
 ?>
