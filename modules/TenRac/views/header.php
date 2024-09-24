@@ -18,7 +18,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                 <button onclick="openMenu()" class="header-menu-mobile">
                     <span class="material-icons">menu</span>
                 </button>
-                <a class="header-logo" href="/modules/TenRac/views/homepage.php">
+                <a class="header-logo" href="/home">
                     <img src="../../../img/logo_tenrac.png" alt="logo_tenrac">
                 </a>
                 <ul class="header-menu">
@@ -37,7 +37,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                         <li><a href="/modules/TenRac/views/plattenrac.php">Plat</a></li>
                     <?php else: ?>
-                        <li><a href="/modules/TenRac/views/plat.php">Plat</a></li>
+                        <li><a href="/plat">Plat</a></li>
                     <?php endif; ?>
                     
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
@@ -47,7 +47,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                         <li><a href="/modules/TenRac/views/deconnexion.php">Se déconnecter</a></li>
                     <?php else: ?>
-                        <li><a href="/modules/TenRac/views/connexion.php">Se connecter</a></li>
+                        <li><a href="/connexion">Se connecter</a></li>
                     <?php endif; ?>
                 </ul>
             </div>

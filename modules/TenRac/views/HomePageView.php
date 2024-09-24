@@ -7,7 +7,7 @@ class HomePageView extends AbstractView
 {
     protected function body(): void
     {
-        include __DIR__ . '/../views/homepage.php';
+        include __DIR__ . '/homepage.php';
     }
 
     function css(): string
