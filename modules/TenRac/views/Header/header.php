@@ -23,7 +23,8 @@ function header_page($page_title = "Titre par Défaut", $css_file = "", $loggedi
                 </a>
                 <ul class="header-menu">
 
-<!--                   TODO Menu -->
+                    <!--    TODO Menu   -->
+
                 </ul>
             </div>
         </div>
