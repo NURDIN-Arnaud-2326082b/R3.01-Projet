@@ -1,11 +1,3 @@
-<?php
-$css_files = "style.css";
-include __DIR__ . '/../controllers/header.php';
-include __DIR__ . '/../controllers/footer.php';
-header_page("Accueil", $css_files);
-?>
-
-
 
     <div class="slider">
         <img  class="slider-background" src="../../../img/raclette.webp" >
@@ -52,6 +44,3 @@ header_page("Accueil", $css_files);
             </div>
         </div>
     </div>
-<?php
-footer_page();
-?>

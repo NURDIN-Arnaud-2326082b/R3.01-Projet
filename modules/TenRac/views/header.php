@@ -19,36 +19,36 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                 <button onclick="openMenu()" class="header-menu-mobile">
                     <span class="material-icons">menu</span>
                 </button>
-                <a class="header-logo" href="/modules/blog/views/homepage.php">
+                <a class="header-logo" href="/modules/TenRac/views/homepage.php">
                     <img src="../../../img/logo_tenrac.png" alt="logo_tenrac">
                 </a>
                 <ul class="header-menu">
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href="/modules/blog/views/structureTenrac.php">Structure</a></li>
+                        <li><a href="/modules/TenRac/views/structureTenrac.php">Structure</a></li>
                     <?php else: ?>
-                        <li><a href="/modules/blog/views/structure.php">Structure</a></li>
+                        <li><a href="/modules/TenRac/views/structure.php">Structure</a></li>
                     <?php endif; ?>
 
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href="/modules/blog/views/repasTenrac.php">Repas</a></li>
+                        <li><a href="/modules/TenRac/views/repasTenrac.php">Repas</a></li>
                     <?php else: ?>
-                        <li><a href="/modules/blog/views/repas.php">Repas</a></li>
+                        <li><a href="/modules/TenRac/views/repas.php">Repas</a></li>
                     <?php endif; ?>
 
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href="/modules/blog/views/plattenrac.php">Plat</a></li>
+                        <li><a href="/modules/TenRac/views/plattenrac.php">Plat</a></li>
                     <?php else: ?>
-                        <li><a href="/modules/blog/views/plat.php">Plat</a></li>
+                        <li><a href="/modules/TenRac/views/plat.php">Plat</a></li>
                     <?php endif; ?>
                     
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href="/modules/blog/views/gestionTenrac.php">Tenrac</a></li>
+                        <li><a href="/modules/TenRac/views/gestionTenrac.php">Tenrac</a></li>
                     <?php endif; ?>
 
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href="/modules/blog/views/deconnexion.php">Se déconnecter</a></li>
+                        <li><a href="/modules/TenRac/views/deconnexion.php">Se déconnecter</a></li>
                     <?php else: ?>
-                        <li><a href="/modules/blog/views/connexion.php">Se connecter</a></li>
+                        <li><a href="/modules/TenRac/views/connexion.php">Se connecter</a></li>
                     <?php endif; ?>
                 </ul>
             </div>
