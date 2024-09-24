@@ -42,8 +42,13 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case '/platTenrac':
             require __DIR__ . '/modules/TenRac/views/platTenrac.php';
             break;
-        case '/ajoutTenrac':
-            require __DIR__ . '/modules/TenRac/views/gestionTenrac.php';
+        case 'ajout-tenrac':
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->ajouterTenrac();
+            break;
+        case 'suppression-tenrac':
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->supprimerTenrac();
             break;
         default:
             echo 'Erreur 404 - Page non trouvée';
