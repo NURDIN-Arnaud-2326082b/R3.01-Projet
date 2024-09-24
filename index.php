@@ -4,9 +4,6 @@ include __DIR__ . '/Autoloader.php';
 
 use TenRac\controllers\ConnexionController;
 use TenRac\controllers\HomePageController;
-use TenRac\controllers\StructureTenracController;
-use TenRac\controllers\PlatController;
-use TenRac\controllers\GestionTenracController;
 
 
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
@@ -34,6 +31,9 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $connexionPage::connecter($_POST);
             }
+            // If POST
+                // $connexionPage::connecter($_POST);
+            // Else
             $connexionPage::affichePage();
             break;
         case '/repasTenrac':
@@ -45,13 +45,13 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case '/platTenrac':
             require __DIR__ . '/modules/TenRac/views/platTenrac.php';
             break;
-//        case 'ajout-tenrac':
-//            $tenrac = new \TenRac\controllers\GestionTenracController();
-//            $tenrac ->ajouterTenrac();
-//            break;
-//        case 'suppression-tenrac':
-//            $tenrac = new \TenRac\controllers\GestionTenracController();
-//            $tenrac ->supprimerTenrac();
+        case 'ajout-tenrac':
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->ajouterTenrac();
+            break;
+        case 'suppression-tenrac':
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->supprimerTenrac();
         case 'home':
             $homePage = new HomePageController();
             $homePage::affichePage();
