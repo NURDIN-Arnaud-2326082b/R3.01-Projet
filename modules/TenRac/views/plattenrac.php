@@ -65,7 +65,7 @@ if ($result->num_rows > 0) {
             <?php endforeach; ?>
         </ul>
         <h2> Modifier un plat</h2>
-        <form action="../../../modules/blog/models/modifier_plat.php" method="post">
+        <form action="../models/modifier_plat.php" method="post">
             <label for="plat-select">Sélectionner un plat:</label>
             <select id="plat-select" name="plat_id">
                 <option value="">--Sélectionnez--</option>
