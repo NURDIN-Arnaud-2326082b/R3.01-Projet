@@ -5,10 +5,11 @@ function footer_page(): void
     <footer>
         <div id="links">
             <ul id="footer-menu">
-                <li><a href="/modules/TenRac/views/structure.php">Structure</a></li>
-                <li><a href="/modules/TenRac/views/repas.php">Repas</a></li>
-                <li><a href="/modules/TenRac/views/plat.php">Plat</a></li>
-                <li><a href="/modules/TenRac/views/connexion.php">Connexion</a></li>
+                <li><a href='/home'>Accueil</a></li>
+                <li><a href='/structure'>Structure</a></li>
+                <li><a href='/repas'>Repas</a></li>
+                <li><a href='/plat'>Plat</a></li>
+                <li><a href='/connexion'>Connexion</a></li>
             </ul>
         </div>
         <div id="credits">
