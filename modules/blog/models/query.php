@@ -9,7 +9,7 @@ class UserModel
         $this->conn = $conn;
     }
 
-    public function verifyUser($email, $password)
+    public function verifiertenrac($email, $password)
     {
         $stmt = $this->conn->prepare("SELECT password FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
