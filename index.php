@@ -21,7 +21,8 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             require __DIR__ . '/modules/TenRac/views/repas.php';
             break;
         case '/plat':
-            require __DIR__ . '/modules/TenRac/views/plat.php';
+            $platpage = new \TenRac\controllers\PlatController();
+            $platpage::affichePage();
             break;
         case 'connexion':
             $connexionPage = new ConnexionController();

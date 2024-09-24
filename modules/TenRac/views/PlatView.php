@@ -1,21 +1,21 @@
 <?php
 
 namespace TenRac\views;
-class ConnexionView extends AbstractView
-{
 
+class PlatView extends AbstractView
+{
     protected function body(): void
     {
-        include __DIR__ . '/connexion.php';
+        include __DIR__ . '/plat.php';
     }
 
     function css(): string
     {
-        return 'connexion.css';
+        return 'Plat.css';
     }
 
     function pageTitle(): string
     {
-        return 'Connexion';
+        return 'Plat';
     }
 }

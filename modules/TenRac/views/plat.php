@@ -1,11 +1,3 @@
-<?php
-$page_title = "Plat";
-$css_files = "Plat.css";
-require '../controllers/header.php';
-include __DIR__ . '/../controllers/footer.php';
-header_page($page_title, $css_files);
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -83,10 +75,3 @@ header_page($page_title, $css_files);
     </div>
     </div>
 </div>
-
-<?php
-footer_page();
-?>
-
-
-
