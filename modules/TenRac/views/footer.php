@@ -1,3 +1,5 @@
+<!--
+
 <?php
 function footer_page(): void
 {
@@ -22,3 +24,4 @@ function footer_page(): void
     <?php
 }
 ?>
+-->

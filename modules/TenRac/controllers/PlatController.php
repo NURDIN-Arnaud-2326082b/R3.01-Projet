@@ -8,7 +8,7 @@ use TenRac\views\PlatView;
 
 class PlatController
 {
-    public static function affichePage()
+    public static function affichePage(): void
     {
         $view = new PlatView();
         $view->afficher();

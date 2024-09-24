@@ -13,6 +13,8 @@ abstract class AbstractView
     private function header(): void
     {
         $headerview = new HeaderView($this->pageTitle(), $this->css(),true);
+        $headerview->afficher();
+
 
     }
 

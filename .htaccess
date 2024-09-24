@@ -1,7 +1,11 @@
 RewriteEngine On
 
-RewriteRule ^connexion$ modules/blog/views/connexion.php [L]
-RewriteRule ^structure$ modules/blog/views/structure.php [L]
-RewriteRule ^repas$ modules/blog/views/repas.php [L]
-RewriteRule ^plat$ modules/blog/views/plat.php [L]
-RewriteRule ^Accueil$ modules/blog/views/homepage.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !(.*)\.(css|js|png|jpg|gif)$
+RewriteRule ^(.*)$ index.php [L,QSA]
+
+#RewriteRule ^connexion$ modules/blog/views/connexion.php [L]
+#RewriteRule ^structure$ modules/blog/views/structure.php [L]
+#RewriteRule ^repas$ modules/blog/views/repas.php [L]
+#RewriteRule ^plat$ modules/blog/views/plat.php [L]
+#RewriteRule ^Accueil$ modules/blog/views/homepage.php [L]

@@ -14,7 +14,7 @@ class StructureTenracModel{
      * @version 1.0
      * @params L'id du club duquel il découle, le nom du club et l'adresse.
      */
-    public function addStructure(int $Id_Pere, string $Nom_Club, string $Adresse)
+    public function addStructure(int $Id_Pere, string $Nom_Club, string $Adresse): void
     {
         $sql = "INSERT INTO Ordre_et_club(Id_Pere, Nom_club, Adresse) VALUES (?, ?, ?)";
         $stmt = $this->connect->prepare($sql);
@@ -27,7 +27,7 @@ class StructureTenracModel{
         $stmt->close();
     }
 
-    public function deleteStructure(int $Id_club)
+    public function deleteStructure(int $Id_club): void
     {
         $sql = "DELETE FROM Ordre_et_club WHERE Id_club = ?";
         $stmt = $this->connect->prepare($sql);
@@ -40,7 +40,7 @@ class StructureTenracModel{
         $stmt->close();
     }
 
-    public function updateStructure(int $Id_Club, int $Id_Pere, string $Nom_Club, string $Adresse)
+    public function updateStructure(int $Id_Club, int $Id_Pere, string $Nom_Club, string $Adresse): void
     {
         $sql = "UPDATE Ordre_et_club SET Id_pere = ?, Nom_club = ?, Adresse = ? WHERE Id_club = ?";
         $stmt = $this->connect->prepare($sql);

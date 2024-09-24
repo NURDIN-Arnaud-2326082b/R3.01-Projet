@@ -8,7 +8,7 @@ use TenRac\views\StructureView;
 
 class StructureController
 {
-    public static function affichePage()
+    public static function affichePage(): void
     {
         $view = new StructureView();
         $view->afficher();

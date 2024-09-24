@@ -2,6 +2,7 @@
 
 namespace TenRac\views;
 
+
 class StructureView extends AbstractView
 {
     protected function body(): void
