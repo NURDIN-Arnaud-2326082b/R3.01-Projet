@@ -10,13 +10,17 @@
 <div  id="about" class="section">
     <div class="boxed">
         <div class="flex toColumn mCenter">
-            <div  class="w40 wm100">
-                <h2>blablabla</h2>
+            <?php
 
-            </div>
-            <div class="w60 wm100">
-                <p>blablabla</p>
-            </div>
+            use TenRac\models\DbConnect;
+            use TenRac\models\PlatModel;
+
+            $platmodel = new PlatModel(new DbConnect());
+            $plats = $platmodel->creerListe();
+            foreach ($plats as $plat) {
+                echo implode(", ", $plat) . "<br>";
+            }
+            ?>
         </div>
     </div>
 </div>
