@@ -2,6 +2,8 @@
 
 namespace TenRac\controllers;
 
+use TenRac\models\DbConnect;
+use TenRac\models\PlatModel;
 use TenRac\views\PlatView;
 
 class PlatController
@@ -10,5 +12,9 @@ class PlatController
     {
         $view = new PlatView();
         $view->afficher();
+    }
+
+    public static function generer():void{
+
     }
 }

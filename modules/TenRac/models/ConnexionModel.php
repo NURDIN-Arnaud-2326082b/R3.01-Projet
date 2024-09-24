@@ -13,7 +13,6 @@ class ConnexionModel
     public function login(string $courriel, string $password)
     {
         $estConnecte = $this->verifyTenrac($courriel, $password);
-
         var_dump($estConnecte);
         die();
     }
