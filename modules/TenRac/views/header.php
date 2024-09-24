@@ -19,7 +19,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                 <button onclick="openMenu()" class="header-menu-mobile">
                     <span class="material-icons">menu</span>
                 </button>
-                <a class="header-logo" href="/modules/TenRac/views/homepage.php">
+                <a class="header-logo" href="/home">
                     <img src="../../../img/logo_tenrac.png" alt="logo_tenrac">
                 </a>
                 <ul class="header-menu">
