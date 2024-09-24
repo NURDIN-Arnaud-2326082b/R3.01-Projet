@@ -1,30 +1,6 @@
-<?php
-
-/*
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: connexion.php");
-    exit();
-}*/
-
-global $conn, $userModel, $tenrac;
-$page_title = "ajoutTenrac";
-$css_files = "connexion.css";
-require_once __DIR__ . '/../controllers/header.php';
-require_once __DIR__ . '/../controllers/footer.php';
-require_once '../models/db_connect.php';
-require_once '../models/TenracModel.php';
-require_once '../controllers/TenracController.php';
-header_page($page_title, $css_files);
-
-$tenracModel = new TenracModel($conn);
-
-$userController = new TenracController($userModel, $tenracModel);
 
 
-?>
-
-<form action="" method="POST">
-    <input type="hidden" name="action" value="ajout">
+<form action="/ajout-tenrac" method="POST">
     <label for="Id">Id : </label>
     <input type="number" name="Id" required><br>
     <label for="Courriel">Email : </label>
@@ -50,37 +26,41 @@ $userController = new TenracController($userModel, $tenracModel);
     <button type="submit">Ajouter Tenrac</button>
 </form>
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['action'] == 'ajout') {
-    $newTenrac = [
-        'Id' => $_POST['Id'],
-        'Courriel' => $_POST['Courriel'],
-        'Code_personnel' => $_POST['Code_personnel'],
-        'Nom' => $_POST['Nom'],
-        'Num_tel' => $_POST['Num_tel'],
-        'Adresse' => $_POST['Adresse'],
-        'Grade' => $_POST['Grade'],
-        'Rang' => $_POST['Rang'],
-        'Titre' => $_POST['Titre'],
-        'Dignite' => $_POST['Dignite'],
-        'Id_club' => $_POST['Id_club']
-    ];
-    $userController->ajouterTenrac($newTenrac);
-}
-?>
-<form action="" method="POST">
+<form action="/suppression-tenrac" method="POST">
     <input type="hidden" name="action" value="suppression">
     <label for="Courriel">Email : </label>
     <input type="email" name="Courriel" required><br>
     <button type="submit">Supprimer Tenrac</button>
 </form>
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST"&& $_POST['action'] == 'suppression') {
-    $tenracSuppr =  $_POST['Courriel'];
-    $userController->supprimerTenrac($tenracSuppr);
-}
-?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <form action="" method="POST">
     <input type="hidden" name="action" value="modification">

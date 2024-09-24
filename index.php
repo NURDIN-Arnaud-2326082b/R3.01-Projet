@@ -4,7 +4,6 @@ include __DIR__ . '/Autoloader.php';
 
 use TenRac\controllers\ConnexionController;
 use TenRac\controllers\HomePageController;
-use TenRac\controllers\StructureTenracController;
 
 
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
@@ -46,6 +45,13 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case '/platTenrac':
             require __DIR__ . '/modules/TenRac/views/platTenrac.php';
             break;
+        case 'ajout-tenrac':
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->ajouterTenrac();
+            break;
+        case 'suppression-tenrac':
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->supprimerTenrac();
         case 'home':
             $homePage = new HomePageController();
             $homePage::affichePage();

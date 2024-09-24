@@ -32,68 +32,6 @@ require_once '../models/TenracModel.php';
         }
     }
 
-    public function afficherFormulaireAjout(): void
-    {
-        include '../views/gestionTenrac.php';
-    }
-
-    public function ajouterTenrac($newTenrac): void
-    {
-        if ($this->tenracModel) {
-            $this->tenracModel->ajouterTenrac(
-                $newTenrac['id'],
-                $newTenrac['Courriel'],
-                $newTenrac['Code_personnel'],
-                $newTenrac['Nom'],
-                $newTenrac['Num_tel'],
-                $newTenrac['Adresse'],
-                $newTenrac['Grade'],
-                $newTenrac['Rang'],
-                $newTenrac['Titre'],
-                $newTenrac['Dignite'],
-                $newTenrac['Id_club']
-            );
-            header('Location: /index.php');
-            exit();
-        } else {
-            echo "Le modèle n'est pas initialisé.";
-        }
-    }
-
-    public function supprimerTenrac($tenracSuppr): void
-    {
-        if ($this->tenracModel){
-            $this->tenracModel->supprimerTenrac($tenracSuppr);
-            header('Location: /index.php');
-            exit();
-        } else {
-            echo "Tenrac non trouvé.";
-        }
-    }
-
-    public function modifierTenrac($newTenrac): void
-    {
-        if ($this->tenracModel){
-            $this->tenracModel->modifierTenrac(
-                $newTenrac['id'],
-                $newTenrac['Courriel'],
-                $newTenrac['Code_personnel'],
-                $newTenrac['Nom'],
-                $newTenrac['Num_tel'],
-                $newTenrac['Adresse'],
-                $newTenrac['Grade'],
-                $newTenrac['Rang'],
-                $newTenrac['Titre'],
-                $newTenrac['Dignite'],
-                $newTenrac['Id_club']
-            );
-            header('Location: /index.php');
-            exit();
-        } else {
-            echo "Tenrac non trouvé.";
-        }
-    }
-
 
     public function deconnexion() {
         if (session_status() == PHP_SESSION_NONE) {
