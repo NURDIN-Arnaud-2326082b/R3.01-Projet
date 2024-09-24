@@ -4,6 +4,7 @@ include __DIR__ . '/Autoloader.php';
 
 use TenRac\controllers\ConnexionController;
 use TenRac\controllers\HomePageController;
+use TenRac\controllers\StructureTenracController;
 
 
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
@@ -15,8 +16,9 @@ if ($request_uri == '' || $request_uri == 'index.php') {
 } else {
     // Autres routes
     switch ($request_uri) {
-        case '/structure':
-            require __DIR__ . '/modules/TenRac/views/structure.php';
+        case 'structure':
+            $structure = new StructureTenracController();
+            $structure::affichePage();
             break;
         case '/repas':
             require __DIR__ . '/modules/TenRac/views/repas.php';

@@ -1,14 +1,14 @@
 <?php
 global $conn;
-$css_files = "Structure.css";
+$css_files = "structure.css";
 
 include __DIR__ . '/../controllers/header.php';
 include __DIR__ . '/../controllers/footer.php';
 header_page("Structure", $css_files);
 
 require_once '../models/db_connect.php';
-require_once '../models/StructureModel.php';
-require_once '../controllers/StructureController.php';
+require_once '../models/StructureTenracModel.php';
+require_once '../controllers/StructureTenracController.php';
 
 $structureModel = new StructureModel($conn);
 

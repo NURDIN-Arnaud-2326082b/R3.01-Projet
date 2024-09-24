@@ -1,10 +1,3 @@
-<?php
-$css_files = "Structure.css";
-include __DIR__ . '/../controllers/header.php';
-include __DIR__ . '/../controllers/footer.php';
-header_page("Structure", $css_files);
-?>
-
 <div class="slider">
     <img  class="slider-background" alt="Image de raclette" src="../../../img/raclette.webp" >
     <div class="slider-content">
@@ -42,7 +35,3 @@ header_page("Structure", $css_files);
     </div>
 
 </div>
-
-<?php
-footer_page();
-?>
