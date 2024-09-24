@@ -24,9 +24,9 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
                 </a>
                 <ul class="header-menu">
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href='/structure'>Structure</a></li>
+                        <li><a href="/modules/TenRac/views/structureTenrac.php">Structure</a></li>
                     <?php else: ?>
-                        <li><a href="/structure">Structure</a></li>
+                        <li><a href="/modules/TenRac/views/structure.php">Structure</a></li>
                     <?php endif; ?>
 
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
@@ -57,4 +57,3 @@ function header_page($page_title = "Titre par Défaut", $css_file = ""): void
     <?php
 }
 ?>
-
