@@ -2,15 +2,17 @@
 
 namespace TenRac\views;
 
+use TenRac\views\Header\HeaderView;
+
 abstract class AbstractView
 {
     abstract function css(): string;
     abstract function pageTitle(): string;
 
-    private function header()
+    // permet de récupérer le contenu du fichier header.html
+    private function header(): void
     {
-        include __DIR__ . '/header.php';
-        header_page($this->pageTitle(), $this->css());
+        $headerview = new HeaderView($this->pageTitle(), $this->css(),true);
 
     }
 
@@ -18,7 +20,6 @@ abstract class AbstractView
     {
         include __DIR__ . '/footer.php';
         footer_page();
-
     }
 
     abstract protected function body();
