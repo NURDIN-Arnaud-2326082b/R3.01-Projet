@@ -1,4 +1,3 @@
-
     <div class="slider">
         <img  class="slider-background" src="../../../img/raclette.webp" >
         <div class="slider-content">

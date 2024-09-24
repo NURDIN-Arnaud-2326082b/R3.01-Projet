@@ -14,14 +14,16 @@ if ($request_uri == '' || $request_uri == 'index.php') {
 } else {
     // Autres routes
     switch ($request_uri) {
-        case '/structure':
-            require __DIR__ . '/modules/TenRac/views/structure.php';
+        case 'structure':
+            $structure = new StructureTenracController();
+            $structure::affichePage();
             break;
         case '/repas':
             require __DIR__ . '/modules/TenRac/views/repas.php';
             break;
-        case '/plat':
-            require __DIR__ . '/modules/TenRac/views/plat.php';
+        case 'plat':
+            $platpage = new \TenRac\controllers\PlatController();
+            $platpage::affichePage();
             break;
         case 'connexion':
             $connexionPage = new ConnexionController();
@@ -49,6 +51,9 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'suppression-tenrac':
             $tenrac = new \TenRac\controllers\GestionTenracController();
             $tenrac ->supprimerTenrac();
+        case 'home':
+            $homePage = new HomePageController();
+            $homePage::affichePage();
             break;
         default:
             echo 'Erreur 404 - Page non trouvée';

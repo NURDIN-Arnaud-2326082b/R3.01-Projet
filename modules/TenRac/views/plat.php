@@ -1,22 +1,3 @@
-<?php
-$page_title = "Plat";
-$css_files = "Plat.css";
-require '../controllers/header.php';
-include __DIR__ . '/../controllers/footer.php';
-header_page($page_title, $css_files);
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="UTF-8">
-    <link rel="icon" href="../../../img/logo_tenrac.jpg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tenrac</title>
-</head>
-<body>
-
 <div id="overlay"></div>
 <div class="slider">
     <img  class="slider-background" src="../../../img/tenders_raclette.webp" >
@@ -29,13 +10,17 @@ header_page($page_title, $css_files);
 <div  id="about" class="section">
     <div class="boxed">
         <div class="flex toColumn mCenter">
-            <div  class="w40 wm100">
-                <h2>blablabla</h2>
+            <?php
 
-            </div>
-            <div class="w60 wm100">
-                <p>blablabla</p>
-            </div>
+            use TenRac\models\DbConnect;
+            use TenRac\models\PlatModel;
+
+            $platmodel = new PlatModel(new DbConnect());
+            $plats = $platmodel->creerListe();
+            foreach ($plats as $plat) {
+                echo implode(", ", $plat) . "<br>";
+            }
+            ?>
         </div>
     </div>
 </div>
@@ -83,10 +68,3 @@ header_page($page_title, $css_files);
     </div>
     </div>
 </div>
-
-<?php
-footer_page();
-?>
-
-
-
