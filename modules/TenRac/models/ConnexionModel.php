@@ -17,6 +17,12 @@ class ConnexionModel
         die();
     }
 
+    public function logout(): void
+    {
+        session_destroy();
+        header('Location: /');
+    }
+
 
     public function verifyTenrac($courriel, $password): bool
     {

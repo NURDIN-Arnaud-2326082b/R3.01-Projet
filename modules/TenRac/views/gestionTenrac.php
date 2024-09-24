@@ -1,5 +1,3 @@
-
-
 <form action="/ajout-tenrac" method="POST">
     <label for="Id">Id : </label>
     <input type="number" name="Id" required><br>

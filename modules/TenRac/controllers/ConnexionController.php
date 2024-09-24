@@ -22,4 +22,10 @@ class ConnexionController
         $connexionModel = new ConnexionModel(new DbConnect());
         $connexionModel->login($courriel, $password);
     }
+
+    public static function deconnecter(): void
+    {
+        $connexionModel = new ConnexionModel(new DbConnect());
+        $connexionModel->logout();
+    }
 }

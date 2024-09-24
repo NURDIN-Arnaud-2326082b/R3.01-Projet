@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 function header_page($page_title = "Titre par Défaut", $css_file = "", $loggedin = false): void
 {
     ?>
@@ -23,7 +23,7 @@ function header_page($page_title = "Titre par Défaut", $css_file = "", $loggedi
                 </a>
                 <ul class="header-menu">
 
-                    <!--    TODO Menu   -->
+                      TODO Menu
 
                 </ul>
             </div>
@@ -32,3 +32,4 @@ function header_page($page_title = "Titre par Défaut", $css_file = "", $loggedi
     <?php
 }
 ?>
+-->

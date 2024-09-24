@@ -6,9 +6,7 @@ class MenuView
 {
 
 
-    public function __construct(
-        private bool $loggedin
-    )
+    public function __construct(private bool $loggedin)
     {
     }
 

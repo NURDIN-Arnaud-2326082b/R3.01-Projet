@@ -1,6 +1,7 @@
 <?php
 
 namespace TenRac\views;
+
 class ConnexionView extends AbstractView
 {
 
@@ -11,7 +12,7 @@ class ConnexionView extends AbstractView
 
     function css(): string
     {
-        return 'connexion.css';
+        return '/connexion.css';
     }
 
     function pageTitle(): string

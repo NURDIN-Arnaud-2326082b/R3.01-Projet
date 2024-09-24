@@ -4,7 +4,7 @@ namespace TenRac\views;
 class GestionTenracView extends AbstractView
 {
 
-    protected function body()
+    protected function body(): void
     {
         include __DIR__ . '/gestionTenrac.php';
     }

@@ -2,6 +2,7 @@
 
 namespace TenRac\views;
 
+use TenRac\views\Header\HeaderView;
 
 class HomePageView extends AbstractView
 {
@@ -12,7 +13,7 @@ class HomePageView extends AbstractView
 
     function css(): string
     {
-        return 'style.css';
+        return '../../../style.css';
     }
 
     function pageTitle(): string

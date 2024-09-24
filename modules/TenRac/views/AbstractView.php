@@ -16,7 +16,7 @@ abstract class AbstractView
 
     }
 
-    private function footer()
+    private function footer(): void
     {
         include __DIR__ . '/footer.php';
         footer_page();

@@ -34,7 +34,6 @@ $dateCorrespond = $controller->Verifdate($date_base);
             <span>Aucun cavalier ou dame présent(e)</span>
         <?php endif; ?>
         <img class="imgD" src="../../../img/Dame.png" height="250px" width="350px" alt="Dame">
-
     </p>
 </div>
 <section>
@@ -63,7 +62,6 @@ $dateCorrespond = $controller->Verifdate($date_base);
                 <?php else: ?>
                     <span>Date de présence : Aucune</span>
                 <?php endif; ?>
-
             </p>
         </div>
     </div>

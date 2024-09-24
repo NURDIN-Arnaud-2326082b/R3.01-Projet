@@ -3,7 +3,6 @@
 namespace TenRac\models;
 
 
-
 class GestionTenracModel
 {
     public function __construct(private DbConnect $connect){}
