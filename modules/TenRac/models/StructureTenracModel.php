@@ -14,41 +14,41 @@ class StructureTenracModel{
      * @version 1.0
      * @params L'id du club duquel il découle, le nom du club et l'adresse.
      */
-    public function addStructure($Id_Pere, $Nom_Club, $Adresse)
+    public function addStructure(int $Id_Pere, string $Nom_Club, string $Adresse)
     {
-        $sql = 'INSERT INTO Ordre_et_club(Id_Pere, Nom_club, Adresse) VALUES (?, ?, ?)';
+        $sql = "INSERT INTO Ordre_et_club(Id_Pere, Nom_club, Adresse) VALUES (?, ?, ?)";
         $stmt = $this->connect->prepare($sql);
-        $stmt->bind_param("iss", $Id_Pere, $Nom_Club, $Adresse);
+        $stmt->bind_param('iss', $Id_Pere, $Nom_Club, $Adresse);
         if($stmt->execute()){
-            echo "Ajout réussi";
+            echo 'Ajout réussi';
         }else{
-            echo "Erreur d'ajout" . $stmt->error;
+            echo 'Erreur d\'ajout' . $stmt->error;
         }
         $stmt->close();
     }
 
-    public function deleteStructure($Id_club)
+    public function deleteStructure(int $Id_club)
     {
-        $sql = 'DELETE FROM Ordre_et_club WHERE Id_club = ?';
+        $sql = "DELETE FROM Ordre_et_club WHERE Id_club = ?";
         $stmt = $this->connect->prepare($sql);
-        $stmt->bind_param("i", $Id_club);
+        $stmt->bind_param('i', $Id_club);
         if($stmt->execute()){
-            echo "Suppresion réussie";
+            echo 'Suppresion réussie';
         }else{
-            echo "Erreur de suppresion" . $stmt->error;
+            echo 'Erreur de suppresion' . $stmt->error;
         }
         $stmt->close();
     }
 
-    public function updateStructure($Id_Club, $Id_Pere, $Nom_Club, $Adresse)
+    public function updateStructure(int $Id_Club, int $Id_Pere, string $Nom_Club, string $Adresse)
     {
-        $sql = 'UPDATE Ordre_et_club SET Id_pere = ?, Nom_club = ?, Adresse = ? WHERE Id_club = ?';
+        $sql = "UPDATE Ordre_et_club SET Id_pere = ?, Nom_club = ?, Adresse = ? WHERE Id_club = ?";
         $stmt = $this->connect->prepare($sql);
-        $stmt->bind_param("issi", $Id_Pere, $Nom_Club, $Adresse, $Id_Club);
+        $stmt->bind_param('issi', $Id_Pere, $Nom_Club, $Adresse, $Id_Club);
         if($stmt->execute()){
-            echo "Modification réussie";
+            echo 'Modification réussie';
         }else{
-            echo "Erreur de modification" . $stmt->error;
+            echo 'Erreur de modification' . $stmt->error;
         }
         $stmt->close();
     }
