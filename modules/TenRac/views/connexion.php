@@ -18,7 +18,6 @@
 //$userController->login();
 //?>
 
-<body>
 <form method="post" action="/connexion">
     <h1>Se connecter</h1>
     <label for="email">Adresse e-mail</label>
@@ -31,7 +30,3 @@
 
     <a href="motDePasseOublier.php/">Mot de passe oublié</a>
 </form>
-
-<?php
-//footer_page();
-?>

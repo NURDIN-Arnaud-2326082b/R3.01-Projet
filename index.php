@@ -20,7 +20,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case '/repas':
             require __DIR__ . '/modules/TenRac/views/repas.php';
             break;
-        case '/plat':
+        case 'plat':
             $platpage = new \TenRac\controllers\PlatController();
             $platpage::affichePage();
             break;

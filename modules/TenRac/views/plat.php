@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="UTF-8">
-    <link rel="icon" href="../../../img/logo_tenrac.jpg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tenrac</title>
-</head>
-<body>
-
 <div id="overlay"></div>
 <div class="slider">
     <img  class="slider-background" src="../../../img/tenders_raclette.webp" >
