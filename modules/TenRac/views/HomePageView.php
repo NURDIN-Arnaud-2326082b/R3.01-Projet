@@ -13,7 +13,7 @@ class HomePageView extends AbstractView
 
     function css(): string
     {
-        return '../../../style.css';
+        return 'style.css';
     }
 
     function pageTitle(): string

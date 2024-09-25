@@ -17,6 +17,7 @@ class HeaderView
     // permet de récupérer le contenu du fichier header.html
     function afficher(): void
     {
+        var_dump($this->css);
 
         $fd = fopen(__DIR__ . '/../Fragments/Header/header.html', 'r');
         $headerHtml = fread($fd, filesize(__DIR__ . '/../Fragments/Header/header.html'));
