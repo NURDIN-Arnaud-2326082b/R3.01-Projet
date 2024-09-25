@@ -5,13 +5,11 @@
             <p>Le meilleur site du monde</p>
         </div>
     </div>
-
     <div  id="about" class="section">
         <div class="boxed">
             <div class="flex toColumn mCenter">
                 <div  class="w40 wm100">
                     <h2>Venez rejoindre la communauté des tenracs !</h2>
-
                 </div>
                 <div class="w60 wm100">
                     <p>aloalo</p>

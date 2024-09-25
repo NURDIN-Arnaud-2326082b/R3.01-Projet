@@ -14,8 +14,6 @@ abstract class AbstractView
     {
         $headerview = new HeaderView($this->pageTitle(), $this->css(),true);
         $headerview->afficher();
-
-
     }
 
     private function footer(): void
