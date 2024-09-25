@@ -18,8 +18,6 @@ if ($request_uri == '' || $request_uri == 'index.php') {
     $homePage::affichePage();
 } else {    // Autres routes
     switch ($request_uri) {
-
-
         case 'gestionTenrac':
             $gestionTenrac = new GestionTenracController();
             $gestionTenrac::afficherPage();
@@ -38,6 +36,9 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $structure = new StructureController();
             $structure::affichePage();
             break;
+        case 'structureTenrac':
+            $structureTenrac = new StructureTenracController();
+            $structureTenrac::affichePage();
         case 'structureTenrac':
             $structureTenrac = new StructureTenracController();
             $structureTenrac::affichePage();
@@ -64,6 +65,13 @@ if ($request_uri == '' || $request_uri == 'index.php') {
                 $connexionPage::connecter($_POST);
             }
             $connexionPage::affichePage();
+            break;
+        case 'deconnexion':
+            $deconnexionPage = new ConnexionController();
+            $deconnexionPage::deconnecter();
+
+            $homePage = new HomePageController();
+            $homePage::affichePage();
             break;
         case 'home':
             $homePage = new HomePageController();
