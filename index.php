@@ -8,7 +8,6 @@ use TenRac\controllers\HomePageController;
 use TenRac\controllers\PlatController;
 use TenRac\controllers\StructureController;
 use TenRac\controllers\StructureTenracController;
-use TenRac\controllers\RepasController;
 
 
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
@@ -21,7 +20,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
     switch ($request_uri) {
         case 'gestionTenrac':
             $gestionTenrac = new GestionTenracController();
-            $gestionTenrac::affichePage();
+            $gestionTenrac::afficherPage();
             break;
 
         case 'ajout-tenrac':
@@ -40,18 +39,15 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'structureTenrac':
             $structureTenrac = new StructureTenracController();
             $structureTenrac::affichePage();
-
+            break;
         case 'repas':
             $repas = new RepasController();
-            $repas::affichePage();
+            require __DIR__ . '/modules/TenRac/views/repas.php';
             break;
-
         case 'repasTenrac':
-            echo 'Repas chez les tenracs';
-            $repas = new RepasController();
-            $repas::affichePage();
+            $repasTenrac = new RepasController();
+            require __DIR__ . '/modules/TenRac/views/repasTenrac.php';
             break;
-
         case 'plat':
             $platpage = new PlatController();
             $platpage::affichePage();
@@ -60,7 +56,6 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $platTenrac = new PlatController();
             $platTenrac::affichePage();
             break;
-
         case 'connexion':
             $connexionPage = new ConnexionController();
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
