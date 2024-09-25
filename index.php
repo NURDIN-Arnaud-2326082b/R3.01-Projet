@@ -39,9 +39,6 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'structureTenrac':
             $structureTenrac = new StructureTenracController();
             $structureTenrac::affichePage();
-        case 'structureTenrac':
-            $structureTenrac = new StructureTenracController();
-            $structureTenrac::affichePage();
             break;
         case 'repas':
             $repas = new RepasController();
