@@ -13,7 +13,8 @@ class GestionTenracModel
 
     }
 
-    public function ajouterTenrac($id, $Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club) {
+    public function ajouterTenrac($id, $Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club): void
+    {
         $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO Tenrac (id, Courriel, Code_personnel, Nom, Num_tel, Adresse, Grade, Rang, Titre, Dignite, Id_club) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -31,7 +32,8 @@ class GestionTenracModel
 
 
 
-    public function supprimerTenrac($Courriel) {
+    public function supprimerTenrac($Courriel): void
+    {
         $sql = "DELETE FROM Tenrac WHERE  Courriel = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt -> bind_param('s', $Courriel);
@@ -64,7 +66,4 @@ class GestionTenracModel
 
         $stmt->close();
     }
-
-
-
 }
