@@ -4,6 +4,6 @@ session_unset();
 session_destroy();
 
 
-header("Location: homepage.php");
+header("Location: connexion.php");
 exit();
 ?>

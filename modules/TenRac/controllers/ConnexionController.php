@@ -35,5 +35,8 @@ class ConnexionController
     {
         $connexionModel = new ConnexionModel(new DbConnect());
         $connexionModel->logout();
+
+        header("Location: /connexion");
+        exit();
     }
 }

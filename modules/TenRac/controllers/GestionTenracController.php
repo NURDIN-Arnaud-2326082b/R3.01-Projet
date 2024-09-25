@@ -19,7 +19,7 @@ class GestionTenracController
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $newTenrac = [
-                'Id' => $_POST['Id'],
+               // 'Id' => $_POST['Id'],
                 'Courriel' => $_POST['Courriel'],
                 'Code_personnel' => $_POST['Code_personnel'],
                 'Nom' => $_POST['Nom'],
