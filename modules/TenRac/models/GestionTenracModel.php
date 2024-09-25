@@ -1,11 +1,17 @@
 <?php
 
+namespace TenRac\views;
+namespace TenRac\controllers;
 namespace TenRac\models;
+use TenRac\models\DbConnect;
 
 
 class GestionTenracModel
 {
-    public function __construct(private DbConnect $connect){}
+    public function __construct(private DbConnect $connect)
+    {
+
+    }
 
     public function ajouterTenrac($id, $Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club) {
         $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
@@ -30,9 +36,9 @@ class GestionTenracModel
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt -> bind_param('s', $Courriel);
         if ($stmt->execute()) {
-            echo 'Ajout réussi';
+            echo 'Suppression réussi';
         } else {
-            echo "Erreur lors de l'ajout: " . $stmt->error;
+            echo "Erreur lors de la suppression: " . $stmt->error;
         }
     }
 

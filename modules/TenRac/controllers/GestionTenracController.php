@@ -32,8 +32,8 @@ class GestionTenracController
                 'Id_club' => $_POST['Id_club']
             ];
 
-            $tenracModel = new GestionTenracModel();
-            $this->tenracModel->ajouterTenrac(
+            $tenracModel = new GestionTenracModel(new DbConnect());
+            $tenracModel->ajouterTenrac(
                 $newTenrac['id'],
                 $newTenrac['Courriel'],
                 $newTenrac['Code_personnel'],
@@ -57,9 +57,9 @@ class GestionTenracController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tenracSuppr =  $_POST['Courriel'];
 
-            $tenracModel = new GestionTenracModel();
-            if ($this->tenracModel){
-                $this->tenracModel->supprimerTenrac($tenracSuppr);
+            $tenracModel = new GestionTenracModel(new DbConnect());
+            if ($tenracModel){
+                $tenracModel->supprimerTenrac($tenracSuppr);
                 header('Location: /index.php');
                 exit();
             } else {
@@ -70,8 +70,9 @@ class GestionTenracController
 
     public function modifierTenrac($newTenrac): void
     {
-        if ($this->tenracModel){
-            $this->tenracModel->modifierTenrac(
+        $tenracModel = new GestionTenracModel(new DbConnect());
+        if ($tenracModel){
+            $tenracModel->modifierTenrac(
                 $newTenrac['id'],
                 $newTenrac['Courriel'],
                 $newTenrac['Code_personnel'],
