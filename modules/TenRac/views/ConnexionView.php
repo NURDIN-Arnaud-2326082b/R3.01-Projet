@@ -12,7 +12,7 @@ class ConnexionView extends AbstractView
 
     function css(): string
     {
-        return '/connexion.css';
+        return '../assets/css/connexion.css';
     }
 
     function pageTitle(): string

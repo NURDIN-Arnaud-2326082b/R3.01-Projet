@@ -9,7 +9,7 @@ use TenRac\views\GestionTenracView;
 class GestionTenracController
 {
 
-    public static function afficherPage(){
+    public static function afficherPage(): void{
         $view = new GestionTenracView();
         $view->afficher();
     }

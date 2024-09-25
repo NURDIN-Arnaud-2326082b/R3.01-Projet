@@ -3,6 +3,7 @@ session_start();
 include __DIR__ . '/Autoloader.php';
 
 use TenRac\controllers\ConnexionController;
+use TenRac\controllers\GestionTenracController;
 use TenRac\controllers\HomePageController;
 use TenRac\controllers\PlatController;
 use TenRac\controllers\StructureController;
@@ -15,9 +16,24 @@ if ($request_uri == '' || $request_uri == 'index.php') {
 
     $homePage = new HomePageController();
     $homePage::affichePage();
-} else {
-    // Autres routes
+} else {    // Autres routes
     switch ($request_uri) {
+
+
+        case 'gestionTenrac':
+            $gestionTenrac = new GestionTenracController();
+            $gestionTenrac::afficherPage();
+            break;
+
+        case 'ajout-tenrac':
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->ajouterTenrac();
+            break;
+        case 'suppression-tenrac':
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->supprimerTenrac();
+            break;
+
         case 'structure':
             $structure = new StructureController();
             $structure::affichePage();
@@ -27,9 +43,11 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $structureTenrac::affichePage();
             break;
         case 'repas':
+            $repas = new RepasController();
             require __DIR__ . '/modules/TenRac/views/repas.php';
             break;
         case 'repasTenrac':
+            $repasTenrac = new RepasController();
             require __DIR__ . '/modules/TenRac/views/repasTenrac.php';
             break;
         case 'plat':
