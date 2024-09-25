@@ -38,6 +38,11 @@ class RepasModel {
         return $resultat ? $resultat['Id_Lieu'] : null;
     }
 
+    public function Verifdate() :bool
+    {
+        // todo
+    }
+
 
 }
 ?>

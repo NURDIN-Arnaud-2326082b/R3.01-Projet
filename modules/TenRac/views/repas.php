@@ -27,7 +27,7 @@ $repas = new \TenRac\models\RepasModel(new DbConnect());
         </h2>
         <p>
             <img class="imgrdv" src="../../../img/rdv.png" height="200px" width="200px"  alt="Logo HubSpot">
-            <?php if ($repas->PresenceCouD() === True): ?>
+            <?php if ($repas->PresenceCouD() === True && $repas->Verifdate()): ?>
                 <span>lieu de présence : <?php echo  $Lieu_rencontre; ?></span>
             <?php else: ?>
                 <span>lieu de présence : Aucun</span>
