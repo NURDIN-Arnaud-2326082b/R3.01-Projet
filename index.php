@@ -8,6 +8,7 @@ use TenRac\controllers\HomePageController;
 use TenRac\controllers\PlatController;
 use TenRac\controllers\StructureController;
 use TenRac\controllers\StructureTenracController;
+use TenRac\controllers\RepasController;
 
 
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
@@ -79,4 +80,4 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             break;
     }
 }
-?>
+
