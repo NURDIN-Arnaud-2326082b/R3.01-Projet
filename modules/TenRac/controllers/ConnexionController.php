@@ -20,8 +20,16 @@ class ConnexionController
         $password = htmlspecialchars($post["password"]);
 
         $connexionModel = new ConnexionModel(new DbConnect());
-        $connexionModel->login($courriel, $password);
+
+        if ($connexionModel->login($courriel, $password)) {
+            header("Location: /home");
+            exit();
+        } else {
+            header("Location: /connexion?error=invalid");
+            exit();
+        }
     }
+
 
     public static function deconnecter(): void
     {

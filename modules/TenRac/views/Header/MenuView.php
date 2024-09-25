@@ -5,7 +5,6 @@ namespace TenRac\views\Header;
 class MenuView
 {
 
-
     public function __construct(private bool $loggedin)
     {
     }

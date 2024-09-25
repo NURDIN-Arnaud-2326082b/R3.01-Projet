@@ -1,6 +1,6 @@
 <?php
-
 namespace TenRac\views;
+session_start();
 
 class MotdePasseOublieView
 {

@@ -1,7 +1,5 @@
 <?php
-
 namespace TenRac\views;
-
 
 class StructureTenracView extends AbstractView
 {

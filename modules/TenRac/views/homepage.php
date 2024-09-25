@@ -1,5 +1,5 @@
     <div class="slider">
-        <img  class="slider-background" src="../../../img/raclette.webp" >
+        <img  class="slider-background" src="../../../img/wallpaperTenrac.jpg"  alt="raclette">
         <div class="slider-content">
             <h1>Tenrac</h1>
             <p>Le meilleur site du monde</p>
@@ -8,16 +8,12 @@
     <div  id="about" class="section">
         <div class="boxed">
             <div class="flex toColumn mCenter">
-                <div  class="w40 wm100">
+                <div  class="boxed text-center">
                     <h2>Venez rejoindre la communauté des tenracs !</h2>
                 </div>
-                <div class="w60 wm100">
-                    <p>aloalo</p>
-                </div>
-            </div>
+           </div>
         </div>
     </div>
-
     <div id="skills" class="section dark">
         <div class="boxed text-center">
             <h2>Menus de la semaine</h2>

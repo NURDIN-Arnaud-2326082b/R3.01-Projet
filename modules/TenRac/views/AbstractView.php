@@ -1,7 +1,6 @@
 <?php
 
 namespace TenRac\views;
-
 use TenRac\views\Header\HeaderView;
 
 abstract class AbstractView

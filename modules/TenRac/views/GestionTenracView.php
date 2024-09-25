@@ -1,6 +1,7 @@
 <?php
-
 namespace TenRac\views;
+session_start();
+
 class GestionTenracView extends AbstractView
 {
 
@@ -11,7 +12,7 @@ class GestionTenracView extends AbstractView
 
     function css(): string
     {
-        return 'style.css';
+        return 'connexion.css';
     }
 
     function pageTitle(): string

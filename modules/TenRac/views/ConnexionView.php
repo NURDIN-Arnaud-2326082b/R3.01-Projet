@@ -1,5 +1,4 @@
 <?php
-
 namespace TenRac\views;
 
 class ConnexionView extends AbstractView
