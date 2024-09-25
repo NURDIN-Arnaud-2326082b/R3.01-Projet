@@ -1,24 +1,8 @@
 <?php
-$page_title = "Repas";
-$css_files = "Repas.css";
 
-global $userController, $conn;
-require_once __DIR__ . '/../controllers/header.php';
-require_once __DIR__ . '/../controllers/footer.php';
-require_once '../models/db_connect.php';
-require_once '../controllers/TenracController.php';
-require_once '../models/RepasModel.php';
-require_once '../controllers/RepasController.php';
-header_page($page_title, $css_files);
+use TenRac\models\DbConnect;
 
-$model = new RepasModel($conn);
-$date_base = $model->getDate(1);
-$Lieu_rencontre = $model->getLieu(1);
-$presenceCouD = $model->PresenceCouD();
-
-
-$controller = new RepasController();
-$dateCorrespond = $controller->Verifdate($date_base);
+$repas = new \TenRac\models\RepasModel(new DbConnect());
 ?>
 <body>
 <h1> Repas</h1>
@@ -28,7 +12,7 @@ $dateCorrespond = $controller->Verifdate($date_base);
     </h2>
     <p>
         <img class="imgrdv" src="../../../img/Cavalier.png" height="300px" width="300px" alt="Cavalier">
-        <?php if ($presenceCouD === True): ?>
+        <?php if ($repas->PresenceCouD() === True): ?>
             <span>Cavalier présent / Dame présente</span>
         <?php else: ?>
             <span>Aucun cavalier ou dame présent(e)</span>
@@ -43,7 +27,7 @@ $dateCorrespond = $controller->Verifdate($date_base);
         </h2>
         <p>
             <img class="imgrdv" src="../../../img/rdv.png" height="200px" width="200px"  alt="Logo HubSpot">
-            <?php if ($presenceCouD === True): ?>
+            <?php if ($repas->PresenceCouD() === True): ?>
                 <span>lieu de présence : <?php echo  $Lieu_rencontre; ?></span>
             <?php else: ?>
                 <span>lieu de présence : Aucun</span>
@@ -57,7 +41,7 @@ $dateCorrespond = $controller->Verifdate($date_base);
         <div>
             <p>
                 <img class="imgrdv" src="../../../img/date.png" height="200px" width="200px"  alt="Logo HubSpot">
-                <?php if ($dateCorrespond): ?>
+                <?php if ($repas->getDate()): ?>
                     <span>Date de présence : <?php echo $date_base; ?></span>
                 <?php else: ?>
                     <span>Date de présence : Aucune</span>

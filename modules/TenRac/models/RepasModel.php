@@ -1,12 +1,12 @@
 <?php
-require 'db_connect.php';
+namespace TenRac\views;
+namespace TenRac\controllers;
+namespace TenRac\models;
 
 class RepasModel {
     protected $conn;
 
-    public function __construct($conn) {
-        $this->conn = $conn;
-    }
+    public function __construct(private DbConnect $connect){}
 
     public function PresenceCouD(): bool {
         $rep = $this->conn->prepare("SELECT * FROM Repas WHERE Gerant");
