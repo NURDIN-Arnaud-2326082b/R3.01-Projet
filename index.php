@@ -22,14 +22,14 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $structure = new StructureController();
             $structure::affichePage();
             break;
-        case '/structureTenrac':
+        case 'structureTenrac':
             $structureTenrac = new StructureTenracController();
             $structureTenrac::affichePage();
             break;
-        case '/repas':
+        case 'repas':
             require __DIR__ . '/modules/TenRac/views/repas.php';
             break;
-        case '/repasTenrac':
+        case 'repasTenrac':
             require __DIR__ . '/modules/TenRac/views/repasTenrac.php';
             break;
         case 'plat':
