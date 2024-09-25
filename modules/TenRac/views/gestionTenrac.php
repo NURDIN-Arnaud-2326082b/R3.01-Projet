@@ -1,6 +1,4 @@
 <form action="/ajout-tenrac" method="POST">
-    <label for="Id">Id : </label>
-    <input type="number" name="Id" required><br>
     <label for="Courriel">Email : </label>
     <input type="email" name="Courriel" required><br>
     <label for="Code_personnel"> Mot de passe : </label>
@@ -38,27 +36,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
 <!--<form action="" method="POST">-->
 <!--    <input type="hidden" name="action" value="modification">-->
 <!--    <input type="hidden" name="id" value="--><?php //echo $tenrac['id']; ?><!--">-->

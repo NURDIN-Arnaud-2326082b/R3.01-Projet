@@ -19,7 +19,6 @@ class GestionTenracController
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $newTenrac = [
-                'Id' => $_POST['Id'],
                 'Courriel' => $_POST['Courriel'],
                 'Code_personnel' => $_POST['Code_personnel'],
                 'Nom' => $_POST['Nom'],
@@ -34,7 +33,6 @@ class GestionTenracController
 
             $tenracModel = new GestionTenracModel(new DbConnect());
             $tenracModel->ajouterTenrac(
-                $newTenrac['id'],
                 $newTenrac['Courriel'],
                 $newTenrac['Code_personnel'],
                 $newTenrac['Nom'],

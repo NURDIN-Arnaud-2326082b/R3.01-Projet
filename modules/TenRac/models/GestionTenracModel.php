@@ -13,13 +13,13 @@ class GestionTenracModel
 
     }
 
-    public function ajouterTenrac($id, $Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club): void
+    public function ajouterTenrac( $Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club): void
     {
         $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO Tenrac (id, Courriel, Code_personnel, Nom, Num_tel, Adresse, Grade, Rang, Titre, Dignite, Id_club) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO Tenrac ( Courriel, Code_personnel, Nom, Num_tel, Adresse, Grade, Rang, Titre, Dignite, Id_club) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param("sssssssssss",$id, $Courriel, $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club);
+        $stmt->bind_param("ssssssssss", $Courriel, $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club);
 
         if ($stmt->execute()) {
             echo "Ajout réussi";
