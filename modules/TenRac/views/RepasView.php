@@ -2,9 +2,6 @@
 namespace TenRac\views;
 use TenRac\controllers\RepasController;
 use TenRac\models\RepasModel;
-
-session_start();
-
 class RepasView extends AbstractView
 {
 

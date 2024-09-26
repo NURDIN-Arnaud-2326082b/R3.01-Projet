@@ -18,8 +18,12 @@
         </h2>
         <p>
             <img class="imgrdv" src="../../../img/rdv.png" height="200px" width="200px"  alt="Logo HubSpot">
-                <span>lieu de présence : a coder</span>
-                <span>Date de présence : a coder</span>
+            <span>lieu de présence :<?php
+                global $adresseMessage
+                ?>
+                    <?php echo $adresseMessage; ?>
+                    </span>
+
         </p>
     </div>
     <div class="divi">
@@ -29,8 +33,15 @@
         <div>
             <p>
                 <img class="imgrdv" src="../../../img/date.png" height="200px" width="200px"  alt="Logo HubSpot">
-                    <span>Date de présence : a coder</span>
-                    <span>Date de présence : a coder</span>
+                    <span>Date de présence : <?php
+                            global $dateExists;
+                        if ($dateExists === true) {
+                            echo "Aucune date d'aujourd'hui dans la base de données.";
+                        } else {
+                            echo date("Y/m/d");
+                        }
+                        ?></span>
+
             </p>
         </div>
     </div>

@@ -4,29 +4,57 @@ namespace TenRac\controllers;
 namespace TenRac\models;
 
 class RepasModel {
-    protected $conn;
+    protected $connect;
 
-    public function __construct(private DbConnect $connect){}
+    public function __construct($dbConnection)
+    {
+        $this->connect = $dbConnection->mysqli();
+    }
 
     public function getLieu($id_repas) {
-        $stmt = $this->conn->prepare('SELECT Id_Lieu FROM Repas WHERE Id_repas = ?');
+
+        $sql = "SELECT Lieu.Adresse FROM Repas  
+            JOIN Lieu ON Repas.Id_Lieu = Lieu.Id_Lieu 
+            WHERE Repas.Id_Lieu = ?";
+
+        $stmt = $this->connect->prepare($sql);
         $stmt->bind_param('i', $id_repas);
         $stmt->execute();
-        $resultat = $stmt->get_result()->fetch_assoc();
-
-        return $resultat ? $resultat['Id_Lieu'] : null;
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+        if ($result->num_rows > 0) {
+            return $row['Adresse'];
+        } else {
+            return false;
+        }
     }
 
-    public function Verifdate() :void
+    public function Verifdate() : bool
     {
         $dateJour = date("Y-m-d");
-        $sql = "SELECT * FROM Repas WHERE Dates = ?";
-        $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('d', $dateJour);
+
+        $sql = "SELECT COUNT(*) as count FROM Repas WHERE Dates = ?";
+        $stmt = $this->connect->prepare($sql);
+        if (!$stmt) {
+            echo "Erreur de préparation : " . $this->connect->error;
+            return false;
+        }
+        $stmt->bind_param("s", $dateJour);
         $stmt->execute();
-        echo $stmt;
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+
+
+
+        if ($row['count'] < 0) {
+        return true;
+    } else {
+        return false;
     }
 
+    }
 
 }
 ?>
