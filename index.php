@@ -42,12 +42,11 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             break;
         case 'repas':
             $repas = new RepasController();
-            require __DIR__ . '/modules/TenRac/views/repas.php';
-            break;
+            $repas::affichePage();
         case 'repasTenrac':
             $repasTenrac = new RepasController();
-            require __DIR__ . '/modules/TenRac/views/repasTenrac.php';
-            break;
+            $repasTenrac::affichePage();
+
         case 'plat':
             $platpage = new PlatController();
             $platpage::affichePage();
