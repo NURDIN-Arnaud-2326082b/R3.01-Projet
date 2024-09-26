@@ -8,7 +8,7 @@ use TenRac\controllers\HomePageController;
 use TenRac\controllers\PlatController;
 use TenRac\controllers\StructureController;
 use TenRac\controllers\StructureTenracController;
-
+use TenRac\controllers\RepasController;
 
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
@@ -20,7 +20,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
     switch ($request_uri) {
         case 'gestionTenrac':
             $gestionTenrac = new GestionTenracController();
-            $gestionTenrac::afficherPage();
+            $gestionTenrac::affichePage();
             break;
 
         case 'ajout-tenrac':
@@ -39,23 +39,20 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'structureTenrac':
             $structureTenrac = new StructureTenracController();
             $structureTenrac::affichePage();
-        case 'structureTenrac':
-            $structureTenrac = new StructureTenracController();
-            $structureTenrac::affichePage();
             break;
         case 'repas':
             $repas = new RepasController();
-            require __DIR__ . '/modules/TenRac/views/repas.php';
-            break;
+            $repas::affichePage();
         case 'repasTenrac':
             $repasTenrac = new RepasController();
-            require __DIR__ . '/modules/TenRac/views/repasTenrac.php';
+            $repasTenrac::affichePage();
             break;
+
         case 'plat':
             $platpage = new PlatController();
             $platpage::affichePage();
             break;
-        case '/platTenrac':
+        case 'platTenrac':
             $platTenrac = new PlatController();
             $platTenrac::affichePage();
             break;

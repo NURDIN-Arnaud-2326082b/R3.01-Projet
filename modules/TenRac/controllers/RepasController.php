@@ -1,9 +1,23 @@
 <?php
-require_once '../models/db_connect.php';
-require_once '../models/RepasModel.php';
-#[AllowDynamicProperties] class RepasController{
-    public function Verifdate($date_base) {
-        $date_aujourdhui = date("Y-m-d");
-        return $date_aujourdhui === $date_base;
+
+namespace TenRac\controllers;
+
+use TenRac\models\DbConnect;
+use TenRac\models\RepasModel;
+use TenRac\views\RepasView;
+
+class RepasController{
+
+    public static function affichePage(): void{
+        $view = new RepasView();
+        $view->afficher();
     }
+
+    public static function Verifdate(){
+        $model = new RepasModel(new DbConnect());
+        $model->Verifdate();
+
+    }
+
+
 }?>
