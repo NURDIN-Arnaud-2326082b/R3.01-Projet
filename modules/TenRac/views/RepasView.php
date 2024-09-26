@@ -1,13 +1,15 @@
 <?php
 namespace TenRac\views;
-session_start();
-
+use TenRac\controllers\RepasController;
+use TenRac\models\RepasModel;
 class RepasView extends AbstractView
 {
 
     protected function body(): void
     {
         include __DIR__ . '/repas.php';
+        $controller = new RepasController();
+        $controller::Verifdate();
     }
 
     function css(): string

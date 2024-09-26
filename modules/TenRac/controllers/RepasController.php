@@ -13,5 +13,11 @@ class RepasController{
         $view->afficher();
     }
 
+    public static function Verifdate(){
+        $model = new RepasModel(new DbConnect());
+        $model->Verifdate();
+
+    }
+
 
 }?>

@@ -5,18 +5,19 @@ $css_files = "Repas.css";
 global $userController, $conn;
 require_once __DIR__ . '/../controllers/header.php';
 require_once __DIR__ . '/../controllers/footer.php';
-require_once '../models/db_connect.php';
+require_once '../models/DbConnect.php';
 require_once '../controllers/TenracController.php';
 require_once '../models/RepasModel.php';
 require_once '../controllers/RepasController.php';
 header_page($page_title, $css_files);
 
-$model = new RepasModel($conn);
+$model = new \TenRac\models\RepasModel($conn);
 $date_base = $model->getDate(1);
-$Lieu_rencontre = $model->getLieu(1);
+$Lieu_rencontre = $model->getLieu();
 $presenceCouD = $model->PresenceCouD();
 
+$dbConnection = new \TenRac\models\DbConnect();
+$repasModel = new \TenRac\models\RepasModel($dbConnection->mysqli());
 
-$controller = new RepasController();
-$dateCorrespond = $controller->Verifdate($date_base);
+$dateExists = $repasModel->Verifdate();
 ?>

@@ -7,9 +7,11 @@
     </div>
 </div>
 
-<div  id="about" class="section">
-    <div class="boxed">
-        <div class="flex toColumn mCenter">
+
+<div id="Plats" class="section dark">
+    <div class="boxed text-center">
+        <h2>Nos plats</h2>
+        <div class="listeverticale" >
             <?php
 
             use TenRac\models\DbConnect;
@@ -18,33 +20,9 @@
             $platmodel = new PlatModel(new DbConnect());
             $plats = $platmodel->creerListe();
             foreach ($plats as $plat) {
-                echo implode(", ", $plat) . "<br>";
+                echo '<ul id="listeplat"><p>' . implode(", ", $plat) . "</p></ul>";
             }
             ?>
-        </div>
-    </div>
-</div>
-
-<div id="Plats" class="section dark">
-    <div class="boxed text-center">
-        <h2>Nos plats</h2>
-        <div class="flex toColumn gap20">
-            <div class="w25 wm100 Plats">
-                <img src="../../../img/Tenders.png">
-                <h3>Tenders</h3>
-            </div>
-            <div class="w25 wm100 Plats">
-                <img src="../../../img/Chips.png">
-                <h3>Chips</h3>
-            </div>
-            <div class="w25 wm100 Plats">
-                <img src="../../../img/Hamburger.png">
-                <h3>Hamburgers</h3>
-            </div>
-            <div class="w25 wm100 Plats">
-                <img src="../../../img/Tacos.png">
-                <h3>Tacos</h3>
-            </div>
         </div>
     </div>
 </div>
