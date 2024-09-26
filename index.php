@@ -52,7 +52,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $platpage = new PlatController();
             $platpage::affichePage();
             break;
-        case '/platTenrac':
+        case 'platTenrac':
             $platTenrac = new PlatController();
             $platTenrac::affichePage();
             break;
