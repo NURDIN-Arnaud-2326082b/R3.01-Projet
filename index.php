@@ -46,6 +46,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'repasTenrac':
             $repasTenrac = new RepasController();
             $repasTenrac::affichePage();
+            break;
 
         case 'plat':
             $platpage = new PlatController();
