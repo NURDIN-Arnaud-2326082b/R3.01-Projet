@@ -18,9 +18,11 @@ class StructureTenracModel{
      */
     public function addStructure($Id_Pere, $Nom_Club, $Adresse): void
     {
+        $idPere = $this->connect->mysqli()->prepare($Id_Pere);
+
         $sql = "INSERT INTO Ordre_et_club(Id_pere, Nom_club, Adresse) VALUES (?, ?, ?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('iss', $Id_Pere, $Nom_Club, $Adresse);
+        $stmt->bind_param('iss', $idPere, $Nom_Club, $Adresse);
         if($stmt->execute()){
             echo 'Ajout réussi';
         }else{
@@ -44,9 +46,12 @@ class StructureTenracModel{
 
     public function updateStructure($Id_Club, $Id_Pere, $Nom_Club, $Adresse): void
     {
+        $idPere = $this->connect->mysqli()->query($Id_Pere);
+        $idClub = $this->connect->mysqli()->query($Id_Club);
+
         $sql = "UPDATE Ordre_et_club SET Id_pere = ?, Nom_club = ?, Adresse = ? WHERE Id_club = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('issi', $Id_Pere, $Nom_Club, $Adresse, $Id_Club);
+        $stmt->bind_param('issi', $idPere, $Nom_Club, $Adresse, $idClub);
         if($stmt->execute()){
             echo 'Modification réussie';
         }else{

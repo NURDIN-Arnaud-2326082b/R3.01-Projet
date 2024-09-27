@@ -35,33 +35,33 @@ class StructureTenracController
         if($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'delete'){
             $structureDeleted = $_POST['id'];
 
-            $structureModel = new StructureTenracModel(new DbConnect());
+            $ordre = 'SELECT id FROM Ordre_et_club WHERE id = 1';
 
-            $structureModel->deleteStructure($structureDeleted);
-            header('Location :/index.php');
-            exit();
+            if($structureDeleted === $ordre){
+                echo 'L\'ordre ne peut pas être supprimé.';
+            }else{
+                $structureModel = new StructureTenracModel(new DbConnect());
+
+                $structureModel->deleteStructure($structureDeleted);
+                header('Location :/index.php');
+                exit();
+            }
         }
     }
 
     public function updateStructure(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
-            $nomPere = $_POST['nomPere'];
             $nomClub = $_POST['nom2'];
-            $adresse = $_POST['adr2'];
+            $adresse = $_POST['adr'];
 
-            $idPere = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = '$nomPere'";
+            $idPere = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = " .$_POST['nomPere'];
 
-            $idClub = "SELECT Id_club FROM Ordre_et_club WHERE Id_pere = '$idPere' AND Nom_club = '$nomClub'
-                        AND Adresse = '$adresse'";
+            $idClub = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = " .$_POST['nom'];
 
             $structureModel = new StructureTenracModel(new DbConnect());
-            if($structureModel){
-                $structureModel->updateStructure($idClub, $idPere, $nomClub, $adresse);
-                header('Location :/index.php');
-                exit();
-            } else {
-                echo "Modification impossible.";
-            }
+            $structureModel->updateStructure($idClub, $idPere, $nomClub, $adresse);
+            header('Location :/index.php');
+            exit();
         }
     }
 }
