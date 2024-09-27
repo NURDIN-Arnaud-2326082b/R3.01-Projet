@@ -18,8 +18,9 @@
          <form action="/update-structure" method="POST">
             <h3>Modifier un Club</h3>
             <input type="hidden" name="action" value="update">
+            <p>Nom actuel :</p><input type="text" name="nom">
             <p>Nouveau nom :</p><input type="text" name="nom2">
-            <p>Nouvelle adresse :</p><input type="text" name="adr2">
+            <p>Nouvelle adresse :</p><input type="text" name="adr">
             <p>Nouveau club père :</p><input type="text" name="nomPere">
             <button type="submit">P'tit coup de neuf !</button>
         </form>
@@ -28,7 +29,6 @@
             <h3>Supprimer un Club</h3>
             <input type="hidden" name="action" value="delete">
             <p>Identifiant du Club : </p> <input type="text" name="id"><br>
-            <!--<p>Adresse : </p> <input type="text" name="adr2"><br>-->
             <button type="submit">Et ça dégage !</button>
         </form>
     </div>

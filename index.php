@@ -33,12 +33,33 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $tenrac ->supprimerTenrac();
             break;
 
+        case 'modification-tenrac':
+
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->modifierTenrac();
+            break;
+
         case 'structure':
             $structure = new StructureController();
             $structure::affichePage();
             break;
         case 'structureTenrac':
             $structureTenrac = new StructureTenracController();
+            $structureTenrac::affichePage();
+            break;
+        case 'add-structure':
+            $structureTenrac = new \TenRac\controllers\StructureTenracController();
+            $structureTenrac ->addStructure();
+            $structureTenrac::affichePage();
+            break;
+        case 'delete-structure':
+            $structureTenrac = new \TenRac\controllers\StructureTenracController();
+            $structureTenrac ->deleteStructure();
+            $structureTenrac::affichePage();
+            break;
+        case 'update-structure':
+            $structureTenrac = new \TenRac\controllers\StructureTenracController();
+            $structureTenrac ->updateStructure();
             $structureTenrac::affichePage();
             break;
         case 'repas':
