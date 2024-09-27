@@ -96,11 +96,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             }
             $motDePasseOubliePage::affichePage();
             break;
-        case 'recherche':
-            $recherchePage = new RechercheController();
-            $recherchePage::lancerRecherche();
-            $recherchePage::affichePage();
-            break;
+
         case 'home':
             $homePage = new HomePageController();
             $homePage::affichePage();

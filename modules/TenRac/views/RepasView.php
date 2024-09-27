@@ -6,20 +6,20 @@ class RepasView extends AbstractView
 {
 
 private bool $dateExists;
-
+private string $idLieu;
     public function __construct(
-        bool $dateExists
+        bool $dateExists,string $idLieu
     )
     {
-
         $this->dateExists=$dateExists;
+        $this->idLieu=$idLieu;
     }
 
     protected function body(): void
     {
-        global $dateExistsbool;
+        global $dateExistsbool,$LieuBool;
         $dateExistsbool=$this->dateExists;
-
+        $LieuBool=$this->idLieu;
         include __DIR__ . '/repas.php';
     }
 

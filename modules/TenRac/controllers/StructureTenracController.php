@@ -8,6 +8,18 @@ use TenRac\views\StructureTenracView;
 class StructureTenracController
 {
 
+    public function genererListe(): void{
+        $structureModel = new StructureTenracModel(new DbConnect());
+        $structures = $structureModel->listeClub();
+        foreach ($structures as $structure) {
+            $name = implode(',', $structure);
+            echo '<div class="descri_club"> <h3>' . $name . "</h3><br>";
+            $adresse = $structureModel->chercheAdresse($name);
+            echo "<p>Adresse : " . $adresse[0]['Adresse'] . "</p>";
+            echo "</p></div>";
+        }
+    }
+
     public static function affichePage(): void
     {
         session_start();

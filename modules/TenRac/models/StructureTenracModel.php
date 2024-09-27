@@ -11,6 +11,41 @@ class StructureTenracModel{
     {
     }
 
+    public function listeClub(){
+        $stmt = $this->connect->mysqli()->query("SELECT Nom_Club FROM Ordre_et_club");
+
+        if(!$stmt){
+            die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
+        }
+
+        $data = [];
+        while ($row = $stmt->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        $stmt->free();
+        return $data;
+    }
+
+    public function chercheAdresse(string $nom){
+        $stmt = $this->connect->mysqli()->prepare("SELECT DISTINCT Adresse FROM Ordre_et_club WHERE Nom_club =?");
+        $stmt->bind_param("s", $nom);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if (!$stmt) {
+            die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
+        }
+
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        $result->free();
+        return $data;
+    }
+
     /*
      * @author Manon VERHILLE
      * @version 1.0
@@ -46,8 +81,8 @@ class StructureTenracModel{
 
     public function updateStructure($Id_Club, $Id_Pere, $Nom_Club, $Adresse): void
     {
-        $idPere = $this->connect->mysqli()->query($Id_Pere);
-        $idClub = $this->connect->mysqli()->query($Id_Club);
+        $idPere = $this->connect->mysqli()->prepare($Id_Pere);
+        $idClub = $this->connect->mysqli()->prepare($Id_Club);
 
         $sql = "UPDATE Ordre_et_club SET Id_pere = ?, Nom_club = ?, Adresse = ? WHERE Id_club = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
