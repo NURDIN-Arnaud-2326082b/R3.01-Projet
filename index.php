@@ -40,6 +40,21 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $structureTenrac = new StructureTenracController();
             $structureTenrac::affichePage();
             break;
+        case 'add-structure':
+            $structureTenrac = new \TenRac\controllers\StructureTenracController();
+            $structureTenrac ->addStructure();
+            $structureTenrac::affichePage();
+            break;
+        case 'delete-structure':
+            $structureTenrac = new \TenRac\controllers\StructureTenracController();
+            $structureTenrac ->deleteStructure();
+            $structureTenrac::affichePage();
+            break;
+        case 'update-structure':
+            $structureTenrac = new \TenRac\controllers\StructureTenracController();
+            $structureTenrac ->updateStructure();
+            $structureTenrac::affichePage();
+            break;
         case 'repas':
             $repas = new RepasController();
             $repas::affichePage();
