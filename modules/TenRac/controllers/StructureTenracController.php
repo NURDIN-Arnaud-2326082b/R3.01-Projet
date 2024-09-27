@@ -15,7 +15,7 @@ class StructureTenracController
             $name = implode(',', $structure);
             echo '<div class="descri_club"> <h3>' . $name . "</h3><br>";
             $adresse = $structureModel->chercheAdresse($name);
-            echo "<p>Adresse : " . $adresse . "</p>";
+            echo "<p>Adresse : " . $adresse[0]['Adresse'] . "</p>";
             echo "</p></div>";
         }
     }
