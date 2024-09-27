@@ -32,6 +32,11 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $tenrac ->supprimerTenrac();
             break;
 
+        case 'modification-tenrac':
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->modifierTenrac();
+            break;
+
         case 'structure':
             $structure = new StructureController();
             $structure::affichePage();
