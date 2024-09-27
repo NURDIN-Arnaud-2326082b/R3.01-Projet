@@ -24,12 +24,17 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             break;
 
         case 'ajout-tenrac':
-            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac = new GestionTenracController();
             $tenrac ->ajouterTenrac();
             break;
         case 'suppression-tenrac':
-            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac = new GestionTenracController();
             $tenrac ->supprimerTenrac();
+            break;
+
+        case 'modifier-tenrac':
+            $tenrac = new GestionTenracController();
+            $tenrac->modifierTenrac();
             break;
 
         case 'structure':
