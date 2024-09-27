@@ -1,34 +1,41 @@
-<form action="/ajout-tenrac" method="POST">
-    <label for="Courriel">Email : </label>
-    <input type="email" name="Courriel" required><br>
-    <label for="Code_personnel"> Mot de passe : </label>
-    <input type="text" property="hash" name="Code_personnel" required><br>
-    <label for="Nom">Nom : </label>
-    <input type="text" name="Nom" required><br>
-    <label for="Num_tel">Numéro tel : </label>
-    <input type="text" name="Num_tel" required><br>
-    <label for="Adresse"> Adresse : </label>
-    <input type="text" name="Adresse" required><br>
-    <label for="Grade"> Grade : </label>
-    <input type="text" name="Grade" required><br>
-    <label for="Rang">Rang : </label>
-    <input type="text" name="Rang" required><br>
-    <label for="Titre">Titre : </label>
-    <input type="text" name="Titre" required><br>
-    <label for="Dignite"> Dignite : </label>
-    <input type="text" name="Dignite" required><br>
-    <label for="Id_club"> Club : </label>
-    <input type="number" name="Id_club" required><br>
-    <button type="submit">Ajouter Tenrac</button>
-</form>
+<div class="GrosB">
+    <div class="B1">
+                <div class="Petitb1" action="/ajout-tenrac" method="POST">
+                    <label for="Courriel">Email : </label>
+                    <input type="email" name="Courriel" required><br>
+                    <label for="password"> Password : </label>
+                    <input type="text" property="hash" name="password" required><br>
+                    <label for="Nom">Nom : </label>
+                    <input type="text" name="Nom" required><br>
+                    <label for="Num_tel">Numéro : </label>
+                    <input type="text" name="Num_tel" required><br>
+                    <label for="Adresse"> Adresse : </label>
+                    <input type="text" name="Adresse" required><br>
+                </div>
+                <div class="Petitb2">
+                    <label for="Grade"> Grade : </label>
+                    <input type="text" name="Grade" required><br>
+                    <label for="Rang">Rang : </label>
+                    <input type="text" name="Rang" required><br>
+                    <label for="Titre">Titre : </label>
+                    <input type="text" name="Titre" required><br>
+                    <label for="Dignite"> Dignite : </label>
+                    <input type="text" name="Dignite" required><br>
+                    <label for="Id_club"> Club : </label>
+                    <input type="number" name="Id_club" required><br>
+                    <button type="submit">Ajouter Tenrac</button>
+                </div>
+    </div>
+    <div class="B2">
+        <form action="/suppression-tenrac" method="POST">
+            <input type="hidden" name="action" value="suppression">
+            <label for="Courriel">Email : </label>
+            <input type="email" name="Courriel" required><br>
+            <button type="submit">Supprimer Tenrac</button>
+        </form>
+    </div>
 
-<form action="/suppression-tenrac" method="POST">
-    <input type="hidden" name="action" value="suppression">
-    <label for="Courriel">Email : </label>
-    <input type="email" name="Courriel" required><br>
-    <button type="submit">Supprimer Tenrac</button>
-</form>
-
+</div>
 
 
 
