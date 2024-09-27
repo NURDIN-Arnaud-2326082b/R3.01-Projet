@@ -26,8 +26,6 @@ class MotDePasseOublierController
         if ($connexionModel->envoyerMail($courriel)) {
             header("Location: /connexion");
             exit();
-        } else {
-            exit();
         }
     }
 }
