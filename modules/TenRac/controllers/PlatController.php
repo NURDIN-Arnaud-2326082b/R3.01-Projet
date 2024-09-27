@@ -35,11 +35,11 @@ class PlatController
             $nomIngredient = $_POST['ingr'];
             $platModel = new PlatModel(new DbConnect());
             $platModel->addPlat($nomPlat,$nomIngredient);
-
         }
     }
 
-    public function recupIngredient(){
+    public function recupIngredient(): void
+    {
         $platmodel = new PlatModel((new DbConnect()));
         $ingredientS = $platmodel->listerIngredient();
         foreach ($ingredientS as $ingr){
