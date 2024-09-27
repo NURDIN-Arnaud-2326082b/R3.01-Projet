@@ -8,5 +8,5 @@
 
     <input type="submit" value="Se connecter">
 
-    <a href="motDePasseOublier.php/">Mot de passe oublié</a>
+    <a href="motDePasseOublier.php">Mot de passe oublié</a>
 </form>
