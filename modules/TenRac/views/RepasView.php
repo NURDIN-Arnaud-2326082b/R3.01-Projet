@@ -5,11 +5,22 @@ use TenRac\models\RepasModel;
 class RepasView extends AbstractView
 {
 
+private bool $dateExists;
+
+    public function __construct(
+        bool $dateExists
+    )
+    {
+
+        $this->dateExists=$dateExists;
+    }
+
     protected function body(): void
     {
+        global $dateExistsbool;
+        $dateExistsbool=$this->dateExists;
+
         include __DIR__ . '/repas.php';
-        $controller = new RepasController();
-        $controller::Verifdate();
     }
 
     function css(): string

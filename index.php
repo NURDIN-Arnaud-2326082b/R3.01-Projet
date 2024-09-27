@@ -43,10 +43,9 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'repas':
             $repas = new RepasController();
             $repas::affichePage();
-        case 'repasTenrac':
-            $repasTenrac = new RepasController();
-            $repasTenrac::affichePage();
+
             break;
+        case 'repasTenrac':
 
         case 'plat':
             $platpage = new PlatController();

@@ -11,13 +11,6 @@ require_once '../models/RepasModel.php';
 require_once '../controllers/RepasController.php';
 header_page($page_title, $css_files);
 
-$model = new \TenRac\models\RepasModel($conn);
-$date_base = $model->getDate(1);
-$Lieu_rencontre = $model->getLieu();
-$presenceCouD = $model->PresenceCouD();
 
-$dbConnection = new \TenRac\models\DbConnect();
-$repasModel = new \TenRac\models\RepasModel($dbConnection->mysqli());
 
-$dateExists = $repasModel->Verifdate();
 ?>
