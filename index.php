@@ -1,15 +1,15 @@
 <?php
-session_start();
 include __DIR__ . '/Autoloader.php';
 
 use TenRac\controllers\ConnexionController;
 use TenRac\controllers\GestionTenracController;
 use TenRac\controllers\HomePageController;
+use TenRac\controllers\MotDePasseOublierController;
 use TenRac\controllers\PlatController;
+use TenRac\controllers\RechercheController;
 use TenRac\controllers\StructureController;
 use TenRac\controllers\StructureTenracController;
 use TenRac\controllers\RepasController;
-
 
 $request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
@@ -21,7 +21,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
     switch ($request_uri) {
         case 'gestionTenrac':
             $gestionTenrac = new GestionTenracController();
-            $gestionTenrac::afficherPage();
+            $gestionTenrac::affichePage();
             break;
 
         case 'ajout-tenrac':
@@ -33,6 +33,12 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $tenrac ->supprimerTenrac();
             break;
 
+        case 'modification-tenrac':
+
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->modifierTenrac();
+            break;
+
         case 'structure':
             $structure = new StructureController();
             $structure::affichePage();
@@ -41,19 +47,32 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $structureTenrac = new StructureTenracController();
             $structureTenrac::affichePage();
             break;
+        case 'add-structure':
+            $structureTenrac = new \TenRac\controllers\StructureTenracController();
+            $structureTenrac ->addStructure();
+            $structureTenrac::affichePage();
+            break;
+        case 'delete-structure':
+            $structureTenrac = new \TenRac\controllers\StructureTenracController();
+            $structureTenrac ->deleteStructure();
+            $structureTenrac::affichePage();
+            break;
+        case 'update-structure':
+            $structureTenrac = new \TenRac\controllers\StructureTenracController();
+            $structureTenrac ->updateStructure();
+            $structureTenrac::affichePage();
+            break;
         case 'repas':
             $repas = new RepasController();
-            require __DIR__ . '/modules/TenRac/views/repas.php';
+            $repas::affichePage();
             break;
         case 'repasTenrac':
-            $repasTenrac = new RepasController();
-            require __DIR__ . '/modules/TenRac/views/repasTenrac.php';
-            break;
+
         case 'plat':
             $platpage = new PlatController();
             $platpage::affichePage();
             break;
-        case '/platTenrac':
+        case 'platTenrac':
             $platTenrac = new PlatController();
             $platTenrac::affichePage();
             break;
@@ -67,9 +86,20 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'deconnexion':
             $deconnexionPage = new ConnexionController();
             $deconnexionPage::deconnecter();
-
             $homePage = new HomePageController();
             $homePage::affichePage();
+            break;
+        case 'motDePasseOublier.php':
+            $motDePasseOubliePage = new MotDePasseOublierController();
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $motDePasseOubliePage::envoyerCourriel($_POST);
+            }
+            $motDePasseOubliePage::affichePage();
+            break;
+        case 'recherche':
+            $recherchePage = new RechercheController();
+            $recherchePage::lancerRecherche();
+            $recherchePage::affichePage();
             break;
         case 'home':
             $homePage = new HomePageController();
@@ -80,4 +110,4 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             break;
     }
 }
-
+?>

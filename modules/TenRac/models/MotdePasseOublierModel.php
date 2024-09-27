@@ -2,13 +2,23 @@
 
 namespace TenRac\models;
 
-class MotdePasseOublier
-{
+use TenRac\models\DbConnect;
 
-    public static function envoyerMail($email, $conn)
+
+class MotdePasseOublierModel
+{
+    private $connect;
+
+    public function __construct(DbConnect $connect)
     {
-        if (isset($_POST['email'])) {
-            $email = $_POST['email'];
+        $this->connect = $connect;
+    }
+
+    public function envoyerMail($email)
+    {
+        if (isset($email)) {
+
+            $conn = $this->connect->mysqli();
 
             $sql = "SELECT * FROM Tenrac WHERE Courriel = ?";
             $stmt = $conn->prepare($sql);
@@ -36,8 +46,8 @@ class MotdePasseOublier
             }
         }
     }
-
 }
+
 
 
 

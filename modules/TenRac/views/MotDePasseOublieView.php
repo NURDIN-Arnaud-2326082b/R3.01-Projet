@@ -1,12 +1,14 @@
 <?php
 namespace TenRac\views;
 
-class GestionTenracView extends AbstractView
+
+class MotDePasseOublieView extends AbstractView
 {
+
 
     protected function body(): void
     {
-        include __DIR__ . '/gestionTenrac.php';
+        include __DIR__ . '/motDePasseOublier.php';
     }
 
     function css(): string
@@ -16,6 +18,6 @@ class GestionTenracView extends AbstractView
 
     function pageTitle(): string
     {
-        return 'Gestion Tenrac';
+        return 'Mot de Passe Oublié';
     }
 }

@@ -1,21 +1,21 @@
 <?php
 namespace TenRac\views;
-session_start();
 
-class MotdePasseOublieView
+class RechercheView extends AbstractView
 {
+
     protected function body(): void
     {
-        include __DIR__ . '/MotDePasseOublier.php';
+        include __DIR__ . '/recherche.php';
     }
 
     function css(): string
     {
-        return 'connexion.css';
+        return 'style.css';
     }
 
     function pageTitle(): string
     {
-        return 'Mot de Passe Oublié';
+        return 'Repas Recherhé';
     }
 }
