@@ -14,7 +14,37 @@ class PlatController
         $view->afficher();
     }
 
-    public static function generer():void{
+    public function generer() : void{
+        $platmodel = new PlatModel(new DbConnect());
+        $plats = $platmodel->creerListe();
+        foreach ($plats as $plat) {
+            $plt = implode(", ", $plat);
+            echo '<div id="listeplat"><p>' . $plt . "<br>";
+            $index = $platmodel->chercheIdPlat($plt);
+            $idx = $index[0]['Id_Plat'];
+            $ingredients = $platmodel->trouverIngredient((int)$idx);
+            foreach ($ingredients as $ingredient){
+                echo implode(",",$ingredient)."<br>";
+            }
+            echo "</p></div>";
+        }
+    }
+    public function addPlat(): void{
+        if ($_SERVER["REQUEST_METHOD"] === "POST" AND $_POST['action'] === 'add') {
+            $nomPlat = $_POST['nom'];
+            $nomIngredient = $_POST['ingr'];
+            $platModel = new PlatModel(new DbConnect());
+            $platModel->addPlat($nomPlat,$nomIngredient);
 
+        }
+    }
+
+    public function recupIngredient(){
+        $platmodel = new PlatModel((new DbConnect()));
+        $ingredientS = $platmodel->listerIngredient();
+        foreach ($ingredientS as $ingr){
+            $tmp = implode(",",$ingr);
+            echo  '<option value="ingredient1">'.$tmp.'</option>';
+        }
     }
 }

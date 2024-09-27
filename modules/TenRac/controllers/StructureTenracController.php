@@ -25,8 +25,6 @@ class StructureTenracController
 
             $structureModel = new StructureTenracModel(new DbConnect());
             $structureModel->addStructure($idPere, $nomClub, $adresse);
-
-            header('Location :/index.php');
             exit();
         }
     }

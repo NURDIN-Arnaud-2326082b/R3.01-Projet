@@ -2,31 +2,19 @@
 
 namespace TenRac\views;
 
-use TenRac\models\DbConnect;
-use TenRac\models\PlatModel;
+use TenRac\controllers\PlatController;
 
 class PlatView extends AbstractView
 {
     protected function body(): void
     {
         include __DIR__ . '/plat.php';
-
-        $platmodel = new PlatModel(new DbConnect());
-        $plats = $platmodel->creerListe();
-        foreach ($plats as $plat) {
-            $plt = implode(", ", $plat);
-            echo '<div id="listeplat"><p>' . $plt . "<br>";
-            $index = $platmodel->cherhceIdPlat($plt);
-            $idx = $index[0]['Id_Plat'];
-            $ingredients = $platmodel->trouverIngredient((int)$idx);
-            $taille = count($ingredients);
-            foreach ($ingredients as $ingredient){
-                echo implode(",",$ingredient)."<br>";
-            }
-            echo "</p></div>";
-        }
-
+        $platcontroller = new PlatController();
+        $platcontroller->generer();
         include __DIR__ . '/platpart2.php';
+        $platcontroller->recupIngredient();
+        include __DIR__ . '/platpart3.php';
+
     }
 
     function css(): string
