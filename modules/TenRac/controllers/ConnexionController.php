@@ -26,7 +26,7 @@ class ConnexionController
             header("Location: /home");
             exit();
         } else {
-            header("Location: /connexion?error=invalid");
+            echo "Mail ou mot de passe incorrect";
             exit();
         }
     }
@@ -37,4 +37,5 @@ class ConnexionController
         $connexionModel = new ConnexionModel(new DbConnect());
         $connexionModel->logout();
     }
+
 }

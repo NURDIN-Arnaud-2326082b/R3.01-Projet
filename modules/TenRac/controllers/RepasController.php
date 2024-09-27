@@ -10,17 +10,13 @@ class RepasController{
 
     public static function affichePage(): void{
         session_start();
-        $view = new RepasView(
-            self::Verifdate(),
-
-        );
+        $view = new RepasView();
         $view->afficher();
     }
 
     public static function Verifdate(){
-        $dbConnection = new DbConnect();
-        $dateExists = new RepasModel( new $dbConnection());
-        return $dateExists->Verifdate();
+        $model = new RepasModel(new DbConnect());
+        $model->Verifdate();
 
     }
 
