@@ -33,6 +33,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             break;
 
         case 'modification-tenrac':
+
             $tenrac = new \TenRac\controllers\GestionTenracController();
             $tenrac ->modifierTenrac();
             break;
