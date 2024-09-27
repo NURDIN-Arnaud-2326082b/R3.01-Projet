@@ -18,7 +18,14 @@
         </h2>
         <p>
             <img class="imgrdv" src="../../../img/rdv.png" height="200px" width="200px"  alt="Logo HubSpot">
-            <span>lieu de présence:
+            <span>lieu de présence: <?php
+                global $LieuBool;
+                if ($LieuBool) {
+                    echo $LieuBool;
+                } else {
+                    echo "Aucune rdv";
+                }
+                ?>
 
 
 
@@ -33,12 +40,12 @@
         <div>
             <p>
                 <img class="imgrdv" src="../../../img/date.png" height="200px" width="200px"  alt="Logo HubSpot">
-                    <span>Date de présence : <?php
+                    <span>Date de présence:    <?php
                             global $dateExistsbool;
                         if ($dateExistsbool === true) {
                             echo date("Y/m/d");
                         } else {
-                            echo "Aucune date.";
+                            echo "Aucune date";
                         }
                         ?></span>
 
