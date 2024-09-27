@@ -7,15 +7,18 @@ use TenRac\models\DbConnect;
 
 class MotdePasseOublierModel
 {
+    private $connect;
 
-    public function __construct(private DbConnect $connect)
+    public function __construct(DbConnect $connect)
     {
+        $this->connect = $connect;
     }
 
-    public static function envoyerMail($email): void
+    public function envoyerMail($email)
     {
-        global $conn;
-        if (isset($_POST['email'])) {
+        if (isset($email)) {
+
+            $conn = $this->connect->mysqli();
 
             $sql = "SELECT * FROM Tenrac WHERE Courriel = ?";
             $stmt = $conn->prepare($sql);
@@ -43,8 +46,8 @@ class MotdePasseOublierModel
             }
         }
     }
-
 }
+
 
 
 

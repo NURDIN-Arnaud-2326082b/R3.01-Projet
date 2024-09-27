@@ -24,10 +24,7 @@ class MotDePasseOublierController
         $connexionModel = new MotdePasseOublierModel(new DbConnect());
 
         if ($connexionModel->envoyerMail($courriel)) {
-            header("Location: /connexion?error=invalid");
-            exit();
-        } else {
-            header("Location: /connexion?error=invalid");
+            header("Location: /connexion");
             exit();
         }
     }
