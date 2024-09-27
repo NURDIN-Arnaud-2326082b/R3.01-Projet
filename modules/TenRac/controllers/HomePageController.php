@@ -1,7 +1,7 @@
 <?php
 
 namespace TenRac\controllers;
-
+session_start();
 use TenRac\views\HomePageView;
 
 class HomePageController

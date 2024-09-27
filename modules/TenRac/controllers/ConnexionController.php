@@ -2,7 +2,7 @@
 
 namespace  TenRac\controllers;
 
-
+session_start();
 use TenRac\models\ConnexionModel;
 use TenRac\models\DbConnect;
 use TenRac\views\ConnexionView;

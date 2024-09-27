@@ -1,7 +1,7 @@
 <?php
 
 namespace TenRac\controllers;
-
+session_start();
 use TenRac\models\DbConnect;
 use TenRac\models\PlatModel;
 use TenRac\views\PlatView;
