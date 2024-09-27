@@ -1,6 +1,8 @@
 <?php
-namespace TenRac\models;
 
+namespace TenRac\views;
+namespace TenRac\controllers;
+namespace TenRac\models;
 use TenRac\models\DbConnect;
 
 class StructureTenracModel{
@@ -14,10 +16,10 @@ class StructureTenracModel{
      * @version 1.0
      * @params L'id du club duquel il découle, le nom du club et l'adresse.
      */
-    public function addStructure(int $Id_Pere, string $Nom_Club, string $Adresse): void
+    public function addStructure($Id_Pere, $Nom_Club, $Adresse): void
     {
-        $sql = "INSERT INTO Ordre_et_club(Id_Pere, Nom_club, Adresse) VALUES (?, ?, ?)";
-        $stmt = $this->connect->prepare($sql);
+        $sql = "INSERT INTO Ordre_et_club(Id_pere, Nom_club, Adresse) VALUES (?, ?, ?)";
+        $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param('iss', $Id_Pere, $Nom_Club, $Adresse);
         if($stmt->execute()){
             echo 'Ajout réussi';
@@ -27,10 +29,10 @@ class StructureTenracModel{
         $stmt->close();
     }
 
-    public function deleteStructure(int $Id_club): void
+    public function deleteStructure($Id_club): void
     {
         $sql = "DELETE FROM Ordre_et_club WHERE Id_club = ?";
-        $stmt = $this->connect->prepare($sql);
+        $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param('i', $Id_club);
         if($stmt->execute()){
             echo 'Suppresion réussie';
@@ -40,10 +42,10 @@ class StructureTenracModel{
         $stmt->close();
     }
 
-    public function updateStructure(int $Id_Club, int $Id_Pere, string $Nom_Club, string $Adresse): void
+    public function updateStructure($Id_Club, $Id_Pere, $Nom_Club, $Adresse): void
     {
         $sql = "UPDATE Ordre_et_club SET Id_pere = ?, Nom_club = ?, Adresse = ? WHERE Id_club = ?";
-        $stmt = $this->connect->prepare($sql);
+        $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param('issi', $Id_Pere, $Nom_Club, $Adresse, $Id_Club);
         if($stmt->execute()){
             echo 'Modification réussie';

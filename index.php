@@ -32,6 +32,12 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $tenrac ->supprimerTenrac();
             break;
 
+        case 'modification-tenrac':
+
+            $tenrac = new \TenRac\controllers\GestionTenracController();
+            $tenrac ->modifierTenrac();
+            break;
+
         case 'structure':
             $structure = new StructureController();
             $structure::affichePage();
@@ -43,10 +49,9 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'repas':
             $repas = new RepasController();
             $repas::affichePage();
-        case 'repasTenrac':
-            $repasTenrac = new RepasController();
-            $repasTenrac::affichePage();
+
             break;
+        case 'repasTenrac':
 
         case 'plat':
             $platpage = new PlatController();

@@ -1,12 +1,14 @@
 <?php
 namespace TenRac\views;
-session_start();
 
-class MotdePasseOublieView
+
+class MotDePasseOublieView extends AbstractView
 {
+
+
     protected function body(): void
     {
-        include __DIR__ . '/MotDePasseOublier.php';
+        include __DIR__ . '/motDePasseOublier.php';
     }
 
     function css(): string
