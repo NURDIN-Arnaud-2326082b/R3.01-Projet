@@ -4,6 +4,7 @@ include __DIR__ . '/Autoloader.php';
 use TenRac\controllers\ConnexionController;
 use TenRac\controllers\GestionTenracController;
 use TenRac\controllers\HomePageController;
+use TenRac\controllers\MotDePasseOublierController;
 use TenRac\controllers\PlatController;
 use TenRac\controllers\RechercheController;
 use TenRac\controllers\StructureController;
@@ -43,7 +44,6 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'repas':
             $repas = new RepasController();
             $repas::affichePage();
-
             break;
         case 'repasTenrac':
 
@@ -65,17 +65,21 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'deconnexion':
             $deconnexionPage = new ConnexionController();
             $deconnexionPage::deconnecter();
-
             $homePage = new HomePageController();
             $homePage::affichePage();
             break;
-
+        case 'motDePasseOublier.php':
+            $motDePasseOubliePage = new MotDePasseOublierController();
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $motDePasseOubliePage::envoyerCourriel($_POST);
+            }
+            $motDePasseOubliePage::affichePage();
+            break;
         case 'recherche':
             $recherchePage = new RechercheController();
             $recherchePage::lancerRecherche();
             $recherchePage::affichePage();
             break;
-
         case 'home':
             $homePage = new HomePageController();
             $homePage::affichePage();
