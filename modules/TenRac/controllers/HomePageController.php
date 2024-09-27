@@ -1,13 +1,13 @@
 <?php
 
 namespace TenRac\controllers;
-session_start();
 use TenRac\views\HomePageView;
 
 class HomePageController
 {
     public static function affichePage():void
     {
+        session_start();
         $view = new HomePageView();
         $view->afficher();
     }

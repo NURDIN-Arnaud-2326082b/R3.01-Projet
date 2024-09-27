@@ -13,7 +13,7 @@ class MenuView
 
     public function afficher(): string
     {
-       if($this->loggedin === true) {
+       if($this->loggedin) {
            return $this->menuLogged();
        }
        else {

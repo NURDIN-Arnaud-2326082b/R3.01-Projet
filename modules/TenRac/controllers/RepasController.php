@@ -1,7 +1,7 @@
 <?php
 
 namespace TenRac\controllers;
-session_start();
+
 use TenRac\models\DbConnect;
 use TenRac\models\RepasModel;
 use TenRac\views\RepasView;
@@ -9,6 +9,7 @@ use TenRac\views\RepasView;
 class RepasController{
 
     public static function affichePage(): void{
+        session_start();
         $view = new RepasView();
         $view->afficher();
     }

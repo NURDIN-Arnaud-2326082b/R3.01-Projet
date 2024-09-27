@@ -11,7 +11,8 @@ abstract class AbstractView
     // permet de récupérer le contenu du fichier header.html
     private function header(): void
     {
-        $headerview = new HeaderView($this->pageTitle(), $this->css(),false);
+        $loggedin = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
+        $headerview = new HeaderView($this->pageTitle(), $this->css(),$loggedin);
         $headerview->afficher();
     }
 

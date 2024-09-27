@@ -1,7 +1,6 @@
 <?php
 
 namespace  TenRac\controllers;
-session_start();
 use TenRac\models\StructureTenracModel;
 use TenRac\models\DbConnect;
 use TenRac\views\StructureTenracView;
@@ -11,6 +10,7 @@ class StructureTenracController
 
     public static function affichePage(): void
     {
+        session_start();
         $view = new StructureTenracView();
         $view->afficher();
     }

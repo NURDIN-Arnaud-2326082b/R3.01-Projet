@@ -1,7 +1,6 @@
 <?php
 
 namespace TenRac\controllers;
-session_start();
 use TenRac\models\DbConnect;
 use TenRac\models\GestionTenracModel;
 use TenRac\views\GestionTenracView;
@@ -10,6 +9,7 @@ class GestionTenracController
 {
 
     public static function affichePage(): void{
+        session_start();
         $view = new GestionTenracView();
         $view->afficher();
     }
