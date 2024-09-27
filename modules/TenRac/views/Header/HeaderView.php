@@ -24,7 +24,6 @@ class HeaderView
         $headerHtml = str_replace('{{pageTitle}}', $this->pageTitle, $headerHtml);
         $headerHtml = str_replace('{{css}}', $this->css, $headerHtml);
 
-
         $menuView = new MenuView($this->loggedin);
         $menu = $menuView->afficher();
 
