@@ -15,41 +15,53 @@ class StructureTenracController
         $view->afficher();
     }
 
-    public function addStructure($newStructure): void{
-        if ($this) {
-            $this->addStructure(
-                $newStructure['Id_pere'],
-                $newStructure['Nom_club'],
-                $newStructure['Adresse']
-            );
-            header('Location: ../views/structureTenrac.php');
+    public function addStructure(): void{
+        if ($_SERVER["REQUEST_METHOD"] === "POST" AND $_POST['action'] === 'add') {
+            $nomClub = $_POST['nom'];
+            $nomPere = $_POST['pere'];
+            $adresse = $_POST['adr'];
+
+            $idPere = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = '$nomPere'";
+
+            $structureModel = new StructureTenracModel(new DbConnect());
+            $structureModel->addStructure($idPere, $nomClub, $adresse);
+
+            header('Location :/index.php');
             exit();
-        } else {
-            echo "Le modèle n'est pas initialisé.";
         }
     }
 
-    public function deleteStructure($structureDeleted): void{
-        if ($this) {
-            $this->deleteStructure($structureDeleted);
-            header('Location: ../views/structureTenrac.php');
+    public function deleteStructure(): void{
+        if($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'delete'){
+            $structureDeleted = $_POST['id'];
+
+            $structureModel = new StructureTenracModel(new DbConnect());
+
+            $structureModel->deleteStructure($structureDeleted);
+            header('Location :/index.php');
             exit();
-        } else {
-            echo "Club non trouvé.";
         }
     }
 
-    public function updateStructure($structureUpdated): void{
-        if ($this) {
-            $this->updateStructure(
-                $structureUpdated['Id_club'],
-                $structureUpdated['Id_pere'],
-                $structureUpdated['Nom_club'],
-                $structureUpdated['Adresse']);
-            header('Location: ../views/structureTenrac.php');
-            exit();
-        } else {
-            echo "Modification impossible.";
+    public function updateStructure(): void{
+        if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
+            $nomPere = $_POST['nomPere'];
+            $nomClub = $_POST['nom2'];
+            $adresse = $_POST['adr2'];
+
+            $idPere = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = '$nomPere'";
+
+            $idClub = "SELECT Id_club FROM Ordre_et_club WHERE Id_pere = '$idPere' AND Nom_club = '$nomClub'
+                        AND Adresse = '$adresse'";
+
+            $structureModel = new StructureTenracModel(new DbConnect());
+            if($structureModel){
+                $structureModel->updateStructure($idClub, $idPere, $nomClub, $adresse);
+                header('Location :/index.php');
+                exit();
+            } else {
+                echo "Modification impossible.";
+            }
         }
     }
 }
