@@ -5,6 +5,7 @@ use TenRac\controllers\ConnexionController;
 use TenRac\controllers\GestionTenracController;
 use TenRac\controllers\HomePageController;
 use TenRac\controllers\PlatController;
+use TenRac\controllers\RechercheController;
 use TenRac\controllers\StructureController;
 use TenRac\controllers\StructureTenracController;
 use TenRac\controllers\RepasController;
@@ -69,6 +70,13 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $homePage = new HomePageController();
             $homePage::affichePage();
             break;
+
+        case 'recherche':
+            $recherchePage = new RechercheController();
+            $recherchePage::lancerRecherche();
+            $recherchePage::affichePage();
+            break;
+
         case 'home':
             $homePage = new HomePageController();
             $homePage::affichePage();
