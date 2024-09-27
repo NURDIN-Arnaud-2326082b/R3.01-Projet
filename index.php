@@ -1,5 +1,4 @@
 <?php
-session_start();
 include __DIR__ . '/Autoloader.php';
 
 use TenRac\controllers\ConnexionController;

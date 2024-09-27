@@ -18,5 +18,4 @@ class StructureTenracView extends AbstractView
         return 'Structure';
     }
 
-
 }

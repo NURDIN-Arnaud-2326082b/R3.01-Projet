@@ -2,6 +2,8 @@
 
 namespace TenRac\views\Header;
 
+use TenRac\views\Header\HeaderView;
+
 class MenuView
 {
 
