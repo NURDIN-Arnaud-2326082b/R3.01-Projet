@@ -2,7 +2,7 @@
 
 namespace TenRac\views;
 
-class DeconnexionView
+class DeconnexionView extends AbstractView
 {
 
     protected function body(): void

@@ -1,6 +1,6 @@
 <?php
-
 namespace TenRac\views;
+
 use TenRac\views\Header\HeaderView;
 
 abstract class AbstractView
@@ -11,7 +11,8 @@ abstract class AbstractView
     // permet de récupérer le contenu du fichier header.html
     private function header(): void
     {
-        $headerview = new HeaderView($this->pageTitle(), $this->css(),true);
+        $loggedin = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
+        $headerview = new HeaderView($this->pageTitle(), $this->css(),$loggedin);
         $headerview->afficher();
     }
 

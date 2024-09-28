@@ -44,20 +44,23 @@ class GestionTenracModel
         }
     }
 
-    public function modifierTenrac($id, $Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club): void
+    public function modifierTenrac($Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club): void
     {
-        $hashed_password = !empty($Code_personnel) ? password_hash($Code_personnel, PASSWORD_DEFAULT) : null;
+//        $hashed_password = !empty($Code_personnel) ? password_hash($Code_personnel, PASSWORD_DEFAULT) : null;
+//
+//        if ($hashed_password) {
+//            $sql = "UPDATE Tenrac SET $Courriel,Code_personnel = ?, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE id = ?";
+//            $stmt = $this->connect->mysqli()->prepare($sql);
+//            $stmt->bind_param("sssssssssi", $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $id);
+//        } else {
+//            $sql = "UPDATE Tenrac SET $Courriel, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE id = ?";
+//            $stmt = $this->connect->mysqli()->prepare($sql);
+//            $stmt->bind_param("ssssssssi", $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $id);
+//        }
 
-        if ($hashed_password) {
-            $sql = "UPDATE Tenrac SET $Courriel,Code_personnel = ?, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE id = ?";
-            $stmt = $this->connect->mysqli()->prepare($sql);
-            $stmt->bind_param("sssssssssi", $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $id);
-        } else {
-            $sql = "UPDATE Tenrac SET $Courriel, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE id = ?";
-            $stmt = $this->connect->mysqli()->prepare($sql);
-            $stmt->bind_param("ssssssssi", $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $id);
-        }
-
+        $sql = "UPDATE Tenrac SET Code_personnel = ?, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE Courriel = ?";
+        $stmt = $this->connect->mysqli()->prepare($sql);
+        $stmt->bind_param("sssssssss", $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $Courriel);
         if ($stmt->execute()) {
             echo "Modification réussie";
         } else {

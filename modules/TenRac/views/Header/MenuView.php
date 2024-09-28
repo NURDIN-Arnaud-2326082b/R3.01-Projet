@@ -2,6 +2,8 @@
 
 namespace TenRac\views\Header;
 
+use TenRac\views\Header\HeaderView;
+
 class MenuView
 {
 
@@ -11,7 +13,7 @@ class MenuView
 
     public function afficher(): string
     {
-       if($this->loggedin === true) {
+       if($this->loggedin) {
            return $this->menuLogged();
        }
        else {
