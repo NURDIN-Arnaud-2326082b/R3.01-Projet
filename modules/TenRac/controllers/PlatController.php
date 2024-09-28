@@ -14,6 +14,24 @@ class PlatController
         $view->afficher();
     }
 
+    public function recherche($nomRecherche): void
+    {
+        $platModel = new PlatModel(new DbConnect());
+        $plats = $platModel->creerListeSelonRecherche($nomRecherche);
+        foreach ($plats as $plat) {
+            $plt = implode(", ", $plat);
+            echo '<div id="listeplat"><p>' . $plt . "<br>";
+            $index = $platModel->chercheIdPlat($plt);
+            $idx = $index[0]['Id_Plat'];
+            $ingredients = $platModel->trouverIngredient((int)$idx);
+            foreach ($ingredients as $ingredient){
+                echo implode(",",$ingredient)."<br>";
+            }
+            echo "</p></div>";
+        }
+
+    }
+
     public function generer() : void{
         $platmodel = new PlatModel(new DbConnect());
         $plats = $platmodel->creerListe();
