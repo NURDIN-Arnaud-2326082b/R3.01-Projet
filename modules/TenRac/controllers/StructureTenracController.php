@@ -44,6 +44,7 @@ class StructureTenracController
 
             $structureModel = new StructureTenracModel(new DbConnect());
             $structureModel->addStructure($idPere, $nomClub, $adresse);
+            self::affichePage();
             exit();
         }
     }
@@ -60,7 +61,7 @@ class StructureTenracController
                 $structureModel = new StructureTenracModel(new DbConnect());
 
                 $structureModel->deleteStructure($structureDeleted);
-                header('Location :/index.php');
+                self::affichePage();
                 exit();
             }
         }
@@ -74,7 +75,7 @@ class StructureTenracController
 
             $structureModel = new StructureTenracModel(new DbConnect());
             $structureModel->updateStructure($idClub, $newNomClub, $adresse);
-            //header('Location :/index.php');
+            self::affichePage();
             exit();
         }
     }
