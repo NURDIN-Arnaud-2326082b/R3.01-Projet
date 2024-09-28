@@ -5,11 +5,5 @@
         </div>
     </div>
 
-    <div id="ordre_tenrac">
-        <h2>L'Ordre</h2>
-        <p id="sous_titre">Le royaume des Tenrac</p>
-        <p>Description</p>
-    </div>
-
     <div id ="autres_clubs">
-        <h2>Autres clubs</h2>
+        <h2>Les Clubs</h2>

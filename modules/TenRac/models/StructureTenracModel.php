@@ -12,7 +12,7 @@ class StructureTenracModel{
     }
 
     public function listeClub(){
-        $stmt = $this->connect->mysqli()->query("SELECT Nom_Club FROM Ordre_et_club");
+        $stmt = $this->connect->mysqli()->query("SELECT Id_club FROM Ordre_et_club");
 
         if(!$stmt){
             die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
@@ -27,9 +27,9 @@ class StructureTenracModel{
         return $data;
     }
 
-    public function chercheAdresse(string $nom){
-        $stmt = $this->connect->mysqli()->prepare("SELECT DISTINCT Adresse FROM Ordre_et_club WHERE Nom_club =?");
-        $stmt->bind_param("s", $nom);
+    public function chercheNom(int $id){
+        $stmt = $this->connect->mysqli()->prepare("SELECT DISTINCT Nom_club FROM Ordre_et_club WHERE Id_club =?");
+        $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -45,6 +45,46 @@ class StructureTenracModel{
         $result->free();
         return $data;
     }
+
+    public function chercheAdresse(int $id){
+        $stmt = $this->connect->mysqli()->prepare("SELECT DISTINCT Adresse FROM Ordre_et_club WHERE Id_club =?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if (!$stmt) {
+            die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
+        }
+
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        $result->free();
+        return $data;
+    }
+
+    public function chercheTenrac(int $id){
+        $stmt = $this->connect->mysqli()->prepare("SELECT DISTINCT Nom FROM Tenrac WHERE Id_club =?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if (!$stmt) {
+            die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
+        }
+
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        $result->free();
+        return $data;
+    }
+
+
 
     /*
      * @author Manon VERHILLE

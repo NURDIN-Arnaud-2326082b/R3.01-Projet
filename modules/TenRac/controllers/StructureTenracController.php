@@ -12,11 +12,18 @@ class StructureTenracController
         $structureModel = new StructureTenracModel(new DbConnect());
         $structures = $structureModel->listeClub();
         foreach ($structures as $structure) {
-            $name = implode(',', $structure);
-            echo '<div class="descri_club"> <h3>' . $name . "</h3><br>";
-            $adresse = $structureModel->chercheAdresse($name);
-            echo "<p>Adresse : " . $adresse[0]['Adresse'] . "</p>";
-            echo "</p></div>";
+            $id = implode(',', $structure);
+            echo '<div class="descri_club"> <h3>' . $id . ' ・ ';
+            $name = $structureModel->chercheNom($id);
+            echo $name[0]['Nom_club'] . '</h3><br><h4>Adresse : </h4>';
+            $adresse = $structureModel->chercheAdresse($id);
+            echo "<p>" . $adresse[0]['Adresse'] . "</p><br><h4>Adhérents : </h4>";
+            $listeTenracs = $structureModel->chercheTenrac($id);
+            echo "<ul>";
+            foreach ($listeTenracs as $tenrac){
+                echo "<li>" . implode($tenrac) . "</li>";
+            }
+            echo "</ul></div>";
         }
     }
 
