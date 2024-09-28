@@ -11,4 +11,9 @@
 <div id="Plats" class="section dark">
     <div class="boxed text-center">
         <h2>Nos plats</h2>
+        <form action="recherche" method="POST">
+            <label for="recherche">Recherche : </label>
+            <input type="text" name="recherche" required><br>
+            <button type="submit">Rechercher</button>
+        </form>
         <div class="listeverticale" >

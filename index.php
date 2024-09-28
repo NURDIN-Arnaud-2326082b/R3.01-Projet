@@ -72,10 +72,13 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $platpage = new PlatController();
             $platpage::affichePage();
             break;
+
+        case 'recherche':
         case 'platTenrac':
             $platTenrac = new PlatController();
             $platTenrac::affichePage();
             break;
+
         case 'connexion':
             $connexionPage = new ConnexionController();
             if ($_SERVER["REQUEST_METHOD"] == "POST") {

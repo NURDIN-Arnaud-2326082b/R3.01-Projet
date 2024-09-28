@@ -462,11 +462,6 @@ header-menu {
     margin: 2% 30%
 }
 
-#ordre_tenrac{
-    padding: 1% 0%;
-    background-color: #ffffff;
-}
-
 #autres_clubs{
     padding: 1% 20%;
     background-color: #000000;
@@ -474,12 +469,19 @@ header-menu {
     text-align: center;
 }
 
-#autres_clubs h3, p{
-    padding: 1% 0;
+#autres_clubs h3{
+    padding-bottom: 1%;
+    font-size: 150%;
+    color: black;
 }
 
-#autres_clubs h3{
-    font-size: 150%;
+#autres_clubs h4{
+    font-size: 125%;
+    color: black;
+}
+
+#autres_clubs p{
+    font-size: 100%;
     color: black;
 }
 
@@ -490,8 +492,22 @@ header-menu {
 
 .descri_club{
     margin: 2%;
+    padding: 2% 0;
     border-radius: 15px;
     background-color: #f3aa00;
+}
+
+.descri_club ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.descri_club li{
+    font-size: 100%;
+    color: black;
+    flex: 1 1 !important;
+    text-align: center;
 }
 
 footer {
