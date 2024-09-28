@@ -68,16 +68,13 @@ class StructureTenracController
 
     public function updateStructure(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
-            $nomClub = $_POST['nom2'];
+            $idClub = $_POST['id'];
+            $newNomClub = $_POST['nom2'];
             $adresse = $_POST['adr'];
 
-            $idPere = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = " .$_POST['nomPere'];
-
-            $idClub = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = " .$_POST['nom'];
-
             $structureModel = new StructureTenracModel(new DbConnect());
-            $structureModel->updateStructure($idClub, $idPere, $nomClub, $adresse);
-            header('Location :/index.php');
+            $structureModel->updateStructure($idClub, $newNomClub, $adresse);
+            //header('Location :/index.php');
             exit();
         }
     }

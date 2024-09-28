@@ -12,7 +12,7 @@ class StructureView extends AbstractView
         include __DIR__ . '/structureTenrac.php';
         $structureController = new StructureController();
         $structureController->genererListe();
-        include __DIR__ . '/structureTenrac2.php';
+        echo "</div>";
     }
 
     function css(): string

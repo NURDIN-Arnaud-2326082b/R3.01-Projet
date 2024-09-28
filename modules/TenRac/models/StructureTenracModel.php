@@ -3,6 +3,7 @@
 namespace TenRac\views;
 namespace TenRac\controllers;
 namespace TenRac\models;
+use PDO;
 use TenRac\models\DbConnect;
 
 class StructureTenracModel{
@@ -119,14 +120,11 @@ class StructureTenracModel{
         $stmt->close();
     }
 
-    public function updateStructure($Id_Club, $Id_Pere, $Nom_Club, $Adresse): void
+    public function updateStructure($Id_Club, $Nom_Club, $Adresse): void
     {
-        $idPere = $this->connect->mysqli()->prepare($Id_Pere);
-        $idClub = $this->connect->mysqli()->prepare($Id_Club);
-
-        $sql = "UPDATE Ordre_et_club SET Id_pere = ?, Nom_club = ?, Adresse = ? WHERE Id_club = ?";
+        $sql = "UPDATE Ordre_et_club SET Nom_club = ?, Adresse = ? WHERE Id_club = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('issi', $idPere, $Nom_Club, $Adresse, $idClub);
+        $stmt->bind_param('ssi', $Nom_Club, $Adresse, $Id_Club);
         if($stmt->execute()){
             echo 'Modification réussie';
         }else{
