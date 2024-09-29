@@ -1,5 +1,5 @@
     <div class="slider">
-        <img  class="slider-background" src="../../../img/wallpaperTenrac.jpg"  alt="raclette">
+        <img  class="slider-background" src="../../../img/wallpaperTenrac.jpg"  alt="raclette" loading="eager">
         <div class="slider-content">
             <h1>Tenrac</h1>
             <p>Un monde rempli de fromage</p>
@@ -19,19 +19,19 @@
             <h2>Menus de la semaine</h2>
             <div class="flex toColumn gap20">
                 <div class="w25 wm100 skill">
-                    <img src="../../../img/chips.png" alt="chips">
+                    <img src="../../../img/chips.png" alt="chips" >
                     <h3>CHIPS AU FROMAGE</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="../../../img/tenders.png" alt="tenders">
+                    <img src="../../../img/tenders.png" alt="tenders" loading="lazy">
                     <h3>TENDERS</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="../../../img/hamburger.png" alt="hamburger">
+                    <img src="../../../img/hamburger.png" alt="hamburger" loading="lazy">
                     <h3>HAMBURGER</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="../../../img/kebab.png" alt="kebab">
+                    <img src="../../../img/kebab.png" alt="kebab" loading="lazy">
                     <h3>KEBAB</h3>
                 </div>
             </div>
