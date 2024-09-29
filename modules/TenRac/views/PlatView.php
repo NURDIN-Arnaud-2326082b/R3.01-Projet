@@ -10,7 +10,12 @@ class PlatView extends AbstractView
     {
         include __DIR__ . '/plat.php';
         $platcontroller = new PlatController();
-        $platcontroller->generer();
+        if(isset($_POST['recherche'])){
+            $platcontroller->recherche($_POST['recherche']);
+        }
+        else{
+            $platcontroller->generer();
+        }
         include __DIR__ . '/platpart2.php';
         $platcontroller->recupIngredient();
         include __DIR__ . '/platpart3.php';

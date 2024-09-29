@@ -12,11 +12,18 @@ class StructureTenracController
         $structureModel = new StructureTenracModel(new DbConnect());
         $structures = $structureModel->listeClub();
         foreach ($structures as $structure) {
-            $name = implode(',', $structure);
-            echo '<div class="descri_club"> <h3>' . $name . "</h3><br>";
-            $adresse = $structureModel->chercheAdresse($name);
-            echo "<p>Adresse : " . $adresse[0]['Adresse'] . "</p>";
-            echo "</p></div>";
+            $id = implode(',', $structure);
+            echo '<div class="descri_club"> <h3>' . $id . ' ・ ';
+            $name = $structureModel->chercheNom($id);
+            echo $name[0]['Nom_club'] . '</h3><br><h4>Adresse : </h4>';
+            $adresse = $structureModel->chercheAdresse($id);
+            echo "<p>" . $adresse[0]['Adresse'] . "</p><br><h4>Adhérents : </h4>";
+            $listeTenracs = $structureModel->chercheTenrac($id);
+            echo "<ul>";
+            foreach ($listeTenracs as $tenrac){
+                echo "<li>" . implode($tenrac) . "</li>";
+            }
+            echo "</ul></div>";
         }
     }
 
@@ -37,6 +44,7 @@ class StructureTenracController
 
             $structureModel = new StructureTenracModel(new DbConnect());
             $structureModel->addStructure($idPere, $nomClub, $adresse);
+            self::affichePage();
             exit();
         }
     }
@@ -53,7 +61,7 @@ class StructureTenracController
                 $structureModel = new StructureTenracModel(new DbConnect());
 
                 $structureModel->deleteStructure($structureDeleted);
-                header('Location :/index.php');
+                self::affichePage();
                 exit();
             }
         }
@@ -61,16 +69,13 @@ class StructureTenracController
 
     public function updateStructure(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
-            $nomClub = $_POST['nom2'];
+            $idClub = $_POST['id'];
+            $newNomClub = $_POST['nom2'];
             $adresse = $_POST['adr'];
 
-            $idPere = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = " .$_POST['nomPere'];
-
-            $idClub = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = " .$_POST['nom'];
-
             $structureModel = new StructureTenracModel(new DbConnect());
-            $structureModel->updateStructure($idClub, $idPere, $nomClub, $adresse);
-            header('Location :/index.php');
+            $structureModel->updateStructure($idClub, $newNomClub, $adresse);
+            self::affichePage();
             exit();
         }
     }

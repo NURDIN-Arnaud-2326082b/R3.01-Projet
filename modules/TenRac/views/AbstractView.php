@@ -30,4 +30,5 @@ abstract class AbstractView
         $this->body();
         $this->footer();
     }
+
 }
