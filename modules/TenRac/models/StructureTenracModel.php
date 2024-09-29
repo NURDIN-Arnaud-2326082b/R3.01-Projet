@@ -92,15 +92,13 @@ class StructureTenracModel{
      * @version 1.0
      * @params L'id du club duquel il découle, le nom du club et l'adresse.
      */
-    public function addStructure($Id_Pere, $Nom_Club, $Adresse): void
+    public function addStructure($Nom_Club, $Adresse): void
     {
-        $idPere = $this->connect->mysqli()->prepare($Id_Pere);
-
-        $sql = "INSERT INTO Ordre_et_club(Id_pere, Nom_club, Adresse) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO Ordre_et_club(Id_pere, Nom_club, Adresse) VALUES (1, ?, ?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('iss', $idPere, $Nom_Club, $Adresse);
+        $stmt->bind_param('ss', $Nom_Club, $Adresse);
         if($stmt->execute()){
-            echo 'Ajout réussi';
+            //echo 'Ajout réussi';
         }else{
             echo 'Erreur d\'ajout' . $stmt->error;
         }
@@ -113,7 +111,7 @@ class StructureTenracModel{
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param('i', $Id_club);
         if($stmt->execute()){
-            echo 'Suppresion réussie';
+            //echo 'Suppresion réussie';
         }else{
             echo 'Erreur de suppresion' . $stmt->error;
         }
@@ -126,7 +124,7 @@ class StructureTenracModel{
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param('ssi', $Nom_Club, $Adresse, $Id_Club);
         if($stmt->execute()){
-            echo 'Modification réussie';
+            //echo 'Modification réussie';
         }else{
             echo 'Erreur de modification' . $stmt->error;
         }

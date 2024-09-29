@@ -19,20 +19,20 @@
             <h2>Menus de la semaine</h2>
             <div class="flex toColumn gap20">
                 <div class="w25 wm100 skill">
-                    <img src="img/html.png">
-                    <h3>poulet</h3>
+                    <img src="img/chips.png">
+                    <h3>Chips</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="img/css.png">
+                    <img src="img/tenders.png">
                     <h3>tenders</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="img/c++.png">
-                    <h3>bouffe</h3>
+                    <img src="img/hamburger.png">
+                    <h3>Hamburger</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="img/java.png">
-                    <h3>d'autre bouffe</h3>
+                    <img src="img/kebab.png">
+                    <h3>Kebab</h3>
                 </div>
             </div>
         </div>
