@@ -1,6 +1,6 @@
 <div id="overlay"></div>
 <div class="slider">
-    <img  class="slider-background" src="../../../img/tenders_raclette.jpg" >
+    <img  class="slider-background" src="../../../img/tenders_raclette.jpg"  alt="tenders_raclette">
     <div class="slider-content">
         <h1>Tenrac</h1>
         <p>Voici nos plats à base de raclette</p>
@@ -12,8 +12,9 @@
     <div class="boxed text-center">
         <h2>Nos plats</h2>
         <form action="recherche" method="POST">
-            <label for="recherche">Recherche : </label>
-            <input type="text" name="recherche" required><br>
+            <label> recherche
+                <input type="text" name="recherche" required>
+            </label><br>
             <button type="submit">Rechercher</button>
         </form>
         <div class="listeverticale" >

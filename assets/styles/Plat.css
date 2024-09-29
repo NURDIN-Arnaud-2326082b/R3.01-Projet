@@ -205,6 +205,7 @@ p {
 }
 
 .label {
+    color: black;
     display: block;
     font-weight: 700;
     text-transform: uppercase;
