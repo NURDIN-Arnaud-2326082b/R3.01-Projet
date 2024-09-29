@@ -37,15 +37,14 @@ class StructureTenracController
     public function addStructure(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" AND $_POST['action'] === 'add') {
             $nomClub = $_POST['nom'];
-            $nomPere = $_POST['pere'];
             $adresse = $_POST['adr'];
 
-            $idPere = "SELECT Id_club FROM Ordre_et_club WHERE Nom_club = '$nomPere'";
-
-            $structureModel = new StructureTenracModel(new DbConnect());
-            $structureModel->addStructure($idPere, $nomClub, $adresse);
-            self::affichePage();
-            exit();
+            if(($nomClub !== null AND $nomClub !== 'Ordre') AND $adresse !== null){
+                $structureModel = new StructureTenracModel(new DbConnect());
+                $structureModel->addStructure($nomClub, $adresse);
+                self::affichePage();
+                exit();
+            }
         }
     }
 
@@ -59,7 +58,6 @@ class StructureTenracController
                 echo 'L\'ordre ne peut pas être supprimé.';
             }else{
                 $structureModel = new StructureTenracModel(new DbConnect());
-
                 $structureModel->deleteStructure($structureDeleted);
                 self::affichePage();
                 exit();
@@ -70,13 +68,30 @@ class StructureTenracController
     public function updateStructure(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
             $idClub = $_POST['id'];
-            $newNomClub = $_POST['nom2'];
+            $nomClub = $_POST['nomClub'];
             $adresse = $_POST['adr'];
 
-            $structureModel = new StructureTenracModel(new DbConnect());
-            $structureModel->updateStructure($idClub, $newNomClub, $adresse);
-            self::affichePage();
-            exit();
+            if(($nomClub === " " OR $nomClub === 'Ordre') AND $adresse === " "){
+                self::affichePage();
+            } else if ($adresse === " "){
+                $structureModel = new StructureTenracModel(new DbConnect());
+                $structureModel->updateStructure($idClub, $nomClub, "SELECT Adresse FROM Ordre_et_club WHERE Id_club =" . $idClub);
+                self::affichePage();
+                exit();
+            } else if ($nomClub === " " OR $nomClub === 'Ordre'){
+                $structureModel = new StructureTenracModel(new DbConnect());
+                $structureModel->updateStructure($idClub, "SELECT Nom_club FROM Ordre_et_club WHERE Id_club =" . $idClub,
+                    $adresse);
+                self::affichePage();
+                exit();
+            } else if(($nomClub !== " " OR $nomClub !== 'Ordre') AND  $adresse !== " "){
+                $structureModel = new StructureTenracModel(new DbConnect());
+                $structureModel->updateStructure($idClub, $nomClub, $adresse);
+                self::affichePage();
+                exit();
+            }
+
+
         }
     }
 }
