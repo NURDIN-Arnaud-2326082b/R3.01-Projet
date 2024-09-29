@@ -44,6 +44,7 @@ class GestionTenracController
                 $newTenrac['Dignite'],
                 $newTenrac['Id_club']
             );
+            mail($newTenrac['Courriel'], 'Nouveau membre', 'Bienvenue dans la communaute des tenracs ! Votre identifiant et cette adresse mail et le mot de passe est : ' . $newTenrac['Code_personnel']);
             header('Location: /index.php');
             exit();
         }

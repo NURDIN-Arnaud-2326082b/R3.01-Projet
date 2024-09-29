@@ -1,8 +1,8 @@
 <form action="/ajout-tenrac" method="POST">
     <label for="Courriel">Email : </label>
     <input type="email" name="Courriel" required><br>
-    <label for="password"> Password : </label>
-    <input type="text" property="hash" name="password" required><br>
+    <label for="Code_personnel"> Password : </label>
+    <input type="text" property="hash" name="Code_personnel" required><br>
     <label for="Nom">Nom : </label>
     <input type="text" name="Nom" required><br>
     <label for="Num_tel">Numéro : </label>
