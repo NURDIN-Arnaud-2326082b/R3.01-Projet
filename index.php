@@ -62,11 +62,13 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $structureTenrac ->updateStructure();
             $structureTenrac::affichePage();
             break;
+
+        case 'repasTenrac':
         case 'repas':
             $repas = new RepasController();
             $repas::affichePage();
             break;
-        case 'repasTenrac':
+
 
         case 'plat':
             $platpage = new PlatController();
