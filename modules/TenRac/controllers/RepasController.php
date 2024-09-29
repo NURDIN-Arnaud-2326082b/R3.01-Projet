@@ -23,10 +23,12 @@ class RepasController{
     public static function affichePage(): void{
         session_start();
         $dbConnect= new DbConnect();
-        $repasModel = RepasModel::unSeulRepas($dbConnect, 1);
+        $repasModel = RepasModel::unSeulRepas($dbConnect, 1,2);
+
         $view = new RepasView(
-            self::Verifdate(),
-            $repasModel->getLieu($dbConnect)
+            $repasModel->Verifdate($dbConnect),
+            $repasModel->getLieu($dbConnect),
+            $repasModel->getPlat($dbConnect)
         );
         $view->afficher();
     }
