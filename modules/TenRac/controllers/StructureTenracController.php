@@ -90,8 +90,6 @@ class StructureTenracController
                 self::affichePage();
                 exit();
             }
-
-
         }
     }
 }

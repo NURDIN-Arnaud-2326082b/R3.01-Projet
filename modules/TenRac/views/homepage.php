@@ -2,7 +2,7 @@
         <img  class="slider-background" src="../../../img/wallpaperTenrac.jpg"  alt="raclette">
         <div class="slider-content">
             <h1>Tenrac</h1>
-            <p>Le meilleur site du monde</p>
+            <p>Un monde rempli de fromage</p>
         </div>
     </div>
     <div  id="about" class="section">
@@ -19,20 +19,20 @@
             <h2>Menus de la semaine</h2>
             <div class="flex toColumn gap20">
                 <div class="w25 wm100 skill">
-                    <img src="img/chips.png">
-                    <h3>Chips</h3>
+                    <img src="../../../img/chips.png" alt="chips">
+                    <h3>CHIPS AU FROMAGE</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="img/tenders.png">
-                    <h3>tenders</h3>
+                    <img src="../../../img/tenders.png" alt="tenders">
+                    <h3>TENDERS</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="img/hamburger.png">
-                    <h3>Hamburger</h3>
+                    <img src="../../../img/hamburger.png" alt="hamburger">
+                    <h3>HAMBURGER</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="img/kebab.png">
-                    <h3>Kebab</h3>
+                    <img src="../../../img/kebab.png" alt="kebab">
+                    <h3>KEBAB</h3>
                 </div>
             </div>
         </div>
