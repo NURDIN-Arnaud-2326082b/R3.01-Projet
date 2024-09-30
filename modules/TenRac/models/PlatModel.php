@@ -4,12 +4,35 @@ namespace TenRac\models;
 
 use TenRac\models\DbConnect;
 
+
+/**
+ * Classe pour gérer les opérations liées aux plats.
+ *
+ * Cette classe fournit des méthodes pour créer des listes de plats, rechercher des plats par ingrédients,
+ * et ajouter de nouveaux plats dans la base de données.
+ *
+ * @package TenRac\models
+ */
 class PlatModel
 {
+
+    /**
+     * Constructeur de la classe PlatModel.
+     *
+     * Initialise une instance de la classe avec une connexion à la base de données.
+     *
+     * @param DbConnect $connect Instance de la classe DbConnect pour la connexion à la base de données.
+     */
     public function __construct(private DbConnect $connect)
     {
     }
 
+
+    /**
+     * Crée une liste de tous les plats disponibles.
+     *
+     * @return array Tableau contenant les noms des plats.
+     */
     public function creerListe()
     {
         $stmt = $this->connect->mysqli()->query("SELECT Nom_plat FROM Plat");
@@ -30,6 +53,13 @@ class PlatModel
         return $data;
     }
 
+
+    /**
+     * Crée une liste de plats en fonction d'une recherche par ingrédient.
+     *
+     * @param string $recherche Le nom de l'ingrédient à rechercher.
+     * @return array Tableau contenant les noms des plats associés à l'ingrédient recherché.
+     */
     public function creerListeSelonRecherche($recherche)
     {
         $recherche = "%" . $recherche . "%";
@@ -56,6 +86,13 @@ class PlatModel
     }
 
 
+
+    /**
+     * Trouve les ingrédients d'un plat donné par son ID.
+     *
+     * @param int $id L'ID du plat.
+     * @return array Tableau contenant les noms des ingrédients associés au plat.
+     */
     public function trouverIngredient(int $id){
         $stmt = $this->connect->mysqli()->prepare("SELECT Nom_ingredient FROM Ingrédients t1 JOIN IngredientsPlat tj ON t1.Id_ingredient = tj.Id_ingredient JOIN Plat t2 ON tj.Id_Plat = t2.Id_Plat WHERE t2.Id_Plat =?");
         $stmt->bind_param("i", $id);
@@ -78,6 +115,13 @@ class PlatModel
         return $data;
     }
 
+
+    /**
+     * Cherche l'ID d'un plat en fonction de son nom.
+     *
+     * @param string $nom Le nom du plat.
+     * @return array Tableau contenant l'ID du plat.
+     */
     public function chercheIdPlat(string $nom){
         $stmt = $this->connect->mysqli()->prepare("SELECT Id_Plat FROM Plat WHERE Nom_plat =?");
         $stmt->bind_param("s", $nom);
@@ -100,6 +144,13 @@ class PlatModel
         return $data;
     }
 
+
+    /**
+     * Cherche l'ID d'un ingrédient en fonction de son nom.
+     *
+     * @param string $nom Le nom de l'ingrédient.
+     * @return array Tableau contenant l'ID de l'ingrédient.
+     */
     public function chercheIdIngredient(string $nom){
         $stmt = $this->connect->mysqli()->prepare("SELECT Id_Ingredient FROM Ingrédients WHERE Nom_ingredient =?");
         $stmt->bind_param("s", $nom);
@@ -122,6 +173,12 @@ class PlatModel
         return $data;
     }
 
+
+    /**
+     * Liste tous les ingrédients disponibles.
+     *
+     * @return array Tableau contenant les noms des ingrédients.
+     */
     public function listerIngredient(){
         $stmt = $this->connect->mysqli()->query("SELECT Nom_ingredient FROM Ingrédients");
         // Vérification du résultat
@@ -140,6 +197,15 @@ class PlatModel
         return $data;
     }
 
+
+    /**
+     * Ajoute un nouveau plat avec son ingrédient associé.
+     *
+     * @param string $nomPlat Le nom du plat à ajouter.
+     * @param string $nomIngredient Le nom de l'ingrédient à associer au plat.
+     *
+     * @return void
+     */
     public function addPlat($nomPlat,$nomIngredient): void
     {
         $sql = "INSERT INTO Plat(Nom_Plat) VALUES (?)";

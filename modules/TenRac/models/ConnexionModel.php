@@ -4,12 +4,41 @@ namespace TenRac\models;
 
 use TenRac\models\DbConnect;
 
+
+/**
+ * Modèle de gestion de la connexion utilisateur.
+ *
+ * Cette classe gère l'authentification des utilisateurs en vérifiant leur courriel et leur mot de passe,
+ * et gère également la déconnexion.
+ *
+ * @package TenRac\models
+ */
 class ConnexionModel
 {
+
+    /**
+     * Constructeur de la classe ConnexionModel.
+     *
+     * Initialise la connexion à la base de données via une instance de `DbConnect`.
+     *
+     * @param DbConnect $connect Objet de connexion à la base de données.
+     */
     public function __construct(private DbConnect $connect)
     {
     }
 
+
+    /**
+     * Connecte un utilisateur avec son courriel et mot de passe.
+     *
+     * Vérifie si l'utilisateur existe dans la base de données et si le mot de passe fourni correspond au mot de passe haché stocké.
+     * Si la connexion réussit, les informations de session sont initialisées.
+     *
+     * @param string $courriel L'adresse email de l'utilisateur.
+     * @param string $password Le mot de passe de l'utilisateur.
+     *
+     * @return bool Retourne true si la connexion est réussie, sinon false.
+     */
     public function login($courriel, $password): bool
     {
         $stmt = $this->connect->mysqli()->prepare("SELECT Nom, Code_personnel FROM Tenrac WHERE courriel = ?");
@@ -41,6 +70,13 @@ class ConnexionModel
     }
 
 
+    /**
+     * Déconnecte l'utilisateur.
+     *
+     * Détruit toutes les variables de session et met fin à la session actuelle.
+     *
+     * @return void
+     */
     public function logout(): void
     {
         session_start();

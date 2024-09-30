@@ -6,12 +6,29 @@ namespace TenRac\models;
 use PDO;
 use TenRac\models\DbConnect;
 
+
+/**
+ * Class StructureTenracModel
+ *
+ * Cette classe gère les interactions avec la base de données concernant les structures de tenrac.
+ */
 class StructureTenracModel{
 
+
+    /**
+     * StructureTenracModel constructor.
+     *
+     * @param DbConnect $connect Instance de la classe DbConnect pour gérer la connexion à la base de données.
+     */
     public function __construct(private DbConnect $connect)
     {
     }
 
+    /**
+     * Récupère la liste des identifiants des clubs.
+     *
+     * @return array Un tableau contenant les identifiants des clubs.
+     */
     public function listeClub(){
         $stmt = $this->connect->mysqli()->query("SELECT Id_club FROM Ordre_et_club");
 
@@ -28,6 +45,13 @@ class StructureTenracModel{
         return $data;
     }
 
+
+    /**
+     * Cherche le nom d'un club par son identifiant.
+     *
+     * @param int $id L'identifiant du club.
+     * @return array Un tableau contenant le nom du club.
+     */
     public function chercheNom(int $id){
         $stmt = $this->connect->mysqli()->prepare("SELECT DISTINCT Nom_club FROM Ordre_et_club WHERE Id_club =?");
         $stmt->bind_param("i", $id);
@@ -66,6 +90,13 @@ class StructureTenracModel{
         return $data;
     }
 
+
+    /**
+     * Cherche l'adresse d'un club par son identifiant.
+     *
+     * @param int $id L'identifiant du club.
+     * @return array Un tableau contenant l'adresse du club.
+     */
     public function chercheTenrac(int $id){
         $stmt = $this->connect->mysqli()->prepare("SELECT DISTINCT Nom FROM Tenrac WHERE Id_club =?");
         $stmt->bind_param("i", $id);
@@ -87,10 +118,12 @@ class StructureTenracModel{
 
 
 
-    /*
-     * @author Manon VERHILLE
-     * @version 1.0
-     * @params L'id du club duquel il découle, le nom du club et l'adresse.
+    /**
+     * Ajoute une nouvelle structure à la base de données.
+     *
+     * @param string $Nom_Club Le nom du club.
+     * @param string $Adresse L'adresse du club.
+     * @return void
      */
     public function addStructure($Nom_Club, $Adresse): void
     {
@@ -105,6 +138,14 @@ class StructureTenracModel{
         $stmt->close();
     }
 
+
+
+    /**
+     * Change l'identifiant du club pour les tenracs.
+     *
+     * @param int $Id_club L'identifiant du club à changer.
+     * @return void
+     */
     public function changerClubTenrac($Id_club): void{
         $sql = "UPDATE Tenrac SET Id_club = 1 WHERE Id_club = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
@@ -116,6 +157,13 @@ class StructureTenracModel{
         }
         $stmt->close();
     }
+
+    /**
+     * Supprime une structure de la base de données.
+     *
+     * @param int $Id_club L'identifiant du club à supprimer.
+     * @return void
+     */
     public function deleteStructure($Id_club): void
     {
         $sql = "DELETE FROM Ordre_et_club WHERE Id_club = ?";
@@ -129,6 +177,15 @@ class StructureTenracModel{
         $stmt->close();
     }
 
+
+    /**
+     * Met à jour les informations d'une structure existante.
+     *
+     * @param int $Id_Club L'identifiant du club à mettre à jour.
+     * @param string $Nom_Club Le nouveau nom du club.
+     * @param string $Adresse La nouvelle adresse du club.
+     * @return void
+     */
     public function updateStructure($Id_Club, $Nom_Club, $Adresse): void
     {
         $sql = "UPDATE Ordre_et_club SET Nom_club = ?, Adresse = ? WHERE Id_club = ?";

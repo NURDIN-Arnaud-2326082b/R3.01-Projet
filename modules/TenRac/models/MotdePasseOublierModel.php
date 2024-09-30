@@ -5,15 +5,38 @@ namespace TenRac\models;
 use TenRac\models\DbConnect;
 
 
+/**
+ * Classe pour gérer la récupération de mot de passe oublié.
+ *
+ * Cette classe fournit une méthode pour envoyer un e-mail avec un nouveau mot de passe
+ * en cas d'oubli de mot de passe par un utilisateur.
+ *
+ * @package TenRac\models
+ */
 class MotdePasseOublierModel
 {
     private $connect;
 
+    /**
+     * Constructeur de la classe MotdePasseOublierModel.
+     *
+     * Initialise une instance de la classe avec une connexion à la base de données.
+     *
+     * @param DbConnect $connect Instance de la classe DbConnect pour la connexion à la base de données.
+     */
     public function __construct(DbConnect $connect)
     {
         $this->connect = $connect;
     }
 
+
+    /**
+     * Envoie un e-mail avec un nouveau mot de passe à l'utilisateur.
+     *
+     * @param string $email L'adresse e-mail de l'utilisateur.
+     *
+     * @return void
+     */
     public function envoyerMail($email)
     {
         if (isset($email)) {
