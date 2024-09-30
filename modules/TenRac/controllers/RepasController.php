@@ -86,12 +86,12 @@ class RepasController{
     public static function affichePage(): void{
         session_start();
         $dbConnect= new DbConnect();
-        $repasModel = RepasModel::unSeulRepas($dbConnect, 1,2);
+        $repasModel = RepasModel::unSeulRepas($dbConnect, 1);
+
 
         $view = new RepasView(
             $repasModel->Verifdate($dbConnect),
-            $repasModel->getLieu($dbConnect),
-            $repasModel->getPlat($dbConnect)
+            $repasModel->getLieu($dbConnect)
         );
         $view->afficher();
     }
