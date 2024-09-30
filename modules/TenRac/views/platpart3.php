@@ -15,7 +15,7 @@
         select.appendChild(option2);
 
         // Ajoute la combobox au div qui contient toutes les combobox
-        document.getElementById('combobox-container').appendChild(select);
+        document.getElementById('addcombo').appendChild(select);
     }
 </script>
 <button type="button" onclick="ajouterCombobox()">+</button>
