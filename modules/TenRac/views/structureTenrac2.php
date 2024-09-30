@@ -32,12 +32,12 @@
         <button type="submit">P'tit coup de neuf !</button>
     </form>
 
-    <form action="/delete-structure" method="POST">
-        <h3>Supprimer un Club</h3>
-        <input type="hidden" name="action" value="delete">
-        <label> <p>Identifiant du Club : </p>
-            <input type="text" name="id" required>
-        </label><br>
-        <button type="submit">Et ça dégage !</button>
-    </form>
+<!--    <form action="/delete-structure" method="POST">-->
+<!--        <h3>Supprimer un Club</h3>-->
+<!--        <input type="hidden" name="action" value="delete">-->
+<!--        <label> <p>Identifiant du Club : </p>-->
+<!--            <input type="text" name="id" required>-->
+<!--        </label><br>-->
+<!--        <button type="submit">Et ça dégage !</button>-->
+<!--    </form>-->
 </div>

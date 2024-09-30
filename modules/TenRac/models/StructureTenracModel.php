@@ -105,6 +105,17 @@ class StructureTenracModel{
         $stmt->close();
     }
 
+    public function changerClubTenrac($Id_club): void{
+        $sql = "UPDATE Tenrac SET Id_club = 1 WHERE Id_club = ?";
+        $stmt = $this->connect->mysqli()->prepare($sql);
+        $stmt->bind_param('i', $Id_club);
+        if($stmt->execute()){
+            //echo 'Modification tenrac réussie.
+        } else{
+            echo 'Erreur de modification du club des tenracs' . $stmt->error;
+        }
+        $stmt->close();
+    }
     public function deleteStructure($Id_club): void
     {
         $sql = "DELETE FROM Ordre_et_club WHERE Id_club = ?";
