@@ -29,7 +29,6 @@ class PlatController
             }
             echo "</p></div>";
         }
-
     }
 
     public function generer() : void{
