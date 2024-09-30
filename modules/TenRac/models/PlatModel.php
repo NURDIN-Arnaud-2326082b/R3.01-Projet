@@ -34,11 +34,7 @@ class PlatModel
     {
         $recherche = "%" . $recherche . "%";
 
-        $stmt = $this->connect->mysqli()->prepare("SELECT Nom_plat 
-        FROM Plat 
-        JOIN IngredientsPlat ON Plat.Id_Plat = IngredientsPlat.Id_Plat 
-        JOIN Ingrédients ON IngredientsPlat.Id_ingredient = Ingrédients.Id_ingredient 
-        WHERE Nom_ingredient LIKE ?");
+        $stmt = $this->connect->mysqli()->prepare("SELECT Nom_plat  FROM Plat JOIN IngredientsPlat ON Plat.Id_Plat = IngredientsPlat.Id_Plat JOIN Ingrédients ON IngredientsPlat.Id_ingredient = Ingrédients.Id_ingredient WHERE Nom_ingredient LIKE ?");
 
         $stmt->bind_param('s', $recherche);
         $stmt->execute();
