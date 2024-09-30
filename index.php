@@ -57,7 +57,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $platTenrac ->addPlat();
             $platTenrac::affichePage();
             break;
-        case 'rajouter-ingrédient' :
+        case 'ajouter' :
             $controller = new PlatController();
             $controller->recupIngredient();
             break ;
