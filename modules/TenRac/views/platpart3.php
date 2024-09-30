@@ -1,20 +1,21 @@
 <script>
+    // Fonction JavaScript pour ajouter une nouvelle combobox
     function ajouterCombobox() {
         // Crée un élément <select>
         var select = document.createElement('select');
 
-        // Ajoute des options à la combobox
-        var option1 = document.createElement('option');
-        option1.value = "valeur1";
-        option1.text = "Option 1";
-        select.appendChild(option1);
+        // Appelle la fonction PHP via une requête AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'index.php?action=rajouter-ingrédient', true); // Appelle le fichier PHP qui génère les <option>
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Ajoute la réponse (les <option>) au select
+                select.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
 
-        var option2 = document.createElement('option');
-        option2.value = "valeur2";
-        option2.text = "Option 2";
-        select.appendChild(option2);
-
-        // Ajoute la combobox au div qui contient toutes les combobox
+        // Ajoute la nouvelle combobox au div
         document.getElementById('addcombo').appendChild(select);
     }
 </script>

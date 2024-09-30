@@ -57,6 +57,10 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $platTenrac ->addPlat();
             $platTenrac::affichePage();
             break;
+        case 'rajouter-ingrédient' :
+            $controller = new PlatController();
+            $controller->recupIngredient();
+            break ;
         case 'delete-structure':
             $structureTenrac = new \TenRac\controllers\StructureTenracController();
             $structureTenrac ->deleteStructure();
