@@ -8,9 +8,9 @@ class RepasView extends AbstractView
 private bool $dateExists;
 private string $idLieu;
 private string $idPlat;
-    public function __construct(
-        bool $dateExists,string $idLieu,string $idPlat
-    )
+
+
+    public function __construct(bool $dateExists,string $idLieu,string $idPlat)
     {
         $this->dateExists=$dateExists;
         $this->idLieu=$idLieu;
