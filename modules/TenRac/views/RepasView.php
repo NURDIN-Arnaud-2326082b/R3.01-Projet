@@ -18,7 +18,7 @@ class RepasView extends AbstractView
 
 private bool $dateExists;
 private string $idLieu;
-private string $idPlat;
+
 
 
     /**
@@ -28,11 +28,11 @@ private string $idPlat;
      * @param string $idLieu L'identifiant du lieu.
      * @param string $idPlat L'identifiant du plat.
      */
-    public function __construct(bool $dateExists,string $idLieu,string $idPlat)
+    public function __construct(bool $dateExists,string $idLieu,)
     {
         $this->dateExists=$dateExists;
         $this->idLieu=$idLieu;
-        $this->idPlat=$idPlat;
+
 
     }
 
@@ -48,10 +48,10 @@ private string $idPlat;
      */
     protected function body(): void
     {
-        global $dateExistsbool,$LieuBool,$PlatBool;
+        global $dateExistsbool,$LieuBool;
         $dateExistsbool=$this->dateExists;
         $LieuBool=$this->idLieu;
-        $PlatBool=$this->idPlat;
+
         include __DIR__ . '/repas.php';
         $loggedin = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
         if ($loggedin){
