@@ -32,25 +32,33 @@ class PlatModel
 
     public function creerListeSelonRecherche($recherche)
     {
-        $stmt = $this->connect->mysqli()->query("SELECT Nom_plat FROM Plat JOIN IngredientsPlat ON Plat.Id_Plat = IngredientsPlat.Id_Plat JOIN Ingrédients ON IngredientsPlat.Id_ingredient = Ingrédients.Id_ingredient WHERE Nom_ingredient = '$recherche' ");
+        $recherche = "%" . $recherche . "%";
 
+        $stmt = $this->connect->mysqli()->prepare("SELECT Nom_plat 
+        FROM Plat 
+        JOIN IngredientsPlat ON Plat.Id_Plat = IngredientsPlat.Id_Plat 
+        JOIN Ingrédients ON IngredientsPlat.Id_ingredient = Ingrédients.Id_ingredient 
+        WHERE Nom_ingredient LIKE ?");
 
+        $stmt->bind_param('s', $recherche);
+        $stmt->execute();
 
-        // Vérification du résultat
-        if (!$stmt) {
-            die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
+        $result = $stmt->get_result();
+        if (!$result) {
+            die("Erreur lors de l'exécution de la requête : " . $this->connect->mysqli()->error);
         }
 
-        // Extraction des résultats sous forme de tableau
         $data = [];
-        while ($row = $stmt->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
 
-        // Libération du résultat
-        $stmt->free();
+        $stmt->free_result();
+        $stmt->close();
+
         return $data;
     }
+
 
     public function trouverIngredient(int $id){
         $stmt = $this->connect->mysqli()->prepare("SELECT Nom_ingredient FROM Ingrédients t1 JOIN IngredientsPlat tj ON t1.Id_ingredient = tj.Id_ingredient JOIN Plat t2 ON tj.Id_Plat = t2.Id_Plat WHERE t2.Id_Plat =?");
