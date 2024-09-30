@@ -5,8 +5,25 @@ use TenRac\models\StructureModel;
 use TenRac\models\DbConnect;
 use TenRac\views\StructureView;
 
+
+/**
+ * Contrôleur pour gérer les structures (clubs) dans l'application.
+ *
+ * Ce contrôleur permet de générer une liste des clubs et d'afficher les détails des structures.
+ *
+ * @package TenRac\controllers
+ */
 class StructureController
 {
+
+    /**
+     * Génère une liste des clubs.
+     *
+     * Cette méthode récupère les informations sur les clubs (structures) à partir du modèle `StructureModel` et
+     * affiche les détails, y compris les adhérents associés à chaque club.
+     *
+     * @return void
+     */
     public function genererListe(): void{
         $structureModel = new StructureModel(new DbConnect());
         $structures = $structureModel->listeClub();
@@ -25,6 +42,14 @@ class StructureController
             echo "</ul></div>";
         }
     }
+
+    /**
+     * Affiche la page des structures.
+     *
+     * Cette méthode démarre une session et affiche la vue associée à la structure via `StructureView`.
+     *
+     * @return void
+     */
     public static function affichePage(): void
     {
         session_start();

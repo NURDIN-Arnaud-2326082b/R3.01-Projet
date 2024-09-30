@@ -5,9 +5,26 @@ use TenRac\models\StructureTenracModel;
 use TenRac\models\DbConnect;
 use TenRac\views\StructureTenracView;
 
+
+/**
+ * Contrôleur pour la gestion des structures (clubs) dans l'application.
+ *
+ * Ce contrôleur permet d'afficher, d'ajouter, de supprimer et de modifier des structures (clubs)
+ * ainsi que de gérer leurs adhérents.
+ *
+ * @package TenRac\controllers
+ */
 class StructureTenracController
 {
 
+    /**
+     * Génère et affiche la liste des structures (clubs) avec des formulaires pour modifier ou supprimer chaque club.
+     *
+     * Cette méthode interagit avec le modèle `StructureTenracModel` pour récupérer les informations sur les clubs,
+     * et affiche des formulaires permettant de modifier ou supprimer chaque club.
+     *
+     * @return void
+     */
     public function genererListe(): void{
         $structureModel = new StructureTenracModel(new DbConnect());
         $structures = $structureModel->listeClub();
@@ -40,6 +57,14 @@ class StructureTenracController
         }
     }
 
+
+    /**
+     * Affiche la page des structures.
+     *
+     * Cette méthode démarre une session et utilise la vue `StructureTenracView` pour afficher la page des clubs.
+     *
+     * @return void
+     */
     public static function affichePage(): void
     {
         session_start();
@@ -47,6 +72,14 @@ class StructureTenracController
         $view->afficher();
     }
 
+
+    /**
+     * Ajoute une nouvelle structure (club) à la base de données.
+     *
+     * Si la requête est POST et que l'action est 'add', cette méthode ajoute un nouveau club avec son nom et son adresse.
+     *
+     * @return void
+     */
     public function addStructure(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" AND $_POST['action'] === 'add') {
             $nomClub = $_POST['nom'];
@@ -61,6 +94,15 @@ class StructureTenracController
         }
     }
 
+
+    /**
+     * Supprime une structure (club) de la base de données.
+     *
+     * Si la requête est POST et que l'action est 'delete', cette méthode supprime le club sélectionné,
+     * sauf si le club est "L'Ordre", qui ne peut pas être supprimé.
+     *
+     * @return void
+     */
     public function deleteStructure(): void{
         if($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'delete'){
             $structureDeleted = $_POST['delete'];
@@ -77,6 +119,15 @@ class StructureTenracController
         }
     }
 
+
+    /**
+     * Met à jour les informations d'une structure (club) dans la base de données.
+     *
+     * Si la requête est POST et que l'action est 'update', cette méthode met à jour le nom et l'adresse
+     * du club sélectionné, sauf pour "L'Ordre" dont le nom ne peut pas être changé.
+     *
+     * @return void
+     */
     public function updateStructure(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
             $idClub = $_POST['update'];
