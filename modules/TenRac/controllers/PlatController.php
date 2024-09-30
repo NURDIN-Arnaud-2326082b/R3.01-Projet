@@ -59,7 +59,8 @@ class PlatController
     {
         $platmodel = new PlatModel((new DbConnect()));
         $ingredientS = $platmodel->listerIngredient();
-
+        echo '<select name="action" id="ingredient" name="ingr" required>';
+        echo '<option value="">Sélectionnez un ingrédient</option>';
         foreach ($ingredientS as $ingr){
             $tmp = implode(",",$ingr);
             echo  '<option value="ingredient1">'.$tmp.'</option>';

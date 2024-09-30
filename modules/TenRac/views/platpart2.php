@@ -11,7 +11,4 @@
                 <label> <p>Nom du Plat : </p>
                     <input type="text" name="nom" required>
                 </label><br>
-
                 <label for="ingredient"> <p>Ingrédient :</p></label>
-                <select name="action" id="ingredient" name="ingr" required>
-                <option value="">Sélectionnez un ingrédient</option>
