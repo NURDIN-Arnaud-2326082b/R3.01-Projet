@@ -6,7 +6,7 @@
 
         // Effectue une requête AJAX pour appeler la méthode PHP
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'index.php?action=ajouterIngredient', true); // Appelle la méthode recupIngredient du contrôleur via la route
+        xhr.open('REQUEST_URI', '/ajouterIngredient', true); // Appelle la méthode recupIngredient du contrôleur via la route
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 // Injecte la réponse (le <select> généré par PHP) dans le div
