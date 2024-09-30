@@ -1,7 +1,4 @@
 <form action="/ajout-repas" method="POST">
-    <label for="courriel">Email :</label>
-    <input type="email" id="courriel" name="Courriel" required><br>
-
 
     <label for="Dates"> Date du repas : </label>
     <input type="date" id="Dates" name="Dates" required><br>

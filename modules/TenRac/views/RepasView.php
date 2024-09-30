@@ -1,5 +1,6 @@
 <?php
 namespace TenRac\views;
+use AllowDynamicProperties;
 use TenRac\controllers\RepasController;
 use TenRac\models\DbConnect;
 use TenRac\models\RepasModel;
@@ -12,7 +13,7 @@ use TenRac\models\RepasModel;
  * méthodes nécessaires pour afficher le contenu spécifique à
  * la page de repas.
  */
-class RepasView extends AbstractView
+#[AllowDynamicProperties] class RepasView extends AbstractView
 {
 
 
@@ -28,10 +29,11 @@ private string $idLieu;
      * @param string $idLieu L'identifiant du lieu.
      * @param string $idPlat L'identifiant du plat.
      */
-    public function __construct(bool $dateExists,string $idLieu,)
+    public function __construct(bool $dateExists,string $idLieu, $affichagePlat)
     {
         $this->dateExists=$dateExists;
         $this->idLieu=$idLieu;
+        $this->affichagePlat=$affichagePlat;
 
 
     }
@@ -48,9 +50,10 @@ private string $idLieu;
      */
     protected function body(): void
     {
-        global $dateExistsbool,$LieuBool;
+        global $dateExistsbool,$LieuBool, $affichagePlat;
         $dateExistsbool=$this->dateExists;
         $LieuBool=$this->idLieu;
+        $affichagePlat = $this->affichagePlat;
 
         include __DIR__ . '/repas.php';
         $loggedin = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;

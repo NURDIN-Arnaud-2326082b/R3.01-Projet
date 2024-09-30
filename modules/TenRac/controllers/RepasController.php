@@ -62,7 +62,7 @@ class RepasController{
             ];
 
             $tenracModel = new RepasModel(new DbConnect());
-            $tenracModel->ajouterTenrac(
+            $tenracModel->ajoutRepas(
                 $newRepas['Dates'],
                 $newRepas['Gerant'],
                 $newRepas['Id_lieu']
@@ -71,6 +71,18 @@ class RepasController{
             exit();
         }
 
+    }
+
+    public function generationHtmlPlat(): String{
+        $result = "";
+        $repasModel = new RepasModel(new DbConnect());
+        $plats = $repasModel->listTousLesRepas();
+        foreach ($plats as $plat) {
+            $plt = implode(", ", $plat);
+            $result = $result . '<div id="listeplat"><p>' . $plt . "<br>";
+            $result = $result . "</p></div>";
+        }
+        return $result;
     }
 
 
@@ -85,13 +97,13 @@ class RepasController{
      */
     public static function affichePage(): void{
         session_start();
-        $dbConnect= new DbConnect();
-        $repasModel = RepasModel::unSeulRepas($dbConnect, 1);
-
-
+        $repasController = new RepasController();
+        $html = $repasController->generationHtmlPlat();
+        $repasModel = new RepasModel(new DbConnect());
         $view = new RepasView(
-            $repasModel->Verifdate($dbConnect),
-            $repasModel->getLieu($dbConnect)
+            $repasModel->Verifdate(),
+            $repasModel->getLieu(),
+            $html
         );
         $view->afficher();
     }

@@ -8,9 +8,9 @@
         <img class="imgrdv" src="../../../img/Cavalier.png" height="300px" width="300px" alt="Cavalier">
             <span>
                 <?php
-                global $platBool,$dateExistsbool;
-                if ($platBool && $dateExistsbool) {
-                    echo $platBool;
+                global $platBool,$dateExistsbool,$affichagePlat;
+                if ($affichagePlat !== null) {
+                    echo $affichagePlat;
                 }
                 else{
                     echo "Aucun plat pour ce moment !";

@@ -10,30 +10,35 @@ readonly class RepasModel {
      * @param string $gerant
      * @param string $dates
  */
-    public function __construct(
-        public int    $idRepas,
-        public int    $idLieu,
-        public string $gerant,
-        public string $dates)
+    public function __construct(private DbConnect $connect)
     {
 
     }
 
-     public function ajoutRepas($Dates, $Gerant, $id_lieu): void
+    public function ajoutRepas($Dates, $Gerant, $id_lieu): void
     {
-        $sql = "FROM REPAS JOIN TENRAC ON Gerant = Nom
+        $sql = "SELECT * FROM Repas JOIN Tenrac ON Gerant = Nom
         WHERE GRADE = 'Chevalier' OR GRADE = 'Dame' OR GRADE = 'Grand Chevalier'";
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->execute();
-        // TODO
-        $sql = "INSERT INTO Tenrac ( Dates , Gerant, Id_Lieu) VALUES (?, ?, ?)";
-        $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param("ssi", $Dates, $Gerant, $id_lieu);
 
-        if ($stmt->execute()) {
-            echo "Ajout réussi";
-        } else {
-            echo "Erreur lors de l'ajout: " . $stmt->error;
+        $result = $stmt->get_result();
+        var_dump( $result);
+
+        if ($result->num_rows > 0) {
+            $sql = "INSERT INTO Repas ( Dates , Gerant, Id_Lieu) VALUES (?, ?, ?)";
+            $stmt = $this->connect->mysqli()->prepare($sql);
+            $stmt->bind_param("ssi", $Dates, $Gerant, $id_lieu);
+
+            if ($stmt->execute()) {
+                echo "Ajout réussi";
+            } else {
+                echo "Erreur lors de l'ajout: " . $stmt->error;
+            }
+        }
+        else
+        {
+            echo 'Le gérant n\'est pas Chevalier ou Dame';
         }
 
         $stmt->close();
@@ -45,59 +50,33 @@ readonly class RepasModel {
      * @param DbConnect $dbConnect
      * @return self[]
      */
-    public static function tousLesRepas(DbConnect $dbConnect): array
+    public function listTousLesRepas(): array
     {
-        $sql = "
-        SELECT Repas.*
-        FROM Repas";
-        $stmt = $dbConnect->mysqli()->prepare($sql);
+        $stmt = $this->connect->mysqli()->query("SELECT Nom_plat FROM Plat JOIN Est_dans ON Plat.Id_plat = Est_dans.Id_plat JOIN Repas ON Est_dans.Id_repas = Repas.Id_repas");
 
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $tousLesRepas =[];
-        foreach($result as $repas){
-            $repasmodel=new self(
-                idRepas: $repas['Id_repas'],
-                idLieu: $repas['Id_Lieu'],
-                gerant: $repas['Gerant'],
-                dates: $repas['Dates']
-
-            );
-            $tousLesRepas[]=$repasmodel;
+        // Vérification du résultat
+        if (!$stmt) {
+            die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
         }
-        return $tousLesRepas;
+
+        // Extraction des résultats sous forme de tableau
+        $data = [];
+        while ($row = $stmt->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        // Libération du résultat
+        $stmt->free();
+        return $data;
+
     }
 
-    public static function unSeulRepas(DbConnect $dbConnect, int $idRepas): self
-    {
-        $sql = "
-        SELECT Repas.*
-        FROM Repas WHERE Id_repas = ?";
-        $stmt = $dbConnect->mysqli()->prepare($sql);
-
-        $stmt->bind_param("s", $idRepas);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $stmt->close();
-
-        return new self(
-            idRepas: $row['Id_repas'],
-            idLieu: $row['Id_Lieu'],
-            gerant: $row['Gerant'],
-            dates: $row['Dates']);
-    }
-
-    public function getLieu(DbConnect $dbConnect): string {
+    public function getLieu(): string {
     $sql = "
         SELECT Lieu.Adresse
         FROM Repas,Lieu
-        WHERE Repas.Id_Lieu = Lieu.Id_Lieu AND Lieu.Id_Lieu = ?
-    ";
-        $stmt = $dbConnect->mysqli()->prepare($sql);
-
-        $idlieu= $this->idLieu;
-        $stmt->bind_param("s", $idlieu);
+        WHERE Repas.Id_Lieu = Lieu.Id_Lieu ";
+        $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
@@ -107,12 +86,12 @@ readonly class RepasModel {
 
 }
 
-    public static function Verifdate(DbConnect $dbConnect) : bool
+    public function Verifdate() : bool
     {
         $dateJour = date("Y-m-d");
 
         $sql = "SELECT COUNT(*) as count FROM Repas WHERE Dates = ?";
-        $stmt = $dbConnect->mysqli()->prepare($sql);
+        $stmt = $this->connect->mysqli()->prepare($sql);
 
         $stmt->bind_param("s", $dateJour);
         $stmt->execute();
