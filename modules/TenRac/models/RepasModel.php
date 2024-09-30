@@ -26,6 +26,27 @@ class RepasModel {
 
     }
 
+     public function ajoutRepas($Dates, $Gerant, $id_lieu): void
+    {
+        $sql = "FROM REPAS JOIN TENRAC ON Gerant = Nom
+        WHERE GRADE = 'Chevalier' OR GRADE = 'Dame' OR GRADE = 'Grand Chevalier'";
+        $stmt = $this->connect->mysqli()->prepare($sql);
+        $stmt->execute();
+        // TODO
+        $sql = "INSERT INTO Tenrac ( Dates , Gerant, Id_Lieu) VALUES (?, ?, ?)";
+        $stmt = $this->connect->mysqli()->prepare($sql);
+        $stmt->bind_param("ssi", $Dates, $Gerant, $id_lieu);
+
+        if ($stmt->execute()) {
+            echo "Ajout réussi";
+        } else {
+            echo "Erreur lors de l'ajout: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
+
+
 
     /**
      * @param DbConnect $dbConnect
@@ -148,6 +169,8 @@ class RepasModel {
         else{
             return false;
         }
-}
+
+
+
 }
 ?>

@@ -1,16 +1,17 @@
-<?php
-$page_title = "Repas";
-$css_files = "Repas.css";
-
-global $userController, $conn;
-require_once __DIR__ . '/../controllers/header.php';
-require_once __DIR__ . '/../controllers/footer.php';
-require_once '../models/DbConnect.php';
-require_once '../controllers/TenracController.php';
-require_once '../models/RepasModel.php';
-require_once '../controllers/RepasController.php';
-header_page($page_title, $css_files);
+<form action="/ajout-repas" method="POST">
+    <label for="courriel">Email :</label>
+    <input type="email" id="courriel" name="Courriel" required><br>
 
 
+    <label for="Dates"> Date du repas : </label>
+    <input type="date" id="Dates" name="Dates" required><br>
 
-?>
+    <label for="Gerant">Gérent du repas :</label>
+    <input type="text" id="Gerant" name="Gerant" required><br>
+
+    <label for="Id_lieu">Lieu du repas avec id :</label>
+    <input type="text" id="Id_lieu" name="Id_lieu" required><br>
+
+
+    <button type="submit">Ajouter Le Repas</button>
+</form>

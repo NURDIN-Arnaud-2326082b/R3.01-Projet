@@ -19,6 +19,27 @@ class RepasController{
     }
 
 
+    public function ajouterRepas(): void
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $newRepas = [
+                'Dates' => $_POST['Dates'],
+                'Gerant' => $_POST['Gerant'],
+                'Id_lieu' => $_POST['Id_lieu']
+            ];
+
+            $tenracModel = new RepasModel(new DbConnect());
+            $tenracModel->ajouterTenrac(
+                $newRepas['Dates'],
+                $newRepas['Gerant'],
+                $newRepas['Id_lieu']
+            );
+            header('Location: /index.php');
+            exit();
+        }
+
+    }
+
 
     public static function affichePage(): void{
         session_start();

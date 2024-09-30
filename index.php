@@ -28,6 +28,12 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $tenrac = new \TenRac\controllers\GestionTenracController();
             $tenrac ->ajouterTenrac();
             break;
+
+        case 'ajout-repas':
+            $repas = new RepasController();
+            $repas->ajouterRepas();
+            break;
+
         case 'suppression-tenrac':
             $tenrac = new \TenRac\controllers\GestionTenracController();
             $tenrac ->supprimerTenrac();

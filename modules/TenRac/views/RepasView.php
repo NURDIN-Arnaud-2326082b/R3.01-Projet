@@ -1,6 +1,7 @@
 <?php
 namespace TenRac\views;
 use TenRac\controllers\RepasController;
+use TenRac\models\DbConnect;
 use TenRac\models\RepasModel;
 class RepasView extends AbstractView
 {
@@ -25,6 +26,10 @@ private string $idPlat;
         $LieuBool=$this->idLieu;
         $PlatBool=$this->idPlat;
         include __DIR__ . '/repas.php';
+        $loggedin = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
+        if ($loggedin){
+            include __DIR__ . '/repasTenrac.php';
+        }
     }
 
     function css(): string
