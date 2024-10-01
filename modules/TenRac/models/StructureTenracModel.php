@@ -71,6 +71,12 @@ class StructureTenracModel{
         return $data;
     }
 
+    /**
+     * Cherche l'adresse d'un club par son identifiant.
+     *
+     * @param int $id L'identifiant du club.
+     * @return array Un tableau contenant l'adresse du club.
+     */
     public function chercheAdresse(int $id){
         $stmt = $this->connect->mysqli()->prepare("SELECT DISTINCT Adresse FROM Ordre_et_club WHERE Id_club =?");
         $stmt->bind_param("i", $id);
@@ -92,10 +98,10 @@ class StructureTenracModel{
 
 
     /**
-     * Cherche l'adresse d'un club par son identifiant.
+     * Cherche les tenracs appartenant au club par son identifiant.
      *
      * @param int $id L'identifiant du club.
-     * @return array Un tableau contenant l'adresse du club.
+     * @return array Un tableau contenant les tenracs.
      */
     public function chercheTenrac(int $id){
         $stmt = $this->connect->mysqli()->prepare("SELECT DISTINCT Nom FROM Tenrac WHERE Id_club =?");
@@ -138,8 +144,23 @@ class StructureTenracModel{
         $stmt->close();
     }
 
-    public function ajouterTenracClub(){
-        //TODO
+    /**
+     * Ajoute un tenrac dans un club.
+     *
+     * @param int $Id_club L'identifiant du club.
+     * @param int $Id_tenrac L'identifiant du tenrac.
+     * @return void
+     */
+    public function ajouterTenracClub($Id_club, $Id_tenrac): void{
+        $sql = "UPDATE Tenrac SET Id_club = ? WHERE id = ?";
+        $stmt = $this->connect->mysqli()->prepare($sql);
+        $stmt->bind_param('ii', $Id_club, $Id_tenrac);
+        if($stmt->execute()){
+            //echo 'Le tenrac  fait maintenant parti du club.
+        } else{
+            echo 'Erreur de modification du club des tenracs' . $stmt->error;
+        }
+        $stmt->close();
     }
 
     /**
