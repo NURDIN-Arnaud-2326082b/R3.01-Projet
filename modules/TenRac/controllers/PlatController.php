@@ -104,9 +104,9 @@ class PlatController
             foreach ($ingredients as $ingredient){
                 echo implode(",",$ingredient)."<br>";
             }
-            echo '</p>     <button onclick="modifierPlat()">Modifier</button>
+            echo '</p> <button type="submit" name="update" value="'.$idx.'">Modifier le club</button> </form> 
             <form action="/delete-plat" method="POST"><input type="hidden" name="action" value="delete">
-            <button type="submit" name="delete" value="'.$idx.'">Supprimer le club</button></form><br></div>';
+            <button type="submit" name="delete" value="'.$idx.'">Supprimer le club</button><br></div>';
         }
     }
 
@@ -153,6 +153,19 @@ class PlatController
             $platdeleted = $_POST['delete'];
             $platmodel = new PlatModel(new DbConnect());
             $platmodel->deletePlat($platdeleted);
+            self::affichePage();
+            exit();
+        }
+    }
+
+
+    public function updatePlat(): void{
+        if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
+            $idPlat = $_POST['update'];
+            $nomPlat = $_POST['nom'];
+
+            $PlatModel = new PlatModel(new DbConnect());
+            $PlatModel->updatePlat($idPlat, $nomPlat);
             self::affichePage();
             exit();
         }

@@ -242,4 +242,17 @@ class PlatModel
         }
         $stmt2->close();
     }
+
+    public function updatePlat($Id_Plat,$Nom_Plat): void
+    {
+        $sql = "UPDATE Plat SET Nom_Plat = ? WHERE Id_Plat = ?";
+        $stmt = $this->connect->mysqli()->prepare($sql);
+        $stmt->bind_param('ssi', $Nom_Plat, $Id_Plat);
+        if($stmt->execute()){
+            //echo 'Modification réussie';
+        }else{
+            echo 'Erreur de modification' . $stmt->error;
+        }
+        $stmt->close();
+    }
 }

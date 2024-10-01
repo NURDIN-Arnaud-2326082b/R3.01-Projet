@@ -110,7 +110,10 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $structureTenrac ->updateStructure();
             $structureTenrac::affichePage();
             break;
-
+        case 'udpate-plat' :
+            $PlatTenrac = new \TenRac\controllers\PlatController();
+            $PlatTenrac ->updatePlat();
+            $PlatTenrac::affichePage() ;
         // Dans la situation de tenrac-structure
         case 'tenrac-structure':
             // On modifie la structure à l'aide de la fonction ajouterTenracStructure de controller puis on effectue l'affichage.
