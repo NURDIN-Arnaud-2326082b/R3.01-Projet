@@ -127,7 +127,7 @@ class PlatController
         if($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'delete'){
             $platdeleted = $_POST['delete'];
             $platmodel = new StructureTenracModel(new DbConnect());
-            $platmodel->deletePlat($platdeleted);
+            $this->$platmodel->deletePlat($platdeleted);
             self::affichePage();
             exit();
         }
