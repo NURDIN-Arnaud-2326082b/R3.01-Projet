@@ -6,14 +6,14 @@ use TenRac\controllers\PlatController;
 
 
 /**
- * Class PlatView
+ * Class PlatTenracView
  *
  * Représente la vue pour la page de plat.
  * Elle hérite de la classe abstraite AbstractView et définit les
  * méthodes nécessaires pour afficher le contenu spécifique à
  * la page de plat.
  */
-class PlatView extends AbstractView
+class PlatTenracView extends AbstractView
 {
 
     /**

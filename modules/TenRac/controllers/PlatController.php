@@ -4,7 +4,7 @@ namespace TenRac\controllers;
 use TenRac\models\DbConnect;
 use TenRac\models\PlatModel;
 use TenRac\models\StructureTenracModel;
-use TenRac\views\PlatView;
+use TenRac\views\PlatTenracView;
 
 
 /**
@@ -28,7 +28,14 @@ class PlatController
     public static function affichePage(): void
     {
         session_start();
-        $view = new PlatView();
+        $view = new PlatTenracView();
+        $view->afficher();
+    }
+
+    public static function affichePageTenrac(): void
+    {
+        session_start();
+        $view = new PlatTenracView();
         $view->afficher();
     }
 
@@ -80,7 +87,8 @@ class PlatController
             foreach ($ingredients as $ingredient){
                 echo implode(",",$ingredient)."<br>";
             }
-            echo '</p> <form action="/delete-plat" method="POST"><input type="hidden" name="action" value="delete">
+            echo '</p>     <button onclick="modifierPlat()">Modifier</button>
+            <form action="/delete-plat" method="POST"><input type="hidden" name="action" value="delete">
             <button type="submit" name="delete" value="'.$idx.'">Supprimer le club</button></form><br></div>';
         }
     }

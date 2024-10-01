@@ -20,6 +20,29 @@
         };
         xhr.send();
     }
+
+    // Fonction pour modifier le plat et les ingrédients
+    function modifierPlat() {
+        // Récupérer le nom du plat
+        var nomPlat = document.getElementById('platName').value;
+
+        // Récupérer les ingrédients sélectionnés
+        var ingredientsSelect = document.getElementById('ingredientSelect');
+        var selectedIngredients = Array.from(ingredientsSelect.selectedOptions).map(option => option.value);
+
+        // Mettre à jour le contenu du tableau
+        var cellulePlat = document.getElementById('platCell');
+        var celluleIngr = document.getElementById('ingCell');
+
+        if (cellulePlat && celluleIngr) {
+        // Modifier la cellule du plat
+        cellulePlat.innerHTML = nomPlat;
+
+        // Modifier la cellule des ingrédients (en les séparant par des virgules)
+        celluleIngr.innerHTML = selectedIngredients.join(', ');
+    }
+    }
+
 </script>
 <button type="button" id="ajouterbouton" onclick="ajouterCombobox()">+</button>
 <button type="submit">Ajouter</button>
