@@ -34,7 +34,7 @@ class PlatTenracView extends AbstractView
             $platcontroller->recherche($_POST['recherche']);
         }
         else{
-            $platcontroller->generer();
+            $platcontroller->genererTenrac();
         }
         include __DIR__ . '/platpart2.php';
         $platcontroller->recupIngredient();
