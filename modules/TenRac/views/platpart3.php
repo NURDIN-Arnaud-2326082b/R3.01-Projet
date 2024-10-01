@@ -11,7 +11,8 @@
             if (xhr.readyState === 4 && xhr.status === 200) {
                 // Injecte la réponse (le <select> généré par PHP) dans le div
                 newDiv.innerHTML = xhr.responseText;
-                var button = document.getElementById('boutonajouter');
+                document.getElementById('addcombo').appendChild(newDiv);
+                var button = document.getElementById('ajouterbutton');
                 var container = document.getElementById('addcombo');
                 container.insertBefore(newDiv, button);
             }
@@ -19,7 +20,7 @@
         xhr.send();
     }
 </script>
-<button type="button"  id="boutonajouter" onclick="ajouterCombobox()">+</button>
+<button type="button" id="ajouterbutton" onclick="ajouterCombobox()">+</button>
 <button type="submit">Ajouter</button>
 </form>
 </div>
