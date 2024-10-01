@@ -5,6 +5,7 @@ use TenRac\models\DbConnect;
 use TenRac\models\PlatModel;
 use TenRac\models\StructureTenracModel;
 use TenRac\views\PlatTenracView;
+use TenRac\views\PlatView;
 
 
 /**
@@ -28,7 +29,7 @@ class PlatController
     public static function affichePage(): void
     {
         session_start();
-        $view = new PlatTenracView();
+        $view = new PlatView();
         $view->afficher();
     }
 
