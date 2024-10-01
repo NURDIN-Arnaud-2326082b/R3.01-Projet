@@ -46,12 +46,30 @@ class ConnexionController
      */
     public static function connecter(array $post): void
     {
+        setcookie(
+            'courrielTenrac',
+            $post["email"],
+            [
+                'expires' => time() + 365*24*3600,
+                'secure' => true,
+                'httponly' => true,
+            ]
+        );
         $courriel = htmlspecialchars($post["email"]);
         $password = htmlspecialchars($post["password"]);
 
         $connexionModel = new ConnexionModel(new DbConnect());
 
         if ($connexionModel->login($courriel, $password)) {
+            setcookie(
+                'courrielTenrac',
+                $post["email"],
+                [
+                    'expires' => time() + 365*24*3600,
+                    'secure' => true,
+                    'httponly' => true,
+                ]
+            );
             header("Location: /home");
             exit();
         } else {
