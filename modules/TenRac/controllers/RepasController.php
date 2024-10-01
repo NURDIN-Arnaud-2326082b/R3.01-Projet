@@ -67,7 +67,6 @@ class RepasController{
                 $newRepas['Gerant'],
                 $newRepas['Id_lieu']
             );
-            header('Location: /index.php');
             exit();
         }
 

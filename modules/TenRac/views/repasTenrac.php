@@ -7,7 +7,7 @@
     <input type="text" id="Gerant" name="Gerant" required><br>
 
     <label for="Id_lieu">Lieu du repas avec id :</label>
-    <input type="text" id="Id_lieu" name="Id_lieu" required><br>
+    <input type="number" id="Id_lieu" name="Id_lieu" required><br>
 
 
     <button type="submit">Ajouter Le Repas</button>

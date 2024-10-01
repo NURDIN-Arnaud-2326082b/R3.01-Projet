@@ -36,9 +36,6 @@
                     echo "Aucune rdv";
                 }
                 ?>
-
-
-
             </span>
 
         </p>
@@ -51,14 +48,12 @@
             <p>
                 <img class="imgrdv" src="../../../img/date.png" height="200px" width="200px"  alt="Logo HubSpot">
                     <span>Date de présence:    <?php
-
                         if ($dateExistsbool === true) {
                             echo date("Y/m/d");
                         } else {
                             echo "Aucune date";
                         }
                         ?></span>
-
             </p>
         </div>
     </div>

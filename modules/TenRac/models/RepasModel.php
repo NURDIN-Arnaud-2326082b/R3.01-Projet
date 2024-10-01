@@ -17,17 +17,30 @@ readonly class RepasModel {
 
     public function ajoutRepas($Dates, $Gerant, $id_lieu): void
     {
-        $sql = "SELECT * FROM Repas JOIN Tenrac ON Gerant = Nom
-        WHERE GRADE = 'Chevalier' OR GRADE = 'Dame' OR GRADE = 'Grand Chevalier'";
-        $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->execute();
+        // SQL query to check if the Gerant is a Chevalier or Dame
+        $sql1 = "SELECT Gerant FROM Repas JOIN Tenrac ON Gerant = Nom
+             WHERE GRADE IN ('Chevalier', 'Dame','Grand Chevalier')
+             AND Gerant = ?";
 
+        $stmt = $this->connect->mysqli()->prepare($sql1);
+        $stmt->bind_param("s",$Gerant);
+
+        if (!$stmt) {
+            die("Erreur de préparation de la requête: " . $this->connect->mysqli()->error);
+        }
+
+        $stmt->execute();
         $result = $stmt->get_result();
-        var_dump( $result);
 
         if ($result->num_rows > 0) {
-            $sql = "INSERT INTO Repas ( Dates , Gerant, Id_Lieu) VALUES (?, ?, ?)";
+            // SQL query to insert a new Repas
+            $sql = "INSERT INTO Repas (Dates, Gerant, Id_Lieu) VALUES (?, ?, ?)";
             $stmt = $this->connect->mysqli()->prepare($sql);
+
+            if (!$stmt) {
+                die("Erreur de préparation de la requête: " . $this->connect->mysqli()->error);
+            }
+
             $stmt->bind_param("ssi", $Dates, $Gerant, $id_lieu);
 
             if ($stmt->execute()) {
@@ -35,13 +48,15 @@ readonly class RepasModel {
             } else {
                 echo "Erreur lors de l'ajout: " . $stmt->error;
             }
-        }
-        else
-        {
-            echo 'Le gérant n\'est pas Chevalier ou Dame';
+
+
+
+        } else {
+            echo "Le gérant n'est pas Chevalier ou Dame";
         }
 
         $stmt->close();
+
     }
 
 
@@ -52,7 +67,7 @@ readonly class RepasModel {
      */
     public function listTousLesRepas(): array
     {
-        $stmt = $this->connect->mysqli()->query("SELECT Nom_plat FROM Plat JOIN Est_dans ON Plat.Id_plat = Est_dans.Id_plat JOIN Repas ON Est_dans.Id_repas = Repas.Id_repas");
+        $stmt = $this->connect->mysqli()->query("SELECT Nom_plat FROM Plat JOIN Est_dans ON Plat.Id_plat = Est_dans.Id_plat JOIN Repas ON Est_dans.Id_repas = Repas.Id_repas ORDER BY Dates");
 
         // Vérification du résultat
         if (!$stmt) {
