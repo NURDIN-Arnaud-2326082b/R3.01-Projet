@@ -77,8 +77,23 @@ class StructureTenracController
         $view->afficher();
     }
 
+    
+    /**
+     * Ajoute un tenrac dans un club.
+     *
+     * Si la requête est POST et que l'action est 'rejoindre', cette méthode modifie le club d'un tenrac.
+     *
+     * @return void
+     */
     public function ajouterTenracClub(): void{
-        //TODO
+        if($_SERVER['REQUEST_METHOD'] === 'POST' AND $_POST['action'] === 'rejoindre') {
+            $idClub = $_POST['rejoindre'];
+            $idTenrac = 'je ne sais pas comment récupérer cela. :/';
+            $structureModel = new StructureTenracModel(new DbConnect());
+            $structureModel->ajouterTenracClub($idClub, $idTenrac);
+            self::affichePage();
+            exit();
+        }
     }
 
 
