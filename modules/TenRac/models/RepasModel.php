@@ -18,7 +18,7 @@ readonly class RepasModel {
     public function ajoutRepas($Dates, $Gerant, $id_lieu): void
     {
         // SQL query to check if the Gerant is a Chevalier or Dame
-        $sql1 = "SELECT Gerant FROM Repas JOIN Tenrac ON Gerant = Nom
+        $sql1 = "SELECT Nom FROM Tenrac
              WHERE GRADE IN ('Chevalier', 'Dame','Grand Chevalier')
              AND Nom = ?";
 
