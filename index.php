@@ -49,7 +49,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             break;
 
         // Dans le cas d'un modification Tenrac
-        case 'modification-tenrac':
+        case 'modifier-tenrac':
             // On crée un controller tenrac puis on appel la fonction modifierTenrac
             $tenrac = new \TenRac\controllers\GestionTenracController();
             $tenrac ->modifierTenrac();
