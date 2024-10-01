@@ -20,7 +20,7 @@ readonly class RepasModel {
         // SQL query to check if the Gerant is a Chevalier or Dame
         $sql1 = "SELECT Gerant FROM Repas JOIN Tenrac ON Gerant = Nom
              WHERE GRADE IN ('Chevalier', 'Dame','Grand Chevalier')
-             AND Gerant = ?";
+             AND Nom = ?";
 
         $stmt = $this->connect->mysqli()->prepare($sql1);
         $stmt->bind_param("s",$Gerant);
