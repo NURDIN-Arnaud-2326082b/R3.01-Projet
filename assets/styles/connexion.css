@@ -60,7 +60,7 @@ header {
 }
 
 .header-menu li a:hover {
-    background-color: gray;
+    background-color: #f3aa00;
     color: #fff;
 }
 
