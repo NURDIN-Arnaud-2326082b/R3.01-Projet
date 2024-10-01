@@ -15,7 +15,7 @@ readonly class RepasModel {
 
     }
 
-    public function ajoutRepas($Dates, $Gerant, $id_lieu): void
+    public function ajoutRepas($Dates, $Gerant, $Id_Lieu): void
     {
         // SQL query to check if the Gerant is a Chevalier or Dame
         $sql1 = "SELECT Nom FROM Tenrac
@@ -41,7 +41,7 @@ readonly class RepasModel {
                 die("Erreur de préparation de la requête: " . $this->connect->mysqli()->error);
             }
 
-            $stmt->bind_param("ssi", $Dates, $Gerant, $id_lieu);
+            $stmt->bind_param("ssi", $Dates, $Gerant, $Id_Lieu);
 
             if ($stmt->execute()) {
                 echo "Ajout réussi";
@@ -67,7 +67,7 @@ readonly class RepasModel {
      */
     public function listTousLesRepas(): array
     {
-        $stmt = $this->connect->mysqli()->query("SELECT Nom_plat FROM Plat JOIN Est_dans ON Plat.Id_plat = Est_dans.Id_plat JOIN Repas ON Est_dans.Id_repas = Repas.Id_repas ORDER BY Dates");
+        $stmt = $this->connect->mysqli()->query("SELECT Nom_plat FROM Plat JOIN Est_dans ON Plat.Id_plat = Est_dans.Id_plat JOIN Repas ON Est_dans.Id_repas = Repas.Id_repas WHERE Dates = CURRENT_DATE() ");
 
         // Vérification du résultat
         if (!$stmt) {
