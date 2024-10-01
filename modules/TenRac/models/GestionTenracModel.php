@@ -105,13 +105,12 @@ class GestionTenracModel
     {
         $sql = "UPDATE Tenrac SET Code_personnel = ?, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE Courriel = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param("sssssssss", $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $Courriel);
+        $stmt->bind_param("ssssssssss", $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $Courriel);
         if ($stmt->execute()) {
             echo "Modification réussie";
         } else {
             echo "Erreur lors de la modification: " . $stmt->error;
         }
-
         $stmt->close();
     }
 }

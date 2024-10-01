@@ -111,35 +111,37 @@ class GestionTenracController
     public function modifierTenrac(): void
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
             $tenracModif = [
-                'Courriel' => $_POST['Courriel'],
-                'Code_personnel' => $_POST['Code_personnel'],
-                'Nom' => $_POST['Nom'],
-                'Num_tel' => $_POST['Num_tel'],
-                'Adresse' => $_POST['Adresse'],
-                'Grade' => $_POST['Grade'],
-                'Rang' => $_POST['Rang'],
-                'Titre' => $_POST['Titre'],
-                'Dignite' => $_POST['Dignite'],
-                'Id_club' => $_POST['Id_club']
+                'Courriel' => $_POST['Courriel'] ?? null,
+                'Code_personnel' => $_POST['Code_personnel'] ?? null,
+                'Nom' => $_POST['Nom'] ?? null,
+                'Num_tel' => $_POST['Num_tel'] ?? null,
+                'Adresse' => $_POST['Adresse'] ?? null,
+                'Grade' => $_POST['Grade'] ?? null,
+                'Rang' => $_POST['Rang'] ?? null,
+                'Titre' => $_POST['Titre'] ?? null,
+                'Dignite' => $_POST['Dignite'] ?? null,
+                'Id_club' => $_POST['Id_club'] ?? null
             ];
 
             $tenracModel = new GestionTenracModel(new DbConnect());
-            $tenracModel->modifierTenrac(
-                $tenracModif['Courriel'],
-                $tenracModif['Code_personnel'],
-                $tenracModif['Nom'],
-                $tenracModif['Num_tel'],
-                $tenracModif['Adresse'],
-                $tenracModif['Grade'],
-                $tenracModif['Rang'],
-                $tenracModif['Titre'],
-                $tenracModif['Dignite'],
-                $tenracModif['Id_club']
-            );
-            header('Location: /index.php');
-            exit();
+
+                $tenracModel->modifierTenrac(
+                    $tenracModif['Courriel'],
+                    $tenracModif['Code_personnel'],
+                    $tenracModif['Nom'],
+                    $tenracModif['Num_tel'],
+                    $tenracModif['Adresse'],
+                    $tenracModif['Grade'],
+                    $tenracModif['Rang'],
+                    $tenracModif['Titre'],
+                    $tenracModif['Dignite'],
+                    $tenracModif['Id_club']
+                );
+                header('Location: /index.php');
+                exit();
+            }
         }
-    }
 
 }
