@@ -99,7 +99,10 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $structureTenrac ->deleteStructure();
             $structureTenrac::affichePage();
             break;
-
+        case 'delete-plat' :
+            $platTenrac = new \TenRac\controllers\PlatController();
+            $platTenrac ->deletePlat();
+            $platTenrac::affichePage();
         // Dans la sitution de update-structure
         case 'update-structure':
             // On modifie la structure à l'aide de la fonction updateStructure du controller puis on effectue l'affichage

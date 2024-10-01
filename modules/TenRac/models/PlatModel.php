@@ -212,8 +212,8 @@ class PlatModel
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param('s', $nomPlat);
         $sql2 = "INSERT INTO IngredientsPlat(Id_Plat,Id_ingredient) VALUES (?,?)";
-        $idPlat = chercheIdPlat($nomPlat);
-        $idIngredient = chercheIdIngredient($nomIngredient);
+        $idPlat = $this->chercheIdPlat($nomPlat);
+        $idIngredient = $this->chercheIdIngredient($nomIngredient);
         $stmt2 = $this->connect->mysqli()->prepare($sql2);
         $stmt2->bind_param('ii', $idPlat,$idIngredient);
 
@@ -223,5 +223,23 @@ class PlatModel
             echo 'Erreur d\'ajout' . $stmt->error;
         }
         $stmt->close();
+    }
+
+    public function deletePlat($Id_plat): void
+    {
+        $sql = "DELETE FROM Plat WHERE Id_Plat= ?";
+        $stmt = $this->connect->mysqli()->prepare($sql);
+        $stmt->bind_param('i', $Id_plat);
+        if(!($stmt->execute())){
+            echo 'Erreur de suppresion dans plat' . $stmt->error;
+        }
+        $stmt->close();
+        $sql2 = "DELETE FROM IngredientsPlat WHERE Id_Plat= ?";
+        $stmt2 = $this->connect->mysqli()->prepare($sql2);
+        $stmt2->bind_param('i', $Id_plat);
+        if(!($stmt2->execute())){
+            echo 'Erreur de suppresion dans ingrédientPlat' . $stmt2->error;
+        }
+        $stmt2->close();
     }
 }
