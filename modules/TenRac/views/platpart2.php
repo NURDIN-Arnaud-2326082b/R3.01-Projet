@@ -5,7 +5,7 @@
 <div  id="Boissons" class=" section red">
     <div class="boxed text-center section red">
         <div id ="addcombo">
-            <form action="/add-plat" method="POST">
+            <form action="/add-plat" method="POST" id="formulaire">
                 <h3>Ajouter un Plat</h3>
                 <input type="hidden" name="action" value="add">
                 <label> <p>Nom du Plat : </p>

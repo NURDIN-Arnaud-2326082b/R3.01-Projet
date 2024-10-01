@@ -52,8 +52,13 @@ class StructureTenracController
             }
 
             echo '</ul><button type="submit" name="update" value="'.$id.'">Modifier le club</button></form><br>
+
             <form action="/delete-structure" method="POST"><input type="hidden" name="action" value="delete">
-            <button type="submit" name="delete" value="'.$id.'">Supprimer le club</button></form></div>';
+            <button type="submit" name="delete" value="'.$id.'">Supprimer le club</button></form><br>
+            
+            <form action="/tenrac-structure" method="POST"><input type="hidden" name="action" value="rejoindre">
+            <button type="submit" name="rejoindre" value="'.$id.'">Rejoindre le club</button></form>
+            </div>';
         }
     }
 
@@ -70,6 +75,27 @@ class StructureTenracController
         session_start();
         $view = new StructureTenracView();
         $view->afficher();
+    }
+
+    
+    /**
+     * Ajoute un tenrac dans un club.
+     *
+     * Si la requête est POST et que l'action est 'rejoindre', cette méthode modifie le club d'un tenrac.
+     *
+     * @return void
+     */
+    public function ajouterTenracClub(): void{
+        if($_SERVER['REQUEST_METHOD'] === 'POST' AND $_POST['action'] === 'rejoindre') {
+            $idClub = $_POST['rejoindre'];
+            $courrielTenrac = $_COOKIE['courrielTenrac'];
+
+            'je ne sais pas comment récupérer cela. :/';
+            $structureModel = new StructureTenracModel(new DbConnect());
+            $structureModel->ajouterTenracClub($idClub, $courrielTenrac);
+            self::affichePage();
+            exit();
+        }
     }
 
 
@@ -147,4 +173,5 @@ class StructureTenracController
             }
         }
     }
+
 }

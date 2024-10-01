@@ -5,7 +5,6 @@ use TenRac\models\DbConnect;
 use TenRac\models\GestionTenracModel;
 use TenRac\views\GestionTenracView;
 
-
 /**
  * Contrôleur pour la gestion des utilisateurs (Tenracs).
  *
@@ -16,7 +15,6 @@ use TenRac\views\GestionTenracView;
  */
 class GestionTenracController
 {
-
 
     /**
      * Affiche la page de gestion des Tenracs.
@@ -30,7 +28,6 @@ class GestionTenracController
         $view = new GestionTenracView();
         $view->afficher();
     }
-
 
 
     /**
@@ -78,7 +75,6 @@ class GestionTenracController
 
     }
 
-
     /**
      * Supprime un utilisateur Tenrac de la base de données.
      *
@@ -102,7 +98,6 @@ class GestionTenracController
         }
         }
     }
-
 
     /**
      * Modifie les informations d'un utilisateur Tenrac.

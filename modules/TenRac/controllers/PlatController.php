@@ -3,6 +3,8 @@
 namespace TenRac\controllers;
 use TenRac\models\DbConnect;
 use TenRac\models\PlatModel;
+use TenRac\models\StructureTenracModel;
+use TenRac\views\PlatTenracView;
 use TenRac\views\PlatView;
 
 
@@ -28,6 +30,13 @@ class PlatController
     {
         session_start();
         $view = new PlatView();
+        $view->afficher();
+    }
+
+    public static function affichePageTenrac(): void
+    {
+        session_start();
+        $view = new PlatTenracView();
         $view->afficher();
     }
 
@@ -79,7 +88,25 @@ class PlatController
             foreach ($ingredients as $ingredient){
                 echo implode(",",$ingredient)."<br>";
             }
-            echo "</p></div>";
+            echo '</p><br></div>';
+        }
+    }
+
+    public function genererTenrac() : void{
+        $platmodel = new PlatModel(new DbConnect());
+        $plats = $platmodel->creerListe();
+        foreach ($plats as $plat) {
+            $plt = implode(", ", $plat);
+            echo '<div id="listeplat"><p>' . $plt . "<br>";
+            $index = $platmodel->chercheIdPlat($plt);
+            $idx = $index[0]['Id_Plat'];
+            $ingredients = $platmodel->trouverIngredient((int)$idx);
+            foreach ($ingredients as $ingredient){
+                echo implode(",",$ingredient)."<br>";
+            }
+            echo '</p> <button type="submit" name="update" value="'.$idx.'">Modifier le club</button> </form> 
+            <form action="/delete-plat" method="POST"><input type="hidden" name="action" value="delete">
+            <button type="submit" name="delete" value="'.$idx.'">Supprimer le club</button><br></div>';
         }
     }
 
@@ -112,12 +139,35 @@ class PlatController
     {
         $platmodel = new PlatModel((new DbConnect()));
         $ingredientS = $platmodel->listerIngredient();
-        echo '<select name="action" id="ingredient" name="ingr" required>';
+        echo '<select value="add" id="ingredient" name="ingr" required>';
         echo '<option value="">Sélectionnez un ingrédient</option>';
         foreach ($ingredientS as $ingr){
             $tmp = implode(",",$ingr);
             echo  '<option value="ingredient1">'.$tmp.'</option>';
         }
         echo "</select>";
+    }
+
+    public function deletePlat(): void{
+        if($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'delete'){
+            $platdeleted = $_POST['delete'];
+            $platmodel = new PlatModel(new DbConnect());
+            $platmodel->deletePlat($platdeleted);
+            self::affichePage();
+            exit();
+        }
+    }
+
+
+    public function updatePlat(): void{
+        if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
+            $idPlat = $_POST['update'];
+            $nomPlat = $_POST['nom'];
+
+            $PlatModel = new PlatModel(new DbConnect());
+            $PlatModel->updatePlat($idPlat, $nomPlat);
+            self::affichePage();
+            exit();
+        }
     }
 }
