@@ -148,13 +148,13 @@ class StructureTenracModel{
      * Ajoute un tenrac dans un club.
      *
      * @param int $Id_club L'identifiant du club.
-     * @param int $Id_tenrac L'identifiant du tenrac.
+     * @param string $Courriel_tenrac L'email du tenrac.
      * @return void
      */
-    public function ajouterTenracClub($Id_club, $Id_tenrac): void{
-        $sql = "UPDATE Tenrac SET Id_club = ? WHERE id = ?";
+    public function ajouterTenracClub($Id_club, $Courriel_tenrac): void{
+        $sql = "UPDATE Tenrac SET Id_club = ? WHERE Courriel = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('ii', $Id_club, $Id_tenrac);
+        $stmt->bind_param('is', $Id_club, $Courriel_tenrac);
         if($stmt->execute()){
             //echo 'Le tenrac  fait maintenant parti du club.
         } else{
