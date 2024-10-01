@@ -108,6 +108,13 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $structureTenrac::affichePage();
             break;
 
+        // Dans la situation de tenrac-structure
+        case 'tenrac-structure':
+            // On modifie la structure à l'aide de la fonction ajouterTenracStructure de controller puis on effectue l'affichage.
+            $structureTenrac = new StructureTenracController();
+            $structureTenrac->ajouterTenracClub();
+            $structureTenrac::affichePage();
+            break;
 
         // Dans la situation d'un repas ou repas Tenrac
         case 'repasTenrac':

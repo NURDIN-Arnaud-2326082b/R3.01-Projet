@@ -52,8 +52,13 @@ class StructureTenracController
             }
 
             echo '</ul><button type="submit" name="update" value="'.$id.'">Modifier le club</button></form><br>
+
             <form action="/delete-structure" method="POST"><input type="hidden" name="action" value="delete">
-            <button type="submit" name="delete" value="'.$id.'">Supprimer le club</button></form></div>';
+            <button type="submit" name="delete" value="'.$id.'">Supprimer le club</button></form><br>
+            
+            <form action="/tenrac-structure" method="POST"><input type="hidden" name="action" value="rejoindre">
+            <button type="submit" name="rejoindre" value="'.$id.'">Rejoindre le club</button></form>
+            </div>';
         }
     }
 
@@ -70,6 +75,10 @@ class StructureTenracController
         session_start();
         $view = new StructureTenracView();
         $view->afficher();
+    }
+
+    public function ajouterTenracClub(): void{
+        //TODO
     }
 
 

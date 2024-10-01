@@ -138,7 +138,9 @@ class StructureTenracModel{
         $stmt->close();
     }
 
-
+    public function ajouterTenracClub(){
+        //TODO
+    }
 
     /**
      * Change l'identifiant du club pour les tenracs.
