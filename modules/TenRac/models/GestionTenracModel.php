@@ -46,7 +46,7 @@ class GestionTenracModel
      *
      * @return void
      */
-    public function ajouterTenrac($Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club): void
+    public function ajouterTenrac(string $Courriel, string $Code_personnel, string $Nom, string $Num_tel, string $Adresse, string $Grade, string $Rang, string $Titre, string $Dignite, string $Id_club): void
     {
         $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
 

@@ -10,6 +10,8 @@
             <div class="flex toColumn mCenter">
                 <div  class="boxed text-center">
                     <h2>Venez rejoindre la communauté des tenracs !</h2>
+                    <p>Vous êtes un amateur de fromage ? Vous aimez les plats à base de fromage ? Vous êtes au bon endroit !</p>
+                    <p>De nombreux repas seront organisés, vous pourrez également rejoindre l'un de nos nombreux clubs.</p>
                 </div>
            </div>
         </div>
