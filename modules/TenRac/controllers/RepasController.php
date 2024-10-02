@@ -32,14 +32,16 @@ class RepasController{
             $newRepas = [
                 'Dates' => $_POST['Dates'],
                 'Gerant' => $_POST['Gerant'],
-                'Adresse' => $_POST['Adresse']
+                'Adresse' => $_POST['Adresse'],
+                'Plat' => $_POST['Plat']
             ];
 
             $tenracModel = new RepasModel(new DbConnect());
             $tenracModel->ajoutRepas(
                 $newRepas['Dates'],
                 $newRepas['Gerant'],
-                $newRepas['Adresse']
+                $newRepas['Adresse'],
+                $newRepas['Plat']
             );
             exit();
         }
