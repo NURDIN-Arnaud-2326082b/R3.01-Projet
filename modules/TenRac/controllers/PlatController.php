@@ -76,21 +76,27 @@ class PlatController
             $plats = $platmodel->creerListe();
             foreach ($plats as $plat) {
                 $plt = implode(", ", $plat);
+
+
+                echo '<form id="listeplat" action="/update-plat" method="POST">
+ <input type="text" name="action" value="update" hidden="hidden">
+ <input type="text" name="nom" value="' . $plt .'"><br>';
                 $index = $platmodel->chercheIdPlat($plt);
-                $img = $platmodel->chercheImage($index);
-                echo '<form id="listeplat" action="/update-plat" method="POST"><img src="'.$img.'" alt="tenders" loading="eager"> <input type="text" name="action" value="update" hidden="hidden"><input type="text" name="nom" value="' . $plt .'"><br>';
                 $ingredients = $platmodel->trouverIngredient((int)$index);
                 $cpt = 1;
+
                 foreach ($ingredients as $ingredient) {
                     $listeingredients = $platmodel->listerIngredient();
                     $ing = implode(",",$ingredient);
                     $idxingr = $platmodel->chercheIdIngredient($ing);
+
                     if ($idxingr == 1){
                         echo '<p>FROMAGE À RACLETTE</p><br>';
                     }
                     else {
                         echo '<select value="add"  id="ingredient" name="ingr'.$cpt.'">';
                         echo '<option value="'.$idxingr.'"name="ingr'.$cpt.'">'.$ing.'</option>';
+
                         foreach ($listeingredients as $ingr){
                             $tmp = implode(",",$ingr);
                             $idxingr = $platmodel->chercheIdIngredient($tmp);
@@ -165,9 +171,8 @@ class PlatController
             else{
                 $ingredients[4] = null;
             }
-            $img = $_POST['choix'];;
             $platModel = new PlatModel(new DbConnect());
-            $platModel->addPlat($nomPlat,$ingredients,$img);
+            $platModel->addPlat($nomPlat,$ingredients);
         }
     }
 
@@ -194,9 +199,9 @@ class PlatController
             }
             echo "</select><br>";
         }
-     else {
-         echo '<option value="1"name="ingr'.$cpt.'">FROMAGE À RACLETTE</option></select><br>';
-     }
+        else {
+            echo '<option value="1"name="ingr'.$cpt.'">FROMAGE À RACLETTE</option></select><br>';
+        }
     }
 
     public function deletePlat(): void{
