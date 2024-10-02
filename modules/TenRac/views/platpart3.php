@@ -1,4 +1,4 @@
-<button type="submit">Ajouter</button>$img
+<button type="submit">Ajouter</button>
 </form>
 </div>
 </div>
