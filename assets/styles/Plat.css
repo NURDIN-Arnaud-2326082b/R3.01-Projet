@@ -569,8 +569,10 @@ footer {
 .listeverticale div {
     display: block;
      }
-.img {
-    max-width: 25%; /* Ne dépasse jamais la largeur du conteneur parent */
-    height: auto; /* Ajuste la hauteur pour maintenir le ratio d'aspect */
-    display: block; /* Évite les espaces blancs en dessous des images inline */
+#plat {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+#ingredient {
+    font-size: 0.7rem;
 }
