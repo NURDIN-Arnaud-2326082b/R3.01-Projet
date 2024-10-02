@@ -206,11 +206,11 @@ class PlatModel
      *
      * @return void
      */
-    public function addPlat($nomPlat,$ingredients,$img): void
+    public function addPlat($nomPlat,$ingredients): void
     {
-        $sql = "INSERT INTO Plat(Nom_Plat,IMG) VALUES (?,?)";
+        $sql = "INSERT INTO Plat(Nom_Plat) VALUES (?,?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('ss', $nomPlat,$img);
+        $stmt->bind_param('s', $nomPlat);
         $stmt->execute();
         $stmt->close();
         for ($i = 0; $i < 5; $i++){
@@ -243,11 +243,11 @@ class PlatModel
         $stmt2->close();
     }
 
-    public function updatePlat($IdPlat,$NomPlat,$ingredients,$img): void
+    public function updatePlat($IdPlat,$NomPlat,$ingredients): void
     {
-        $sql = "UPDATE Plat SET Nom_plat = ?, IMG = ? WHERE Id_Plat = ?";
+        $sql = "UPDATE Plat SET Nom_plat = ? WHERE Id_Plat = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('ssi', $NomPlat,$img, $IdPlat);
+        $stmt->bind_param('si', $NomPlat, $IdPlat);
         if(!($stmt->execute())){
             echo 'Erreur de modification' . $stmt->error;
         }
@@ -271,25 +271,4 @@ class PlatModel
         }
     }
 
-    public function chercheImage($idPlat){
-        $stmt = $this->connect->mysqli()->prepare("SELECT IMG FROM Plat WHERE Id_Plat =?");
-        $stmt->bind_param("i", $idPlat);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        // Vérification du résultat
-        if (!$stmt) {
-            die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
-        }
-
-        // Extraction des résultats sous forme de tableau
-        $data = [];
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-
-        // Libération du résultat
-        $result->free();
-        return $data[0]['IMG'];
-    }
 }

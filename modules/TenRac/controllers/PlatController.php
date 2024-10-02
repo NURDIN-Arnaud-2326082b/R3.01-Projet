@@ -173,8 +173,7 @@ class PlatController
                 $ingredients[4] = null;
             }
             $platModel = new PlatModel(new DbConnect());
-            $img = $_POST['choix'];
-            $platModel->addPlat($nomPlat,$ingredients,$img);
+            $platModel->addPlat($nomPlat,$ingredients);
         }
     }
 
@@ -220,7 +219,6 @@ class PlatController
     public function updatePlat(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
             $idPlat = $_POST['update'];
-            $img = $_POST['choix'];
             $nomPlat = $_POST['nom'];
             if (isset($_POST['ingr1'])) {
                 $ingredients[0] = $_POST['ingr1'];
@@ -253,7 +251,7 @@ class PlatController
                 $ingredients[4] = null;
             }
             $PlatModel = new PlatModel(new DbConnect());
-            $PlatModel->updatePlat($idPlat, $nomPlat,$ingredients,$img);
+            $PlatModel->updatePlat($idPlat, $nomPlat,$ingredients);
             self::affichePage();
             exit();
         }
