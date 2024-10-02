@@ -33,17 +33,15 @@ class StructureTenracController
             echo '<div class="clubs">
             <form action="/update-structure" method="POST">
             <input type="hidden" name="action" value="update">
-            <h3>';
+            ';
 
             $name = $structureModel->chercheNom($id);
             $adresse = $structureModel->chercheAdresse($id);
 
-            echo '<label for="nomClub'.$id.'">Nom du club :</label>';
-            echo '<input type="text" id="nomClub'.$id.'" name="nomClub" value="' . $name[0]['Nom_club'] . '">
-            </form></h3><br>';
+            echo '<h3><input type="text" id="nomClub'.$id.'" name="nomClub" value="' . $name[0]['Nom_club'] . '"></h3>
+            </form><br>';
 
             echo '<h4>Adresse : </h4>';
-            echo '<label for="adresseClub'.$id.'">Adresse :</label>';
             echo '<input type="text" id="adresseClub'.$id.'" name="adr" value="' . $adresse[0]['Adresse'] . '">';
 
             echo '<br><h4>Adhérents : </h4>';
@@ -53,18 +51,18 @@ class StructureTenracController
                 echo "<li>" . implode($tenrac) . "</li>";
             }
 
-            echo '</ul><ul class="zoneButton">
-                <li><button type="submit" name="update" value="'.$id.'">Modifier le club</button></li></form>';
+            echo '</ul><ul class="zoneButton"><li>
+                <button type="submit" name="update" value="'.$id.'">Modifier le club</button></form></li>';
 
             if($id != 1) {
-                echo '<form action="/delete-structure" method="POST">
+                echo '<li><form action="/delete-structure" method="POST">
                 <input type="hidden" name="action" value="delete">
-                <li><button type="submit" name="delete" value="'.$id.'">Supprimer le club</button></li></form>';
+                <button type="submit" name="delete" value="'.$id.'">Supprimer le club</button></form></li>';
             }
 
-            echo '<form action="/tenrac-structure" method="POST">
+            echo '<li><form action="/tenrac-structure" method="POST">
             <input type="hidden" name="action" value="rejoindre">
-            <li><button type="submit" name="rejoindre" value="'.$id.'">Rejoindre le club</button></li></form>
+            <button type="submit" name="rejoindre" value="'.$id.'">Rejoindre le club</button></form></li>
             </ul></div>';
         }
     }
