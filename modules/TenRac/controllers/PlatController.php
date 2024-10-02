@@ -79,7 +79,7 @@ class PlatController
                 echo '<div class="listeplat">
                 <form action="/update-plat" method="POST">
                 <input type="text" name="action" value="update" hidden="hidden">
-                <input type="text" name="nom" value="' . $plt .'"><br>';
+                <input class="plat" type="text" name="nom" value="' . $plt .'"><br>';
                 $index = $platmodel->chercheIdPlat($plt);
                 $ingredients = $platmodel->trouverIngredient((int)$index);
                 $cpt = 1;
@@ -88,7 +88,7 @@ class PlatController
                     $ing = implode(",",$ingredient);
                     $idxingr = $platmodel->chercheIdIngredient($ing);
                     if ($idxingr == 1){
-                        echo '<p>FROMAGE À RACLETTE</p><br>';
+                        echo '<p class="ingredient">FROMAGE À RACLETTE</p><br>';
                     }
                     else {
                         echo '<select value="add"  id="ingredient" name="ingr'.$cpt.'">';
