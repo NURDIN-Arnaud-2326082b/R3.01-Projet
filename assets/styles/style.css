@@ -152,14 +152,9 @@ header {
     z-index: 1000;
     background-color: #ff3b3b;
     padding: 10px 0;
-}
-
-header {
     position: fixed;
-    background-color: #ff3b3b;
     color: white;
     text-align: center;
-    padding: 5px 0;
     overflow: hidden;
 }
 
@@ -187,11 +182,6 @@ header {
     display: block;
     box-sizing: border-box;
     transition: 0.2s ease;
-}
-
-.header-menu li a:hover {
-    background-color: #f3aa00;
-    color: #fff;
 }
 
 .header-menu-mobile {
