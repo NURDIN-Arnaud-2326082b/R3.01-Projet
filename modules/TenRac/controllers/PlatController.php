@@ -79,9 +79,22 @@ class PlatController
 
 
                 echo '<form id="listeplat" action="/update-plat" method="POST">
- <input type="text" name="action" value="update" hidden="hidden">
- <input type="text" name="nom" value="' . $plt .'"><br>';
+             <input type="text" name="action" value="update" hidden="hidden">
+             <input type="text" name="nom" value="' . $plt .'"><br><select id="choix" name="choix">
+                <option value="../../../img/hamburger.png" name="choix">Hamburger</option>
+                <option value="-../../../img/kebab.png" name="choix">Kebab</option>
+                <option value="../../../img/tenders.png" name="choix">Tenders</option>
+                <option value="../../../img/Couscous.png" name="choix">Couscous</option>
+                <option value="../../../img/boeuf_a_la_raclette.png" name="choix">Viande raclette</option>
+                <option value="../../../img/raclette_classique.png" name="choix">Raclette</option>
+                <option value="../../../img/salade_a_la_raclette.png" name="choix">Salade</option>
+                <option value="../../../img/sandwich_a_la_raclette.png" name="choix">Sandwich</option>
+                <option value="../../../img/sushi_a_la_raclette.png" name="choix">Sushi</option>
+                <option value="../../../img/tacos_a_la_raclette.png" name="choix">Tacos</option>
+            </select>';
                 $index = $platmodel->chercheIdPlat($plt);
+                $img =  $platmodel->chercheImage($index);
+                echo '<img src="'.$img.'" >';
                 $ingredients = $platmodel->trouverIngredient((int)$index);
                 $cpt = 1;
 
@@ -102,7 +115,7 @@ class PlatController
                             $idxingr = $platmodel->chercheIdIngredient($tmp);
                             echo  '<option value="'.$idxingr.'"name="ingr'.$cpt.'">'.$tmp.'</option>';
                         }
-                        echo "</select><br>";
+                        echo '</select><br>';
                         $cpt = $cpt + 1 ;
                     }
                 }
@@ -119,7 +132,7 @@ class PlatController
                 $plt = implode(", ", $plat);
                 echo '<div id="listeplat"><p>' . $plt . "<br>";
                 $index = $platmodel->chercheIdPlat($plt);
-                $idx = $index[0]['Id_Plat'];
+                $idx = $index;
                 $ingredients = $platmodel->trouverIngredient((int)$idx);
                 foreach ($ingredients as $ingredient) {
                     echo implode(",", $ingredient) . "<br>";
@@ -129,7 +142,7 @@ class PlatController
             echo '</div></div></div>';
         }
     }
-    
+
 
     /**
      * Ajoute un nouveau plat à la base de données.
@@ -173,7 +186,8 @@ class PlatController
                 $ingredients[4] = null;
             }
             $platModel = new PlatModel(new DbConnect());
-            $platModel->addPlat($nomPlat,$ingredients);
+            $img = $_POST['choix'];
+            $platModel->addPlat($nomPlat,$ingredients,$img);
         }
     }
 
@@ -219,6 +233,7 @@ class PlatController
     public function updatePlat(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
             $idPlat = $_POST['update'];
+            $img = $_POST['choix'];
             $nomPlat = $_POST['nom'];
             if (isset($_POST['ingr1'])) {
                 $ingredients[0] = $_POST['ingr1'];
@@ -251,7 +266,7 @@ class PlatController
                 $ingredients[4] = null;
             }
             $PlatModel = new PlatModel(new DbConnect());
-            $PlatModel->updatePlat($idPlat, $nomPlat,$ingredients);
+            $PlatModel->updatePlat($idPlat, $nomPlat,$ingredients,$img);
             self::affichePage();
             exit();
         }

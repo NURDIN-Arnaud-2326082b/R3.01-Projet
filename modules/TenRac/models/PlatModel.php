@@ -211,11 +211,7 @@ class PlatModel
         $sql = "INSERT INTO Plat(Nom_Plat,IMG) VALUES (?,?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param('ss', $nomPlat,$img);
-        if($stmt->execute()){
-            echo 'Ajout réussi';
-        }else{
-            echo 'Erreur d\'ajout' . $stmt->error;
-        }
+        $stmt->execute();
         $stmt->close();
         for ($i = 0; $i < 5; $i++){
             if($ingredients[$i] != 0){
@@ -224,11 +220,6 @@ class PlatModel
                 $stmt2 = $this->connect->mysqli()->prepare($sql2);
                 $id = intval($ingredients[$i]);
                 $stmt2->bind_param('ii', $idPlat,$id);
-                if($stmt2->execute()){
-                    echo 'Ajout réussi';
-                }else{
-                    echo 'Erreur d\'ajout' . $stmt2->error;
-                }
                 $stmt2->close();
             }
         }
@@ -252,11 +243,11 @@ class PlatModel
         $stmt2->close();
     }
 
-    public function updatePlat($IdPlat,$NomPlat,$ingredients): void
+    public function updatePlat($IdPlat,$NomPlat,$ingredients,$img): void
     {
-        $sql = "UPDATE Plat SET Nom_plat = ? WHERE Id_Plat = ?";
+        $sql = "UPDATE Plat SET Nom_plat = ?, IMG = ? WHERE Id_Plat = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('si', $NomPlat, $IdPlat);
+        $stmt->bind_param('ssi', $NomPlat,$img, $IdPlat);
         if(!($stmt->execute())){
             echo 'Erreur de modification' . $stmt->error;
         }
