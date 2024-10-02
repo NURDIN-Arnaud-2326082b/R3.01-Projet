@@ -76,20 +76,27 @@ class PlatController
             $plats = $platmodel->creerListe();
             foreach ($plats as $plat) {
                 $plt = implode(", ", $plat);
-                echo '<form id="listeplat" action="/update-plat" method="POST"> <input type="text" name="action" value="update" hidden="hidden"><input type="text" name="nom" value="' . $plt .'"><br>';
+
+
+                echo '<form id="listeplat" action="/update-plat" method="POST">
+ <input type="text" name="action" value="update" hidden="hidden">
+ <input type="text" name="nom" value="' . $plt .'"><br>';
                 $index = $platmodel->chercheIdPlat($plt);
                 $ingredients = $platmodel->trouverIngredient((int)$index);
                 $cpt = 1;
+
                 foreach ($ingredients as $ingredient) {
                     $listeingredients = $platmodel->listerIngredient();
                     $ing = implode(",",$ingredient);
                     $idxingr = $platmodel->chercheIdIngredient($ing);
+
                     if ($idxingr == 1){
                         echo '<p>FROMAGE À RACLETTE</p><br>';
                     }
                     else {
                         echo '<select value="add"  id="ingredient" name="ingr'.$cpt.'">';
                         echo '<option value="'.$idxingr.'"name="ingr'.$cpt.'">'.$ing.'</option>';
+
                         foreach ($listeingredients as $ingr){
                             $tmp = implode(",",$ingr);
                             $idxingr = $platmodel->chercheIdIngredient($tmp);
