@@ -1,7 +1,20 @@
 <?php
 
+/**
+ * Class Autoloader
+ *
+ * Cette classe gère l'enregistrement d'une fonction d'autoload pour charger automatiquement les classes.
+ */
 class Autoloader
 {
+    /**
+     * Enregistre la fonction d'autoload.
+     *
+     * Cette méthode enregistre une fonction d'autoload qui charge les fichiers de classe
+     * en fonction de leur nom et de leur espace de noms.
+     *
+     * @return void
+     */
     public static function register(): void
     {
         spl_autoload_register(function ($class) {

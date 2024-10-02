@@ -83,7 +83,7 @@ class RepasModel {
      * @param string $Adresse L'adresse du repas.
      * @return int L'ID du repas nouvellement inséré.
      */
-    private function insertionRepas($Dates, $Gerant, $Adresse)
+    private function insertionRepas($Dates, $Gerant, $Adresse): int
     {
         $Id_Lieu = $this->interactionLieu($Adresse);
 
@@ -110,7 +110,7 @@ class RepasModel {
      * @param string $Adresse L'adresse à interagir avec.
      * @return int L'ID du lieu.
      */
-    private function interactionLieu($Adresse)
+    private function interactionLieu($Adresse): int
     {
         $requeteLieu = "SELECT Id_Lieu FROM Lieu WHERE Adresse = ?";
         $stmt = $this->connect->mysqli()->prepare($requeteLieu);
@@ -173,7 +173,7 @@ class RepasModel {
             $stmt->bind_param("ii", $Id_Repas, $Id_Plat);
 
             if ($stmt->execute()) {
-                echo "Ajout réussi dans la table Est_dans";
+               header("Location: /repasTenrac");
             } else {
                 echo "Erreur lors de l'ajout dans Est_dans: " . $stmt->error;
             }
@@ -206,7 +206,7 @@ class RepasModel {
             // Ajout du plat au repas
             $this->ajouterPlatAuRepas($Id_Repas, $Plat);
         } else {
-            echo "Le gérant n'est pas Chevalier ou Dame";
+            echo "Le gérant n'est pas Chevalier ou Dame.";
         }
     }
 
@@ -245,7 +245,7 @@ class RepasModel {
      * @return string L'adresse du lieu.
      */
     public function getLieu(): string {
-    $sql = " SELECT Lieu.Adresse FROM Repas,Lieu WHERE Repas.Id_Lieu = Lieu.Id_Lieu ";
+    $sql = "SELECT Adresse FROM Lieu JOIN Repas ON Lieu.Id_Lieu = Repas.Id_Lieu WHERE Dates = CURRENT_DATE()";
         $stmt = $this->connect->mysqli()->prepare($sql);
 
         if (!$stmt) {

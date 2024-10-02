@@ -196,7 +196,7 @@ header {
     .header-menu li a {
         text-decoration: none;
         color: white;
-        padding: 10px 5px;
+        padding: 10px 4px;
         display: block;
         box-sizing: border-box;
         transition: 0.2s ease;

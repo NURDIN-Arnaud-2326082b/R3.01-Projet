@@ -26,7 +26,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #ea4258   ;
+    background-color: #ff3b3b  ;
     padding: 5px 0;
     position: fixed;
     overflow: hidden;
@@ -217,7 +217,7 @@ p {
 footer {
     position: fixed;
     width: 100%;
-    background-color: #ea4258  ;
+    background-color: #ff3b3b  ;
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -233,6 +233,14 @@ footer {
         max-width: 500px;
     }/* Alignement des formulaires au début de la page */
 
+    .header-menu li a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 4px;
+        display: block;
+        box-sizing: border-box;
+        transition: 0.2s ease;
+    }
 
     form {
         display: flex;
@@ -245,7 +253,7 @@ footer {
     footer {
         position: sticky;
         width: 100%;
-        background-color: #ea4258  ;
+        background-color: #ff3b3b  ;
         color: white;
         text-align: center;
         padding: 10px 0;
