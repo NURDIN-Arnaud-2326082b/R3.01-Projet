@@ -403,6 +403,8 @@ p{
     }
 }
 
+
+
 footer {
     width: 100%;
     background-color: #ff3b3b;
@@ -414,12 +416,67 @@ footer {
 }
 
 
-#footer-menu{
-    padding: 0% 30% ;
+#listeverticale{
+    padding: 1% 20%;
+    color: #ee6753 ;
+    text-align: center;
+}
+
+.listeverticale h3{
+    padding-bottom: 1%;
+    font-size: 150%;
     color: black;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+}
+
+.listeplat h4{
+    font-size: 125%;
+    color: black;
+}
+
+.listeplat p{
+    font-size: 100%;
+    color: black
+}
+
+.listeplat input[type="text"]{
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    background: none;
+    color: black;
+    font-size: 1em;
+    text-align: center;
+    text-decoration: black;
+    text-decoration-style: solid;
+}
+
+.listeplat button{
+    background-color: #7e2222;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1%;
+    margin: 1% 0;
+}
+
+.listeplat button:hover{
+    background-color: #550909;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1%;
+    margin: 1% 0;
+}
+
+.listeplat{
+    margin: 2%;
+    padding: 2% 0;
+    border-radius: 15px;
+    background-color: #ee6753;
 }
 
 #footer-menu ul{
@@ -450,13 +507,55 @@ footer {
     font-size: 75%;
 }
 
-#listeplat{
+#fonctionAjouter{
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    background-color: #f1a901;
-    border-radius: 10px;
-    border: 3px solid #000000;
+    margin: 3% 0;
+    padding: 0 30%;
+}
+
+#fonctionAjouter form{
+    margin: 2%;
+    background-color: #dd9b7c;
+    border-radius: 15px;
+}
+
+#fonctionAjouter input[type="text"]{
+    margin: 2%;
+    padding: 0 7%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+#fonctionAjouter h3{
+    color: #000000;
+    padding: 5% 0;
+}
+
+#fonctionAjouter button{
+    background-color: #7e2222;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 1%;
+    margin-bottom: 5%;
+    text-decoration: black;
+    text-decoration-style: solid;
+}
+
+#fonctionAjouter button:hover{
+    background-color: #550909;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 1%;
+    margin-bottom: 5%;
+    text-decoration: black;
+    text-decoration-style: solid;
 }
 
 .listeverticale div {
