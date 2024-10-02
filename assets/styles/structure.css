@@ -16,7 +16,7 @@
 }*/
 body{
     font-family: 'Inter', sans-serif;
-    background-color: #ffffff;
+    background-color: #f5ebdc;
 }
 
 .divi{
@@ -259,22 +259,6 @@ p {
     resize: vertical;
 }
 
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-button:hover {
-    background-color: #555;
-}
-
 .aligncenter {
     align-items: center;
 }
@@ -355,48 +339,20 @@ header-menu {
 
 
 @media(max-width: 810px){
-    header{
-        height: 70px;
-    }
-
-    .header-menu-mobile {
-        display: block;
-        border: 0px;
-        background-color: #333;
-        position: absolute;
-        left: 5%;
-        top: 10%;
-        width: auto;
-        z-index: 991;
-    }
-
-    .header-logo {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .header-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        display: none;
-    }
 
     .active {
         display: flex;
     }
 
-    .header-menu li:last-child a{
-        margin-top: 10px;
+    .header-menu li a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 5px;
+        display: block;
+        box-sizing: border-box;
+        transition: 0.2s ease;
     }
+
 
     .slider {
         min-height: 60vh;
@@ -442,47 +398,111 @@ header-menu {
         max-width: 90%;
     }
 }
-
-#gestionStructure{
+#fonctionAjouter{
     text-align: center;
-    display: flex;
+    margin: 3% 0;
+    padding: 0 30%;
 }
 
-#gestionStructure form{
+#fonctionAjouter form{
     margin: 2%;
-    flex: 1 1 !important;
-    background-color: #cf0f0f;
+    background-color: #dd9b7c;
     border-radius: 15px;
 }
 
-#gestionStructure h3{
-    color: #f0f0f0;
-    background-color: #000000;
-    border-radius: 15px;
-    margin: 2% 30%
+#fonctionAjouter input[type="text"]{
+    margin: 2%;
+    padding: 0 7%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
 }
 
-#autres_clubs{
+#fonctionAjouter h3{
+    color: #000000;
+    padding: 5% 0;
+}
+
+#fonctionAjouter button{
+    background-color: #7e2222;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 1%;
+    margin-bottom: 5%;
+    text-decoration: black;
+    text-decoration-style: solid;
+}
+
+#fonctionAjouter button:hover{
+    background-color: #550909;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 1%;
+    margin-bottom: 5%;
+    text-decoration: black;
+    text-decoration-style: solid;
+}
+
+#boxClub{
     padding: 1% 20%;
-    background-color: #000000;
-    color: #f3aa00;
+    color: #ee6753 ;
     text-align: center;
 }
 
-#autres_clubs h3{
+.clubs h3{
     padding-bottom: 1%;
     font-size: 150%;
     color: black;
 }
 
-#autres_clubs h4{
+.clubs h4{
     font-size: 125%;
     color: black;
 }
 
-#autres_clubs p{
+.clubs p{
     font-size: 100%;
+    color: black
+}
+
+.clubs input[type="text"]{
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    background: none;
     color: black;
+    font-size: 1em;
+    text-align: center;
+    text-decoration: black;
+    text-decoration-style: solid;
+}
+
+.clubs button{
+    background-color: #7e2222;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1%;
+    margin: 1% 0;
+}
+
+.clubs button:hover{
+    background-color: #550909;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1%;
+    margin: 1% 0;
 }
 
 #sous_titre{
@@ -490,24 +510,37 @@ header-menu {
     font-size: 100%;
 }
 
-.descri_club{
+.clubs{
     margin: 2%;
     padding: 2% 0;
     border-radius: 15px;
-    background-color: #f3aa00;
+    background-color: #ee6753;
 }
 
-.descri_club ul{
+.listetenrac{
     list-style: none;
     display: flex;
     flex-wrap: wrap;
 }
 
-.descri_club li{
+.listetenrac li{
+    margin: 0 5%;
     font-size: 100%;
     color: black;
     flex: 1 1 !important;
     text-align: center;
+}
+
+.zoneButton{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.zoneButton li{
+    color: black;
+    flex: 1 1 !important;
 }
 
 footer {
@@ -537,6 +570,7 @@ footer {
 
 #footer-menu li{
     flex: 1 1 !important;
+    justify-content: center;
     text-align: center;
     padding-bottom: 2%;
 }

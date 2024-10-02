@@ -1,6 +1,6 @@
 </div>
 
-<div id="gestionStructure">
+<div id="fonctionAjouter">
     <form action="/add-structure" method="POST">
         <h3>Ajouter un Club</h3>
         <input type="hidden" name="action" value="add">

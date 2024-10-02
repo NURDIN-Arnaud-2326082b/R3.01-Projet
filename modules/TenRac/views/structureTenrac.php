@@ -5,5 +5,5 @@
         </div>
     </div>
 
-    <div id ="autres_clubs">
+    <div id ="boxClub">
         <h2>Les Clubs</h2>

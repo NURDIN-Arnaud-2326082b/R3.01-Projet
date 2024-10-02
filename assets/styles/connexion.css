@@ -90,6 +90,7 @@ header {
 
 .header-menu {
     z-index: 1000;
+    position: relative;
 }
 
 .boxed {
@@ -223,6 +224,35 @@ footer {
     bottom: 0;
     box-sizing: border-box;
 }
+/* Styles pour les petits écrans (comme les téléphones) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Les formulaires s'empilent du haut vers le bas */
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 500px;
+    }/* Alignement des formulaires au début de la page */
+
+
+    form {
+        display: flex;
+        margin: 120px 0px 10px 0px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+    }
+    .header-menu li a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 5px;
+        display: block;
+        box-sizing: border-box;
+        transition: 0.2s ease;
+    }
+
+}
+
 
 
 #footer-menu{
