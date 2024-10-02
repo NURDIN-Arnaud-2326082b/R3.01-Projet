@@ -1,5 +1,4 @@
-<label for="ingredient"> <p>Image :</p></label>
-<button type="submit">Ajouter</button>
+<button type="submit">Ajouter</button>$img
 </form>
 </div>
 </div>
