@@ -83,9 +83,9 @@ class PlatController
                 foreach ($ingredients as $ingredient) {
                     echo implode(",", $ingredient) . "<br>";
                 }
-                echo '</p>
+                echo '</p> <button type="submit" name="update" value="' . $idx . '">Modifier le plat</button> </form> 
             <form action="/delete-plat" method="POST"><input type="hidden" name="action" value="delete">
-            <button type="submit" name="delete" value="' . $idx . '">Supprimer le plat</button><br></form> </div>';
+            <button type="submit" name="delete" value="' . $idx . '">Supprimer le plat</button><br></div>';
             }
         }
         else {
