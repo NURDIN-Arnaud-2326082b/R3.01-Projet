@@ -5,7 +5,7 @@
         Plats:
     </h2>
     <p>
-    <img class="imgrdv" src="../../../img/assiette.png" height="300px" width="300px">
+    <img class="imgrdv" src="../../../img/assiette.png" height="300px" width="300px" alt="assiette_logo">
             <span>
                 <?php
                 global $platBool,$dateExistsbool,$affichagePlat;
@@ -18,7 +18,6 @@
                 ?>
             </span>
 
-<!--        <img class="" src="../../../img/Dame.png" height="250px" width="350px" alt="Dame">-->
     </p>
 </div>
 <section>
@@ -37,7 +36,6 @@
                 }
                 ?>
             </span>
-
         </p>
     </div>
     <div class="divi">
@@ -57,7 +55,6 @@
             </p>
         </div>
     </div>
-
 </section>
 </body>
 
