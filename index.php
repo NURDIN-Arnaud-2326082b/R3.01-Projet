@@ -103,6 +103,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $platTenrac = new \TenRac\controllers\PlatController();
             $platTenrac ->deletePlat();
             $platTenrac::affichePage();
+            break;
         // Dans la sitution de update-structure
         case 'update-structure':
             // On modifie la structure à l'aide de la fonction updateStructure du controller puis on effectue l'affichage
@@ -114,6 +115,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             $PlatTenrac = new \TenRac\controllers\PlatController();
             $PlatTenrac ->updatePlat();
             $PlatTenrac::affichePage() ;
+            break;
         // Dans la situation de tenrac-structure
         case 'tenrac-structure':
             // On modifie la structure à l'aide de la fonction ajouterTenracStructure de controller puis on effectue l'affichage.
