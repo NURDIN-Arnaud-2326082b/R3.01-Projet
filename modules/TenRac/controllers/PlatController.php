@@ -76,8 +76,9 @@ class PlatController
             $plats = $platmodel->creerListe();
             foreach ($plats as $plat) {
                 $plt = implode(", ", $plat);
-                echo '<form id="listeplat" action="/update-plat" method="POST"> <input type="text" name="action" value="update" hidden="hidden"><input type="text" name="nom" value="' . $plt .'"><br>';
                 $index = $platmodel->chercheIdPlat($plt);
+                $img = $platmodel->chercheImage($index);
+                echo '<form id="listeplat" action="/update-plat" method="POST"><img src="'.$img.'" alt="tenders" loading="eager"> <input type="text" name="action" value="update" hidden="hidden"><input type="text" name="nom" value="' . $plt .'"><br>';
                 $ingredients = $platmodel->trouverIngredient((int)$index);
                 $cpt = 1;
                 foreach ($ingredients as $ingredient) {
@@ -134,13 +135,39 @@ class PlatController
     public function addPlat(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" AND $_POST['action'] === 'add') {
             $nomPlat = $_POST['nom'];
-            $ingredients[0] = $_POST['ingr1'];
-            $ingredients[1] = $_POST['ingr2'];
-            $ingredients[2] = $_POST['ingr3'];
-            $ingredients[3] = $_POST['ingr4'];
-            $ingredients[4] = $_POST['ingr5'];
+            if (isset($_POST['ingr1'])) {
+                $ingredients[0] = $_POST['ingr1'];
+            }
+            else{
+                $ingredients[0] = null;
+            }
+            if (isset($_POST['ingr2'])) {
+                $ingredients[1] = $_POST['ingr2'];
+            }
+            else{
+                $ingredients[1] = null;
+            }
+            if (isset($_POST['ingr3'])) {
+                $ingredients[2] = $_POST['ingr3'];
+            }
+            else{
+                $ingredients[2] = null;
+            }
+            if (isset($_POST['ingr4'])) {
+                $ingredients[3] = $_POST['ingr4'];
+            }
+            else{
+                $ingredients[3] = null;
+            }
+            if (isset($_POST['ingr5'])) {
+                $ingredients[4] = $_POST['ingr5'];
+            }
+            else{
+                $ingredients[4] = null;
+            }
+            $img = $_POST['choix'];;
             $platModel = new PlatModel(new DbConnect());
-            $platModel->addPlat($nomPlat,$ingredients);
+            $platModel->addPlat($nomPlat,$ingredients,$img);
         }
     }
 
@@ -187,11 +214,36 @@ class PlatController
         if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
             $idPlat = $_POST['update'];
             $nomPlat = $_POST['nom'];
-            $ingredients[0] = $_POST['ingr1'];
-            $ingredients[1] = $_POST['ingr2'];
-            $ingredients[2] = $_POST['ingr3'];
-            $ingredients[3] = $_POST['ingr4'];
-            $ingredients[4] = $_POST['ingr5'];
+            if (isset($_POST['ingr1'])) {
+                $ingredients[0] = $_POST['ingr1'];
+            }
+            else{
+                $ingredients[0] = null;
+            }
+            if (isset($_POST['ingr2'])) {
+                $ingredients[1] = $_POST['ingr2'];
+            }
+            else{
+                $ingredients[1] = null;
+            }
+            if (isset($_POST['ingr3'])) {
+                $ingredients[2] = $_POST['ingr3'];
+            }
+            else{
+                $ingredients[2] = null;
+            }
+            if (isset($_POST['ingr4'])) {
+                $ingredients[3] = $_POST['ingr4'];
+            }
+            else{
+                $ingredients[3] = null;
+            }
+            if (isset($_POST['ingr5'])) {
+                $ingredients[4] = $_POST['ingr5'];
+            }
+            else{
+                $ingredients[4] = null;
+            }
             $PlatModel = new PlatModel(new DbConnect());
             $PlatModel->updatePlat($idPlat, $nomPlat,$ingredients);
             self::affichePage();
