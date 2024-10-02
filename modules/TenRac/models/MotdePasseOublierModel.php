@@ -43,17 +43,20 @@ class MotdePasseOublierModel
 
             $conn = $this->connect->mysqli();
 
+            // Vérifier si l'e-mail est valide
             $sql = "SELECT * FROM Tenrac WHERE Courriel = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param('s', $email);
             $stmt->execute();
             $result = $stmt->get_result();
 
+            // Vérifier si l'utilisateur existe avec l'e-mail donné
             if ($result->num_rows > 0) {
                 $newPassword = uniqid();
                 $hashedpassword = password_hash($newPassword, PASSWORD_DEFAULT);
                 $message = "Voici votre nouveau mot de passe : " . $newPassword;
 
+                // Envoyer un e-mail avec le nouveau mot de passe
                 if (mail($email, 'Oubli de mot de passe', $message)) {
                     $sql = "UPDATE Tenrac SET Code_personnel = ? WHERE Courriel = ?";
                     $stmt = $conn->prepare($sql);
