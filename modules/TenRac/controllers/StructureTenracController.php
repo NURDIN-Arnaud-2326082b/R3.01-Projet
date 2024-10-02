@@ -42,7 +42,7 @@ class StructureTenracController
             </form><br>';
 
             echo '<h4>Adresse : </h4>';
-            echo '<input type="text" id="adresseClub'.$id.'" name="adr" value="' . $adresse[0]['Adresse'] . '">';
+            echo '<label><input type="text" id="adresseClub'.$id.'" name="adr" value="' . $adresse[0]['Adresse'] . '"></label>';
 
             echo '<br><h4>Adhérents : </h4>';
             $listeTenracs = $structureModel->chercheTenrac($id);
