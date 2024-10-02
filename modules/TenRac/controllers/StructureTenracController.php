@@ -89,8 +89,6 @@ class StructureTenracController
         if($_SERVER['REQUEST_METHOD'] === 'POST' AND $_POST['action'] === 'rejoindre') {
             $idClub = $_POST['rejoindre'];
             $courrielTenrac = $_COOKIE['courrielTenrac'];
-
-            'je ne sais pas comment récupérer cela. :/';
             $structureModel = new StructureTenracModel(new DbConnect());
             $structureModel->ajouterTenracClub($idClub, $courrielTenrac);
             self::affichePage();
