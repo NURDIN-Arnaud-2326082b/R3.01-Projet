@@ -50,6 +50,7 @@ class GestionTenracModel
     {
         $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
 
+        // Préparation de la requête SQL pour l'ajout d'un membre 'Tenrac'
         $sql = "INSERT INTO Tenrac ( Courriel, Code_personnel, Nom, Num_tel, Adresse, Grade, Rang, Titre, Dignite, Id_club) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param("ssssssssss", $Courriel, $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club);
@@ -74,6 +75,7 @@ class GestionTenracModel
      */
     public function supprimerTenrac($Courriel): void
     {
+        // Préparation de la requête SQL pour la suppression d'un membre 'Tenrac'
         $sql = "DELETE FROM Tenrac WHERE  Courriel = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt -> bind_param('s', $Courriel);
@@ -104,8 +106,9 @@ class GestionTenracModel
     public function modifierTenrac($Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club): void
     {
 
-        $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
 
+        $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
+        // Préparation de la requête SQL pour la modification d'un membre 'Tenrac'
         $sql = "UPDATE Tenrac SET Code_personnel = ?, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE Courriel = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param("ssssssssss", $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $Courriel);
