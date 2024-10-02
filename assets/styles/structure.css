@@ -339,48 +339,20 @@ header-menu {
 
 
 @media(max-width: 810px){
-    header{
-        height: 70px;
-    }
-
-    .header-menu-mobile {
-        display: block;
-        border: 0px;
-        background-color: #333;
-        position: absolute;
-        left: 5%;
-        top: 10%;
-        width: auto;
-        z-index: 991;
-    }
-
-    .header-logo {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .header-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        display: none;
-    }
 
     .active {
         display: flex;
     }
 
-    .header-menu li:last-child a{
-        margin-top: 10px;
+    .header-menu li a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 5px;
+        display: block;
+        box-sizing: border-box;
+        transition: 0.2s ease;
     }
+
 
     .slider {
         min-height: 60vh;

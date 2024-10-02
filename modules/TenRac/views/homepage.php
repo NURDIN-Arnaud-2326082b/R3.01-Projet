@@ -23,15 +23,15 @@
                     <h3>CHIPS AU FROMAGE</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="../../../img/tenders.png" alt="tenders" loading="lazy">
+                    <img src="../../../img/tenders.png" alt="tenders" loading="eager">
                     <h3>TENDERS</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="../../../img/hamburger.png" alt="hamburger" loading="lazy">
+                    <img src="../../../img/hamburger.png" alt="hamburger" loading="eager">
                     <h3>HAMBURGER</h3>
                 </div>
                 <div class="w25 wm100 skill">
-                    <img src="../../../img/kebab.png" alt="kebab" loading="lazy">
+                    <img src="../../../img/kebab.png" alt="kebab" loading="eager">
                     <h3>KEBAB</h3>
                 </div>
             </div>
