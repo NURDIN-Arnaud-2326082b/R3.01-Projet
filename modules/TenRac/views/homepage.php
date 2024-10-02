@@ -18,7 +18,7 @@
     </div>
     <div id="skills" class="section dark">
         <div class="boxed text-center">
-            <h2>Quelque exemple de plats</h2>
+            <h2>Quelques exemples de plats</h2>
             <div class="flex toColumn gap20">
                 <div class="w25 wm100 skill">
                     <img src="../../../img/chips.png" alt="chips" >
