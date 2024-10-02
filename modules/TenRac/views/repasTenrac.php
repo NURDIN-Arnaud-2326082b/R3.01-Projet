@@ -9,6 +9,9 @@
     <label for="Adresse">Lieu du repas :</label>
     <input type="text" id="Adresse" name="Adresse" required><br>
 
+    <label for="Plat">Plat du repas :</label>
+    <input type="text" id="Plat" name="Plat" required><br>
+
 
     <button type="submit" class="ajoutRep">Ajouter Le Repas</button>
 </form>

@@ -5,7 +5,7 @@
         Plats:
     </h2>
     <p>
-        <!-- <img class="imgrdv" src="../../../img/Cavalier.png" height="300px" width="300px" alt="Cavalier"> -->
+    <img class="imgrdv" src="../../../img/assiette.png" height="300px" width="300px">
             <span>
                 <?php
                 global $platBool,$dateExistsbool,$affichagePlat;
@@ -18,7 +18,7 @@
                 ?>
             </span>
 
-        <!--  <img class="imgD" src="../../../img/Dame.png" height="250px" width="350px" alt="Dame"> -->
+<!--        <img class="" src="../../../img/Dame.png" height="250px" width="350px" alt="Dame">-->
     </p>
 </div>
 <section>
@@ -33,10 +33,11 @@
                 if ($LieuBool && $dateExistsbool) {
                     echo $LieuBool;
                 } else {
-                    echo "Aucune rdv";
+                    echo "Aucun rdv";
                 }
                 ?>
             </span>
+
         </p>
     </div>
     <div class="divi">

@@ -25,42 +25,50 @@ class StructureTenracController
      *
      * @return void
      */
-    public function genererListe(): void{
+    public function genererListe(): void {
         $structureModel = new StructureTenracModel(new DbConnect());
         $structures = $structureModel->listeClub();
         foreach ($structures as $structure) {
             $id = implode(',', $structure);
-            echo '<form action="/update-structure" method="POST">
+            echo '<div class="clubs">
+            <form action="/update-structure" method="POST">
             <input type="hidden" name="action" value="update">
-            <div class="descri_club"> <h3>' . $id . ' ・ ';
+            <h3>';
 
             $name = $structureModel->chercheNom($id);
             $adresse = $structureModel->chercheAdresse($id);
-            echo /*$name[0]['Nom_club'] . '</h3><br>*/' 
-            <input type="text" name="nomClub" value="' . $name[0]['Nom_club']. '">
-            </form><br>
-            <h4>Adresse : </h4>
-            <input type="text" name="adr" value="' . $adresse[0]['Adresse'] . '">
-            <br><h4>Adhérents : </h4>';
 
-            /*echo "<p>" . $adresse[0]['Adresse'] . "</p></form><br><h4>Adhérents : </h4>";*/
+            echo '<label for="nomClub'.$id.'">Nom du club :</label>';
+            echo '<input type="text" id="nomClub'.$id.'" name="nomClub" value="' . $name[0]['Nom_club'] . '">
+            </form></h3><br>';
 
+            echo '<h4>Adresse : </h4>';
+            echo '<label for="adresseClub'.$id.'">Adresse :</label>';
+            echo '<input type="text" id="adresseClub'.$id.'" name="adr" value="' . $adresse[0]['Adresse'] . '">';
+
+            echo '<br><h4>Adhérents : </h4>';
             $listeTenracs = $structureModel->chercheTenrac($id);
-            echo "<ul>";
-            foreach ($listeTenracs as $tenrac){
+            echo "<ul class='listetenrac'>";
+            foreach ($listeTenracs as $tenrac) {
                 echo "<li>" . implode($tenrac) . "</li>";
             }
 
-            echo '</ul><button type="submit" name="update" value="'.$id.'">Modifier le club</button></form><br>
+            echo '</ul><ul class="zoneButton">
+                <li><button type="submit" name="update" value="'.$id.'">Modifier le club</button></li></form>';
 
-            <form action="/delete-structure" method="POST"><input type="hidden" name="action" value="delete">
-            <button type="submit" name="delete" value="'.$id.'">Supprimer le club</button></form><br>
-            
-            <form action="/tenrac-structure" method="POST"><input type="hidden" name="action" value="rejoindre">
-            <button type="submit" name="rejoindre" value="'.$id.'">Rejoindre le club</button></form>
-            </div>';
+            if($id != 1) {
+                echo '<form action="/delete-structure" method="POST">
+                <input type="hidden" name="action" value="delete">
+                <li><button type="submit" name="delete" value="'.$id.'">Supprimer le club</button></li></form>';
+            }
+
+            echo '<form action="/tenrac-structure" method="POST">
+            <input type="hidden" name="action" value="rejoindre">
+            <li><button type="submit" name="rejoindre" value="'.$id.'">Rejoindre le club</button></li></form>
+            </ul></div>';
         }
     }
+
 
 
     /**

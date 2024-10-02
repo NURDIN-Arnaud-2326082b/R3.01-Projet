@@ -141,7 +141,7 @@ class PlatModel
 
         // Libération du résultat
         $result->free();
-        return $data;
+        return $data[0]['Id_Plat'];
     }
 
 
@@ -170,7 +170,7 @@ class PlatModel
 
         // Libération du résultat
         $result->free();
-        return $data;
+        return $data[0]["Id_Ingredient"];
     }
 
 
@@ -180,7 +180,7 @@ class PlatModel
      * @return array Tableau contenant les noms des ingrédients.
      */
     public function listerIngredient(){
-        $stmt = $this->connect->mysqli()->query("SELECT Nom_ingredient FROM Ingrédients");
+        $stmt = $this->connect->mysqli()->query("SELECT Nom_ingredient FROM Ingrédients WHERE Id_Ingredient != 1");
         // Vérification du résultat
         if (!$stmt) {
             die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
@@ -206,23 +206,32 @@ class PlatModel
      *
      * @return void
      */
-    public function addPlat($nomPlat,$nomIngredient): void
+    public function addPlat($nomPlat,$ingredients): void
     {
         $sql = "INSERT INTO Plat(Nom_Plat) VALUES (?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param('s', $nomPlat);
-        $sql2 = "INSERT INTO IngredientsPlat(Id_Plat,Id_ingredient) VALUES (?,?)";
-        $idPlat = $this->chercheIdPlat($nomPlat);
-        $idIngredient = $this->chercheIdIngredient($nomIngredient);
-        $stmt2 = $this->connect->mysqli()->prepare($sql2);
-        $stmt2->bind_param('ii', $idPlat,$idIngredient);
-
         if($stmt->execute()){
             echo 'Ajout réussi';
         }else{
             echo 'Erreur d\'ajout' . $stmt->error;
         }
         $stmt->close();
+        for ($i = 0; $i < 5; $i++){
+            if($ingredients[$i] != 0){
+                $sql2 = "INSERT INTO IngredientsPlat(Id_Plat,Id_ingredient) VALUES (?,?)";
+                $idPlat = $this->chercheIdPlat($nomPlat);
+                $stmt2 = $this->connect->mysqli()->prepare($sql2);
+                $id = intval($ingredients[$i]);
+                $stmt2->bind_param('ii', $idPlat,$id);
+                if($stmt2->execute()){
+                    echo 'Ajout réussi';
+                }else{
+                    echo 'Erreur d\'ajout' . $stmt2->error;
+                }
+                $stmt2->close();
+            }
+        }
     }
 
     public function deletePlat($Id_plat): void
@@ -243,16 +252,42 @@ class PlatModel
         $stmt2->close();
     }
 
-    public function updatePlat($Id_Plat,$Nom_Plat): void
+    public function updatePlat($IdPlat,$NomPlat,$ingredients): void
     {
-        $sql = "UPDATE Plat SET Nom_Plat = ? WHERE Id_Plat = ?";
+        $sql = "UPDATE Plat SET Nom_plat = ? WHERE Id_Plat = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('ssi', $Nom_Plat, $Id_Plat);
-        if($stmt->execute()){
-            //echo 'Modification réussie';
-        }else{
+        $stmt->bind_param('si', $NomPlat, $IdPlat);
+        if(!($stmt->execute())){
             echo 'Erreur de modification' . $stmt->error;
         }
         $stmt->close();
+        $sql2 = "DELETE FROM IngredientsPlat WHERE Id_Plat= ?";
+        $stmt2 = $this->connect->mysqli()->prepare($sql2);
+        $stmt2->bind_param('i', $IdPlat);
+        if(($stmt2->execute())){
+            echo 'caca';
+        }
+        $stmt2->close();
+        for ($i = 0; $i < 5; $i++){
+            if(!(is_null($ingredients[$i]))){
+                $sql2 = "INSERT INTO IngredientsPlat(Id_Plat,Id_ingredient) VALUES (?,?)";
+                $idPlat = $this->chercheIdPlat($NomPlat);
+                $stmt2 = $this->connect->mysqli()->prepare($sql2);
+                $id = intval($ingredients[$i]);
+                $stmt2->bind_param('ii', $idPlat,$id);
+                if($stmt2->execute()){
+                    echo 'Ajout réussi';
+                }else{
+                    echo 'Erreur d\'ajout' . $stmt2->error;
+                }
+                $stmt2->close();
+            }
+        }
     }
+
+    /**
+     * Liste tous les ingrédients disponibles.
+     *
+     * @return array Tableau contenant les noms des ingrédients.
+     */
 }
