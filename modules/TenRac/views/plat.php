@@ -2,7 +2,7 @@
 <div class="slider">
     <img  class="slider-background" src="../../../img/Wallpaper_Plat.png"  alt="tenders_raclette">
     <div class="slider-content">
-        <h1>Tenrac</h1>
+        <h1>Plats</h1>
         <p>Voici nos plats à base de raclette</p>
     </div>
 </div>
@@ -17,4 +17,4 @@
             </label><br>
             <button type="submit">Rechercher</button>
         </form>
-        <div class="listeverticale" >
+        <div id="listeverticale" >
