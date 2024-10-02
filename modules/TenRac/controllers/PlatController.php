@@ -80,21 +80,8 @@ class PlatController
 
                 echo '<form id="listeplat" action="/update-plat" method="POST">
              <input type="text" name="action" value="update" hidden="hidden">
-             <input type="text" name="nom" value="' . $plt .'"><br><select id="choix" name="choix">
-                <option value="../../../img/hamburger.png" name="choix">Hamburger</option>
-                <option value="-../../../img/kebab.png" name="choix">Kebab</option>
-                <option value="../../../img/tenders.png" name="choix">Tenders</option>
-                <option value="../../../img/Couscous.png" name="choix">Couscous</option>
-                <option value="../../../img/boeuf_a_la_raclette.png" name="choix">Viande raclette</option>
-                <option value="../../../img/raclette_classique.png" name="choix">Raclette</option>
-                <option value="../../../img/salade_a_la_raclette.png" name="choix">Salade</option>
-                <option value="../../../img/sandwich_a_la_raclette.png" name="choix">Sandwich</option>
-                <option value="../../../img/sushi_a_la_raclette.png" name="choix">Sushi</option>
-                <option value="../../../img/tacos_a_la_raclette.png" name="choix">Tacos</option>
-            </select>';
+             <input type="text" name="nom" value="' . $plt .'"><br>';
                 $index = $platmodel->chercheIdPlat($plt);
-                $img =  $platmodel->chercheImage($index);
-                echo '<img src="'.$img.'" >';
                 $ingredients = $platmodel->trouverIngredient((int)$index);
                 $cpt = 1;
 

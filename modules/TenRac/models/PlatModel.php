@@ -255,9 +255,8 @@ class PlatModel
         $sql2 = "DELETE FROM IngredientsPlat WHERE Id_Plat= ?";
         $stmt2 = $this->connect->mysqli()->prepare($sql2);
         $stmt2->bind_param('i', $IdPlat);
-        if(($stmt2->execute())){
-            echo 'caca';
-        }
+        $stmt2->execute();
+
         $stmt2->close();
         for ($i = 0; $i < 5; $i++){
             if(!(is_null($ingredients[$i]))){
@@ -266,11 +265,7 @@ class PlatModel
                 $stmt2 = $this->connect->mysqli()->prepare($sql2);
                 $id = intval($ingredients[$i]);
                 $stmt2->bind_param('ii', $idPlat,$id);
-                if($stmt2->execute()){
-                    echo 'Ajout réussi';
-                }else{
-                    echo 'Erreur d\'ajout' . $stmt2->error;
-                }
+                $stmt2->execute();
                 $stmt2->close();
             }
         }
