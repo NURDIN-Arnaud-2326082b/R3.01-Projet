@@ -103,9 +103,12 @@ class GestionTenracModel
      */
     public function modifierTenrac($Courriel, $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club): void
     {
+
+        $hashed_password = password_hash($Code_personnel, PASSWORD_DEFAULT);
+
         $sql = "UPDATE Tenrac SET Code_personnel = ?, Nom = ?, Num_tel = ?, Adresse = ?, Grade = ?, Rang = ?, Titre = ?, Dignite = ?, Id_club = ? WHERE Courriel = ?";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param("ssssssssss", $Code_personnel, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $Courriel);
+        $stmt->bind_param("ssssssssss", $hashed_password, $Nom, $Num_tel, $Adresse, $Grade, $Rang, $Titre, $Dignite, $Id_club, $Courriel);
         if ($stmt->execute()) {
             echo "Modification réussie";
         } else {
