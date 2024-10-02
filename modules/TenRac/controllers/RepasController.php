@@ -48,6 +48,14 @@ class RepasController{
 
     }
 
+    /**
+     * Genère un code html avec une liste de plat
+     *
+     *
+     * Cette méthode appel la methode listTousLesRepas() d'un RepasModel afin de lister le contenu avec un affichage propre
+     *
+     * @return void
+     */
     public function generationHtmlPlat(): String{
         $result = "";
         $repasModel = new RepasModel(new DbConnect());
@@ -82,13 +90,4 @@ class RepasController{
         );
         $view->afficher();
     }
-
-
-    /**
-     * Vérifie la date d'un repas.
-     *
-     * Cette méthode utilise le modèle `RepasModel` pour vérifier si une date de repas existe.
-     *
-     * @return mixed La date si elle existe, sinon null.
-     */
-}?>
+}
