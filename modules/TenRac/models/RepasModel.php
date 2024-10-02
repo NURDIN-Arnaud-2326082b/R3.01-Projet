@@ -245,7 +245,7 @@ class RepasModel {
      * @return string L'adresse du lieu.
      */
     public function getLieu(): string {
-    $sql = " SELECT Lieu.Adresse FROM Repas,Lieu WHERE Repas.Id_Lieu = Lieu.Id_Lieu ";
+    $sql = "SELECT Adresse FROM Lieu JOIN Repas ON Lieu.Id_Lieu = Repas.Id_Lieu WHERE Dates = CURRENT_DATE()";
         $stmt = $this->connect->mysqli()->prepare($sql);
 
         if (!$stmt) {

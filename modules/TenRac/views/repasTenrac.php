@@ -1,4 +1,4 @@
-<form action="/ajout-repas" method="POST">
+<form action="/ajout-repas" class="ajout" method="POST">
 
     <label for="Dates"> Date du repas : </label>
     <input type="date" id="Dates" name="Dates" required><br>

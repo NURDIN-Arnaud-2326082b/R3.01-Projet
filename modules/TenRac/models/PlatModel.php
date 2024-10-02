@@ -208,7 +208,7 @@ class PlatModel
      */
     public function addPlat($nomPlat,$ingredients): void
     {
-        $sql = "INSERT INTO Plat(Nom_Plat) VALUES (?,?)";
+        $sql = "INSERT INTO Plat(Nom_Plat) VALUES (?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
         $stmt->bind_param('s', $nomPlat);
         $stmt->execute();
@@ -220,6 +220,7 @@ class PlatModel
                 $stmt2 = $this->connect->mysqli()->prepare($sql2);
                 $id = intval($ingredients[$i]);
                 $stmt2->bind_param('ii', $idPlat,$id);
+                $stmt2->execute();
                 $stmt2->close();
             }
         }
@@ -256,7 +257,6 @@ class PlatModel
         $stmt2 = $this->connect->mysqli()->prepare($sql2);
         $stmt2->bind_param('i', $IdPlat);
         $stmt2->execute();
-
         $stmt2->close();
         for ($i = 0; $i < 5; $i++){
             if(!(is_null($ingredients[$i]))){
@@ -271,4 +271,9 @@ class PlatModel
         }
     }
 
+    /**
+     * Liste tous les ingrédients disponibles.
+     *
+     * @return array Tableau contenant les noms des ingrédients.
+     */
 }
