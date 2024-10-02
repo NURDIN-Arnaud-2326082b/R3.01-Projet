@@ -82,7 +82,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
             // On crée un controller qui ajoute un plat puis affichera la page
             $platTenrac = new \TenRac\controllers\PlatController();
             $platTenrac ->addPlat();
-            $platTenrac::affichePageTenrac();
+            $platTenrac::affichePage();
             break;
 
         // Dans le cas d'un ajout d'ingrédient
@@ -102,7 +102,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'delete-plat' :
             $platTenrac = new \TenRac\controllers\PlatController();
             $platTenrac ->deletePlat();
-            $platTenrac::affichePageTenrac();
+            $platTenrac::affichePage();
         // Dans la sitution de update-structure
         case 'update-structure':
             // On modifie la structure à l'aide de la fonction updateStructure du controller puis on effectue l'affichage
