@@ -10,5 +10,5 @@
     <input type="text" id="Id_Lieu" name="Id_Lieu" required><br>
 
 
-    <button type="submit">Ajouter Le Repas</button>
+    <button type="submit" class="ajoutRep">Ajouter Le Repas</button>
 </form>

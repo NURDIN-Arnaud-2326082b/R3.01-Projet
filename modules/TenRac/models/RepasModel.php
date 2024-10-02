@@ -35,32 +35,28 @@ readonly class RepasModel {
 
         if ($result->num_rows > 0) {
 
-            $requeteLieu = "SELECT * FROM Lieu WHERE Adresse = ?";
+            $requeteLieu = "SELECT Id_Lieu FROM Lieu WHERE Adresse = ?";
             $stmt = $this->connect->mysqli()->prepare($requeteLieu);
             $stmt->bind_param("s",$Id_Lieu);
+
+            $stmt->execute();
             $result = $stmt->get_result();
-            if ($stmt->execute() && $result->num_rows > 0) {
-                $requeteLieu = "SELECT Id_Lieu FROM Lieu WHERE Adresse = ?";
-                $stmt->close();
-                $stmt = $this->connect->mysqli()->prepare($requeteLieu);
-                $stmt->bind_param("s",$Id_Lieu);
-                $Id_Lieu = $result->fetch_array();
-                $stmt->close();
+
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $Id_Lieu = $row["Id_Lieu"];
 
             }
             else{
+                $stmt -> close();
                 $requeteLieu = "INSERT INTO Lieu(Adresse) VALUES(?)";
                 $stmt = $this->connect->mysqli()->prepare($requeteLieu);
                 $stmt->bind_param("s",$Id_Lieu);
-                $stmt->close();
 
-                $requeteLieu = "SELECT Id_Lieu FROM Lieu WHERE Adresse = ?";
-                $stmt = $this->connect->mysqli()->prepare($requeteLieu);
-                $stmt->bind_param("s",$Id_Lieu);
-                $Id_Lieu = $result->fetch_array();
-                $stmt->close();
-
+                $Id_Lieu = $stmt -> insert_id;
             }
+            $stmt->close();
 
             $sql = "INSERT INTO Repas (Dates, Gerant, Id_Lieu) VALUES (?, ?, ?)";
             $stmt = $this->connect->mysqli()->prepare($sql);
@@ -76,8 +72,6 @@ readonly class RepasModel {
             } else {
                 echo "Erreur lors de l'ajout: " . $stmt->error;
             }
-
-
 
         } else {
             echo "Le gérant n'est pas Chevalier ou Dame";
