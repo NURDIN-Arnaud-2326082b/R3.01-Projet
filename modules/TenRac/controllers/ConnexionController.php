@@ -46,15 +46,6 @@ class ConnexionController
      */
     public static function connecter(array $post): void
     {
-        setcookie(
-            'courrielTenrac',
-            $post["email"],
-            [
-                'expires' => time() + 365*24*3600,
-                'secure' => true,
-                'httponly' => true,
-            ]
-        );
         $courriel = htmlspecialchars($post["email"]);
         $password = htmlspecialchars($post["password"]);
 
