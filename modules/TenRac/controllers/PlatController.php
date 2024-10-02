@@ -33,13 +33,6 @@ class PlatController
         $view->afficher();
     }
 
-    public static function affichePageTenrac(): void
-    {
-        session_start();
-        $view = new PlatTenracView();
-        $view->afficher();
-    }
-
 
     /**
      * Recherche des plats en fonction du nom donné et affiche les ingrédients.
@@ -77,36 +70,38 @@ class PlatController
      * @return void
      */
     public function generer() : void{
-        $platmodel = new PlatModel(new DbConnect());
-        $plats = $platmodel->creerListe();
-        foreach ($plats as $plat) {
-            $plt = implode(", ", $plat);
-            echo '<div id="listeplat"><p>' . $plt . "<br>";
-            $index = $platmodel->chercheIdPlat($plt);
-            $idx = $index[0]['Id_Plat'];
-            $ingredients = $platmodel->trouverIngredient((int)$idx);
-            foreach ($ingredients as $ingredient){
-                echo implode(",",$ingredient)."<br>";
-            }
-            echo '</p><br></div>';
-        }
-    }
-
-    public function genererTenrac() : void{
-        $platmodel = new PlatModel(new DbConnect());
-        $plats = $platmodel->creerListe();
-        foreach ($plats as $plat) {
-            $plt = implode(", ", $plat);
-            echo '<div id="listeplat"><p>' . $plt . "<br>";
-            $index = $platmodel->chercheIdPlat($plt);
-            $idx = $index[0]['Id_Plat'];
-            $ingredients = $platmodel->trouverIngredient((int)$idx);
-            foreach ($ingredients as $ingredient){
-                echo implode(",",$ingredient)."<br>";
-            }
-            echo '</p> <button type="submit" name="update" value="'.$idx.'">Modifier le club</button> </form> 
+        $loggedin = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
+        if ($loggedin == true) {
+            $platmodel = new PlatModel(new DbConnect());
+            $plats = $platmodel->creerListe();
+            foreach ($plats as $plat) {
+                $plt = implode(", ", $plat);
+                echo '<div id="listeplat"><p>' . $plt . "<br>";
+                $index = $platmodel->chercheIdPlat($plt);
+                $idx = $index[0]['Id_Plat'];
+                $ingredients = $platmodel->trouverIngredient((int)$idx);
+                foreach ($ingredients as $ingredient) {
+                    echo implode(",", $ingredient) . "<br>";
+                }
+                echo '</p>
             <form action="/delete-plat" method="POST"><input type="hidden" name="action" value="delete">
-            <button type="submit" name="delete" value="'.$idx.'">Supprimer le club</button><br></div>';
+            <button type="submit" name="delete" value="' . $idx . '">Supprimer le plat</button><br></form> </div>';
+            }
+        }
+        else {
+            $platmodel = new PlatModel(new DbConnect());
+            $plats = $platmodel->creerListe();
+            foreach ($plats as $plat) {
+                $plt = implode(", ", $plat);
+                echo '<div id="listeplat"><p>' . $plt . "<br>";
+                $index = $platmodel->chercheIdPlat($plt);
+                $idx = $index[0]['Id_Plat'];
+                $ingredients = $platmodel->trouverIngredient((int)$idx);
+                foreach ($ingredients as $ingredient) {
+                    echo implode(",", $ingredient) . "<br>";
+                }
+                echo '</p><br></div>';
+            }
         }
     }
 

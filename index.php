@@ -134,7 +134,7 @@ if ($request_uri == '' || $request_uri == 'index.php') {
         case 'plat':
             // On creer un controller pour afficher la page
             $platpage = new PlatController();
-            $platpage::affichePageTenrac();
+            $platpage::affichePage();
             break;
 
         // Dans le cas de la page platTenrac ou recherche
