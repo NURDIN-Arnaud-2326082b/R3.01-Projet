@@ -129,6 +129,7 @@ class PlatController
             echo '</div></div></div>';
         }
     }
+    
 
     /**
      * Ajoute un nouveau plat à la base de données.
@@ -141,11 +142,36 @@ class PlatController
     public function addPlat(): void{
         if ($_SERVER["REQUEST_METHOD"] === "POST" AND $_POST['action'] === 'add') {
             $nomPlat = $_POST['nom'];
-            $ingredients[0] = $_POST['ingr1'];
-            $ingredients[1] = $_POST['ingr2'];
-            $ingredients[2] = $_POST['ingr3'];
-            $ingredients[3] = $_POST['ingr4'];
-            $ingredients[4] = $_POST['ingr5'];
+            if (isset($_POST['ingr1'])) {
+                $ingredients[0] = $_POST['ingr1'];
+            }
+            else{
+                $ingredients[0] = null;
+            }
+            if (isset($_POST['ingr2'])) {
+                $ingredients[1] = $_POST['ingr2'];
+            }
+            else{
+                $ingredients[1] = null;
+            }
+            if (isset($_POST['ingr3'])) {
+                $ingredients[2] = $_POST['ingr3'];
+            }
+            else{
+                $ingredients[2] = null;
+            }
+            if (isset($_POST['ingr4'])) {
+                $ingredients[3] = $_POST['ingr4'];
+            }
+            else{
+                $ingredients[3] = null;
+            }
+            if (isset($_POST['ingr5'])) {
+                $ingredients[4] = $_POST['ingr5'];
+            }
+            else{
+                $ingredients[4] = null;
+            }
             $platModel = new PlatModel(new DbConnect());
             $platModel->addPlat($nomPlat,$ingredients);
         }
@@ -174,9 +200,9 @@ class PlatController
             }
             echo "</select><br>";
         }
-     else {
-         echo '<option value="1"name="ingr'.$cpt.'">FROMAGE À RACLETTE</option></select><br>';
-     }
+        else {
+            echo '<option value="1"name="ingr'.$cpt.'">FROMAGE À RACLETTE</option></select><br>';
+        }
     }
 
     public function deletePlat(): void{
@@ -194,11 +220,36 @@ class PlatController
         if ($_SERVER["REQUEST_METHOD"] === "POST" and $_POST['action'] === 'update') {
             $idPlat = $_POST['update'];
             $nomPlat = $_POST['nom'];
-            $ingredients[0] = $_POST['ingr1'];
-            $ingredients[1] = $_POST['ingr2'];
-            $ingredients[2] = $_POST['ingr3'];
-            $ingredients[3] = $_POST['ingr4'];
-            $ingredients[4] = $_POST['ingr5'];
+            if (isset($_POST['ingr1'])) {
+                $ingredients[0] = $_POST['ingr1'];
+            }
+            else{
+                $ingredients[0] = null;
+            }
+            if (isset($_POST['ingr2'])) {
+                $ingredients[1] = $_POST['ingr2'];
+            }
+            else{
+                $ingredients[1] = null;
+            }
+            if (isset($_POST['ingr3'])) {
+                $ingredients[2] = $_POST['ingr3'];
+            }
+            else{
+                $ingredients[2] = null;
+            }
+            if (isset($_POST['ingr4'])) {
+                $ingredients[3] = $_POST['ingr4'];
+            }
+            else{
+                $ingredients[3] = null;
+            }
+            if (isset($_POST['ingr5'])) {
+                $ingredients[4] = $_POST['ingr5'];
+            }
+            else{
+                $ingredients[4] = null;
+            }
             $PlatModel = new PlatModel(new DbConnect());
             $PlatModel->updatePlat($idPlat, $nomPlat,$ingredients);
             self::affichePage();
