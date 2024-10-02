@@ -206,11 +206,11 @@ class PlatModel
      *
      * @return void
      */
-    public function addPlat($nomPlat,$ingredients): void
+    public function addPlat($nomPlat,$ingredients,$img): void
     {
-        $sql = "INSERT INTO Plat(Nom_Plat) VALUES (?)";
+        $sql = "INSERT INTO Plat(Nom_Plat,IMG) VALUES (?,?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('s', $nomPlat);
+        $stmt->bind_param('ss', $nomPlat,$img);
         if($stmt->execute()){
             echo 'Ajout réussi';
         }else{
@@ -285,9 +285,25 @@ class PlatModel
         }
     }
 
-    /**
-     * Liste tous les ingrédients disponibles.
-     *
-     * @return array Tableau contenant les noms des ingrédients.
-     */
+    public function chercheImage($idPlat){
+        $stmt = $this->connect->mysqli()->prepare("SELECT IMG FROM Plat WHERE Id_Plat =?");
+        $stmt->bind_param("i", $idPlat);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Vérification du résultat
+        if (!$stmt) {
+            die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
+        }
+
+        // Extraction des résultats sous forme de tableau
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        // Libération du résultat
+        $result->free();
+        return $data[0]['IMG'];
+    }
 }
