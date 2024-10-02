@@ -129,6 +129,7 @@ class PlatController
             echo '</div></div></div>';
         }
     }
+    
 
     /**
      * Ajoute un nouveau plat à la base de données.
