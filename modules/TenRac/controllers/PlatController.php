@@ -113,7 +113,8 @@ class PlatController
             $plats = $platmodel->creerListe();
             foreach ($plats as $plat) {
                 $plt = implode(", ", $plat);
-                echo '<div id="listeplat"><p>' . $plt . "<br>";
+                echo '<div class="listeplat"><p>' . $plt . "<br>";
+                echo 'test';
                 $index = $platmodel->chercheIdPlat($plt);
                 $idx = $index;
                 $ingredients = $platmodel->trouverIngredient((int)$idx);
