@@ -17,32 +17,6 @@ use TenRac\views\RepasView;
 class RepasController{
 
 
-    /**
-     * Affiche la liste des repas disponibles.
-     *
-     * Cette méthode est destinée à afficher la liste complète des repas dans l'application.
-     *
-     * @return void
-     */
-    public static function afficheListeRepas(): void
-    {
-
-    }
-
-
-    /**
-     * Affiche un seul repas.
-     *
-     * Cette méthode est destinée à afficher les détails d'un repas unique.
-     *
-     * @return void
-     */
-    public static function afficheUnRepas(): void
-    {
-
-    }
-
-
 
     /**
      * Ajoute un repas dans la base de données.
@@ -58,14 +32,14 @@ class RepasController{
             $newRepas = [
                 'Dates' => $_POST['Dates'],
                 'Gerant' => $_POST['Gerant'],
-                'Id_Lieu' => $_POST['Id_Lieu']
+                'Adresse' => $_POST['Adresse']
             ];
 
             $tenracModel = new RepasModel(new DbConnect());
             $tenracModel->ajoutRepas(
                 $newRepas['Dates'],
                 $newRepas['Gerant'],
-                $newRepas['Id_Lieu']
+                $newRepas['Adresse']
             );
             exit();
         }
@@ -115,9 +89,4 @@ class RepasController{
      *
      * @return mixed La date si elle existe, sinon null.
      */
-    public static function Verifdate(){
-        $dbConnection = new DbConnect();
-        return $dateExists = RepasModel::Verifdate($dbConnection);
-    }
-
 }?>

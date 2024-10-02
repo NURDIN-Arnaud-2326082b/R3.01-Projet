@@ -1,6 +1,6 @@
 <div id="overlay"></div>
 <div class="slider">
-    <img  class="slider-background" src="../../../img/tenders_raclette.jpg"  alt="tenders_raclette">
+    <img  class="slider-background" src="../../../img/Wallpaper_Plat.png"  alt="tenders_raclette">
     <div class="slider-content">
         <h1>Tenrac</h1>
         <p>Voici nos plats à base de raclette</p>

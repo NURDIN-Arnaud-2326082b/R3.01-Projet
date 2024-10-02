@@ -76,17 +76,25 @@ class PlatController
             $plats = $platmodel->creerListe();
             foreach ($plats as $plat) {
                 $plt = implode(", ", $plat);
-                echo '<div id="listeplat"><p>' . $plt . "<br>";
+                echo '<form id="listeplat" action="/udpate-plat"> <input type="text" name="nomClub" value="' . $plt .'"><br>';
                 $index = $platmodel->chercheIdPlat($plt);
                 $idx = $index[0]['Id_Plat'];
                 $ingredients = $platmodel->trouverIngredient((int)$idx);
                 foreach ($ingredients as $ingredient) {
-                    echo implode(",", $ingredient) . "<br>";
+                    $listeingredients = $platmodel->listerIngredient();
+                    echo '<select value="add" id="ingredient" name="ingr">';
+                    echo '<option value="">'.implode(",",$ingredient).'</option>';
+                    foreach ($listeingredients as $ingr){
+                        $tmp = implode(",",$ingr);
+                        echo  '<option value="ingredient1">'.$tmp.'</option>';
+                    }
+                    echo "</select><br>";
                 }
-                echo '</p> <button type="submit" name="update" value="' . $idx . '">Modifier le plat</button> </form> 
+                echo '<button type="submit" name="update" value="' . $idx . '">Modifier le plat</button></form>
             <form action="/delete-plat" method="POST"><input type="hidden" name="action" value="delete">
-            <button type="submit" name="delete" value="' . $idx . '">Supprimer le plat</button><br></div>';
+            <button type="submit" name="delete" value="' . $idx . '">Supprimer le plat</button></form>';
             }
+            echo '</div></div></div>';
         }
         else {
             $platmodel = new PlatModel(new DbConnect());
@@ -102,6 +110,7 @@ class PlatController
                 }
                 echo '</p><br></div>';
             }
+            echo '</div></div></div>';
         }
     }
 

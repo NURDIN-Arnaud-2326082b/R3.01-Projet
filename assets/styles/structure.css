@@ -16,7 +16,7 @@
 }*/
 body{
     font-family: 'Inter', sans-serif;
-    background-color: #ffffff;
+    background-color: #f5ebdc;
 }
 
 .divi{
@@ -259,22 +259,6 @@ p {
     resize: vertical;
 }
 
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-button:hover {
-    background-color: #555;
-}
-
 .aligncenter {
     align-items: center;
 }
@@ -446,6 +430,8 @@ header-menu {
 #gestionStructure{
     text-align: center;
     display: flex;
+    width: 100%;
+    max-width: 400px;
 }
 
 #gestionStructure form{
@@ -455,34 +441,66 @@ header-menu {
     border-radius: 15px;
 }
 
+#gestionStruction input[type="text"]{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
 #gestionStructure h3{
     color: #f0f0f0;
     background-color: #000000;
     border-radius: 15px;
-    margin: 2% 30%
+    margin: 2% 30%;
 }
 
-#autres_clubs{
+#boxClub{
     padding: 1% 20%;
-    background-color: #000000;
-    color: #f3aa00;
+    color: #ee6753 ;
     text-align: center;
 }
 
-#autres_clubs h3{
+.clubs h3{
     padding-bottom: 1%;
     font-size: 150%;
     color: black;
 }
 
-#autres_clubs h4{
+.clubs h4{
     font-size: 125%;
     color: black;
 }
 
-#autres_clubs p{
+.clubs p{
     font-size: 100%;
+    color: black
+}
+
+.clubs input[type="text"]{
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    background: none;
     color: black;
+    font-size: 1em;
+    text-align: center;
+    text-decoration: black;
+    text-decoration-style: solid;
+}
+
+.clubs button{
+    background-color: #7e2222;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-size: 1rem;
+    padding: 1%;
+    margin: 1% 0;
 }
 
 #sous_titre{
@@ -490,24 +508,37 @@ header-menu {
     font-size: 100%;
 }
 
-.descri_club{
+.clubs{
     margin: 2%;
     padding: 2% 0;
     border-radius: 15px;
-    background-color: #f3aa00;
+    background-color: #ee6753;
 }
 
-.descri_club ul{
+.listetenrac{
     list-style: none;
     display: flex;
     flex-wrap: wrap;
 }
 
-.descri_club li{
+.listetenrac li{
+    margin: 0 5%;
     font-size: 100%;
     color: black;
     flex: 1 1 !important;
     text-align: center;
+}
+
+.zoneButton{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.zoneButton li{
+    color: black;
+    flex: 1 1 !important;
 }
 
 footer {
@@ -537,6 +568,7 @@ footer {
 
 #footer-menu li{
     flex: 1 1 !important;
+    justify-content: center;
     text-align: center;
     padding-bottom: 2%;
 }
