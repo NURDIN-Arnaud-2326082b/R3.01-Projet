@@ -79,8 +79,8 @@ class PlatController
 
 
                 echo '<form id="listeplat" action="/update-plat" method="POST">
- <input type="text" name="action" value="update" hidden="hidden">
- <input type="text" name="nom" value="' . $plt .'"><br>';
+             <input type="text" name="action" value="update" hidden="hidden">
+             <input type="text" name="nom" value="' . $plt .'"><br>';
                 $index = $platmodel->chercheIdPlat($plt);
                 $ingredients = $platmodel->trouverIngredient((int)$index);
                 $cpt = 1;
@@ -102,7 +102,7 @@ class PlatController
                             $idxingr = $platmodel->chercheIdIngredient($tmp);
                             echo  '<option value="'.$idxingr.'"name="ingr'.$cpt.'">'.$tmp.'</option>';
                         }
-                        echo "</select><br>";
+                        echo '</select><br>';
                         $cpt = $cpt + 1 ;
                     }
                 }
@@ -119,7 +119,7 @@ class PlatController
                 $plt = implode(", ", $plat);
                 echo '<div id="listeplat"><p>' . $plt . "<br>";
                 $index = $platmodel->chercheIdPlat($plt);
-                $idx = $index[0]['Id_Plat'];
+                $idx = $index;
                 $ingredients = $platmodel->trouverIngredient((int)$idx);
                 foreach ($ingredients as $ingredient) {
                     echo implode(",", $ingredient) . "<br>";
@@ -129,7 +129,7 @@ class PlatController
             echo '</div></div></div>';
         }
     }
-    
+
 
     /**
      * Ajoute un nouveau plat à la base de données.

@@ -206,16 +206,12 @@ class PlatModel
      *
      * @return void
      */
-    public function addPlat($nomPlat,$ingredients,$img): void
+    public function addPlat($nomPlat,$ingredients): void
     {
-        $sql = "INSERT INTO Plat(Nom_Plat,IMG) VALUES (?,?)";
+        $sql = "INSERT INTO Plat(Nom_Plat) VALUES (?,?)";
         $stmt = $this->connect->mysqli()->prepare($sql);
-        $stmt->bind_param('ss', $nomPlat,$img);
-        if($stmt->execute()){
-            echo 'Ajout réussi';
-        }else{
-            echo 'Erreur d\'ajout' . $stmt->error;
-        }
+        $stmt->bind_param('s', $nomPlat);
+        $stmt->execute();
         $stmt->close();
         for ($i = 0; $i < 5; $i++){
             if($ingredients[$i] != 0){
@@ -224,11 +220,6 @@ class PlatModel
                 $stmt2 = $this->connect->mysqli()->prepare($sql2);
                 $id = intval($ingredients[$i]);
                 $stmt2->bind_param('ii', $idPlat,$id);
-                if($stmt2->execute()){
-                    echo 'Ajout réussi';
-                }else{
-                    echo 'Erreur d\'ajout' . $stmt2->error;
-                }
                 $stmt2->close();
             }
         }
@@ -264,9 +255,8 @@ class PlatModel
         $sql2 = "DELETE FROM IngredientsPlat WHERE Id_Plat= ?";
         $stmt2 = $this->connect->mysqli()->prepare($sql2);
         $stmt2->bind_param('i', $IdPlat);
-        if(($stmt2->execute())){
-            echo 'caca';
-        }
+        $stmt2->execute();
+
         $stmt2->close();
         for ($i = 0; $i < 5; $i++){
             if(!(is_null($ingredients[$i]))){
@@ -275,35 +265,10 @@ class PlatModel
                 $stmt2 = $this->connect->mysqli()->prepare($sql2);
                 $id = intval($ingredients[$i]);
                 $stmt2->bind_param('ii', $idPlat,$id);
-                if($stmt2->execute()){
-                    echo 'Ajout réussi';
-                }else{
-                    echo 'Erreur d\'ajout' . $stmt2->error;
-                }
+                $stmt2->execute();
                 $stmt2->close();
             }
         }
     }
 
-    public function chercheImage($idPlat){
-        $stmt = $this->connect->mysqli()->prepare("SELECT IMG FROM Plat WHERE Id_Plat =?");
-        $stmt->bind_param("i", $idPlat);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        // Vérification du résultat
-        if (!$stmt) {
-            die("Erreur lors de l'exécution de la requête : " . $this->mysqli->error);
-        }
-
-        // Extraction des résultats sous forme de tableau
-        $data = [];
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-
-        // Libération du résultat
-        $result->free();
-        return $data[0]['IMG'];
-    }
 }
