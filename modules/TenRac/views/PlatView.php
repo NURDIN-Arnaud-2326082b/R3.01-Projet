@@ -30,7 +30,11 @@ class PlatView extends AbstractView
                 $platcontroller->generer();
             }
             include __DIR__ . '/platpart2.php';
-            $platcontroller->recupIngredient();
+            $platcontroller->recupIngredient(1);
+            $platcontroller->recupIngredient(2);
+            $platcontroller->recupIngredient(3);
+            $platcontroller->recupIngredient(4);
+            $platcontroller->recupIngredient(5);
             include __DIR__. '/platpart3.php';
         }
         else {
