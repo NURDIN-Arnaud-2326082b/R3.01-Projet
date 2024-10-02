@@ -15,7 +15,7 @@ readonly class RepasModel {
 
     }
 
-    public function ajoutRepas($Dates, $Gerant, $Id_Lieu): void
+    public function ajoutRepas($Dates, $Gerant, $Adresse): void
     {
         // SQL query to check if the Gerant is a Chevalier or Dame
         $sql1 = "SELECT Nom FROM Tenrac
@@ -31,9 +31,33 @@ readonly class RepasModel {
 
         $stmt->execute();
         $result = $stmt->get_result();
+        $stmt->close();
 
         if ($result->num_rows > 0) {
-            // SQL query to insert a new Repas
+
+            $requeteLieu = "SELECT Id_Lieu FROM Lieu WHERE Adresse = ?";
+            $stmt = $this->connect->mysqli()->prepare($requeteLieu);
+            $stmt->bind_param("s",$Adresse);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $Adresse = $row["Id_Lieu"];
+
+            }
+            else{
+                $stmt -> close();
+                $requeteLieu = "INSERT INTO Lieu(Adresse) VALUES(?)";
+                $stmt = $this->connect->mysqli()->prepare($requeteLieu);
+                $stmt->bind_param("s",$Adresse);
+
+                $Adresse = $stmt -> insert_id;
+            }
+            $stmt->close();
+
             $sql = "INSERT INTO Repas (Dates, Gerant, Id_Lieu) VALUES (?, ?, ?)";
             $stmt = $this->connect->mysqli()->prepare($sql);
 
@@ -41,15 +65,13 @@ readonly class RepasModel {
                 die("Erreur de préparation de la requête: " . $this->connect->mysqli()->error);
             }
 
-            $stmt->bind_param("ssi", $Dates, $Gerant, $Id_Lieu);
+            $stmt->bind_param("sss", $Dates, $Gerant, $Adresse);
 
             if ($stmt->execute()) {
                 echo "Ajout réussi";
             } else {
                 echo "Erreur lors de l'ajout: " . $stmt->error;
             }
-
-
 
         } else {
             echo "Le gérant n'est pas Chevalier ou Dame";
