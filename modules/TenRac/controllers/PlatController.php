@@ -50,7 +50,7 @@ class PlatController
         $plats = $platModel->creerListeSelonRecherche($nomRecherche);
         foreach ($plats as $plat) {
             $plt = implode(", ", $plat);
-            echo '<div id="listeplat"><p>' . $plt . "<br>";
+            echo '<div class="listeplat"><p>' . $plt . "<br>";
             $index = $platModel->chercheIdPlat($plt);
             $idx = $index;
             $ingredients = $platModel->trouverIngredient((int)$idx);
@@ -76,7 +76,10 @@ class PlatController
             $plats = $platmodel->creerListe();
             foreach ($plats as $plat) {
                 $plt = implode(", ", $plat);
-                echo '<form id="listeplat" action="/update-plat" method="POST"> <input type="text" name="action" value="update" hidden="hidden"><input type="text" name="nom" value="' . $plt .'"><br>';
+                echo '<div class="listeplat">
+                <form action="/update-plat" method="POST">
+                <input type="text" name="action" value="update" hidden="hidden">
+                <input type="text" name="nom" value="' . $plt .'"><br>';
                 $index = $platmodel->chercheIdPlat($plt);
                 $ingredients = $platmodel->trouverIngredient((int)$index);
                 $cpt = 1;
@@ -101,7 +104,7 @@ class PlatController
                 }
                 echo '<button type="submit" name="update" value="' . $index . '">Modifier le plat</button></form>
             <form action="/delete-plat" method="POST"><input type="hidden" name="action" value="delete">
-            <button type="submit" name="delete" value="' . $index . '">Supprimer le plat</button></form>';
+            <button type="submit" name="delete" value="' . $index . '">Supprimer le plat</button></form></div>';
             }
             echo '</div></div></div>';
         }
