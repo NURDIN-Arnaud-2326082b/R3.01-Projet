@@ -173,7 +173,7 @@ class RepasModel {
             $stmt->bind_param("ii", $Id_Repas, $Id_Plat);
 
             if ($stmt->execute()) {
-                echo "Ajout réussi dans la table Est_dans";
+               header("Location: /repasTenrac");
             } else {
                 echo "Erreur lors de l'ajout dans Est_dans: " . $stmt->error;
             }
